@@ -34,7 +34,7 @@ st.markdown("""
 # ============================================================================
 
 with st.sidebar:
-    st.markdown("### 📂 Sélection d'édition")
+    st.markdown("### � Sélection d'édition")
     
     multi_manager = MultiEditionManager()
     

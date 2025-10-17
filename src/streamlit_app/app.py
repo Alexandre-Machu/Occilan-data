@@ -31,6 +31,11 @@ def main():
     # Custom CSS
     st.markdown("""
     <style>
+        /* Masquer la section "app" par défaut de Streamlit */
+        [data-testid="stSidebarNav"] {
+            display: none;
+        }
+        
         .main-header {
             font-size: 3rem;
             font-weight: bold;

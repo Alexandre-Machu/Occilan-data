@@ -24,7 +24,57 @@ load_dotenv()
 # Page config
 st.set_page_config(page_title="Admin - OcciLan Stats", page_icon="🔧", layout="wide")
 
-# Check authentication
+# Custom CSS pour masquer la navigation par défaut
+st.markdown("""
+<style>
+    [data-testid="stSidebarNav"] {
+        display: none;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# ============================================================================
+# SIDEBAR - Navigation cohérente (AVANT l'authentification)
+# ============================================================================
+
+with st.sidebar:
+    st.markdown("### 📂 Sélection d'édition")
+    
+    multi_manager_sidebar = MultiEditionManager()
+    available_editions_sidebar = multi_manager_sidebar.list_editions(include_private=True)
+    
+    if not available_editions_sidebar:
+        st.info("💡 Créez votre première édition ci-dessous")
+        selected_edition_sidebar = None
+    else:
+        selected_edition_sidebar = st.selectbox(
+            "Édition",
+            available_editions_sidebar,
+            format_func=lambda x: f"Edition {x}",
+            label_visibility="collapsed",
+            key="sidebar_edition_selector"
+        )
+        
+        if selected_edition_sidebar:
+            edition_manager_sidebar = EditionDataManager(selected_edition_sidebar)
+            config_sidebar = edition_manager_sidebar.load_config()
+            
+            if config_sidebar:
+                st.markdown(f"**{config_sidebar.get('name', 'N/A')}**")
+                st.caption(f"📆 {config_sidebar.get('start_date', 'N/A')} → {config_sidebar.get('end_date', 'N/A')}")
+    
+    st.markdown("---")
+    st.markdown("### 🧭 Navigation")
+    st.page_link("app.py", label="🏠 Accueil")
+    st.page_link("pages/1_📊_Stats_Generales.py", label="📊 Stats Générales")
+    st.page_link("pages/9_🔧_Admin.py", label="🔧 Admin")
+    st.markdown("---")
+    st.caption("🎮 OcciLan Stats v2.0")
+
+# ============================================================================
+# Check authentication (APRÈS la sidebar)
+# ============================================================================
+
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
