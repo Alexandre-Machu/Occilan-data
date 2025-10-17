@@ -696,107 +696,107 @@ with tab2:
                     
                     # Edit mode toggle
                     edit_mode = st.checkbox(f"✏️ Modifier les rôles", key=f"edit_{idx}")
-                
-                if edit_mode:
-                    st.markdown("**Modifier les rôles des joueurs:**")
                     
-                    # Form for editing roles
-                    with st.form(key=f"form_edit_{idx}"):
-                        new_players = []
+                    if edit_mode:
+                        st.markdown("**Modifier les rôles des joueurs:**")
                         
-                        for player_idx, player in enumerate(team.get("players", [])):
-                            col1, col2, col3 = st.columns([2, 2, 1])
+                        # Form for editing roles
+                        with st.form(key=f"form_edit_{idx}"):
+                            new_players = []
                             
-                            with col1:
-                                st.text_input(
-                                    f"Joueur {player_idx + 1}",
-                                    value=f"{player.get('gameName', 'Unknown')}#{player.get('tagLine', '0000')}",
-                                    disabled=True,
-                                    key=f"player_{idx}_{player_idx}"
-                                )
-                            
-                            with col2:
-                                current_role = player.get("role", "TOP")
-                                role_options = ["TOP", "JGL", "MID", "ADC", "SUP"]
-                                current_index = role_options.index(current_role) if current_role in role_options else 0
+                            for player_idx, player in enumerate(team.get("players", [])):
+                                col1, col2, col3 = st.columns([2, 2, 1])
                                 
-                                new_role = st.selectbox(
-                                    f"Rôle",
-                                    role_options,
-                                    index=current_index,
-                                    key=f"role_{idx}_{player_idx}"
-                                )
+                                with col1:
+                                    st.text_input(
+                                        f"Joueur {player_idx + 1}",
+                                        value=f"{player.get('gameName', 'Unknown')}#{player.get('tagLine', '0000')}",
+                                        disabled=True,
+                                        key=f"player_{idx}_{player_idx}"
+                                    )
+                                
+                                with col2:
+                                    current_role = player.get("role", "TOP")
+                                    role_options = ["TOP", "JGL", "MID", "ADC", "SUP"]
+                                    current_index = role_options.index(current_role) if current_role in role_options else 0
+                                    
+                                    new_role = st.selectbox(
+                                        f"Rôle",
+                                        role_options,
+                                        index=current_index,
+                                        key=f"role_{idx}_{player_idx}"
+                                    )
+                                
+                                with col3:
+                                    st.write("")  # Spacing
+                                
+                                # Store new player data
+                                new_players.append({
+                                    "role": new_role,
+                                    "gameName": player.get("gameName", "Unknown"),
+                                    "tagLine": player.get("tagLine", "0000")
+                                })
                             
-                            with col3:
-                                st.write("")  # Spacing
+                            submit_changes = st.form_submit_button("💾 Enregistrer les modifications", type="primary")
                             
-                            # Store new player data
-                            new_players.append({
-                                "role": new_role,
-                                "gameName": player.get("gameName", "Unknown"),
-                                "tagLine": player.get("tagLine", "0000")
+                            if submit_changes:
+                                # Update team data
+                                team["players"] = new_players
+                                
+                                # Convert back to dict format for saving
+                                teams_dict = {}
+                                for t in teams_list:
+                                    t_name = t.get("name", "Unknown")
+                                    teams_dict[t_name] = {
+                                        "players": t.get("players", []),
+                                        "opgg_link": t.get("opgg_link", "")
+                                    }
+                                
+                                edition_manager.save_teams(teams_dict)
+                                st.success(f"✅ Rôles mis à jour pour l'équipe **{team_name}**!")
+                                st.rerun()
+                    
+                    else:
+                        # Display mode (read-only)
+                        st.markdown("**Joueurs:**")
+                        
+                        # Sort players by role order
+                        role_order = {"TOP": 0, "JGL": 1, "MID": 2, "ADC": 3, "SUP": 4}
+                        players = team.get("players", [])
+                        sorted_players = sorted(players, key=lambda p: role_order.get(p.get("role", "SUP"), 5))
+                        
+                        players_data = []
+                        for player in sorted_players:
+                            players_data.append({
+                                "Rôle": player.get("role", "N/A"),
+                                "Pseudo": f"{player.get('gameName', 'Unknown')}#{player.get('tagLine', '0000')}"
                             })
                         
-                        submit_changes = st.form_submit_button("💾 Enregistrer les modifications", type="primary")
+                        if players_data:
+                            st.dataframe(
+                                pd.DataFrame(players_data),
+                                use_container_width=True,
+                                hide_index=True
+                            )
+                    
+                    # Delete button (always visible dans l'expander)
+                    st.markdown("---")
+                    if st.button(f"🗑️ Supprimer l'équipe", key=f"delete_{idx}", type="secondary"):
+                        # Remove from list
+                        teams_list.remove(team)
                         
-                        if submit_changes:
-                            # Update team data
-                            team["players"] = new_players
-                            
-                            # Convert back to dict format for saving
-                            teams_dict = {}
-                            for t in teams_list:
-                                t_name = t.get("name", "Unknown")
-                                teams_dict[t_name] = {
-                                    "players": t.get("players", []),
-                                    "opgg_link": t.get("opgg_link", "")
-                                }
-                            
-                            edition_manager.save_teams(teams_dict)
-                            st.success(f"✅ Rôles mis à jour pour l'équipe **{team_name}**!")
-                            st.rerun()
-                
-                else:
-                    # Display mode (read-only)
-                    st.markdown("**Joueurs:**")
-                    
-                    # Sort players by role order
-                    role_order = {"TOP": 0, "JGL": 1, "MID": 2, "ADC": 3, "SUP": 4}
-                    players = team.get("players", [])
-                    sorted_players = sorted(players, key=lambda p: role_order.get(p.get("role", "SUP"), 5))
-                    
-                    players_data = []
-                    for player in sorted_players:
-                        players_data.append({
-                            "Rôle": player.get("role", "N/A"),
-                            "Pseudo": f"{player.get('gameName', 'Unknown')}#{player.get('tagLine', '0000')}"
-                        })
-                    
-                    if players_data:
-                        st.dataframe(
-                            pd.DataFrame(players_data),
-                            width="stretch",
-                            hide_index=True
-                        )
-                
-                # Delete button (always visible)
-                st.markdown("---")
-                if st.button(f"🗑️ Supprimer l'équipe", key=f"delete_{idx}", type="secondary"):
-                    # Remove from list
-                    teams_list.remove(team)
-                    
-                    # Convert back to dict format for saving
-                    teams_dict = {}
-                    for t in teams_list:
-                        t_name = t.get("name", "Unknown")
-                        teams_dict[t_name] = {
-                            "players": t.get("players", []),
-                            "opgg_link": t.get("opgg_link", "")
-                        }
-                    
-                    edition_manager.save_teams(teams_dict)
-                    st.success(f"✅ Équipe **{team_name}** supprimée")
-                    st.rerun()
+                        # Convert back to dict format for saving
+                        teams_dict = {}
+                        for t in teams_list:
+                            t_name = t.get("name", "Unknown")
+                            teams_dict[t_name] = {
+                                "players": t.get("players", []),
+                                "opgg_link": t.get("opgg_link", "")
+                            }
+                        
+                        edition_manager.save_teams(teams_dict)
+                        st.success(f"✅ Équipe **{team_name}** supprimée")
+                        st.rerun()
 
 # ========================
 # TAB 3: PROCESS DATA
