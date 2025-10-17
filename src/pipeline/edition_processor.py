@@ -127,18 +127,18 @@ class EditionProcessor:
             return {}
         
         teams_with_puuid = {}
-        total_players = sum(len(team["players"]) for team in teams)
+        # teams is a dict, not a list
+        total_players = sum(len(team_data["players"]) for team_data in teams.values())
         processed_players = 0
         
-        for team in teams:
-            team_name = team["name"]
+        for team_name, team_data in teams.items():
             teams_with_puuid[team_name] = {
                 "name": team_name,
-                "opgg_link": team["opgg_link"],
+                "opgg_link": team_data.get("opgg_link", ""),
                 "players": []
             }
             
-            for player in team["players"]:
+            for player in team_data["players"]:
                 game_name = player["gameName"]
                 tag_line = player["tagLine"]
                 role = player["role"]
@@ -358,10 +358,11 @@ class EditionProcessor:
             self._log_error("No match IDs found. Run step 4 first.")
             return {}
         
-        # Collect all unique match IDs
+        # Collect all unique match IDs - tournament_matches is Dict[str, List[str]]
         all_match_ids = set()
-        for team_matches in tournament_matches.values():
-            all_match_ids.update(team_matches.get("match_ids", []))
+        for match_ids_list in tournament_matches.values():
+            if isinstance(match_ids_list, list):
+                all_match_ids.update(match_ids_list)
         
         all_match_ids = list(all_match_ids)
         total_matches = len(all_match_ids)
@@ -475,6 +476,9 @@ class EditionProcessor:
         except Exception as e:
             self._log_error(f"Step 2 failed: {str(e)}")
             results["steps"]["step2_puuids"] = {"success": False, "error": str(e)}
+            results["success"] = False
+            results["errors"] = self.errors
+            results["warnings"] = self.warnings
             return results
         
         # Step 3: Fetch ranks
@@ -491,10 +495,10 @@ class EditionProcessor:
             self._update_progress("STEP 4/6: Fetching match IDs...", 50)
             tournament_matches = self.step4_fetch_match_ids(start_timestamp, end_timestamp)
             
-            # Count total matches
+            # Count total matches - tournament_matches is Dict[str, List[str]]
             total_matches = sum(
-                len(team_data.get("match_ids", []))
-                for team_data in tournament_matches.values()
+                len(match_ids) if isinstance(match_ids, list) else 0
+                for match_ids in tournament_matches.values()
             )
             
             results["steps"]["step4_match_ids"] = {
@@ -504,6 +508,9 @@ class EditionProcessor:
         except Exception as e:
             self._log_error(f"Step 4 failed: {str(e)}")
             results["steps"]["step4_match_ids"] = {"success": False, "error": str(e)}
+            results["success"] = False
+            results["errors"] = self.errors
+            results["warnings"] = self.warnings
             return results
         
         # Step 5: Fetch match details
@@ -517,6 +524,9 @@ class EditionProcessor:
         except Exception as e:
             self._log_error(f"Step 5 failed: {str(e)}")
             results["steps"]["step5_match_details"] = {"success": False, "error": str(e)}
+            results["success"] = False
+            results["errors"] = self.errors
+            results["warnings"] = self.warnings
             return results
         
         # Step 6: Calculate stats

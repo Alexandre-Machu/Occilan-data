@@ -83,7 +83,8 @@ def main():
         st.markdown("---")
         st.markdown("### 🧭 Navigation")
         st.page_link("app.py", label="🏠 Accueil")
-        st.page_link("pages/5_🔧_Admin.py", label="🔧 Admin")
+        st.page_link("pages/1_📊_Stats_Generales.py", label="📊 Stats Générales")
+        st.page_link("pages/9_🔧_Admin.py", label="🔧 Admin")
         st.markdown("---")
         st.caption("🎮 OcciLan Stats v2.0")
     
