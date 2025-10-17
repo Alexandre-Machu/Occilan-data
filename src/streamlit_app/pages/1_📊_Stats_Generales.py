@@ -191,9 +191,28 @@ if len(df_ranked) > 0:
     # Renommer les colonnes pour l'affichage
     pivot.columns = ["Top", "Jungle", "Mid", "Adc", "Supp", "Total"]
     
+    # Créer une version HTML stylisée du tableau
+    def color_elo_column(val):
+        """Applique une couleur de fond selon l'ELO (seulement la première colonne)"""
+        elo_colors = {
+            "GRANDMASTER": "background-color: #FCA5A5; color: #1F2937; font-weight: bold;",  # Rose pastel
+            "MASTER": "background-color: #C4B5FD; color: #1F2937; font-weight: bold;",      # Violet pastel
+            "DIAMOND": "background-color: #93C5FD; color: #1F2937; font-weight: bold;",      # Bleu pastel
+            "EMERALD": "background-color: #86EFAC; color: #1F2937; font-weight: bold;",      # Vert pastel
+            "PLATINUM": "background-color: #67E8F9; color: #1F2937; font-weight: bold;",     # Cyan pastel
+            "GOLD": "background-color: #FCD34D; color: #1F2937; font-weight: bold;",         # Jaune pastel
+            "SILVER": "background-color: #D1D5DB; color: #1F2937; font-weight: bold;",       # Gris pastel
+            "BRONZE": "background-color: #FDBA74; color: #1F2937; font-weight: bold;",       # Orange pastel
+            "Total": "background-color: #374151; color: white; font-weight: bold;"
+        }
+        return elo_colors.get(val, "")
+    
+    # Appliquer le style uniquement sur l'index (colonne Élo)
+    styled_pivot = pivot.style.applymap_index(color_elo_column, axis=0)
+    
     # Afficher le tableau
     st.dataframe(
-        pivot,
+        styled_pivot,
         use_container_width=True
     )
     
@@ -207,6 +226,19 @@ if len(df_ranked) > 0:
     
     with col1:
         # Graphique: Répartition des rôles par ELO (stacked bar)
+        # Couleurs adaptées aux ELO
+        elo_colors = {
+            "GRANDMASTER": "#FF6B6B",
+            "MASTER": "#A855F7",
+            "DIAMOND": "#3B82F6",
+            "EMERALD": "#10B981",
+            "PLATINUM": "#06B6D4",
+            "GOLD": "#F59E0B",
+            "SILVER": "#9CA3AF",
+            "BRONZE": "#CD7F32",
+            "IRON": "#78716C"
+        }
+        
         fig1 = px.bar(
             df_ranked,
             x="tier",
@@ -234,19 +266,35 @@ if len(df_ranked) > 0:
         st.plotly_chart(fig1, use_container_width=True)
     
     with col2:
-        # Graphique: Total par ELO
+        # Graphique: Total par ELO avec couleurs adaptées
         elo_counts = df_ranked["tier"].value_counts().reindex(
             [t for t in elo_order if t in df_ranked["tier"].unique()]
         )
         
+        # Couleurs pour chaque ELO (pastel)
+        elo_color_map = {
+            "GRANDMASTER": "#FCA5A5",  # Rose pastel
+            "MASTER": "#C4B5FD",        # Violet pastel
+            "DIAMOND": "#93C5FD",        # Bleu pastel
+            "EMERALD": "#86EFAC",        # Vert pastel
+            "PLATINUM": "#67E8F9",       # Cyan pastel
+            "GOLD": "#FCD34D",           # Jaune pastel
+            "SILVER": "#D1D5DB",         # Gris pastel
+            "BRONZE": "#FDBA74",         # Orange pastel
+            "IRON": "#A8A29E"            # Gris-brun pastel
+        }
+        
+        colors = [elo_color_map.get(elo, "#667BC6") for elo in elo_counts.index]
+        
         fig2 = go.Figure()
         
-        # Bar chart
+        # Bar chart avec couleurs par ELO
         fig2.add_trace(go.Bar(
             x=elo_counts.index,
             y=elo_counts.values,
             name="Total",
-            marker_color="#667BC6"
+            marker_color=colors,
+            showlegend=False
         ))
         
         # Line chart (tendance)
@@ -255,8 +303,8 @@ if len(df_ranked) > 0:
             y=elo_counts.values,
             mode="lines+markers",
             name="Tendance",
-            line=dict(color="#FF6B6B", width=3),
-            marker=dict(size=8)
+            line=dict(color="#DC2626", width=4),  # Rouge plus visible
+            marker=dict(size=12, color="#DC2626", line=dict(width=2, color="white"))
         ))
         
         fig2.update_layout(
@@ -396,12 +444,26 @@ if selected_team:
             st.metric("Meilleur score", f"{max_score:.2f}")
             st.metric("Score min", f"{min_score:.2f}")
             
-            # Répartition des ELO dans l'équipe
+            # Répartition des ELO dans l'équipe avec couleurs pastel
+            elo_color_map_pastel = {
+                "GRANDMASTER": "#FCA5A5",
+                "MASTER": "#C4B5FD",
+                "DIAMOND": "#93C5FD",
+                "EMERALD": "#86EFAC",
+                "PLATINUM": "#67E8F9",
+                "GOLD": "#FCD34D",
+                "SILVER": "#D1D5DB",
+                "BRONZE": "#FDBA74",
+                "IRON": "#A8A29E"
+            }
+            
             fig_team_elo = px.pie(
                 ranked_in_team,
                 names="tier",
                 title="Répartition des ELO",
-                hole=0.4
+                hole=0.4,
+                color="tier",
+                color_discrete_map=elo_color_map_pastel
             )
             st.plotly_chart(fig_team_elo, use_container_width=True)
         else:

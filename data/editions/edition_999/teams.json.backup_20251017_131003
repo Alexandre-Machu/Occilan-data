@@ -30,33 +30,33 @@
     "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Colfeo%23LRC%2CClimber%23EUW%2CThibee%2300000%2CKillycurly%23420%2CErgo+Proxy%23347"
   },
   "Chill Guys": {
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=ODE+Lupikku%23EUW%2CCos+TAKU%23kirby%2CSkarito%232303%2CTanguy+en+Y%23miaou%2CASLM+Shad%23Mites%2C\t\t\t\t",
     "players": [
       {
-        "role": "JGL",
+        "role": "TOP",
         "gameName": "ODE Lupikku",
         "tagLine": "EUW"
       },
       {
-        "role": "MID",
+        "role": "JGL",
         "gameName": "Cos TAKU",
         "tagLine": "kirby"
       },
       {
-        "role": "ADC",
+        "role": "MID",
         "gameName": "Skarito",
         "tagLine": "2303"
       },
       {
-        "role": "SUP",
+        "role": "ADC",
         "gameName": "Tanguy en Y",
         "tagLine": "miaou"
       },
       {
-        "role": "TOP",
+        "role": "SUP",
         "gameName": "ASLM Shad",
         "tagLine": "Mites"
       }
-    ],
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=ODE+Lupikku%23EUW%2CCos+TAKU%23kirby%2CSkarito%232303%2CTanguy+en+Y%23miaou%2CASLM+Shad%23Mites%2C\t\t\t\t"
+    ]
   }
 }
