@@ -463,36 +463,5 @@
         "tagLine": "EUW"
       }
     ]
-  },
-  "PIPI GAMING": {
-    "name": "PIPI GAMING",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=tayme%23euw%2COnikiezi%23euw%2CRR+D1%23EUW%2CNEP+Zerkome%23EUW03%2CAOE+Luce%233109%2Ctchongy%23fine%2C",
-    "players": [
-      {
-        "role": "TOP",
-        "gameName": "tayme",
-        "tagLine": "euw"
-      },
-      {
-        "role": "JGL",
-        "gameName": "Onikiezi",
-        "tagLine": "euw"
-      },
-      {
-        "role": "MID",
-        "gameName": "RR D1",
-        "tagLine": "EUW"
-      },
-      {
-        "role": "ADC",
-        "gameName": "NEP Zerkome",
-        "tagLine": "EUW03"
-      },
-      {
-        "role": "SUP",
-        "gameName": "AOE Luce",
-        "tagLine": "3109"
-      }
-    ]
   }
 }

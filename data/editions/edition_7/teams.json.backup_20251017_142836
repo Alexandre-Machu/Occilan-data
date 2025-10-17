@@ -1,0 +1,250 @@
+{
+  "4China+Vinci": {
+    "name": "4China+Vinci",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Noemiefeatmonkey%23UwU%2CSettaismieuavant%23EUW%2CDragjoo%23EUW%2CLimuls%230000%2Ctsuvai%23520%2C",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "Noemiefeatmonkey",
+        "tagLine": "UwU"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Settaismieuavant",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "MID",
+        "gameName": "Dragjoo",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "ADC",
+        "gameName": "Limuls",
+        "tagLine": "0000"
+      },
+      {
+        "role": "SUP",
+        "gameName": "tsuvai",
+        "tagLine": "520"
+      }
+    ]
+  },
+  "Burger sans gluten": {
+    "name": "Burger sans gluten",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=AUR+Rettleti%23PAFF%2CGuts%2300I%2CAUR+Azz%23PUFF%2CAUR+Baosu%23PUFF%2CAUR+Purin%23PUFF",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "AUR Rettleti",
+        "tagLine": "PAFF"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Guts",
+        "tagLine": "00I"
+      },
+      {
+        "role": "MID",
+        "gameName": "AUR Azz",
+        "tagLine": "PUFF"
+      },
+      {
+        "role": "ADC",
+        "gameName": "AUR Baosu",
+        "tagLine": "PUFF"
+      },
+      {
+        "role": "SUP",
+        "gameName": "AUR Purin",
+        "tagLine": "PUFF"
+      }
+    ]
+  },
+  "chasse et pêche": {
+    "name": "chasse et pêche",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Boubouzaro%23OUIN%2Ckimcannacaliste%23kcwin%2CSeyZo%23EUW%2CSumwo%23EUW%2CCøchon+énervé%23CVRAI",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "Boubouzaro",
+        "tagLine": "OUIN"
+      },
+      {
+        "role": "JGL",
+        "gameName": "kimcannacaliste",
+        "tagLine": "kcwin"
+      },
+      {
+        "role": "MID",
+        "gameName": "SeyZo",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "ADC",
+        "gameName": "Sumwo",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Cøchon énervé",
+        "tagLine": "CVRAI"
+      }
+    ]
+  },
+  "Chill Guys": {
+    "name": "Chill Guys",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=ODE+Lupikku%23EUW%2CCos+TAKU%23kirby%2CSkarito%232303%2CTanguy+en+Y%23miaou%2CASLM+Shad%23Mites%2C",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "ODE Lupikku",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Cos TAKU",
+        "tagLine": "kirby"
+      },
+      {
+        "role": "MID",
+        "gameName": "Skarito",
+        "tagLine": "2303"
+      },
+      {
+        "role": "ADC",
+        "gameName": "Tanguy en Y",
+        "tagLine": "miaou"
+      },
+      {
+        "role": "SUP",
+        "gameName": "ASLM Shad",
+        "tagLine": "Mites"
+      }
+    ]
+  },
+  "EC Emerald": {
+    "name": "EC Emerald",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=TwitchDartien%23EUW%2CCygola%23EUW%2CKouign+Amann%23001%2CPFR+SahDony%23666%2CCrips95v2%23EUW",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "TwitchDartien",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Cygola",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "MID",
+        "gameName": "Kouign Amann",
+        "tagLine": "001"
+      },
+      {
+        "role": "ADC",
+        "gameName": "PFR SahDony",
+        "tagLine": "666"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Crips95v2",
+        "tagLine": "EUW"
+      }
+    ]
+  },
+  "FF 15 Policy": {
+    "name": "FF 15 Policy",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Symbi0se%23HooK%2CShun%23Skys%2Ckyuri%23naab%2Cblackeyes%23supp%2CRevert+Skarner%23Khako",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "Symbi0se",
+        "tagLine": "HooK"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Shun",
+        "tagLine": "Skys"
+      },
+      {
+        "role": "MID",
+        "gameName": "kyuri",
+        "tagLine": "naab"
+      },
+      {
+        "role": "ADC",
+        "gameName": "blackeyes",
+        "tagLine": "supp"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Revert Skarner",
+        "tagLine": "Khako"
+      }
+    ]
+  },
+  "Gooning Corp": {
+    "name": "Gooning Corp",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=make+you+mine%23beer%2CStarnight%2300000%2CGiacoco%23EUW%2Cvote+yes%232kis%2CHowDidWeGetHere%23ABCDE",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "make you mine",
+        "tagLine": "beer"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Starnight",
+        "tagLine": "00000"
+      },
+      {
+        "role": "MID",
+        "gameName": "Giacoco",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "ADC",
+        "gameName": "vote yes",
+        "tagLine": "2kis"
+      },
+      {
+        "role": "SUP",
+        "gameName": "HowDidWeGetHere",
+        "tagLine": "ABCDE"
+      }
+    ]
+  },
+  "La Ruche": {
+    "name": "La Ruche",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Colfeo%23LRC%2CClimber%23EUW%2CThibee%2300000%2CKillycurly%23420%2CErgo+Proxy%23347",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "Colfeo",
+        "tagLine": "LRC"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Climber",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "MID",
+        "gameName": "Thibee",
+        "tagLine": "00000"
+      },
+      {
+        "role": "ADC",
+        "gameName": "Killycurly",
+        "tagLine": "420"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Ergo Proxy",
+        "tagLine": "347"
+      }
+    ]
+  }
+}

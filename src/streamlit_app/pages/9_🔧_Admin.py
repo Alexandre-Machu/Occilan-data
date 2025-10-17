@@ -416,15 +416,86 @@ with tab1:
                                 
                                 players = parser.parse_multisearch_url(opgg_link)
                                 
-                                if len(players) != 5:
-                                    st.warning(f"⚠️ {team_name}: {len(players)} joueurs (5 attendus), ignoré")
+                                if len(players) < 5:
+                                    st.warning(f"⚠️ {team_name}: {len(players)} joueurs (minimum 5 requis), ignoré")
                                     error_count += 1
                                     continue
                                 
-                                # Add team
+                                # Si plus de 5 joueurs, prendre les 5 avec le meilleur ELO
+                                if len(players) > 5:
+                                    st.info(f"ℹ️ {team_name}: {len(players)} joueurs détectés, sélection des 5 meilleurs par ELO...")
+                                    
+                                    # Récupérer les ranks via l'API
+                                    from src.core.riot_client import RiotAPIClient
+                                    api_key = os.getenv("RIOT_API_KEY")
+                                    
+                                    if api_key:
+                                        riot_client = RiotAPIClient(api_key)
+                                        players_with_rank = []
+                                        
+                                        for game_name, tag_line in players:
+                                            try:
+                                                # Get PUUID
+                                                account = riot_client.get_account_by_riot_id(game_name, tag_line)
+                                                if account:
+                                                    puuid = account["puuid"]
+                                                    # Get rank
+                                                    summoner = riot_client.get_summoner_by_puuid(puuid)
+                                                    if summoner:
+                                                        rank_info = riot_client.get_ranked_info(summoner["id"])
+                                                        
+                                                        # Calculer un score pour trier
+                                                        tier_scores = {
+                                                            "IRON": 1, "BRONZE": 2, "SILVER": 3, "GOLD": 4,
+                                                            "PLATINUM": 5, "EMERALD": 6, "DIAMOND": 7,
+                                                            "MASTER": 8, "GRANDMASTER": 15, "CHALLENGER": 20
+                                                        }
+                                                        
+                                                        tier = rank_info.get("tier", "UNRANKED")
+                                                        rank = rank_info.get("rank", "IV")
+                                                        lp = rank_info.get("leaguePoints", 0)
+                                                        
+                                                        score = tier_scores.get(tier, 0) * 100 + lp
+                                                        
+                                                        players_with_rank.append({
+                                                            "data": (game_name, tag_line),
+                                                            "score": score,
+                                                            "tier": tier
+                                                        })
+                                            except Exception as e:
+                                                # Si erreur, score = 0
+                                                players_with_rank.append({
+                                                    "data": (game_name, tag_line),
+                                                    "score": 0,
+                                                    "tier": "UNRANKED"
+                                                })
+                                        
+                                        # Trier par score décroissant et prendre les 5 meilleurs
+                                        players_with_rank.sort(key=lambda x: x["score"], reverse=True)
+                                        players = [p["data"] for p in players_with_rank[:5]]
+                                        
+                                        st.success(f"✅ 5 meilleurs joueurs sélectionnés : {', '.join([f'{p["data"][0]} ({p["tier"]})' for p in players_with_rank[:5]])}")
+                                    else:
+                                        # Pas d'API key, prendre les 5 premiers
+                                        st.warning("⚠️ Pas de clé API, les 5 premiers joueurs seront utilisés")
+                                        players = players[:5]
+                                
+                                # Construire team_data manuellement avec les joueurs sélectionnés
                                 roles = ["TOP", "JGL", "MID", "ADC", "SUP"]
-                                team_data = parser.parse_team_opgg(team_name, opgg_link, roles)
-                                edition_manager.add_team(team_data)
+                                team_data = {
+                                    "name": team_name,
+                                    "opgg_link": opgg_link,
+                                    "players": [
+                                        {
+                                            "role": roles[i],
+                                            "gameName": game_name,
+                                            "tagLine": tag_line
+                                        }
+                                        for i, (game_name, tag_line) in enumerate(players)
+                                    ]
+                                }
+                                
+                                edition_manager.add_team(team_name, team_data)
                                 
                                 success_count += 1
                                 
@@ -461,20 +532,120 @@ with tab2:
     if not teams_list:
         st.info("ℹ️ Aucune équipe enregistrée pour cette édition")
     else:
-        st.metric("Nombre d'équipes", len(teams_list))
+        col1, col2, col3 = st.columns([2, 2, 2])
         
-        # Display teams
+        with col1:
+            st.metric("Nombre d'équipes", len(teams_list))
+        
+        with col2:
+            # Bouton supprimer les sélectionnées
+            if st.button("🗑️ Supprimer les équipes sélectionnées", type="secondary", use_container_width=True):
+                st.session_state.confirm_delete_selected = True
+        
+        with col3:
+            # Bouton supprimer toutes
+            if st.button("⚠️ Supprimer TOUTES les équipes", type="secondary", use_container_width=True):
+                st.session_state.confirm_delete_all = True
+        
+        # Confirmation pour suppression sélectionnée
+        if st.session_state.get("confirm_delete_selected", False):
+            st.warning("⚠️ **Confirmer la suppression des équipes sélectionnées ?**")
+            col_yes, col_no = st.columns(2)
+            
+            with col_yes:
+                if st.button("✅ Oui, supprimer", type="primary", use_container_width=True):
+                    selected_teams = [name for name, selected in st.session_state.items() 
+                                    if name.startswith("select_team_") and selected]
+                    
+                    if selected_teams:
+                        # Supprimer les équipes sélectionnées
+                        teams_dict = teams if isinstance(teams, dict) else {t["name"]: t for t in teams_list}
+                        
+                        for team_key in selected_teams:
+                            team_name = team_key.replace("select_team_", "")
+                            if team_name in teams_dict:
+                                del teams_dict[team_name]
+                        
+                        edition_manager.save_teams(teams_dict)
+                        st.success(f"✅ {len(selected_teams)} équipe(s) supprimée(s) !")
+                        st.session_state.confirm_delete_selected = False
+                        st.rerun()
+                    else:
+                        st.warning("Aucune équipe sélectionnée")
+                        st.session_state.confirm_delete_selected = False
+            
+            with col_no:
+                if st.button("❌ Annuler", use_container_width=True):
+                    st.session_state.confirm_delete_selected = False
+                    st.rerun()
+        
+        # Confirmation pour suppression totale
+        if st.session_state.get("confirm_delete_all", False):
+            st.error("⚠️ **ATTENTION : Supprimer TOUTES les équipes ?**")
+            st.markdown("Cette action est **irréversible** !")
+            
+            confirm_text = st.text_input("Pour confirmer, tapez : **SUPPRIMER TOUT**")
+            
+            col_yes, col_no = st.columns(2)
+            
+            with col_yes:
+                if st.button("🗑️ SUPPRIMER TOUT", type="primary", use_container_width=True):
+                    if confirm_text == "SUPPRIMER TOUT":
+                        edition_manager.save_teams({})
+                        st.success("✅ Toutes les équipes ont été supprimées !")
+                        st.session_state.confirm_delete_all = False
+                        st.rerun()
+                    else:
+                        st.error("❌ Confirmation incorrecte")
+            
+            with col_no:
+                if st.button("❌ Annuler", use_container_width=True):
+                    st.session_state.confirm_delete_all = False
+                    st.rerun()
+        
+        st.markdown("---")
+        
+        # Sélection des équipes
+        st.markdown("### ✅ Sélectionner les équipes à gérer")
+        
+        # Option: Tout sélectionner / Tout désélectionner
+        col_select_all, col_deselect_all = st.columns(2)
+        
+        with col_select_all:
+            if st.button("☑️ Tout sélectionner", use_container_width=True):
+                for team in teams_list:
+                    st.session_state[f"select_team_{team.get('name')}"] = True
+                st.rerun()
+        
+        with col_deselect_all:
+            if st.button("⬜ Tout désélectionner", use_container_width=True):
+                for team in teams_list:
+                    st.session_state[f"select_team_{team.get('name')}"] = False
+                st.rerun()
+        
+        # Display teams avec checkboxes
         for idx, team in enumerate(teams_list):
             if not isinstance(team, dict):
                 continue
             
             team_name = team.get('name', 'Équipe sans nom')
             
-            with st.expander(f"🏆 {team_name}"):
-                st.markdown(f"**Lien OP.GG:** {team.get('opgg_link', 'N/A')}")
-                
-                # Edit mode toggle
-                edit_mode = st.checkbox(f"✏️ Modifier les rôles", key=f"edit_{idx}")
+            # Checkbox pour sélection + Expander
+            col_check, col_expand = st.columns([1, 20])
+            
+            with col_check:
+                selected = st.checkbox(
+                    "✓",
+                    key=f"select_team_{team_name}",
+                    label_visibility="collapsed"
+                )
+            
+            with col_expand:
+                with st.expander(f"🏆 {team_name}", expanded=False):
+                    st.markdown(f"**Lien OP.GG:** {team.get('opgg_link', 'N/A')}")
+                    
+                    # Edit mode toggle
+                    edit_mode = st.checkbox(f"✏️ Modifier les rôles", key=f"edit_{idx}")
                 
                 if edit_mode:
                     st.markdown("**Modifier les rôles des joueurs:**")

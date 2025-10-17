@@ -169,7 +169,7 @@ st.header("🎯 Répartition par rôle et Élo")
 
 # Créer le tableau de répartition
 role_order = ["TOP", "JGL", "MID", "ADC", "SUP"]
-elo_order = ["GRANDMASTER", "MASTER", "DIAMOND", "EMERALD", "PLATINUM", "GOLD", "SILVER", "BRONZE", "IRON", "UNRANKED"]
+elo_order = ["BRONZE", "SILVER", "GOLD", "PLATINUM", "EMERALD", "DIAMOND", "MASTER", "GRANDMASTER", "CHALLENGER", "UNRANKED"]
 
 # Filtrer les joueurs classés
 df_ranked = df_players[df_players["tier"] != "UNRANKED"]
@@ -196,30 +196,105 @@ if len(df_ranked) > 0:
     # Renommer les colonnes pour l'affichage
     pivot.columns = ["Top", "Jungle", "Mid", "Adc", "Supp", "Total"]
     
-    # Créer une version HTML stylisée du tableau
-    def color_elo_column(val):
-        """Applique une couleur de fond selon l'ELO (seulement la première colonne)"""
-        elo_colors = {
-            "GRANDMASTER": "background-color: #FCA5A5; color: #1F2937; font-weight: bold;",  # Rose pastel
-            "MASTER": "background-color: #C4B5FD; color: #1F2937; font-weight: bold;",      # Violet pastel
-            "DIAMOND": "background-color: #93C5FD; color: #1F2937; font-weight: bold;",      # Bleu pastel
-            "EMERALD": "background-color: #86EFAC; color: #1F2937; font-weight: bold;",      # Vert pastel
-            "PLATINUM": "background-color: #67E8F9; color: #1F2937; font-weight: bold;",     # Cyan pastel
-            "GOLD": "background-color: #FCD34D; color: #1F2937; font-weight: bold;",         # Jaune pastel
-            "SILVER": "background-color: #D1D5DB; color: #1F2937; font-weight: bold;",       # Gris pastel
-            "BRONZE": "background-color: #FDBA74; color: #1F2937; font-weight: bold;",       # Orange pastel
-            "Total": "background-color: #374151; color: white; font-weight: bold;"
+    # Couleurs par tier
+    tier_colors = {
+        "CHALLENGER": "#FCA5A5",
+        "GRANDMASTER": "#FCA5A5",
+        "MASTER": "#C4B5FD",
+        "DIAMOND": "#93C5FD",
+        "EMERALD": "#86EFAC",
+        "PLATINUM": "#67E8F9",
+        "GOLD": "#FCD34D",
+        "SILVER": "#D1D5DB",
+        "BRONZE": "#FDBA74",
+        "Total": "#374151"
+    }
+    
+    # Créer le HTML du tableau manuellement
+    html_table = """
+    <style>
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Source Sans Pro', sans-serif;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
-        return elo_colors.get(val, "")
+        .custom-table th {
+            background-color: #1F2937;
+            color: white;
+            font-weight: bold;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #111827;
+        }
+        .custom-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #374151;
+            font-size: 14px;
+        }
+        .custom-table .tier-cell {
+            font-weight: bold;
+            color: #1F2937;
+        }
+        .custom-table .total-row {
+            background-color: #374151;
+            color: white;
+            font-weight: bold;
+        }
+        .custom-table .total-col {
+            background-color: #4B5563;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>tier</th>
+                <th>Top</th>
+                <th>Jungle</th>
+                <th>Mid</th>
+                <th>Adc</th>
+                <th>Supp</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+    """
     
-    # Appliquer le style uniquement sur l'index (colonne Élo)
-    styled_pivot = pivot.style.applymap_index(color_elo_column, axis=0)
+    # Ajouter les lignes de données
+    for tier_name in pivot.index:
+        row = pivot.loc[tier_name]
+        bg_color = tier_colors.get(tier_name, "#262730")
+        
+        if tier_name == "Total":
+            html_table += f'<tr class="total-row">'
+            html_table += f'<td>{tier_name}</td>'
+        else:
+            html_table += f'<tr>'
+            html_table += f'<td class="tier-cell" style="background-color: {bg_color};">{tier_name}</td>'
+        
+        # Ajouter les colonnes de valeurs
+        for idx, col_name in enumerate(pivot.columns):
+            value = row[col_name]
+            if tier_name == "Total":
+                html_table += f'<td>{value}</td>'
+            elif col_name == "Total":
+                html_table += f'<td class="total-col">{value}</td>'
+            else:
+                html_table += f'<td>{value}</td>'
+        
+        html_table += '</tr>'
     
-    # Afficher le tableau
-    st.dataframe(
-        styled_pivot,
-        use_container_width=True
-    )
+    html_table += """
+        </tbody>
+    </table>
+    """
+    
+    # Afficher le tableau HTML
+    st.markdown(html_table, unsafe_allow_html=True)
     
     # ============================================================================
     # GRAPHIQUES

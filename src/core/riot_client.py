@@ -293,12 +293,12 @@ class RiotAPIClient:
         ranked_info = {
             "tier": soloq["tier"],
             "rank": soloq.get("rank", "I"),  # Challenger/GM/Master n'ont pas de rank
-            "lp": soloq["leaguePoints"],
+            "leaguePoints": soloq["leaguePoints"],
             "wins": soloq["wins"],
             "losses": soloq["losses"]
         }
         
-        logger.info(f"✓ Ranked: {ranked_info['tier']} {ranked_info['rank']} ({ranked_info['lp']} LP)")
+        logger.info(f"✓ Ranked: {ranked_info['tier']} {ranked_info['rank']} ({ranked_info['leaguePoints']} LP)")
         return ranked_info
     
     # =========================================================================

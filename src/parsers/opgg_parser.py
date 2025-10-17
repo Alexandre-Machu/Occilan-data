@@ -104,22 +104,33 @@ class OPGGParser:
         # Détecter le séparateur (- ou #)
         if "-" in summoner_name:
             separator = "-"
+            # Séparer sur le DERNIER séparateur (car gameName peut contenir des -)
+            parts = summoner_name.rsplit(separator, 1)
+            
+            if len(parts) != 2:
+                raise ValueError(f"Invalid format: {summoner_name}")
+            
+            game_name = parts[0].strip()
+            tag_line = parts[1].strip()
+            
         elif "#" in summoner_name:
             separator = "#"
+            # Séparer sur le DERNIER séparateur (car gameName peut contenir des -)
+            parts = summoner_name.rsplit(separator, 1)
+            
+            if len(parts) != 2:
+                raise ValueError(f"Invalid format: {summoner_name}")
+            
+            game_name = parts[0].strip()
+            tag_line = parts[1].strip()
+            
         else:
-            raise ValueError(f"Invalid format (missing '-' or '#'): {summoner_name}")
+            # Pas de séparateur = tagline par défaut EUW
+            game_name = summoner_name
+            tag_line = "EUW"
         
-        # Séparer sur le DERNIER séparateur (car gameName peut contenir des -)
-        parts = summoner_name.rsplit(separator, 1)
-        
-        if len(parts) != 2:
-            raise ValueError(f"Invalid format: {summoner_name}")
-        
-        game_name = parts[0].strip()
-        tag_line = parts[1].strip()
-        
-        if not game_name or not tag_line:
-            raise ValueError(f"Empty gameName or tagLine: {summoner_name}")
+        if not game_name:
+            raise ValueError(f"Empty gameName: {summoner_name}")
         
         return (game_name, tag_line)
     

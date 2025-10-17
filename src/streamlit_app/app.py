@@ -164,25 +164,109 @@ def main():
         if teams_list:
             st.subheader("🏆 Équipes inscrites")
             
-            teams_to_show = teams_list[:5] if len(teams_list) > 5 else teams_list
+            # Charger les données avec PUUID pour avoir les ranks
+            teams_with_puuid = edition_manager.load_teams_with_puuid()
             
-            for team in teams_to_show:
-                with st.expander(f"{team.get('name', 'Unknown')}"):
+            # Afficher TOUTES les équipes
+            for team in teams_list:
+                team_name = team.get('name', 'Unknown')
+                
+                with st.expander(f"{team_name}"):
                     # Sort players by role order
                     role_order = {"TOP": 0, "JGL": 1, "MID": 2, "ADC": 3, "SUP": 4}
-                    players = team.get('players', [])
+                    
+                    # Essayer de récupérer les données avec rank depuis teams_with_puuid
+                    if teams_with_puuid and team_name in teams_with_puuid:
+                        players = teams_with_puuid[team_name].get('players', [])
+                    else:
+                        players = team.get('players', [])
+                    
                     sorted_players = sorted(players, key=lambda p: role_order.get(p.get("role", "SUP"), 5))
                     
                     cols = st.columns(5)
                     for idx, player in enumerate(sorted_players):
                         with cols[idx]:
-                            st.markdown(f"**{player.get('role', 'N/A')}**")
-                            st.caption(f"{player.get('gameName', 'Unknown')}#{player.get('tagLine', '0000')}")
+                            role = player.get('role', 'N/A')
+                            game_name = player.get('gameName', 'Unknown')
+                            tag_line = player.get('tagLine', '0000')
+                            tier = player.get('tier', 'UNRANKED')
+                            rank = player.get('rank', '')
+                            lp = player.get('leaguePoints', 0)
+                            
+                            # Couleurs par tier
+                            tier_colors = {
+                                "CHALLENGER": "#FCA5A5",    # Rose pastel
+                                "GRANDMASTER": "#FCA5A5",   # Rose pastel
+                                "MASTER": "#C4B5FD",        # Violet pastel
+                                "DIAMOND": "#93C5FD",       # Bleu pastel
+                                "EMERALD": "#86EFAC",       # Vert pastel
+                                "PLATINUM": "#67E8F9",      # Cyan pastel
+                                "GOLD": "#FCD34D",          # Jaune pastel
+                                "SILVER": "#D1D5DB",        # Gris pastel
+                                "BRONZE": "#FDBA74",        # Orange pastel
+                                "IRON": "#A8A29E",          # Gris foncé
+                                "UNRANKED": "#4B5563"       # Gris très foncé
+                            }
+                            
+                            color = tier_colors.get(tier, "#4B5563")
+                            
+                            st.markdown(f"**{role}**")
+                            st.caption(f"{game_name}#{tag_line}")
+                            
+                            # Afficher l'élo avec couleur
+                            if tier != "UNRANKED":
+                                if tier in ["MASTER", "GRANDMASTER", "CHALLENGER"]:
+                                    elo_text = f"{tier} ({lp} LP)"
+                                else:
+                                    elo_text = f"{tier} {rank}"
+                                
+                                st.markdown(
+                                    f'<div style="background-color: {color}; color: #1F2937; '
+                                    f'padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; '
+                                    f'font-weight: bold; text-align: center; margin-top: 4px;">'
+                                    f'{elo_text}</div>',
+                                    unsafe_allow_html=True
+                                )
+                            else:
+                                st.markdown(
+                                    f'<div style="background-color: {color}; color: white; '
+                                    f'padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; '
+                                    f'font-weight: bold; text-align: center; margin-top: 4px;">'
+                                    f'❌ Unranked</div>',
+                                    unsafe_allow_html=True
+                                )
             
-            if len(teams_list) > 5:
-                st.info(f"➕ {len(teams_list) - 5} équipes supplémentaires")
+            # Bouton pour replier/déplier toutes les équipes
+            if len(teams_list) > 10:
+                st.caption(f"📋 {len(teams_list)} équipes au total")
         else:
             st.info("ℹ️ Aucune équipe inscrite. Ajoutez des équipes dans la page Admin.")
+        
+        # Encart informations supplémentaires (placeholder pour plus tard)
+        st.markdown("---")
+        st.markdown("### 📢 Informations du tournoi")
+        
+        info_col1, info_col2 = st.columns([2, 1])
+        
+        with info_col1:
+            st.info("""
+            **🎯 Format du tournoi**
+            - Phase de poules (BO1)
+            - Playoffs (BO3)
+            - Finale (BO5)
+            
+            _Plus d'informations à venir..._
+            """)
+        
+        with info_col2:
+            st.success("""
+            **📊 Statistiques disponibles**
+            - Classement des équipes
+            - Stats par joueur
+            - Historique des matchs
+            
+            _Consultez les pages dédiées_ →
+            """)
     
     st.markdown("---")
     st.caption("Made with ❤️ for OcciLan | Data by Riot Games API")
