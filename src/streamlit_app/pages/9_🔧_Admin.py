@@ -58,6 +58,74 @@ if st.button("🚪 Déconnexion", type="secondary"):
 multi_manager = MultiEditionManager()
 editions = multi_manager.list_editions()
 
+# Section pour créer une nouvelle édition
+with st.expander("➕ Créer une nouvelle édition", expanded=False):
+    with st.form("create_edition_form"):
+        st.markdown("### Nouvelle édition")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            # Calculer le prochain numéro d'édition disponible
+            next_edition = 1
+            if editions:
+                # Chercher le premier numéro disponible
+                for i in range(1, 1000):
+                    if i not in editions:
+                        next_edition = i
+                        break
+            
+            new_edition_number = st.number_input(
+                "Numéro de l'édition",
+                min_value=1,
+                max_value=999,
+                value=next_edition,
+                step=1,
+                help="Entrez un numéro d'édition entre 1 et 999"
+            )
+            edition_name = st.text_input(
+                "Nom de l'édition",
+                value=f"OcciLan Stats {new_edition_number}"
+            )
+        
+        with col2:
+            year = st.number_input(
+                "Année",
+                min_value=2020,
+                max_value=2030,
+                value=2025
+            )
+            is_private = st.checkbox(
+                "🔒 Édition privée (visible uniquement par les admins)",
+                value=False,
+                help="Si cochée, cette édition ne sera pas visible sur la page publique"
+            )
+            col_date1, col_date2 = st.columns(2)
+            with col_date1:
+                start_date = st.date_input("Date de début")
+            with col_date2:
+                end_date = st.date_input("Date de fin")
+        
+        submit_edition = st.form_submit_button("✅ Créer l'édition", type="primary")
+        
+        if submit_edition:
+            if new_edition_number in editions:
+                st.error(f"❌ L'édition {new_edition_number} existe déjà !")
+            else:
+                try:
+                    new_manager = EditionDataManager(new_edition_number)
+                    new_manager.initialize_edition(
+                        edition_name=edition_name,
+                        year=year,
+                        start_date=start_date.strftime("%Y-%m-%d"),
+                        end_date=end_date.strftime("%Y-%m-%d"),
+                        is_private=is_private
+                    )
+                    st.success(f"✅ Édition {new_edition_number} créée avec succès !")
+                    st.info("🔄 Rechargez la page pour voir la nouvelle édition")
+                except Exception as e:
+                    st.error(f"❌ Erreur lors de la création : {str(e)}")
+
 if not editions:
     st.warning("⚠️ Aucune édition trouvée. Créez-en une d'abord.")
     st.stop()
@@ -67,6 +135,120 @@ selected_edition = st.selectbox(
     editions,
     format_func=lambda x: f"Edition {x}"
 )
+
+edition_manager = EditionDataManager(selected_edition)
+
+# Afficher les infos de l'édition actuelle
+config = edition_manager.load_config()
+if config:
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.metric("📅 Édition", f"#{selected_edition}")
+    with col2:
+        st.metric("📝 Nom", config.get("name", "N/A"))
+    with col3:
+        st.metric("📆 Période", f"{config.get('start_date', 'N/A')} → {config.get('end_date', 'N/A')}")
+    with col4:
+        is_private = config.get("is_private", False)
+        if is_private:
+            st.metric("🔒 Visibilité", "Privée")
+        else:
+            st.metric("🌐 Visibilité", "Publique")
+
+# Section pour modifier/supprimer l'édition
+with st.expander("⚙️ Gérer cette édition", expanded=False):
+    tab_edit, tab_delete = st.tabs(["✏️ Modifier", "🗑️ Supprimer"])
+    
+    with tab_edit:
+        st.markdown("### Modifier l'édition")
+        
+        with st.form("edit_edition_form"):
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                edit_name = st.text_input(
+                    "Nom de l'édition",
+                    value=config.get("name", "")
+                )
+                edit_year = st.number_input(
+                    "Année",
+                    min_value=2020,
+                    max_value=2030,
+                    value=config.get("year", 2025)
+                )
+            
+            with col2:
+                col_date1, col_date2 = st.columns(2)
+                with col_date1:
+                    from datetime import datetime
+                    start_str = config.get("start_date", "2025-01-01")
+                    edit_start = st.date_input(
+                        "Date de début",
+                        value=datetime.strptime(start_str, "%Y-%m-%d").date()
+                    )
+                with col_date2:
+                    end_str = config.get("end_date", "2025-12-31")
+                    edit_end = st.date_input(
+                        "Date de fin",
+                        value=datetime.strptime(end_str, "%Y-%m-%d").date()
+                    )
+                
+                edit_private = st.checkbox(
+                    "🔒 Édition privée (visible uniquement par les admins)",
+                    value=config.get("is_private", False),
+                    help="Si cochée, cette édition ne sera pas visible sur la page publique"
+                )
+            
+            submit_edit = st.form_submit_button("💾 Enregistrer les modifications", type="primary")
+            
+            if submit_edit:
+                try:
+                    # Mettre à jour le config
+                    config["name"] = edit_name
+                    config["year"] = edit_year
+                    config["start_date"] = edit_start.strftime("%Y-%m-%d")
+                    config["end_date"] = edit_end.strftime("%Y-%m-%d")
+                    config["is_private"] = edit_private
+                    
+                    edition_manager.save_config(config)
+                    st.success("✅ Édition mise à jour avec succès !")
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"❌ Erreur : {str(e)}")
+    
+    with tab_delete:
+        st.markdown("### Supprimer l'édition")
+        st.warning(f"⚠️ **Attention** : Cette action supprimera définitivement l'édition {selected_edition} et toutes ses données !")
+        
+        st.markdown("""
+        **Données qui seront supprimées :**
+        - Toutes les équipes
+        - Tous les joueurs avec PUUIDs et ranks
+        - Tous les matchs sauvegardés
+        - Toutes les statistiques calculées
+        - La configuration de l'édition
+        """)
+        
+        confirm_text = st.text_input(
+            f"Pour confirmer, tapez le numéro de l'édition : **{selected_edition}**",
+            key="delete_confirm"
+        )
+        
+        if st.button("🗑️ SUPPRIMER DÉFINITIVEMENT", type="primary", use_container_width=True):
+            if confirm_text == str(selected_edition):
+                try:
+                    import shutil
+                    edition_path = edition_manager.edition_path
+                    shutil.rmtree(edition_path)
+                    st.success(f"✅ Édition {selected_edition} supprimée avec succès !")
+                    st.info("🔄 Rechargement de la page...")
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"❌ Erreur lors de la suppression : {str(e)}")
+            else:
+                st.error("❌ Confirmation incorrecte. La suppression a été annulée.")
+
+st.markdown("---")
 
 edition_manager = EditionDataManager(selected_edition)
 

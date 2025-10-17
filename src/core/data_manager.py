@@ -74,7 +74,8 @@ class EditionDataManager:
         edition_name: str,
         year: int,
         start_date: str,
-        end_date: str
+        end_date: str,
+        is_private: bool = False
     ):
         """
         Initialise une nouvelle édition avec sa config.
@@ -84,6 +85,7 @@ class EditionDataManager:
             year: Année du tournoi
             start_date: Date de début (ISO format: "2024-01-15")
             end_date: Date de fin (ISO format: "2024-03-20")
+            is_private: Si True, visible uniquement par les admins
         
         Example:
             >>> manager = EditionDataManager(7)
@@ -96,7 +98,8 @@ class EditionDataManager:
             "start_date": start_date,
             "end_date": end_date,
             "created_at": datetime.now().isoformat(),
-            "status": "pending"  # pending, processing, completed
+            "status": "pending",  # pending, processing, completed
+            "is_private": is_private  # Nouvelle propriété
         }
         
         self.save_config(config)
@@ -551,9 +554,12 @@ class MultiEditionManager:
         """Récupère le manager pour une édition."""
         return EditionDataManager(edition_number, str(self.base_path))
     
-    def list_editions(self) -> List[int]:
+    def list_editions(self, include_private: bool = True) -> List[int]:
         """
         Liste toutes les éditions disponibles.
+        
+        Args:
+            include_private: Si False, exclut les éditions privées
         
         Returns:
             Liste des numéros d'éditions [4, 5, 6, 7]
@@ -564,6 +570,14 @@ class MultiEditionManager:
             if path.is_dir() and path.name.startswith("edition_"):
                 try:
                     edition_num = int(path.name.split("_")[1])
+                    
+                    # Si on n'inclut pas les privées, vérifier la config
+                    if not include_private:
+                        manager = self.get_edition_manager(edition_num)
+                        config = manager.load_config()
+                        if config and config.get("is_private", False):
+                            continue  # Skip cette édition
+                    
                     editions.append(edition_num)
                 except ValueError:
                     continue

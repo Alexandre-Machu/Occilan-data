@@ -58,7 +58,12 @@ def main():
         st.markdown("### 📂 Sélection d'édition")
         
         multi_manager = MultiEditionManager()
-        editions = multi_manager.list_editions()
+        
+        # Vérifier si l'utilisateur est admin
+        is_admin = st.session_state.get("authenticated", False)
+        
+        # Lister les éditions (privées uniquement si admin)
+        editions = multi_manager.list_editions(include_private=is_admin)
         
         if not editions:
             st.warning("⚠️ Aucune édition disponible")

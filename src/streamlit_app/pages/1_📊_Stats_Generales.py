@@ -25,7 +25,12 @@ st.title("📊 Statistiques Générales")
 
 # Edition selector
 multi_manager = MultiEditionManager()
-available_editions = multi_manager.list_editions()
+
+# Vérifier si l'utilisateur est admin
+is_admin = st.session_state.get("authenticated", False)
+
+# Lister les éditions (privées uniquement si admin)
+available_editions = multi_manager.list_editions(include_private=is_admin)
 
 if not available_editions:
     st.warning("⚠️ Aucune édition disponible")
