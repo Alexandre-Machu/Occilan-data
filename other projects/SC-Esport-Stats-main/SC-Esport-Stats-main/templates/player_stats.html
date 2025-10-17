@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="player-stats-grid">
+    <div>
+        <div class="stat-value">{{ stats.kda|round(2) }}</div>
+        <div class="stat-label">KDA</div>
+    </div>
+    <div>
+        <div class="stat-value">{{ stats.avg_kills|round(1) }}</div>
+        <div class="stat-label">KILLS MOYEN</div>
+    </div>
+    <div>
+        <div class="stat-value">{{ stats.cs_per_min|round(1) }}</div>
+        <div class="stat-label">CS/MIN</div>
+    </div>
+    <div>
+        <div class="stat-value">{{ stats.avg_vision|round(1) }}</div>
+        <div class="stat-label">VISION SCORE</div>
+    </div>
+    <div>
+        <div class="stat-value">{{ stats.kp|round(1) }}%</div>
+        <div class="stat-label">KP</div>
+    </div>
+</div>
+{% endblock %}

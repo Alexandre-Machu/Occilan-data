@@ -1,0 +1,32 @@
+{
+  "La Ruche": {
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "Colfeo",
+        "tagLine": "LRC"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Climber",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "ADC",
+        "gameName": "Thibee",
+        "tagLine": "00000"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Killycurly",
+        "tagLine": "420"
+      },
+      {
+        "role": "MID",
+        "gameName": "Ergo Proxy",
+        "tagLine": "347"
+      }
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Colfeo%23LRC%2CClimber%23EUW%2CThibee%2300000%2CKillycurly%23420%2CErgo+Proxy%23347"
+  }
+}

@@ -1,0 +1,28 @@
+<div class="champion-stats">
+    <div class="stats-header">SPRING 2025 CHAMPION STATS</div>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Champion</th>
+                <th>Games</th>
+                <th>WR</th>
+                <th>KDA</th>
+                <th>KP</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for champion in champions %}
+            <tr>
+                <td>
+                    <img src="{{ champion.icon_url }}" width="30" height="30">
+                    {{ champion.name }}
+                </td>
+                <td>{{ champion.games }}</td>
+                <td style="color: {{ champion.wr_color }}">{{ champion.winrate }}%</td>
+                <td>{{ champion.kda }}</td>
+                <td>{{ champion.kp }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

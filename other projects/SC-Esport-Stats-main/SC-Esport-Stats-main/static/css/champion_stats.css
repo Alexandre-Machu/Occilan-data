@@ -1,0 +1,43 @@
+.champion-stats {
+    background-color: rgb(17, 23, 31);
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.stats-header {
+    color: rgb(136, 144, 160);
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.styled-table th {
+    text-align: left;
+    padding: 10px 15px;
+    color: rgb(136, 144, 160);
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.styled-table td {
+    padding: 10px 15px;
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.styled-table img {
+    vertical-align: middle;
+    margin-right: 10px;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+}

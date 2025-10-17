@@ -1,0 +1,81 @@
+Equipe,Position,RiotName,RiotTag
+Bots Intermédiaires,Top,dguhyp,EUW
+Bots Intermédiaires,Jungle,KayZzen,EUW
+Bots Intermédiaires,Mid,Archimax,EUW
+Bots Intermédiaires,ADC,Redmynray,2485
+Bots Intermédiaires,Support,Sumwo,EUW
+Burger Frites,Top,AUR Rettleti,PAFF
+Burger Frites,Jungle,Sir Nathaniel,EUW
+Burger Frites,Mid,AUR Azz,PUFF
+Burger Frites,ADC,AUR Baosu,PUFF
+Burger Frites,Support,Guts,math
+EC Emerald,Top,PurpuraCorvum,EUW
+EC Emerald,Jungle,PFR SahDony,666
+EC Emerald,Mid,galaeri,GALA
+EC Emerald,ADC,Cygola,EUW
+EC Emerald,Support,TwitchDartien,EUW
+GIRL POWDER,Top,LeGrosMarteau,EUW31
+GIRL POWDER,Jungle,Υψιλον,000
+GIRL POWDER,Mid,Shunpo,ARA
+GIRL POWDER,ADC,fXto,EUW31
+GIRL POWDER,Support,FF15 Lemonz,EUW31
+Gungnir,Top,KiεtsuSama,EUW
+Gungnir,Jungle,ADC or junglelol,EUW
+Gungnir,Mid,PFG Nice,NICE
+Gungnir,ADC,Wightt,EUW
+Gungnir,Support,Bob Le Tripoteur,Coq1
+KCDQ,Top,KCDQ Braquemart,666
+KCDQ,Jungle,Réservoir2pipi,Pisse
+KCDQ,Mid,KCDQ matraque,666
+KCDQ,ADC,KCDQ Bangala,666
+KCDQ,Support,KCDQ Shlong,
+La bande du PMU,Top,TPS Nother,EUW
+La bande du PMU,Jungle,Yashi,2104
+La bande du PMU,Mid,Fox,EUWee
+La bande du PMU,ADC,KDydoux,best
+La bande du PMU,Support,manchou,euw
+La Ruche,Top,Colfeo,EUW
+La Ruche,Jungle,climber,EUW
+La Ruche,Mid,Thaïs Morel,HYSTA
+La Ruche,ADC,Thibee,00000
+La Ruche,Support,Xintox,NERV
+La Sauce Du Chef,Top,Sphyrna zygaena,EUW
+La Sauce Du Chef,Jungle,SkyFiree,EUW
+La Sauce Du Chef,Mid,Louu,2310
+La Sauce Du Chef,ADC,TSP Toga280,EUW
+La Sauce Du Chef,Support,Vicode,EUWFR
+Les minorités,Top,SETTaismieuavant,EUW
+Les minorités,Jungle,JAK ÉCLAIR,00000
+Les minorités,Mid,noemiefeatmonkey,uwu
+Les minorités,ADC,Tsuvai,520
+Les minorités,Support,Dragjoo,EUW
+LIONS GUARD,Top,DK 공백,KPOP
+LIONS GUARD,Jungle,LG Aziαs,OGNAM
+LIONS GUARD,Mid,Zaliarell,EUW
+LIONS GUARD,ADC,LG Isowix,0409
+LIONS GUARD,Support,LG TwoT,7533
+Mickey Mouse Club,Top,rotten stray dog,euw
+Mickey Mouse Club,Jungle,zinoleos,euw
+Mickey Mouse Club,Mid,el pueblito,euw
+Mickey Mouse Club,ADC,gentil,sympa
+Mickey Mouse Club,Support,killycurly,mrc
+Pas de quartier,Top,Spectror,BLOP
+Pas de quartier,Jungle,zerkamaka6641,EUW
+Pas de quartier,Mid,galaeri,GALA
+Pas de quartier,ADC,LaGìrafe,Bibou
+Pas de quartier,Support,Cafard La Malice,KFAR
+PCS Genuise,Top,Beff,Meff
+PCS Genuise,Jungle,Selkie rêve,EUW
+PCS Genuise,Mid,luxanna,
+PCS Genuise,ADC,Lasagna,EEPER
+PCS Genuise,Support,The Chosen One,EUWW
+Pipi Gaming,Top,Zerkome,EUW03
+Pipi Gaming,Jungle,RR D1,EUW
+Pipi Gaming,Mid,Tayme,euw
+Pipi Gaming,ADC,Onikiezi,euw
+Pipi Gaming,Support,caca anonyme 2,uno
+zizicacacorp,Top,TRK,KCORP
+zizicacacorp,Jungle,Ankhanatos,SAU6
+zizicacacorp,Mid,MotorsKing,EUW
+zizicacacorp,ADC,ARTUEUR,RAT
+zizicacacorp,Support,Hingo,034

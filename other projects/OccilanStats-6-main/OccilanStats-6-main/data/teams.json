@@ -1,0 +1,434 @@
+{
+    "Bots Intermédiaires": [
+        {
+            "role": "Top",
+            "player_name": "SeyZo",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "KayZzen",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Mid",
+            "player_name": "Archimax",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Adc",
+            "player_name": "Redmynray",
+            "player_tag": "2485"
+        },
+        {
+            "role": "Support",
+            "player_name": "Sumwo",
+            "player_tag": "EUW"
+        }
+    ],
+    "Burger Frites": [
+        {
+            "role": "Top",
+            "player_name": "AUR Rettleti",
+            "player_tag": "PAFF"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "Sir Nathaniel",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Mid",
+            "player_name": "AUR Azz",
+            "player_tag": "PUFF"
+        },
+        {
+            "role": "Adc",
+            "player_name": "AUR Baosu",
+            "player_tag": "PUFF"
+        },
+        {
+            "role": "Support",
+            "player_name": "Guts",
+            "player_tag": "00I"
+        }
+    ],
+    "EC Emerald": [
+        {
+            "role": "Top",
+            "player_name": "PurpuraCorvum",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "PFR SahDony",
+            "player_tag": "666"
+        },
+        {
+            "role": "Mid",
+            "player_name": "galaeri",
+            "player_tag": "GALA"
+        },
+        {
+            "role": "Adc",
+            "player_name": "Cygola",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Support",
+            "player_name": "TwitchDartien",
+            "player_tag": "EUW"
+        }
+    ],
+    "GIRL POWDER": [
+        {
+            "role": "Top",
+            "player_name": "Romsito",
+            "player_tag": "EUW31"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "Irisam",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Mid",
+            "player_name": "Shunpo",
+            "player_tag": "ARA"
+        },
+        {
+            "role": "Adc",
+            "player_name": "fXto",
+            "player_tag": "EUW31"
+        },
+        {
+            "role": "Support",
+            "player_name": "Lemonz",
+            "player_tag": "EUW31"
+        }
+    ],
+    "Gungnir": [
+        {
+            "role": "Top",
+            "player_name": "KiεtsuSama",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "spiro381231",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Mid",
+            "player_name": "PFG Nice",
+            "player_tag": "NICE"
+        },
+        {
+            "role": "Adc",
+            "player_name": "Wightt",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Support",
+            "player_name": "Bob Le Tripoteur",
+            "player_tag": "Coq1"
+        }
+    ],
+    "KCDQ": [
+        {
+            "role": "Top",
+            "player_name": "KCDQ Braquemart",
+            "player_tag": "666"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "KCDQ Bangala",
+            "player_tag": "666"
+        },
+        {
+            "role": "Mid",
+            "player_name": "KCDQ Bazouzou",
+            "player_tag": "666"
+        },
+        {
+            "role": "Adc",
+            "player_name": "KCDQ Shlong",
+            "player_tag": "666"
+        },
+        {
+            "role": "Support",
+            "player_name": "KCDQ matraque",
+            "player_tag": "666"
+        }
+    ],
+    "La bande du PMU": [
+        {
+            "role": "Top",
+            "player_name": "TPS Nother",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "Yashi",
+            "player_tag": "2104"
+        },
+        {
+            "role": "Mid",
+            "player_name": "Fox",
+            "player_tag": "EUWee"
+        },
+        {
+            "role": "Adc",
+            "player_name": "KDydoux",
+            "player_tag": "best"
+        },
+        {
+            "role": "Support",
+            "player_name": "manchou",
+            "player_tag": "euw"
+        }
+    ],
+    "La Ruche": [
+        {
+            "role": "Top",
+            "player_name": "Colfeo",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "climber",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Mid",
+            "player_name": "Thaïs Morel",
+            "player_tag": "HYSTA"
+        },
+        {
+            "role": "Adc",
+            "player_name": "Thibee",
+            "player_tag": "00000"
+        },
+        {
+            "role": "Support",
+            "player_name": "Xintox",
+            "player_tag": "NERV"
+        }
+    ],
+    "La Sauce Du Chef": [
+        {
+            "role": "Top",
+            "player_name": "Sphyrna zygaena",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "SkyFiree",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Mid",
+            "player_name": "Louu",
+            "player_tag": "2310"
+        },
+        {
+            "role": "Adc",
+            "player_name": "nazyr",
+            "player_tag": "4324"
+        },
+        {
+            "role": "Support",
+            "player_name": "LeMaquis2Caca",
+            "player_tag": "Prout"
+        }
+    ],
+    "Les minorités": [
+        {
+            "role": "Top",
+            "player_name": "SETTaismieuavant",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "Jules Grizzli",
+            "player_tag": "9348"
+        },
+        {
+            "role": "Mid",
+            "player_name": "noemiefeatmonkey",
+            "player_tag": "uwu"
+        },
+        {
+            "role": "Adc",
+            "player_name": "Quetzalcoatl",
+            "player_tag": "EUWTA"
+        },
+        {
+            "role": "Support",
+            "player_name": "Dragjoo",
+            "player_tag": "EUW"
+        }
+    ],
+    "LIONS GUARD": [
+        {
+            "role": "Top",
+            "player_name": "DK 공백",
+            "player_tag": "KPOP"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "LG Aziαs",
+            "player_tag": "OGNAM"
+        },
+        {
+            "role": "Mid",
+            "player_name": "Zaliarell",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Adc",
+            "player_name": "LG Isowix",
+            "player_tag": "0409"
+        },
+        {
+            "role": "Support",
+            "player_name": "LG TwoT",
+            "player_tag": "7533"
+        }
+    ],
+    "Mickey Mouse Club": [
+        {
+            "role": "Top",
+            "player_name": "rotten stray dog",
+            "player_tag": "euw"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "zinoleos",
+            "player_tag": "euw"
+        },
+        {
+            "role": "Mid",
+            "player_name": "el pueblito",
+            "player_tag": "euw"
+        },
+        {
+            "role": "Adc",
+            "player_name": "gourmetplantaire",
+            "player_tag": "sympa"
+        },
+        {
+            "role": "Support",
+            "player_name": "Killycurly",
+            "player_tag": "420"
+        }
+    ],
+    "Pas de quartier": [
+        {
+            "role": "Top",
+            "player_name": "Spectror",
+            "player_tag": "BLOP"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "zerkamaka6641",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Mid",
+            "player_name": "galaeri",
+            "player_tag": "GALA"
+        },
+        {
+            "role": "Adc",
+            "player_name": "LaGìrafe",
+            "player_tag": "Bibou"
+        },
+        {
+            "role": "Support",
+            "player_name": "Cafard La Malice",
+            "player_tag": "KFAR"
+        }
+    ],
+    "PCS Genuise": [
+        {
+            "role": "Top",
+            "player_name": "Beff",
+            "player_tag": "Meff"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "Selkie rêve",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Mid",
+            "player_name": "luxanna GilSayan",
+            "player_tag": "light"
+        },
+        {
+            "role": "Adc",
+            "player_name": "Lasagna",
+            "player_tag": "EEPER"
+        },
+        {
+            "role": "Support",
+            "player_name": "I Love my Bf",
+            "player_tag": "EUWW"
+        }
+    ],
+    "Pipi Gaming": [
+        {
+            "role": "Top",
+            "player_name": "NEP Zerkome",
+            "player_tag": "EUW03"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "caca anonyme 2",
+            "player_tag": "uno"
+        },
+        {
+            "role": "Mid",
+            "player_name": "Tayme",
+            "player_tag": "euw"
+        },
+        {
+            "role": "Adc",
+            "player_name": "Onikiezi",
+            "player_tag": "euw"
+        },
+        {
+            "role": "Support",
+            "player_name": "RR D1",
+            "player_tag": "EUW"
+        }
+    ],
+    "zizicacacorp": [
+        {
+            "role": "Top",
+            "player_name": "TRK",
+            "player_tag": "KCORP"
+        },
+        {
+            "role": "Jungle",
+            "player_name": "Ankhanatos",
+            "player_tag": "SAU6"
+        },
+        {
+            "role": "Mid",
+            "player_name": "MotorsKing",
+            "player_tag": "EUW"
+        },
+        {
+            "role": "Adc",
+            "player_name": "ARTUEUR",
+            "player_tag": "RAT"
+        },
+        {
+            "role": "Support",
+            "player_name": "Hingo",
+            "player_tag": "034"
+        }
+    ]
+}

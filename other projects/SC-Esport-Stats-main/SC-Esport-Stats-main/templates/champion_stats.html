@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="champion-stats">
+    <div class="stats-header">SPRING 2025 CHAMPION STATS</div>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Champion</th>
+                <th>Games</th>
+                <th>WR</th>
+                <th>KDA</th>
+                <th>KP</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for champ in champions %}
+            <tr>
+                <td>
+                    <img src="{{ champ.icon_url }}" width="30" height="30">
+                    {{ champ.name }}
+                </td>
+                <td>{{ champ.games }}</td>
+                <td style="color: {{ champ.wr_color }}">{{ champ.winrate }}%</td>
+                <td>{{ champ.kda }}</td>
+                <td>{{ champ.kp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

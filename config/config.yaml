@@ -1,0 +1,206 @@
+# Configuration globale de l'application OcciLan Stats
+
+# =============================================================================
+# APPLICATION
+# =============================================================================
+app:
+  name: "OcciLan Stats Hub"
+  version: "1.0.0"
+  default_edition: 7  # Édition affichée par défaut
+
+# =============================================================================
+# ÉDITIONS DISPONIBLES
+# =============================================================================
+editions:
+  - number: 4
+    name: "OcciLan #4"
+    year: 2023
+    enabled: true
+  
+  - number: 5
+    name: "OcciLan #5"
+    year: 2024
+    enabled: true
+  
+  - number: 6
+    name: "OcciLan #6"
+    year: 2024
+    enabled: true
+  
+  - number: 7
+    name: "OcciLan #7"
+    year: 2025
+    enabled: true
+
+# =============================================================================
+# RIOT API
+# =============================================================================
+riot_api:
+  region: "europe"          # Pour Account API
+  platform: "euw1"          # Pour Summoner/Match API
+  rate_limit: 20            # Requêtes par seconde
+  timeout: 30               # Timeout en secondes
+  retry_attempts: 3
+
+# =============================================================================
+# DONNÉES
+# =============================================================================
+data:
+  base_path: "data/editions"
+  
+  # Structure par édition
+  edition_structure:
+    config: "config.json"           # Config de l'édition
+    teams: "teams.json"             # Équipes et joueurs
+    matches: "matches.json"         # Matchs bruts (Riot API)
+    stats: "stats.json"             # Statistiques calculées
+    raw_csv: "raw/teams.csv"        # CSV uploadé (backup)
+
+# =============================================================================
+# ADMIN
+# =============================================================================
+admin:
+  password_protected: true
+  # Mot de passe défini dans .env : ADMIN_PASSWORD
+
+# =============================================================================
+# PARSING
+# =============================================================================
+parsing:
+  opgg:
+    base_url: "https://www.op.gg"
+    multi_search_pattern: "multisearch/euw?summoners="
+  
+  # Ordre des rôles (pour tri)
+  role_order:
+    - "TOP"
+    - "JUNGLE"
+    - "MID"
+    - "ADC"
+    - "SUPPORT"
+
+# =============================================================================
+# MATCH FETCHING
+# =============================================================================
+match_fetching:
+  # Filtres pour identifier les matchs du tournoi
+  queue_id: 0  # Custom games
+  
+  # Période de recherche (jours avant/après dates édition)
+  time_window_days: 3
+  
+  # Max matchs à récupérer par joueur
+  max_matches_per_player: 100
+
+# =============================================================================
+# CACHE SETTINGS
+# =============================================================================
+cache:
+  enabled: true
+  ttl_seconds: 3600  # 1 heure
+
+# =============================================================================
+# STATISTIQUES
+# =============================================================================
+stats:
+  # KPIs à calculer
+  player_kpis:
+    - "kda"
+    - "kills_per_game"
+    - "deaths_per_game"
+    - "assists_per_game"
+    - "cs_per_min"
+    - "gold_per_min"
+    - "damage_per_min"
+    - "vision_score_per_min"
+    - "kill_participation"
+    - "damage_share"
+    - "gold_share"
+  
+  team_kpis:
+    - "winrate"
+    - "avg_game_duration"
+    - "avg_kills"
+    - "avg_deaths"
+    - "first_blood_rate"
+    - "first_tower_rate"
+    - "first_dragon_rate"
+    - "first_baron_rate"
+  
+  # Classements disponibles
+  leaderboards:
+    - id: "kda"
+      name: "KDA"
+      sort: "desc"
+    
+    - id: "kills"
+      name: "Kills"
+      sort: "desc"
+    
+    - id: "damage_per_min"
+      name: "Damage/min"
+      sort: "desc"
+    
+    - id: "cs_per_min"
+      name: "CS/min"
+      sort: "desc"
+    
+    - id: "vision_score_per_min"
+      name: "Vision/min"
+      sort: "desc"
+
+# =============================================================================
+# STREAMLIT
+# =============================================================================
+streamlit:
+  page_title: "OcciLan Stats"
+  page_icon: "🎮"
+  layout: "wide"
+  theme: "dark"
+  
+  # Pages disponibles
+  pages:
+    - id: "overview"
+      title: "📊 Overview"
+      enabled: true
+    
+    - id: "teams"
+      title: "👥 Teams"
+      enabled: true
+    
+    - id: "players"
+      title: "🏆 Players"
+      enabled: true
+    
+    - id: "matches"
+      title: "⚔️ Matches"
+      enabled: true
+    
+    - id: "admin"
+      title: "🔧 Admin"
+      enabled: true
+      protected: true
+
+# =============================================================================
+# EXPORT
+# =============================================================================
+export:
+  formats:
+    - "csv"
+    - "json"
+    - "excel"
+  
+  include:
+    - "player_stats"
+    - "team_stats"
+    - "match_history"
+
+# =============================================================================
+# LOGGING
+# =============================================================================
+logging:
+  level: "INFO"
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}"
+  file: "logs/occilan_stats.log"
+  rotation: "1 day"
+  retention: "7 days"

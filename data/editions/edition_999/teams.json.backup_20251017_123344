@@ -1,0 +1,12 @@
+{
+  "TestTeam": {
+    "players": [
+      {
+        "role": "TOP",
+        "game_name": "Colfeo",
+        "tag_line": "LRC"
+      }
+    ],
+    "opgg_link": "https://www.op.gg/multisearch/euw?summoners=Colfeo-LRC,TestPlayer-EUW"
+  }
+}
