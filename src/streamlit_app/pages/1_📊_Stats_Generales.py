@@ -364,7 +364,7 @@ if len(df_ranked) > 0:
             color="role",
             category_orders={
                 "tier": [t for t in elo_order if t in df_ranked["tier"].unique()],
-                "role": role_order
+                "role": ["SUP", "ADC", "MID", "JGL", "TOP"]  # Inversé pour avoir TOP en haut dans la légende
             },
             color_discrete_map={
                 "TOP": "#FF6B6B",
@@ -380,6 +380,7 @@ if len(df_ranked) > 0:
             xaxis_title="Élo",
             yaxis_title="Nombre de joueurs",
             legend_title="Rôle",
+            legend_traceorder="reversed",  # Inverse l'ordre de la légende
             height=500
         )
         st.plotly_chart(fig1, use_container_width=True)
