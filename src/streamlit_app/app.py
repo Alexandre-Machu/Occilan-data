@@ -175,8 +175,22 @@ def main():
             # Afficher TOUTES les équipes
             for team in teams_list:
                 team_name = team.get('name', 'Unknown')
+                opgg_link = team.get('opgg_link', '')
                 
-                with st.expander(f"{team_name}"):
+                with st.expander(f"🏆 {team_name}"):
+                    # Afficher le lien Multi OP.GG
+                    if opgg_link:
+                        st.markdown(
+                            f'<a href="{opgg_link}" target="_blank" style="text-decoration: none;">'
+                            f'<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); '
+                            f'color: white; padding: 10px 20px; border-radius: 8px; text-align: center; '
+                            f'font-size: 0.95rem; font-weight: bold; margin-bottom: 15px; '
+                            f'cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); '
+                            f'transition: transform 0.2s;">'
+                            f'🔗 Multi OP.GG</div></a>',
+                            unsafe_allow_html=True
+                        )
+                    
                     # Sort players by role order
                     role_order = {"TOP": 0, "JGL": 1, "MID": 2, "ADC": 3, "SUP": 4}
                     
@@ -215,8 +229,15 @@ def main():
                             
                             color = tier_colors.get(tier, "#4B5563")
                             
+                            # Créer le lien OP.GG du joueur
+                            player_opgg = f"https://www.op.gg/summoners/euw/{game_name}-{tag_line}"
+                            
                             st.markdown(f"**{role}**")
-                            st.caption(f"{game_name}#{tag_line}")
+                            st.markdown(
+                                f'<a href="{player_opgg}" target="_blank" style="color: #93C5FD; text-decoration: none;">'
+                                f'{game_name}#{tag_line}</a>',
+                                unsafe_allow_html=True
+                            )
                             
                             # Afficher l'élo avec couleur
                             if tier != "UNRANKED":
@@ -240,6 +261,9 @@ def main():
                                     f'❌ Unranked</div>',
                                     unsafe_allow_html=True
                                 )
+                    
+                    # Ajouter un espace en bas de l'expander
+                    st.markdown("<div style='margin-bottom: 20px;'></div>", unsafe_allow_html=True)
             
             # Bouton pour replier/déplier toutes les équipes
             if len(teams_list) > 10:

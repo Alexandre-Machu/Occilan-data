@@ -190,6 +190,11 @@
     "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Symbi0se%23HooK%2CShun%23Skys%2Ckyuri%23naab%2Cblackeyes%23supp%2CRevert+Skarner%23Khako",
     "players": [
       {
+        "role": "TOP",
+        "gameName": "KC CANNA 2026",
+        "tagLine": "stp"
+      },
+      {
         "role": "JGL",
         "gameName": "Revert Skarner",
         "tagLine": "Khako"
@@ -211,8 +216,8 @@
       }
     ]
   },
-  "Gooning Corp": {
-    "name": "Gooning Corp",
+  "Censured Corp": {
+    "name": "Censured Corp",
     "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=make+you+mine%23beer%2CStarnight%2300000%2CGiacoco%23EUW%2Cvote+yes%232kis%2CHowDidWeGetHere%23ABCDE",
     "players": [
       {
@@ -351,9 +356,19 @@
     "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=LG+Azi%CE%B1s%23OGNAM%2CLG++Isowix%230409%2CLG+TwoT%237533%2CLG+Pazou%235517%2CVieto%23LOR%2C%D0%9B+%D0%93+%D0%94%D0%B0%D0%BD%D0%BA%D1%85%D0%B0%D0%BD%D0%BD+%E3%83%84%23Rise",
     "players": [
       {
+        "role": "TOP",
+        "gameName": "LG Pazou",
+        "tagLine": "5517"
+      },
+      {
         "role": "JGL",
-        "gameName": "LG Aziαs",
-        "tagLine": "OGNAM"
+        "gameName": "Vieto",
+        "tagLine": "LOR"
+      },
+      {
+        "role": "MID",
+        "gameName": "Л Г Данкханн ツ",
+        "tagLine": "Rise"
       },
       {
         "role": "ADC",
@@ -398,19 +413,24 @@
       }
     ]
   },
-  "Paffini vi Zobini": {
-    "name": "Paffini vi Zobini",
+  "Pantizini vi Zombini": {
+    "name": "Pantizini vi Zombini",
     "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Cooags%23EUW%2Czzz%23iroha%2CHildisvinl%231327%2CTheNight%231166%2Cliliamx230%23EUW%2Cpiénutella92i%23SMIC",
     "players": [
       {
         "role": "TOP",
-        "gameName": "TheNight",
-        "tagLine": "1166"
+        "gameName": "Cooags",
+        "tagLine": "EUW"
       },
       {
         "role": "JGL",
-        "gameName": "liliamx230",
-        "tagLine": "EUW"
+        "gameName": "piénutella92i",
+        "tagLine": "SMIC"
+      },
+      {
+        "role": "MID",
+        "gameName": "TheNight",
+        "tagLine": "1166"
       },
       {
         "role": "ADC",
