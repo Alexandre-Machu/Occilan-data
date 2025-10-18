@@ -692,7 +692,67 @@ with tab2:
             
             with col_expand:
                 with st.expander(f"🏆 {team_name}", expanded=False):
-                    st.markdown(f"**Lien OP.GG:** {team.get('opgg_link', 'N/A')}")
+                    # Bouton pour rafraîchir les rangs de cette équipe
+                    col_opgg, col_refresh = st.columns([3, 1])
+                    
+                    with col_opgg:
+                        st.markdown(f"**Lien OP.GG:** {team.get('opgg_link', 'N/A')}")
+                    
+                    with col_refresh:
+                        if st.button("🔄 Rafraîchir les rangs", key=f"refresh_{idx}", help="Met à jour uniquement les rangs de cette équipe"):
+                            api_key = os.getenv("RIOT_API_KEY")
+                            if not api_key:
+                                st.error("❌ Clé API manquante")
+                            else:
+                                with st.spinner(f"Mise à jour des rangs pour {team_name}..."):
+                                    try:
+                                        # Import EditionProcessor pour utiliser ses méthodes
+                                        processor = EditionProcessor(selected_edition, api_key)
+                                        
+                                        # Charger teams_with_puuid
+                                        teams_with_puuid = edition_manager.load_teams_with_puuid()
+                                        
+                                        if not teams_with_puuid or team_name not in teams_with_puuid:
+                                            st.warning("⚠️ Équipe non trouvée dans teams_with_puuid.json. Lancez d'abord le traitement complet.")
+                                        else:
+                                            # Mettre à jour seulement les rangs de cette équipe
+                                            team_data = teams_with_puuid[team_name]
+                                            updated_count = 0
+                                            
+                                            for player in team_data.get('players', []):
+                                                if 'puuid' in player:
+                                                    # Fetch rank via l'API
+                                                    summoner_data = processor.riot_client.get_summoner_by_puuid(player['puuid'])
+                                                    if summoner_data:
+                                                        rank_data = processor.riot_client.get_rank(summoner_data['id'])
+                                                        if rank_data:
+                                                            player['tier'] = rank_data.get('tier', 'UNRANKED')
+                                                            player['rank'] = rank_data.get('rank', '')
+                                                            player['leaguePoints'] = rank_data.get('leaguePoints', 0)
+                                                            updated_count += 1
+                                            
+                                            # Sauvegarder teams_with_puuid
+                                            edition_manager.save_teams_with_puuid(teams_with_puuid)
+                                            
+                                            # Regénérer general_stats.json pour cette équipe
+                                            general_stats = edition_manager.load_general_stats() or {}
+                                            
+                                            for player in team_data.get('players', []):
+                                                player_key = f"{player['gameName']}#{player['tagLine']}"
+                                                if player_key in general_stats:
+                                                    general_stats[player_key]['tier'] = player.get('tier', 'UNRANKED')
+                                                    general_stats[player_key]['rank'] = player.get('rank', '')
+                                                    general_stats[player_key]['leaguePoints'] = player.get('leaguePoints', 0)
+                                            
+                                            edition_manager.save_general_stats(general_stats)
+                                            
+                                            st.success(f"✅ Rangs mis à jour pour {updated_count} joueurs de **{team_name}**!")
+                                            st.rerun()
+                                    
+                                    except Exception as e:
+                                        st.error(f"❌ Erreur: {str(e)}")
+                    
+                    st.markdown("---")
                     
                     # Edit mode toggle
                     edit_mode = st.checkbox(f"✏️ Modifier les rôles", key=f"edit_{idx}")
