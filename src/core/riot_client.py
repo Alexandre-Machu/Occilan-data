@@ -310,42 +310,52 @@ class RiotAPIClient:
         puuid: str,
         start_time: Optional[int] = None,
         end_time: Optional[int] = None,
-        queue_id: int = 0,  # 0 = custom games
+        queue_id: Optional[int] = None,
+        match_type: Optional[str] = None,  # "tourney" pour tournois !
         count: int = 100
     ) -> List[str]:
         """
-        Récupère les IDs de matchs d'un joueur (custom games par défaut).
+        Récupère les IDs de matchs d'un joueur.
         
         Args:
             puuid: PUUID du joueur
             start_time: Timestamp Unix début (None = pas de limite)
             end_time: Timestamp Unix fin (None = pas de limite)
-            queue_id: 0 = custom, 420 = SoloQ, 440 = Flex
+            queue_id: 0 = custom, 420 = SoloQ, 440 = Flex (optionnel si match_type défini)
+            match_type: "tourney" = tournois uniquement, None = tous
             count: Nombre max de matchs (max 100)
         
         Returns:
             Liste d'IDs de matchs ["EUW1_6234567890", ...]
         
         Exemple:
-            >>> from datetime import datetime
-            >>> start = int(datetime(2024, 1, 1).timestamp())
-            >>> end = int(datetime(2024, 3, 1).timestamp())
+            >>> # Récupérer matchs de tournoi
+            >>> client.get_match_ids_by_puuid(puuid, start, end, match_type="tourney")
+            ["EUW1_6234567890", ...]
+            
+            >>> # Récupérer custom games
             >>> client.get_match_ids_by_puuid(puuid, start, end, queue_id=0)
-            ["EUW1_6234567890", "EUW1_6234567891", ...]
+            ["EUW1_6234567890", ...]
         """
         url = f"https://{self.REGION}.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids"
         
         params = {
-            "queue": queue_id,
             "count": count
         }
+        
+        # Priorité au match_type (tourney) si spécifié
+        if match_type:
+            params["type"] = match_type
+        elif queue_id is not None:
+            params["queue"] = queue_id
         
         if start_time:
             params["startTime"] = start_time
         if end_time:
             params["endTime"] = end_time
         
-        logger.debug(f"Fetching match IDs for PUUID {puuid[:20]} (queue={queue_id}, count={count})...")
+        type_desc = match_type or f"queue={queue_id}"
+        logger.debug(f"Fetching match IDs for PUUID {puuid[:20]} ({type_desc}, count={count})...")
         result = self._make_request(url, params)
         
         if result:

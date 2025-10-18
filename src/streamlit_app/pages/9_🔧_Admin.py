@@ -67,6 +67,9 @@ with st.sidebar:
     st.markdown("### 🧭 Navigation")
     st.page_link("app.py", label="🏠 Accueil")
     st.page_link("pages/1_📊_Stats_Generales.py", label="📊 Stats Générales")
+    st.page_link("pages/2_Liste_des_Matchs.py", label="📋 Liste des Matchs")
+    st.page_link("pages/3_Stats_Equipes.py", label="🏆 Stats Équipes")
+    st.page_link("pages/4_Stats_Joueurs.py", label="👤 Stats Joueurs")
     st.page_link("pages/9_🔧_Admin.py", label="🔧 Admin")
     st.markdown("---")
     st.caption("🎮 OcciLan Stats v2.0")
@@ -901,86 +904,148 @@ with tab3:
         else:
             st.success("✅ Clé API Riot détectée")
             
-            # Process button
-            if st.button("🚀 Lancer le traitement complet", type="primary", width="stretch"):
-                
-                # Initialize processor
-                processor = EditionProcessor(
-                    edition_id=selected_edition,
-                    api_key=api_key
-                )
-                
-                # Create progress containers
-                progress_bar = st.progress(0)
-                status_text = st.empty()
-                step_details = st.empty()
-                
-                # Progress callback for UI updates
-                def progress_callback(message: str, progress: float):
-                    status_text.text(message)
-                    progress_bar.progress(int(progress))
-                
-                processor.progress_callback = progress_callback
-                
-                try:
-                    with st.spinner("Pipeline en cours d'exécution..."):
-                        # Run full pipeline
-                        results = processor.run_full_pipeline(use_cache=True)
+            # Boutons séparés pour traitement modulaire
+            col_fetch, col_full = st.columns(2)
+            
+            with col_fetch:
+                if st.button("🎮 Fetch Matchs Tournoi", help="Récupère uniquement les matchs de tournoi (type='tourney')", use_container_width=True):
+                    # Initialize processor
+                    processor = EditionProcessor(
+                        edition_id=selected_edition,
+                        api_key=api_key
+                    )
+                    
+                    # Check if teams_with_puuid exists
+                    teams_with_puuid = edition_manager.load_teams_with_puuid()
+                    if not teams_with_puuid:
+                        st.error("❌ Lancez d'abord les étapes PUUID et Ranks (traitement complet)")
+                    else:
+                        progress_bar = st.progress(0)
+                        status_text = st.empty()
                         
-                        # Clear progress
+                        def progress_callback(message: str, progress: float):
+                            status_text.text(message)
+                            progress_bar.progress(min(int(progress), 100))
+                        
+                        processor.progress_callback = progress_callback
+                        
+                        try:
+                            with st.spinner("🎮 Récupération des matchs de tournoi..."):
+                                # Run step 4: fetch match IDs avec type="tourney"
+                                tournament_matches = processor.step4_fetch_match_ids(
+                                    use_tourney_filter=True  # 🎯 Filtre tournois !
+                                )
+                                
+                                progress_bar.empty()
+                                status_text.empty()
+                                
+                                if tournament_matches:
+                                    st.success(f"✅ {len(tournament_matches)} équipes traitées!")
+                                    
+                                    # Afficher le résumé
+                                    total_matches = sum(len(matches) for matches in tournament_matches.values())
+                                    
+                                    col1, col2 = st.columns(2)
+                                    with col1:
+                                        st.metric("Équipes", len(tournament_matches))
+                                    with col2:
+                                        st.metric("Matchs trouvés", total_matches)
+                                    
+                                    # Afficher la liste des matchs par équipe
+                                    with st.expander("📋 Matchs par équipe"):
+                                        for team_name, match_ids in tournament_matches.items():
+                                            st.markdown(f"**{team_name}**: {len(match_ids)} matchs")
+                                            st.caption(", ".join(match_ids[:5]) + ("..." if len(match_ids) > 5 else ""))
+                                else:
+                                    st.warning("⚠️ Aucun match trouvé")
+                        
+                        except Exception as e:
+                            progress_bar.empty()
+                            status_text.empty()
+                            st.error(f"❌ Erreur: {str(e)}")
+                            st.exception(e)
+            
+            with col_full:
+                # Process button (traitement complet)
+                if st.button("🚀 Traitement Complet", type="primary", help="Pipeline complet: PUUID + Ranks + Matchs + Stats", use_container_width=True):
+                    
+                    # Initialize processor
+                    processor = EditionProcessor(
+                        edition_id=selected_edition,
+                        api_key=api_key
+                    )
+                    
+                    # Create progress containers
+                    progress_bar = st.progress(0)
+                    status_text = st.empty()
+                    step_details = st.empty()
+                    
+                    # Progress callback for UI updates
+                    def progress_callback(message: str, progress: float):
+                        status_text.text(message)
+                        progress_bar.progress(int(progress))
+                    
+                    processor.progress_callback = progress_callback
+                    
+                    try:
+                        with st.spinner("Pipeline en cours d'exécution..."):
+                            # Run full pipeline
+                            results = processor.run_full_pipeline(use_cache=True)
+                            
+                            # Clear progress
+                            progress_bar.empty()
+                            status_text.empty()
+                            
+                            # Display results
+                            if results.get("success"):
+                                st.success("✅ Pipeline terminé avec succès!")
+                                st.balloons()
+                                
+                                # Show summary
+                                col1, col2, col3 = st.columns(3)
+                                
+                                with col1:
+                                    teams_count = results["steps"]["step2_puuids"]["teams_count"]
+                                    st.metric("Équipes traitées", teams_count)
+                                
+                                with col2:
+                                    matches_count = results["steps"]["step5_match_details"]["matches_fetched"]
+                                    st.metric("Matchs analysés", matches_count)
+                                
+                                with col3:
+                                    duration = results["duration_seconds"]
+                                    st.metric("Durée", f"{duration:.1f}s")
+                                
+                                # Show detailed steps
+                                with st.expander("📋 Détails du pipeline"):
+                                    for step_name, step_data in results["steps"].items():
+                                        status_icon = "✅" if step_data.get("success") else "❌"
+                                        st.markdown(f"{status_icon} **{step_name}**: {step_data}")
+                            
+                            else:
+                                st.error("❌ Le pipeline a rencontré des erreurs")
+                                
+                                # Show errors
+                                if results.get("errors"):
+                                    st.error("**Erreurs:**")
+                                    for error in results["errors"]:
+                                        st.error(f"- {error}")
+                            
+                            # Show warnings
+                            if results.get("warnings"):
+                                with st.expander("⚠️ Avertissements"):
+                                    for warning in results["warnings"]:
+                                        st.warning(warning)
+                            
+                            # Show full results in expander
+                            with st.expander("🔍 Résultats complets (JSON)"):
+                                st.json(results)
+                    
+                    except Exception as e:
                         progress_bar.empty()
                         status_text.empty()
-                        
-                        # Display results
-                        if results.get("success"):
-                            st.success("✅ Pipeline terminé avec succès!")
-                            st.balloons()
-                            
-                            # Show summary
-                            col1, col2, col3 = st.columns(3)
-                            
-                            with col1:
-                                teams_count = results["steps"]["step2_puuids"]["teams_count"]
-                                st.metric("Équipes traitées", teams_count)
-                            
-                            with col2:
-                                matches_count = results["steps"]["step5_match_details"]["matches_fetched"]
-                                st.metric("Matchs analysés", matches_count)
-                            
-                            with col3:
-                                duration = results["duration_seconds"]
-                                st.metric("Durée", f"{duration:.1f}s")
-                            
-                            # Show detailed steps
-                            with st.expander("📋 Détails du pipeline"):
-                                for step_name, step_data in results["steps"].items():
-                                    status_icon = "✅" if step_data.get("success") else "❌"
-                                    st.markdown(f"{status_icon} **{step_name}**: {step_data}")
-                        
-                        else:
-                            st.error("❌ Le pipeline a rencontré des erreurs")
-                            
-                            # Show errors
-                            if results.get("errors"):
-                                st.error("**Erreurs:**")
-                                for error in results["errors"]:
-                                    st.error(f"- {error}")
-                        
-                        # Show warnings
-                        if results.get("warnings"):
-                            with st.expander("⚠️ Avertissements"):
-                                for warning in results["warnings"]:
-                                    st.warning(warning)
-                        
-                        # Show full results in expander
-                        with st.expander("🔍 Résultats complets (JSON)"):
-                            st.json(results)
-                
-                except Exception as e:
-                    progress_bar.empty()
-                    status_text.empty()
-                    st.error(f"❌ Erreur lors de l'exécution du pipeline: {str(e)}")
-                    st.exception(e)
+                        st.error(f"❌ Erreur lors de l'exécution du pipeline: {str(e)}")
+                        st.exception(e)
 
 # Footer
 st.markdown("---")

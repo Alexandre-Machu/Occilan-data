@@ -68,6 +68,9 @@ with st.sidebar:
     st.markdown("### 🧭 Navigation")
     st.page_link("app.py", label="🏠 Accueil")
     st.page_link("pages/1_📊_Stats_Generales.py", label="📊 Stats Générales")
+    st.page_link("pages/2_Liste_des_Matchs.py", label="📋 Liste des Matchs")
+    st.page_link("pages/3_Stats_Equipes.py", label="🏆 Stats Équipes")
+    st.page_link("pages/4_Stats_Joueurs.py", label="👤 Stats Joueurs")
     st.page_link("pages/9_🔧_Admin.py", label="🔧 Admin")
     st.markdown("---")
     st.caption("🎮 OcciLan Stats v2.0")
@@ -130,6 +133,39 @@ def calculate_player_score(tier: str, rank: str, lp: int) -> float:
     # Autres: score de base + bonus de division
     division_bonus = DIVISION_MULTIPLIERS.get(rank, 0)
     return base_score + division_bonus
+
+def score_to_elo(score: float) -> str:
+    """Convertit un score numérique en tier ELO équivalent"""
+    if score >= 20:
+        return "CHALLENGER"
+    elif score >= 15:
+        return "GRANDMASTER"
+    elif score >= 8:
+        lp = int((score - 8) * 100)
+        return f"MASTER ({lp} LP)"
+    elif score >= 7:
+        division = "I" if score >= 7.75 else "II" if score >= 7.5 else "III" if score >= 7.25 else "IV"
+        return f"DIAMOND {division}"
+    elif score >= 6:
+        division = "I" if score >= 6.75 else "II" if score >= 6.5 else "III" if score >= 6.25 else "IV"
+        return f"EMERALD {division}"
+    elif score >= 5:
+        division = "I" if score >= 5.75 else "II" if score >= 5.5 else "III" if score >= 5.25 else "IV"
+        return f"PLATINUM {division}"
+    elif score >= 4:
+        division = "I" if score >= 4.75 else "II" if score >= 4.5 else "III" if score >= 4.25 else "IV"
+        return f"GOLD {division}"
+    elif score >= 3:
+        division = "I" if score >= 3.75 else "II" if score >= 3.5 else "III" if score >= 3.25 else "IV"
+        return f"SILVER {division}"
+    elif score >= 2:
+        division = "I" if score >= 2.75 else "II" if score >= 2.5 else "III" if score >= 2.25 else "IV"
+        return f"BRONZE {division}"
+    elif score >= 1:
+        division = "I" if score >= 1.75 else "II" if score >= 1.5 else "III" if score >= 1.25 else "IV"
+        return f"IRON {division}"
+    else:
+        return "UNRANKED"
 
 # Collecter tous les joueurs
 all_players = []
@@ -196,7 +232,8 @@ with col3:
 with col4:
     if ranked_players > 0:
         avg_score = df_players[df_players["tier"] != "UNRANKED"]["score"].mean()
-        st.metric("📊 Score moyen", f"{avg_score:.2f}")
+        elo_equiv = score_to_elo(avg_score)
+        st.metric("📊 Score moyen", f"{avg_score:.2f}", delta=f"≈ {elo_equiv}", delta_color="off")
     else:
         st.metric("📊 Score moyen", "N/A")
 
@@ -560,7 +597,8 @@ if selected_team:
             max_score = ranked_in_team["score"].max()
             min_score = ranked_in_team["score"].min()
             
-            st.metric("Score moyen", f"{avg_score:.2f}")
+            avg_elo = score_to_elo(avg_score)
+            st.metric("Score moyen", f"{avg_score:.2f}", delta=f"≈ {avg_elo}", delta_color="off")
             st.metric("Meilleur score", f"{max_score:.2f}")
             st.metric("Score min", f"{min_score:.2f}")
             

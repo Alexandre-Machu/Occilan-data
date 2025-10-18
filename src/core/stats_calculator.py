@@ -242,7 +242,7 @@ class StatsCalculator:
                 champ_stats["wins"][champion_name] += 1
             
             # Records
-            cs_per_min = cs / (duration / 60) if duration > 0 else 0
+            cs_per_min = float(cs) / (float(duration) / 60) if duration > 0 else 0
             
             if vision_score > self.stats["highest_vision_game"]["score"]:
                 self.stats["highest_vision_game"].update({
@@ -292,10 +292,10 @@ class StatsCalculator:
         
         # Player averages
         for player_name, player_stats in self.stats["player_stats"].items():
-            games = player_stats["games_played"]
+            games = int(player_stats["games_played"])
             
             if games > 0:
-                minutes_played = player_stats["total_game_duration"] / 60
+                minutes_played = float(player_stats["total_game_duration"]) / 60
                 
                 player_stats["average_kills"] = round(player_stats["total_kills"] / games, 2)
                 player_stats["average_deaths"] = round(player_stats["total_deaths"] / games, 2)
@@ -318,11 +318,11 @@ class StatsCalculator:
         
         # Team averages
         for team_name, team_stats in self.stats["team_stats"].items():
-            games = team_stats["games_played"]
+            games = int(team_stats["games_played"])
             
             if games > 0:
-                team_stats["winrate"] = round((team_stats["wins"] / games) * 100, 2)
-                team_stats["average_game_duration"] = round(team_stats["total_game_duration"] / games, 0)
+                team_stats["winrate"] = round((float(team_stats["wins"]) / games) * 100, 2)
+                team_stats["average_game_duration"] = round(float(team_stats["total_game_duration"]) / games, 0)
                 team_stats["average_game_duration_formatted"] = self._format_duration(
                     team_stats["average_game_duration"]
                 )

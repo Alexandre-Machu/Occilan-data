@@ -258,17 +258,20 @@ class EditionProcessor:
     
     def step4_fetch_match_ids(self, start_timestamp: int = None, 
                               end_timestamp: int = None,
-                              queue_id: int = 0) -> Dict[str, Any]:
+                              use_tourney_filter: bool = True) -> Dict[str, Any]:
         """
-        Step 4: Fetch match IDs for all players using Match-V5
+        Step 4: Fetch match IDs for all teams using Match-V5
+        
+        OPTIMISATION: Utilise type="tourney" et 1 seul joueur par équipe
+        (tous les joueurs d'une équipe jouent les mêmes matchs de tournoi)
         
         Args:
             start_timestamp: Start date timestamp (epoch seconds)
             end_timestamp: End date timestamp (epoch seconds)
-            queue_id: Queue ID (0 = custom games for tournament)
+            use_tourney_filter: Si True, utilise type="tourney" (recommandé)
         
         Returns:
-            Tournament matches data
+            Tournament matches data: {"team_name": ["match_id1", ...]}
         """
         self._update_progress("Fetching match IDs from Riot API...", 0)
         
@@ -289,10 +292,7 @@ class EditionProcessor:
                 start_timestamp = int(start_date.timestamp())
                 end_timestamp = int(end_date.timestamp())
         
-        tournament_matches = self.data_manager.load_tournament_matches()
-        if not tournament_matches:
-            tournament_matches = {}
-        
+        tournament_matches = {}
         total_teams = len(teams_with_puuid)
         processed_teams = 0
         
@@ -302,39 +302,59 @@ class EditionProcessor:
                 (processed_teams / total_teams) * 100
             )
             
-            team_match_ids = set()
+            # OPTIMISATION: Prendre seulement le premier joueur
+            # (tous jouent les mêmes matchs de tournoi)
+            if not team_data.get("players"):
+                logger.warning(f"No players found for team {team_name}")
+                processed_teams += 1
+                continue
             
-            for player in team_data["players"]:
-                puuid = player.get("puuid")
-                game_name = player.get("gameName")
-                
-                if not puuid:
-                    continue
-                
-                try:
+            first_player = team_data["players"][0]
+            puuid = first_player.get("puuid")
+            game_name = first_player.get("gameName", "Unknown")
+            
+            if not puuid:
+                logger.warning(f"No PUUID for {game_name} in {team_name}")
+                processed_teams += 1
+                continue
+            
+            try:
+                if use_tourney_filter:
+                    # Méthode optimale: type="tourney"
                     match_ids = self.riot_client.get_match_ids_by_puuid(
                         puuid=puuid,
                         start_time=start_timestamp,
                         end_time=end_timestamp,
-                        queue_id=queue_id,
+                        match_type="tourney",  # 🎯 Filtre tournois !
+                        count=50
+                    )
+                else:
+                    # Ancienne méthode: queue_id=0 (custom games)
+                    match_ids = self.riot_client.get_match_ids_by_puuid(
+                        puuid=puuid,
+                        start_time=start_timestamp,
+                        end_time=end_timestamp,
+                        queue_id=0,
                         count=100
                     )
+                
+                if match_ids:
+                    tournament_matches[team_name] = match_ids
+                    logger.info(f"{team_name} ({game_name}): {len(match_ids)} matches found")
+                else:
+                    logger.warning(f"{team_name} ({game_name}): No matches found")
                     
-                    if match_ids:
-                        team_match_ids.update(match_ids)
-                        logger.info(f"{game_name}: {len(match_ids)} matches found")
-                        
-                except Exception as e:
-                    self._log_error(f"Error fetching matches for {game_name}: {str(e)}")
-            
-            # Add to tournament matches
-            self.data_manager.add_team_matches(team_name, list(team_match_ids))
+            except Exception as e:
+                self._log_error(f"Error fetching matches for {team_name}: {str(e)}")
             
             processed_teams += 1
         
-        self._update_progress(f"Match IDs fetched for {processed_teams} teams", 100)
+        # Sauvegarder dans tournament_matches.json
+        self.data_manager.save_tournament_matches(tournament_matches)
         
-        return self.data_manager.load_tournament_matches()
+        self._update_progress(f"✅ Match IDs fetched for {len(tournament_matches)} teams", 100)
+        
+        return tournament_matches
     
     # ========================================
     # STEP 5: Fetch match details

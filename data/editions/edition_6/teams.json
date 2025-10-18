@@ -1,0 +1,498 @@
+{
+  "Bots Intermédiaires": {
+    "name": "Bots Intermédiaires",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=SeyZo%23EUW,KayZzen%23EUW,Archimax%23EUW,Redmynray%232485,Sumwo%23EUW",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "SeyZo",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "JGL",
+        "gameName": "KayZzen",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "MID",
+        "gameName": "Archimax",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "ADC",
+        "gameName": "Redmynray",
+        "tagLine": "2485"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Sumwo",
+        "tagLine": "EUW"
+      }
+    ]
+  },
+  "Burger Frites": {
+    "name": "Burger Frites",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=AUR Rettleti%23PAFF,Sir Nathaniel%23EUW,AUR Azz%23PUFF,AUR Baosu%23PUFF,Guts%2300I",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "AUR Rettleti",
+        "tagLine": "PAFF"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Sir Nathaniel",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "MID",
+        "gameName": "AUR Azz",
+        "tagLine": "PUFF"
+      },
+      {
+        "role": "ADC",
+        "gameName": "AUR Baosu",
+        "tagLine": "PUFF"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Guts",
+        "tagLine": "00I"
+      }
+    ]
+  },
+  "EC Emerald": {
+    "name": "EC Emerald",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=PurpuraCorvum%23EUW,PFR SahDony%23666,galaeri%23GALA,Cygola%23EUW,TwitchDartien%23EUW",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "PurpuraCorvum",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "JGL",
+        "gameName": "PFR SahDony",
+        "tagLine": "666"
+      },
+      {
+        "role": "MID",
+        "gameName": "galaeri",
+        "tagLine": "GALA"
+      },
+      {
+        "role": "ADC",
+        "gameName": "Cygola",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "SUP",
+        "gameName": "TwitchDartien",
+        "tagLine": "EUW"
+      }
+    ]
+  },
+  "GIRL POWDER": {
+    "name": "GIRL POWDER",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Romsito%23EUW31,Irisam%23EUW,Shunpo%23ARA,fXto%23EUW31,Lemonz%23EUW31",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "Romsito",
+        "tagLine": "EUW31"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Irisam",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "MID",
+        "gameName": "Shunpo",
+        "tagLine": "ARA"
+      },
+      {
+        "role": "ADC",
+        "gameName": "fXto",
+        "tagLine": "EUW31"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Lemonz",
+        "tagLine": "EUW31"
+      }
+    ]
+  },
+  "Gungnir": {
+    "name": "Gungnir",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=KiεtsuSama%23EUW,spiro381231%23EUW,PFG Nice%23NICE,Wightt%23EUW,Bob Le Tripoteur%23Coq1",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "KiεtsuSama",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "JGL",
+        "gameName": "spiro381231",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "MID",
+        "gameName": "PFG Nice",
+        "tagLine": "NICE"
+      },
+      {
+        "role": "ADC",
+        "gameName": "Wightt",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Bob Le Tripoteur",
+        "tagLine": "Coq1"
+      }
+    ]
+  },
+  "KCDQ": {
+    "name": "KCDQ",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=KCDQ Braquemart%23666,KCDQ Bangala%23666,KCDQ Bazouzou%23666,KCDQ Shlong%23666,KCDQ matraque%23666",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "KCDQ Braquemart",
+        "tagLine": "666"
+      },
+      {
+        "role": "JGL",
+        "gameName": "KCDQ Bangala",
+        "tagLine": "666"
+      },
+      {
+        "role": "MID",
+        "gameName": "KCDQ Bazouzou",
+        "tagLine": "666"
+      },
+      {
+        "role": "ADC",
+        "gameName": "KCDQ Shlong",
+        "tagLine": "666"
+      },
+      {
+        "role": "SUP",
+        "gameName": "KCDQ matraque",
+        "tagLine": "666"
+      }
+    ]
+  },
+  "La bande du PMU": {
+    "name": "La bande du PMU",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=TPS Nother%23EUW,Yashi%232104,Fox%23EUWee,KDydoux%23best,manchou%23euw",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "TPS Nother",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Yashi",
+        "tagLine": "2104"
+      },
+      {
+        "role": "MID",
+        "gameName": "Fox",
+        "tagLine": "EUWee"
+      },
+      {
+        "role": "ADC",
+        "gameName": "KDydoux",
+        "tagLine": "best"
+      },
+      {
+        "role": "SUP",
+        "gameName": "manchou",
+        "tagLine": "euw"
+      }
+    ]
+  },
+  "La Ruche": {
+    "name": "La Ruche",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Colfeo%23EUW,climber%23EUW,Thaïs Morel%23HYSTA,Thibee%2300000,Xintox%23NERV",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "Colfeo",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "JGL",
+        "gameName": "climber",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "MID",
+        "gameName": "Thaïs Morel",
+        "tagLine": "HYSTA"
+      },
+      {
+        "role": "ADC",
+        "gameName": "Thibee",
+        "tagLine": "00000"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Xintox",
+        "tagLine": "NERV"
+      }
+    ]
+  },
+  "La Sauce Du Chef": {
+    "name": "La Sauce Du Chef",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Sphyrna zygaena%23EUW,SkyFiree%23EUW,Louu%232310,nazyr%234324,LeMaquis2Caca%23Prout",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "Sphyrna zygaena",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "JGL",
+        "gameName": "SkyFiree",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "MID",
+        "gameName": "Louu",
+        "tagLine": "2310"
+      },
+      {
+        "role": "ADC",
+        "gameName": "nazyr",
+        "tagLine": "4324"
+      },
+      {
+        "role": "SUP",
+        "gameName": "LeMaquis2Caca",
+        "tagLine": "Prout"
+      }
+    ]
+  },
+  "Les minorités": {
+    "name": "Les minorités",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=SETTaismieuavant%23EUW,Jules Grizzli%239348,noemiefeatmonkey%23uwu,Quetzalcoatl%23EUWTA,Dragjoo%23EUW",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "SETTaismieuavant",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Jules Grizzli",
+        "tagLine": "9348"
+      },
+      {
+        "role": "MID",
+        "gameName": "noemiefeatmonkey",
+        "tagLine": "uwu"
+      },
+      {
+        "role": "ADC",
+        "gameName": "Quetzalcoatl",
+        "tagLine": "EUWTA"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Dragjoo",
+        "tagLine": "EUW"
+      }
+    ]
+  },
+  "LIONS GUARD": {
+    "name": "LIONS GUARD",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=DK 공백%23KPOP,LG Aziαs%23OGNAM,Zaliarell%23EUW,LG Isowix%230409,LG TwoT%237533",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "DK 공백",
+        "tagLine": "KPOP"
+      },
+      {
+        "role": "JGL",
+        "gameName": "LG Aziαs",
+        "tagLine": "OGNAM"
+      },
+      {
+        "role": "MID",
+        "gameName": "Zaliarell",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "ADC",
+        "gameName": "LG Isowix",
+        "tagLine": "0409"
+      },
+      {
+        "role": "SUP",
+        "gameName": "LG TwoT",
+        "tagLine": "7533"
+      }
+    ]
+  },
+  "Mickey Mouse Club": {
+    "name": "Mickey Mouse Club",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=rotten stray dog%23euw,zinoleos%23euw,el pueblito%23euw,gourmetplantaire%23sympa,Killycurly%23420",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "rotten stray dog",
+        "tagLine": "euw"
+      },
+      {
+        "role": "JGL",
+        "gameName": "zinoleos",
+        "tagLine": "euw"
+      },
+      {
+        "role": "MID",
+        "gameName": "el pueblito",
+        "tagLine": "euw"
+      },
+      {
+        "role": "ADC",
+        "gameName": "gourmetplantaire",
+        "tagLine": "sympa"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Killycurly",
+        "tagLine": "420"
+      }
+    ]
+  },
+  "Pas de quartier": {
+    "name": "Pas de quartier",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Spectror%23BLOP,zerkamaka6641%23EUW,galaeri%23GALA,LaGìrafe%23Bibou,Cafard La Malice%23KFAR",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "Spectror",
+        "tagLine": "BLOP"
+      },
+      {
+        "role": "JGL",
+        "gameName": "zerkamaka6641",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "MID",
+        "gameName": "galaeri",
+        "tagLine": "GALA"
+      },
+      {
+        "role": "ADC",
+        "gameName": "LaGìrafe",
+        "tagLine": "Bibou"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Cafard La Malice",
+        "tagLine": "KFAR"
+      }
+    ]
+  },
+  "PCS Genuise": {
+    "name": "PCS Genuise",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Beff%23Meff,Selkie rêve%23EUW,luxanna GilSayan%23light,Lasagna%23EEPER,I Love my Bf%23EUWW",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "Beff",
+        "tagLine": "Meff"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Selkie rêve",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "MID",
+        "gameName": "luxanna GilSayan",
+        "tagLine": "light"
+      },
+      {
+        "role": "ADC",
+        "gameName": "Lasagna",
+        "tagLine": "EEPER"
+      },
+      {
+        "role": "SUP",
+        "gameName": "I Love my Bf",
+        "tagLine": "EUWW"
+      }
+    ]
+  },
+  "Pipi Gaming": {
+    "name": "Pipi Gaming",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=NEP Zerkome%23EUW03,caca anonyme 2%23uno,Tayme%23euw,Onikiezi%23euw,RR D1%23EUW",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "NEP Zerkome",
+        "tagLine": "EUW03"
+      },
+      {
+        "role": "JGL",
+        "gameName": "caca anonyme 2",
+        "tagLine": "uno"
+      },
+      {
+        "role": "MID",
+        "gameName": "Tayme",
+        "tagLine": "euw"
+      },
+      {
+        "role": "ADC",
+        "gameName": "Onikiezi",
+        "tagLine": "euw"
+      },
+      {
+        "role": "SUP",
+        "gameName": "RR D1",
+        "tagLine": "EUW"
+      }
+    ]
+  },
+  "zizicacacorp": {
+    "name": "zizicacacorp",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=TRK%23KCORP,Ankhanatos%23SAU6,MotorsKing%23EUW,ARTUEUR%23RAT,Hingo%23034",
+    "players": [
+      {
+        "role": "TOP",
+        "gameName": "TRK",
+        "tagLine": "KCORP"
+      },
+      {
+        "role": "JGL",
+        "gameName": "Ankhanatos",
+        "tagLine": "SAU6"
+      },
+      {
+        "role": "MID",
+        "gameName": "MotorsKing",
+        "tagLine": "EUW"
+      },
+      {
+        "role": "ADC",
+        "gameName": "ARTUEUR",
+        "tagLine": "RAT"
+      },
+      {
+        "role": "SUP",
+        "gameName": "Hingo",
+        "tagLine": "034"
+      }
+    ]
+  }
+}
