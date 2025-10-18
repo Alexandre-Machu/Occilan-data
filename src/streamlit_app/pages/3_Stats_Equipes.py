@@ -18,7 +18,36 @@ st.set_page_config(page_title="Stats Équipes - OcciLan Stats", page_icon="🏆"
 # Helper function for champion icons
 def get_champion_icon_url(champion_name: str, size: int = 48) -> str:
     """Get Data Dragon champion icon URL"""
-    return f"https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/{champion_name}.png"
+    # Champion name corrections for Data Dragon API
+    champion_name_mapping = {
+        "Wukong": "MonkeyKing",
+        "FiddleSticks": "Fiddlesticks",
+        "Nunu": "Nunu",
+        "RekSai": "RekSai",
+        "KSante": "KSante",
+        "Renata": "Renata",
+        "BelVeth": "Belveth",
+        "KhaZix": "Khazix",
+        "VelKoz": "Velkoz",
+        "ChoGath": "Chogath",
+        "KaiSa": "Kaisa",
+        "LeBlanc": "Leblanc",
+        "JarvanIV": "JarvanIV",
+        "XinZhao": "XinZhao",
+        "MasterYi": "MasterYi",
+        "MissFortune": "MissFortune",
+        "TahmKench": "TahmKench",
+        "TwistedFate": "TwistedFate",
+        "AurelionSol": "AurelionSol",
+        "DrMundo": "DrMundo",
+        "MonkeyKing": "MonkeyKing"
+    }
+    
+    # Use the mapping if champion name exists in it, otherwise use as-is
+    corrected_name = champion_name_mapping.get(champion_name, champion_name)
+    
+    # Latest version - updated to 14.24.1 to include Ambessa
+    return f"https://ddragon.leagueoflegends.com/cdn/14.24.1/img/champion/{corrected_name}.png"
 
 # Custom CSS
 st.markdown("""
@@ -369,15 +398,18 @@ for player in team_players:
     cs_per_min = pstats.get("average_cs_per_minute", 0)  # Note: different field name
     vision_per_game = pstats.get("average_vision_score", 0)
     
-    # Get champions
+    # Get champions - Display ALL champions in rows of 5
     champions = pstats.get("champions_played", [])
     champions_html = ''
     if champions:
-        for champ in champions[:5]:  # Show first 5 in table
+        # Create rows of 5 champions each
+        for i, champ in enumerate(champions):
+            # Add line break after every 5 champions (except the first row)
+            if i > 0 and i % 5 == 0:
+                champions_html += '<br/>'
+            
             icon_url = get_champion_icon_url(champ)
             champions_html += f'<img src="{icon_url}" class="champion-icon" title="{champ}" alt="{champ}">'
-        if len(champions) > 5:
-            champions_html += f'<span style="color: #9fb0c6; font-size: 11px; margin-left: 4px;">+{len(champions)-5}</span>'
     
     table_html += '<tr>'
     table_html += f'<td>{role_html}</td>'
