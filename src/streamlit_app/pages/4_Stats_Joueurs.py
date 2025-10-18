@@ -194,6 +194,7 @@ with st.sidebar:
     st.page_link("pages/2_Liste_des_Matchs.py", label="📋 Liste des Matchs")
     st.page_link("pages/3_Stats_Equipes.py", label="🏆 Stats Équipes")
     st.page_link("pages/4_Stats_Joueurs.py", label="👤 Stats Joueurs")
+    st.page_link("pages/5_Recherche.py", label="🔍 Recherche")
     st.page_link("pages/9_🔧_Admin.py", label="🔧 Admin")
     st.markdown("---")
     st.caption("🎮 OcciLan Stats v2.0")
