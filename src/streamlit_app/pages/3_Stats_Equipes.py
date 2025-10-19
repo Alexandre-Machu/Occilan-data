@@ -427,3 +427,27 @@ for player in team_players:
 table_html += '</tbody></table>'
 
 st.markdown(table_html, unsafe_allow_html=True)
+
+# Boutons cliquables pour voir les profils des joueurs de l'équipe
+st.markdown("---")
+st.markdown("#### 👁️ Voir le profil des joueurs")
+cols = st.columns(5)
+for idx, player in enumerate(team_players):
+    player_short_name = player.get('gameName', 'Unknown')
+    col_idx = idx % 5
+    with cols[col_idx]:
+        if st.button(f"👤 {player_short_name}", key=f"view_profile_team_{player_short_name}", use_container_width=True):
+            st.session_state["search_player"] = player_short_name
+            st.switch_page("pages/5_Recherche.py")
+
+# Boutons cliquables pour voir les profils des joueurs de l'équipe
+st.markdown("---")
+st.markdown("#### 👁️ Voir le profil des joueurs")
+cols = st.columns(5)
+for idx, player in enumerate(team_players):
+    player_short_name = player.get('gameName', 'Unknown')
+    col_idx = idx % 5
+    with cols[col_idx]:
+        if st.button(f"👤 {player_short_name}", key=f"view_profile_team_{player_short_name}", use_container_width=True):
+            st.session_state["search_player"] = player_short_name
+            st.switch_page("pages/5_Recherche.py")

@@ -90,10 +90,22 @@ def format_duration(seconds):
 
 def get_champion_icon_url(champion_name):
     """Retourne l'URL de l'icône du champion"""
-    # Data Dragon URL pour les icônes de champions
     return f"https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/{champion_name}.png"
 
-def display_match_card(match_id, match_data):
+def get_team_name_from_players(participants, player_to_team):
+    """Trouve le nom de l'équipe à partir des joueurs"""
+    for p in participants:
+        player_name = p.get('riotIdGameName', 'Unknown')
+        if player_name in player_to_team:
+            return player_to_team[player_name]
+    return "Équipe Inconnue"
+
+def sort_players_by_role(participants):
+    """Trie les joueurs par rôle: TOP, JGL, MID, ADC, SUP"""
+    role_order = {"TOP": 1, "JUNGLE": 2, "MIDDLE": 3, "BOTTOM": 4, "UTILITY": 5}
+    return sorted(participants, key=lambda p: role_order.get(p.get("teamPosition", "UTILITY"), 6))
+
+def display_match_card(match_id, match_data, player_to_team):
     """Affiche une carte de match"""
     info = match_data.get("info", {})
     participants = info.get("participants", [])
@@ -115,6 +127,10 @@ def display_match_card(match_id, match_data):
     team_100 = [p for p in participants if p.get("teamId") == 100]
     team_200 = [p for p in participants if p.get("teamId") == 200]
     
+    # Trier les joueurs par rôle
+    team_100 = sort_players_by_role(team_100)
+    team_200 = sort_players_by_role(team_200)
+    
     # Récupérer les infos des équipes
     team_100_info = next((t for t in teams if t.get("teamId") == 100), {})
     team_200_info = next((t for t in teams if t.get("teamId") == 200), {})
@@ -122,9 +138,9 @@ def display_match_card(match_id, match_data):
     team_100_win = team_100_info.get("win", False)
     team_200_win = team_200_info.get("win", False)
     
-    # Noms des équipes (basés sur les participants)
-    team_100_names = [f"{p.get('riotIdGameName', 'Unknown')}" for p in team_100]
-    team_200_names = [f"{p.get('riotIdGameName', 'Unknown')}" for p in team_200]
+    # Noms des équipes (mapping depuis team_stats)
+    team_100_name = get_team_name_from_players(team_100, player_to_team)
+    team_200_name = get_team_name_from_players(team_200, player_to_team)
     
     # Afficher le match
     with st.expander(f"🎮 Match {match_id[-10:]} - {date_str} ({duration_str})", expanded=False):
@@ -133,9 +149,9 @@ def display_match_card(match_id, match_data):
         with col1:
             # Équipe 100 (Bleue)
             if team_100_win:
-                st.markdown("### 🔵 **Équipe Bleue** ✅ VICTOIRE")
+                st.markdown(f"### 🔵 **{team_100_name}** ✅ VICTOIRE")
             else:
-                st.markdown("### 🔵 **Équipe Bleue** ❌ DÉFAITE")
+                st.markdown(f"### 🔵 **{team_100_name}** ❌ DÉFAITE")
             
             # Statistiques de l'équipe
             total_kills_100 = sum(p.get("kills", 0) for p in team_100)
@@ -146,8 +162,8 @@ def display_match_card(match_id, match_data):
             
             # Joueurs
             st.markdown("#### Joueurs")
-            for p in sorted(team_100, key=lambda x: x.get("kills", 0), reverse=True):
-                player_name = f"{p.get('riotIdGameName', 'Unknown')}#{p.get('riotIdTagline', '???')}"
+            for p in team_100:  # Déjà triés par rôle
+                player_name = p.get('riotIdGameName', 'Unknown')
                 champion = p.get("championName", "Unknown")
                 kills = p.get("kills", 0)
                 deaths = p.get("deaths", 0)
@@ -157,21 +173,31 @@ def display_match_card(match_id, match_data):
                 kda = f"{kills}/{deaths}/{assists}"
                 icon_url = get_champion_icon_url(champion)
                 
-                # Player row with champion icon
-                player_html = f'''
-                <div style="display: flex; align-items: center; gap: 12px; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 6px;">
-                    <img src="{icon_url}" style="width: 40px; height: 40px; border-radius: 6px; border: 2px solid rgba(100,150,255,0.3);" title="{champion}">
-                    <div style="flex: 1;">
-                        <div style="font-weight: 700; color: #e6eef6; font-size: 14px;">{player_name}</div>
-                        <div style="color: #9fb0c6; font-size: 12px;">{champion}</div>
+                # Créer une ligne avec la carte du joueur et le bouton à droite
+                col_card, col_button = st.columns([5, 1])
+                
+                with col_card:
+                    # Player row with champion icon
+                    player_html = f'''
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 6px;">
+                        <img src="{icon_url}" style="width: 40px; height: 40px; border-radius: 6px; border: 2px solid rgba(100,150,255,0.3);" title="{champion}">
+                        <div style="flex: 1;">
+                            <div style="font-weight: 700; color: #e6eef6; font-size: 14px;">{player_name}</div>
+                            <div style="color: #9fb0c6; font-size: 12px;">{champion}</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="color: #e6eef6; font-weight: 600;">{kda}</div>
+                            <div style="color: #9fb0c6; font-size: 11px;">{cs} CS</div>
+                        </div>
                     </div>
-                    <div style="text-align: right;">
-                        <div style="color: #e6eef6; font-weight: 600;">{kda}</div>
-                        <div style="color: #9fb0c6; font-size: 11px;">{cs} CS</div>
-                    </div>
-                </div>
-                '''
-                st.markdown(player_html, unsafe_allow_html=True)
+                    '''
+                    st.markdown(player_html, unsafe_allow_html=True)
+                
+                with col_button:
+                    # Bouton à droite de la carte
+                    if st.button(f"👤 Profil", key=f"profile_{match_id}_100_{player_name}", help=f"Voir les stats de {player_name}"):
+                        st.session_state["search_player"] = player_name
+                        st.switch_page("pages/5_Recherche.py")
         
         with col_vs:
             st.markdown("### VS")
@@ -180,9 +206,9 @@ def display_match_card(match_id, match_data):
         with col2:
             # Équipe 200 (Rouge)
             if team_200_win:
-                st.markdown("### 🔴 **Équipe Rouge** ✅ VICTOIRE")
+                st.markdown(f"### 🔴 **{team_200_name}** ✅ VICTOIRE")
             else:
-                st.markdown("### 🔴 **Équipe Rouge** ❌ DÉFAITE")
+                st.markdown(f"### 🔴 **{team_200_name}** ❌ DÉFAITE")
             
             # Statistiques de l'équipe
             total_kills_200 = sum(p.get("kills", 0) for p in team_200)
@@ -193,8 +219,8 @@ def display_match_card(match_id, match_data):
             
             # Joueurs
             st.markdown("#### Joueurs")
-            for p in sorted(team_200, key=lambda x: x.get("kills", 0), reverse=True):
-                player_name = f"{p.get('riotIdGameName', 'Unknown')}#{p.get('riotIdTagline', '???')}"
+            for p in team_200:  # Déjà triés par rôle
+                player_name = p.get('riotIdGameName', 'Unknown')
                 champion = p.get("championName", "Unknown")
                 kills = p.get("kills", 0)
                 deaths = p.get("deaths", 0)
@@ -204,21 +230,32 @@ def display_match_card(match_id, match_data):
                 kda = f"{kills}/{deaths}/{assists}"
                 icon_url = get_champion_icon_url(champion)
                 
-                # Player row with champion icon
-                player_html = f'''
-                <div style="display: flex; align-items: center; gap: 12px; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 6px;">
-                    <img src="{icon_url}" style="width: 40px; height: 40px; border-radius: 6px; border: 2px solid rgba(255,100,100,0.3);" title="{champion}">
-                    <div style="flex: 1;">
-                        <div style="font-weight: 700; color: #e6eef6; font-size: 14px;">{player_name}</div>
-                        <div style="color: #9fb0c6; font-size: 12px;">{champion}</div>
+                # Créer une ligne avec la carte du joueur et le bouton à droite
+                col_card, col_button = st.columns([5, 1])
+                
+                with col_card:
+                    # Player row with champion icon
+                    player_html = f'''
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 6px;">
+                        <img src="{icon_url}" style="width: 40px; height: 40px; border-radius: 6px; border: 2px solid rgba(255,100,100,0.3);" title="{champion}">
+                        <div style="flex: 1;">
+                            <div style="font-weight: 700; color: #e6eef6; font-size: 14px;">{player_name}</div>
+                            <div style="color: #9fb0c6; font-size: 12px;">{champion}</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="color: #e6eef6; font-weight: 600;">{kda}</div>
+                            <div style="color: #9fb0c6; font-size: 11px;">{cs} CS</div>
+                        </div>
                     </div>
-                    <div style="text-align: right;">
-                        <div style="color: #e6eef6; font-weight: 600;">{kda}</div>
-                        <div style="color: #9fb0c6; font-size: 11px;">{cs} CS</div>
-                    </div>
-                </div>
-                '''
-                st.markdown(player_html, unsafe_allow_html=True)
+                    '''
+                    st.markdown(player_html, unsafe_allow_html=True)
+                
+                with col_button:
+                    # Bouton à droite de la carte
+                    if st.button(f"👤 Profil", key=f"profile_{match_id}_200_{player_name}", help=f"Voir les stats de {player_name}"):
+                        st.session_state["search_player"] = player_name
+                        st.switch_page("pages/5_Recherche.py")
+
 
 # Titre de la page
 st.title("🎮 Matchs du Tournoi")
@@ -231,6 +268,19 @@ if not available_editions or not selected_edition:
 # Utiliser l'édition manager
 edition_manager = EditionDataManager(selected_edition)
 data_dir = Path(__file__).parent.parent.parent.parent / "data" / "editions" / f"edition_{selected_edition}"
+
+# Charger les team_stats pour le mapping joueur->équipe
+team_stats_path = data_dir / "team_stats.json"
+player_to_team = {}
+
+if team_stats_path.exists():
+    with open(team_stats_path, "r", encoding="utf-8") as f:
+        team_stats_data = json.load(f)
+        # Créer le mapping joueur -> équipe
+        for team_name, team_data in team_stats_data.items():
+            players = team_data.get("players", {})
+            for player_name in players.keys():
+                player_to_team[player_name] = team_name
 
 # Charger les match_details
 match_details_path = data_dir / "match_details.json"
@@ -346,6 +396,6 @@ st.subheader(f"📋 Liste des matchs ({len(sorted_matches)} matchs)")
 
 if sorted_matches:
     for match_id, match_data in sorted_matches:
-        display_match_card(match_id, match_data)
+        display_match_card(match_id, match_data, player_to_team)
 else:
     st.info("Aucun match ne correspond aux filtres sélectionnés")

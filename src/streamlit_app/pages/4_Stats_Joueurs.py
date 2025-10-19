@@ -414,6 +414,17 @@ table_html += '''
 import streamlit.components.v1 as components
 components.html(table_html, height=3500, scrolling=True)
 
+# Boutons cliquables pour voir les profils des joueurs
+st.markdown("---")
+st.markdown("### 👁️ Voir le profil d'un joueur")
+cols = st.columns(5)
+for idx, (_, player) in enumerate(filtered_df.iterrows()):
+    col_idx = idx % 5
+    with cols[col_idx]:
+        if st.button(f"👤 {player['name']}", key=f"view_profile_{player['name']}", use_container_width=True):
+            st.session_state["search_player"] = player['name']
+            st.switch_page("pages/5_Recherche.py")
+
 # ============================================================================
 # STATISTICS SUMMARY
 # ============================================================================

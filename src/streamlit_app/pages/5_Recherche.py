@@ -210,11 +210,22 @@ if search_type == "👤 Joueur":
     st.markdown("---")
     
     player_names = [p["name"] for p in all_players]
+    
+    # Vérifier si un joueur a été présélectionné depuis une autre page
+    default_player = st.session_state.get("search_player", "")
+    if default_player and default_player not in player_names:
+        default_player = ""  # Reset si le joueur n'existe pas
+    
     selected_player_name = st.selectbox(
         "Rechercher un joueur",
         options=[""] + sorted(player_names),
-        format_func=lambda x: "Sélectionner un joueur..." if x == "" else x
+        format_func=lambda x: "Sélectionner un joueur..." if x == "" else x,
+        index=sorted([""] + player_names).index(default_player) if default_player else 0
     )
+    
+    # Clear session state après utilisation
+    if "search_player" in st.session_state:
+        del st.session_state["search_player"]
     
     if selected_player_name:
         # Find player data
