@@ -453,3 +453,195 @@ for idx, player in enumerate(team_players):
             st.session_state["search_player"] = player_short_name
             st.switch_page("pages/5_Recherche.py")
 
+# ============================================================================
+# MATCH HISTORY
+# ============================================================================
+
+st.markdown("---")
+st.markdown("### 📜 Historique des Matchs")
+
+# Charger match_details.json
+match_details_path = data_dir / "match_details.json"
+
+if match_details_path.exists():
+    with open(match_details_path, "r", encoding="utf-8") as f:
+        match_details_data = json.load(f)
+    
+    # Créer un mapping joueur->équipe depuis team_stats
+    player_to_team = {}
+    for team_name, team_info in team_stats_data.items():
+        players = team_info.get("players", {})
+        for player_name in players.keys():
+            player_to_team[player_name] = team_name
+    
+    # Filtrer les matchs où cette équipe a joué
+    team_matches = []
+    for match_id, match_data in match_details_data.items():
+        participants = match_data.get("info", {}).get("participants", [])
+        
+        # Vérifier si l'équipe a participé à ce match
+        team_participated = False
+        team_side = None  # 100 (Blue) ou 200 (Red)
+        team_won = False
+        
+        for participant in participants:
+            player_name = participant.get("riotIdGameName", "")
+            if player_to_team.get(player_name) == selected_team:
+                team_participated = True
+                team_side = participant.get("teamId")
+                team_won = participant.get("win", False)
+                break
+        
+        if team_participated:
+            # Récupérer les infos du match
+            game_creation = match_data.get("info", {}).get("gameCreation", 0)
+            game_duration = match_data.get("info", {}).get("gameDuration", 0)
+            
+            # Filtrer les participants de l'équipe
+            team_participants = [p for p in participants if p.get("teamId") == team_side]
+            
+            team_matches.append({
+                "match_id": match_id,
+                "date": game_creation,
+                "duration": game_duration,
+                "won": team_won,
+                "side": team_side,
+                "participants": team_participants,
+                "all_participants": participants
+            })
+    
+    # Trier par date (plus récent en premier)
+    team_matches.sort(key=lambda x: x["date"], reverse=True)
+    
+    if team_matches:
+        st.info(f"📊 {len(team_matches)} match(s) trouvé(s)")
+        
+        # Afficher chaque match
+        for idx, match in enumerate(team_matches):
+            # Calculer les stats de l'équipe pour ce match
+            team_kills = sum(p.get("kills", 0) for p in match["participants"])
+            team_deaths = sum(p.get("deaths", 0) for p in match["participants"])
+            team_assists = sum(p.get("assists", 0) for p in match["participants"])
+            team_gold = sum(p.get("goldEarned", 0) for p in match["participants"])
+            
+            # Trouver l'équipe adverse
+            enemy_side = 200 if match["side"] == 100 else 100
+            enemy_participants = [p for p in match["all_participants"] if p.get("teamId") == enemy_side]
+            enemy_kills = sum(p.get("kills", 0) for p in enemy_participants)
+            enemy_deaths = sum(p.get("deaths", 0) for p in enemy_participants)
+            enemy_assists = sum(p.get("assists", 0) for p in enemy_participants)
+            enemy_gold = sum(p.get("goldEarned", 0) for p in enemy_participants)
+            
+            # Déterminer le nom de l'équipe adverse
+            enemy_team_name = "Équipe Adverse"
+            for participant in enemy_participants:
+                enemy_player = participant.get("riotIdGameName", "")
+                if enemy_player in player_to_team:
+                    enemy_team_name = player_to_team[enemy_player]
+                    break
+            
+            # Date formatée
+            from datetime import datetime
+            match_date = datetime.fromtimestamp(match["date"] / 1000)
+            date_str = match_date.strftime("%d/%m/%Y %H:%M")
+            
+            # Durée formatée
+            duration_min = match["duration"] // 60
+            duration_sec = match["duration"] % 60
+            duration_str = f"{duration_min}:{duration_sec:02d}"
+            
+            # Couleur selon victoire/défaite
+            result_emoji = "✅" if match["won"] else "❌"
+            result_text = "VICTOIRE" if match["won"] else "DÉFAITE"
+            result_color = "#4CAF50" if match["won"] else "#f44336"
+            side_emoji = "🔵" if match["side"] == 100 else "🔴"
+            enemy_side_emoji = "🔴" if match["side"] == 100 else "🔵"
+            
+            with st.expander(f"{result_emoji} {result_text} vs {enemy_team_name} - {date_str}", expanded=False):
+                # En-tête avec résumé
+                col_header1, col_vs, col_header2 = st.columns([5, 1, 5])
+                
+                with col_header1:
+                    if match["won"]:
+                        st.markdown(f"### {side_emoji} **{selected_team}** ✅ VICTOIRE")
+                    else:
+                        st.markdown(f"### {side_emoji} **{selected_team}** ❌ DÉFAITE")
+                    st.metric("Score", f"{team_kills} / {team_deaths} / {team_assists}")
+                    st.metric("Gold total", f"{team_gold:,}")
+                
+                with col_vs:
+                    st.markdown("<div style='text-align: center; padding-top: 30px;'><h2>VS</h2></div>", unsafe_allow_html=True)
+                    st.markdown(f"<div style='text-align: center; color: #9fb0c6;'>{duration_str}</div>", unsafe_allow_html=True)
+                
+                with col_header2:
+                    if not match["won"]:
+                        st.markdown(f"### {enemy_side_emoji} **{enemy_team_name}** ✅ VICTOIRE")
+                    else:
+                        st.markdown(f"### {enemy_side_emoji} **{enemy_team_name}** ❌ DÉFAITE")
+                    st.metric("Score", f"{enemy_kills} / {enemy_deaths} / {enemy_assists}")
+                    st.metric("Gold total", f"{enemy_gold:,}")
+                
+                st.markdown("---")
+                
+                # Afficher les joueurs en deux colonnes
+                col_team, col_enemy = st.columns(2)
+                
+                with col_team:
+                    st.markdown(f"**🎮 {selected_team}**")
+                    for player in match["participants"]:
+                        player_name = player.get("riotIdGameName", "Unknown")
+                        champion = player.get("championName", "Unknown")
+                        kills = player.get("kills", 0)
+                        deaths = player.get("deaths", 0)
+                        assists = player.get("assists", 0)
+                        cs = player.get("totalMinionsKilled", 0) + player.get("neutralMinionsKilled", 0)
+                        
+                        kda = f"{kills}/{deaths}/{assists}"
+                        icon_url = get_champion_icon_url(champion)
+                        
+                        player_html = f'''
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 6px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 4px;">
+                            <img src="{icon_url}" style="width: 36px; height: 36px; border-radius: 6px; border: 2px solid rgba(100,150,255,0.3);" title="{champion}">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; color: #e6eef6; font-size: 13px;">{player_name}</div>
+                                <div style="color: #9fb0c6; font-size: 11px;">{champion}</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="color: #e6eef6; font-weight: 600; font-size: 12px;">{kda}</div>
+                                <div style="color: #9fb0c6; font-size: 10px;">{cs} CS</div>
+                            </div>
+                        </div>
+                        '''
+                        st.markdown(player_html, unsafe_allow_html=True)
+                
+                with col_enemy:
+                    st.markdown(f"**🎮 {enemy_team_name}**")
+                    for player in enemy_participants:
+                        player_name = player.get("riotIdGameName", "Unknown")
+                        champion = player.get("championName", "Unknown")
+                        kills = player.get("kills", 0)
+                        deaths = player.get("deaths", 0)
+                        assists = player.get("assists", 0)
+                        cs = player.get("totalMinionsKilled", 0) + player.get("neutralMinionsKilled", 0)
+                        
+                        kda = f"{kills}/{deaths}/{assists}"
+                        icon_url = get_champion_icon_url(champion)
+                        
+                        player_html = f'''
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 6px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 4px;">
+                            <img src="{icon_url}" style="width: 36px; height: 36px; border-radius: 6px; border: 2px solid rgba(255,100,100,0.3);" title="{champion}">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; color: #e6eef6; font-size: 13px;">{player_name}</div>
+                                <div style="color: #9fb0c6; font-size: 11px;">{champion}</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="color: #e6eef6; font-weight: 600; font-size: 12px;">{kda}</div>
+                                <div style="color: #9fb0c6; font-size: 10px;">{cs} CS</div>
+                            </div>
+                        </div>
+                        '''
+                        st.markdown(player_html, unsafe_allow_html=True)
+    else:
+        st.warning("⚠️ Aucun match trouvé pour cette équipe")
+else:
+    st.warning("⚠️ Fichier match_details.json introuvable")
