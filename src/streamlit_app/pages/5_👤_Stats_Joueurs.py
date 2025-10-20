@@ -20,28 +20,48 @@ st.set_page_config(page_title="Stats Joueurs - OcciLan Stats", page_icon="👤",
 def get_champion_icon_url(champion_name: str, size: int = 48) -> str:
     """Get Data Dragon champion icon URL"""
     # Champion name corrections for Data Dragon API
+    # Data Dragon utilise les clés internes de Riot
     champion_name_mapping = {
-        "MonkeyKing": "Wukong",  # API retourne MonkeyKing, DataDragon attend Wukong
+        "Wukong": "MonkeyKing",  # Wukong → MonkeyKing pour Data Dragon
+        "MonkeyKing": "MonkeyKing",  # Déjà correct
         "FiddleSticks": "Fiddlesticks",
-        "Nunu": "Nunu",  # Sometimes "Nunu & Willump" but API uses "Nunu"
+        "Nunu": "Nunu",
+        "Nunu & Willump": "Nunu",
         "RekSai": "RekSai",
+        "Rek'Sai": "RekSai",
         "KSante": "KSante",
-        "Renata": "Renata",  # Sometimes "Renata Glasc"
+        "K'Sante": "KSante",
+        "Renata": "Renata",
+        "Renata Glasc": "Renata",
         "BelVeth": "Belveth",
+        "Bel'Veth": "Belveth",
         "KhaZix": "Khazix",
+        "Kha'Zix": "Khazix",
         "VelKoz": "Velkoz",
+        "Vel'Koz": "Velkoz",
         "ChoGath": "Chogath",
+        "Cho'Gath": "Chogath",
         "KaiSa": "Kaisa",
+        "Kai'Sa": "Kaisa",
         "LeBlanc": "Leblanc",
         "JarvanIV": "JarvanIV",
+        "Jarvan IV": "JarvanIV",
         "XinZhao": "XinZhao",
+        "Xin Zhao": "XinZhao",
         "MasterYi": "MasterYi",
+        "Master Yi": "MasterYi",
         "MissFortune": "MissFortune",
+        "Miss Fortune": "MissFortune",
         "TahmKench": "TahmKench",
+        "Tahm Kench": "TahmKench",
         "TwistedFate": "TwistedFate",
+        "Twisted Fate": "TwistedFate",
         "AurelionSol": "AurelionSol",
+        "Aurelion Sol": "AurelionSol",
         "DrMundo": "DrMundo",
-        "MonkeyKing": "MonkeyKing"
+        "Dr. Mundo": "DrMundo",
+        "KogMaw": "KogMaw",
+        "Kog'Maw": "KogMaw"
     }
     
     # Use the mapping if champion name exists in it, otherwise use as-is

@@ -119,6 +119,117 @@ if not available_editions or not selected_edition:
     st.info("👈 Sélectionnez une édition dans la sidebar")
     st.stop()
 
+# ============================================================================
+# FONCTIONS DE NORMALISATION DES NOMS DE CHAMPIONS
+# ============================================================================
+
+def normalize_champion_display_name(champion_name):
+    """Convertit les noms internes Riot en noms d'affichage"""
+    display_mapping = {
+        "MonkeyKing": "Wukong",
+        "Chogath": "Cho'Gath",
+        "DrMundo": "Dr. Mundo",
+        "JarvanIV": "Jarvan IV",
+        "Kaisa": "Kai'Sa",
+        "Khazix": "Kha'Zix",
+        "KogMaw": "Kog'Maw",
+        "Leblanc": "LeBlanc",
+        "MissFortune": "Miss Fortune",
+        "Nunu": "Nunu & Willump",
+        "RekSai": "Rek'Sai",
+        "Renata": "Renata Glasc",
+        "TahmKench": "Tahm Kench",
+        "TwistedFate": "Twisted Fate",
+        "Velkoz": "Vel'Koz",
+        "XinZhao": "Xin Zhao"
+    }
+    return display_mapping.get(champion_name, champion_name)
+
+def normalize_champion_key(champion_name):
+    """Convertit n'importe quel nom en clé interne Riot"""
+    key_mapping = {
+        "Wukong": "MonkeyKing",
+        "MonkeyKing": "MonkeyKing",
+        "Cho'Gath": "Chogath",
+        "Chogath": "Chogath",
+        "Dr. Mundo": "DrMundo",
+        "DrMundo": "DrMundo",
+        "Jarvan IV": "JarvanIV",
+        "JarvanIV": "JarvanIV",
+        "Kai'Sa": "Kaisa",
+        "Kaisa": "Kaisa",
+        "Kha'Zix": "Khazix",
+        "Khazix": "Khazix",
+        "Kog'Maw": "KogMaw",
+        "KogMaw": "KogMaw",
+        "LeBlanc": "Leblanc",
+        "Leblanc": "Leblanc",
+        "Miss Fortune": "MissFortune",
+        "MissFortune": "MissFortune",
+        "Nunu & Willump": "Nunu",
+        "Nunu": "Nunu",
+        "Rek'Sai": "RekSai",
+        "RekSai": "RekSai",
+        "Renata Glasc": "Renata",
+        "Renata": "Renata",
+        "Tahm Kench": "TahmKench",
+        "TahmKench": "TahmKench",
+        "Twisted Fate": "TwistedFate",
+        "TwistedFate": "TwistedFate",
+        "Vel'Koz": "Velkoz",
+        "Velkoz": "Velkoz",
+        "Xin Zhao": "XinZhao",
+        "XinZhao": "XinZhao"
+    }
+    return key_mapping.get(champion_name, champion_name)
+
+def get_champion_icon(champion_name):
+    version = "14.23.1"
+    # Mapping des noms de champions pour Data Dragon
+    champion_mapping = {
+        "MonkeyKing": "MonkeyKing",  # Wukong en interne
+        "Wukong": "MonkeyKing",
+        "Chogath": "Chogath",
+        "Cho'Gath": "Chogath",
+        "DrMundo": "DrMundo",
+        "Dr. Mundo": "DrMundo",
+        "JarvanIV": "JarvanIV",
+        "Jarvan IV": "JarvanIV",
+        "Kaisa": "Kaisa",
+        "Kai'Sa": "Kaisa",
+        "Khazix": "Khazix",
+        "Kha'Zix": "Khazix",
+        "KogMaw": "KogMaw",
+        "Kog'Maw": "KogMaw",
+        "Leblanc": "Leblanc",
+        "LeBlanc": "Leblanc",
+        "MissFortune": "MissFortune",
+        "Miss Fortune": "MissFortune",
+        "Nunu": "Nunu",
+        "Nunu & Willump": "Nunu",
+        "RekSai": "RekSai",
+        "Rek'Sai": "RekSai",
+        "Renata": "Renata",
+        "Renata Glasc": "Renata",
+        "TahmKench": "TahmKench",
+        "Tahm Kench": "TahmKench",
+        "TwistedFate": "TwistedFate",
+        "Twisted Fate": "TwistedFate",
+        "Velkoz": "Velkoz",
+        "Vel'Koz": "Velkoz",
+        "XinZhao": "XinZhao",
+        "Xin Zhao": "XinZhao"
+    }
+    
+    # Utiliser le mapping ou nettoyer le nom
+    clean_name = champion_mapping.get(champion_name, champion_name.replace(" ", "").replace("'", ""))
+    url = f"https://ddragon.leagueoflegends.com/cdn/{version}/img/champion/{clean_name}.png"
+    return url
+
+# ============================================================================
+# CHARGEMENT DES DONNÉES
+# ============================================================================
+
 # Charger les données de l'édition
 edition_manager = EditionDataManager(selected_edition)
 general_stats = edition_manager.load_general_stats()
@@ -129,6 +240,49 @@ if not general_stats or "champion_stats" not in general_stats:
 
 # Extraire les stats champions
 champion_data = general_stats["champion_stats"]
+
+# Charger les données détaillées des matchs pour calculer le KDA
+match_details = edition_manager.load_match_details()
+
+# Calculer le KDA par champion à partir des match_details
+champion_kda_data = {}
+champion_kp_data = {}
+
+if match_details:
+    for match_id, match in match_details.items():
+        if "info" not in match or "participants" not in match["info"]:
+            continue
+        
+        participants = match["info"]["participants"]
+        
+        # Calculer les kills totaux de chaque équipe
+        team_kills = {100: 0, 200: 0}
+        for p in participants:
+            team_kills[p.get("teamId", 100)] += p.get("kills", 0)
+        
+        for participant in participants:
+            champ_name_raw = participant.get("championName", "Unknown")
+            # Normaliser le nom du champion pour le matching
+            champ_name = normalize_champion_key(champ_name_raw)
+            
+            kills = participant.get("kills", 0)
+            deaths = participant.get("deaths", 0)
+            assists = participant.get("assists", 0)
+            team_id = participant.get("teamId", 100)
+            
+            # KDA calculation
+            kda = (kills + assists) / deaths if deaths > 0 else kills + assists
+            
+            # Kill Participation (KP) = (Kills + Assists) / Team Total Kills
+            total_team_kills = team_kills.get(team_id, 1)
+            kp = ((kills + assists) / total_team_kills * 100) if total_team_kills > 0 else 0
+            
+            if champ_name not in champion_kda_data:
+                champion_kda_data[champ_name] = []
+                champion_kp_data[champ_name] = []
+            
+            champion_kda_data[champ_name].append(kda)
+            champion_kp_data[champ_name].append(kp)
 
 # Créer un DataFrame à partir des données JSON
 # Structure: {"picks": {...}, "bans": {...}, "wins": {...}}
@@ -146,24 +300,31 @@ for champion in all_champions:
     # Calculer le winrate
     winrate = (wins / picks * 100) if picks > 0 else 0
     
+    # Normaliser le nom du champion pour le matching avec les stats de match
+    champion_key = normalize_champion_key(champion)
+    
+    # Calculer le KDA moyen et KP moyen
+    kda_list = champion_kda_data.get(champion_key, [])
+    kp_list = champion_kp_data.get(champion_key, [])
+    
+    avg_kda = sum(kda_list) / len(kda_list) if len(kda_list) > 0 else 0
+    avg_kp = sum(kp_list) / len(kp_list) if len(kp_list) > 0 else 0
+    
+    # Utiliser le nom d'affichage
+    display_name = normalize_champion_display_name(champion)
+    
     champions_list.append({
-        "Champion": champion,
+        "Champion": display_name,
         "Games": picks,
         "WR": round(winrate, 1),
         "Wins": wins,
-        "Bans": bans
+        "Bans": bans,
+        "KDA": round(avg_kda, 2),
+        "KP": round(avg_kp, 1)
     })
 
 df = pd.DataFrame(champions_list)
 df = df.sort_values("Games", ascending=False).reset_index(drop=True)
-
-# Fonction pour obtenir l'icône du champion
-def get_champion_icon(champion_name):
-    version = "14.23.1"
-    # Nettoyer le nom du champion pour l'URL
-    clean_name = champion_name.replace(" ", "").replace("'", "")
-    url = f"https://ddragon.leagueoflegends.com/cdn/{version}/img/champion/{clean_name}.png"
-    return url
 
 st.markdown("---")
 
@@ -174,7 +335,7 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     st.subheader("🎮 Les Plus Joués")
-    top_played = df.nlargest(5, 'Games')[['Champion', 'Games', 'WR']]
+    top_played = df.nlargest(5, 'Games')[['Champion', 'Games', 'WR', 'KDA']]
     
     for idx, row in top_played.iterrows():
         wr_color = "winrate-high" if row['WR'] >= 50 else "winrate-low"
@@ -185,7 +346,8 @@ with col1:
                 <h3 style="margin:0; color: #fff; display: inline-block;">{row['Champion']}</h3>
                 <p style="margin:0.5rem 0 0 0; font-size: 1.2rem;">
                     <span style="color: #60a5fa;">{int(row['Games'])} games</span> • 
-                    <span class="{wr_color}">{row['WR']}% WR</span>
+                    <span class="{wr_color}">{row['WR']}% WR</span> • 
+                    <span class="kda-stat">{row['KDA']:.2f} KDA</span>
                 </p>
             </div>
         """, unsafe_allow_html=True)
@@ -214,7 +376,7 @@ with col3:
     df_filtered = df[df['Games'] >= 5]
     
     if len(df_filtered) > 0:
-        top_winrate = df_filtered.nlargest(5, 'WR')[['Champion', 'WR', 'Games']]
+        top_winrate = df_filtered.nlargest(5, 'WR')[['Champion', 'WR', 'Games', 'KDA']]
         
         for idx, row in top_winrate.iterrows():
             icon_url = get_champion_icon(row['Champion'])
@@ -224,7 +386,8 @@ with col3:
                     <h3 style="margin:0; color: #fff; display: inline-block;">{row['Champion']}</h3>
                     <p style="margin:0.5rem 0 0 0; font-size: 1.2rem;">
                         <span style="color: #94a3b8;">{int(row['Games'])} games</span> • 
-                        <span class="winrate-high">{row['WR']}% WR</span>
+                        <span class="winrate-high">{row['WR']}% WR</span> • 
+                        <span class="kda-stat">{row['KDA']:.2f} KDA</span>
                     </p>
                 </div>
             """, unsafe_allow_html=True)
@@ -330,6 +493,8 @@ table_html = '''
             <th style="padding: 16px 14px; text-align: left; font-weight: 600; font-size: 13px; text-transform: uppercase;">Champion</th>
             <th style="padding: 16px 14px; text-align: left; font-weight: 600; font-size: 13px; text-transform: uppercase;">Games</th>
             <th style="padding: 16px 14px; text-align: left; font-weight: 600; font-size: 13px; text-transform: uppercase;">WR</th>
+            <th style="padding: 16px 14px; text-align: left; font-weight: 600; font-size: 13px; text-transform: uppercase;">KDA</th>
+            <th style="padding: 16px 14px; text-align: left; font-weight: 600; font-size: 13px; text-transform: uppercase;">KP</th>
             <th style="padding: 16px 14px; text-align: left; font-weight: 600; font-size: 13px; text-transform: uppercase;">Bans</th>
         </tr>
     </thead>
@@ -348,6 +513,17 @@ for idx, (_, champ) in enumerate(df_filtered_display.iterrows(), 1):
     else:
         wr_color = "#ef4444"
     
+    # Get KDA color
+    kda = champ.get('KDA', 0)
+    if kda >= 5:
+        kda_color = "#2ecc71"
+    elif kda >= 3:
+        kda_color = "#a3e635"
+    elif kda >= 2:
+        kda_color = "#facc15"
+    else:
+        kda_color = "#ef4444"
+    
     # Background color
     bg_color = "#0f1113" if idx % 2 == 0 else "#0b0d10"
     
@@ -362,6 +538,8 @@ for idx, (_, champ) in enumerate(df_filtered_display.iterrows(), 1):
             </td>
             <td style="padding: 16px 14px; color: #e6eef6;">{int(champ['Games'])}</td>
             <td style="padding: 16px 14px; color: {wr_color}; font-weight: 700;">{champ['WR']:.1f}%</td>
+            <td style="padding: 16px 14px; color: {kda_color}; font-weight: 700;">{champ['KDA']:.2f}</td>
+            <td style="padding: 16px 14px; color: #34d399; font-weight: 700;">{champ['KP']:.1f}%</td>
             <td style="padding: 16px 14px; color: #e6eef6;">{int(champ['Bans'])}</td>
         </tr>
     '''
@@ -377,10 +555,8 @@ components.html(table_html, height=600, scrolling=True)
 
 # Stats globales
 st.markdown("---")
-col_stat1, col_stat2, col_stat3 = st.columns(3)
+col_stat1, col_stat2 = st.columns(2)
 with col_stat1:
     st.metric("Champions uniques", len(df))
 with col_stat2:
-    st.metric("Total parties", int(df['Games'].sum()))
-with col_stat3:
-    st.metric("Winrate moyen", f"{df['WR'].mean():.1f}%")
+    st.metric("KDA moyen", f"{df['KDA'].mean():.2f}")
