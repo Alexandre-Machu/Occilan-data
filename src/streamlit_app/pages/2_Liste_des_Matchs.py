@@ -24,7 +24,15 @@ st.set_page_config(
 # Helper function for champion icons
 def get_champion_icon_url(champion_name: str) -> str:
     """Get Data Dragon champion icon URL"""
-    return f"https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/{champion_name}.png"
+    # Mapping pour les champions avec des noms spéciaux
+    champion_mapping = {
+        "MonkeyKing": "Wukong",
+        "Belveth": "Belveth",
+        "RenataGlasc": "Renata"
+    }
+    # Utiliser le mapping si disponible, sinon garder le nom original
+    display_name = champion_mapping.get(champion_name, champion_name)
+    return f"https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/{display_name}.png"
 
 # Custom CSS pour masquer la navigation par défaut
 st.markdown("""
@@ -55,12 +63,26 @@ with st.sidebar:
         st.info("💡 Créez une édition dans la page Admin")
         selected_edition = None
     else:
+        # Initialiser selected_edition dans session_state si pas déjà fait
+        if "selected_edition" not in st.session_state:
+            st.session_state.selected_edition = available_editions[0] if available_editions else None
+        
+        # Trouver l'index de l'édition sélectionnée
+        default_index = 0
+        if st.session_state.selected_edition in available_editions:
+            default_index = available_editions.index(st.session_state.selected_edition)
+        
         selected_edition = st.selectbox(
             "Édition",
             available_editions,
+            index=default_index,
             format_func=lambda x: f"Edition {x}",
-            label_visibility="collapsed"
+            label_visibility="collapsed",
+            key="edition_selector_matches"
         )
+        
+        # Sauvegarder dans session_state
+        st.session_state.selected_edition = selected_edition
         
         if selected_edition:
             edition_manager = EditionDataManager(selected_edition)

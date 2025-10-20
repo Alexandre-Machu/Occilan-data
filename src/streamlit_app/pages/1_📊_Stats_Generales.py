@@ -49,12 +49,26 @@ with st.sidebar:
         st.info("💡 Créez une édition dans la page Admin")
         selected_edition = None
     else:
+        # Initialiser selected_edition dans session_state si pas déjà fait
+        if "selected_edition" not in st.session_state:
+            st.session_state.selected_edition = available_editions[0] if available_editions else None
+        
+        # Trouver l'index de l'édition sélectionnée
+        default_index = 0
+        if st.session_state.selected_edition in available_editions:
+            default_index = available_editions.index(st.session_state.selected_edition)
+        
         selected_edition = st.selectbox(
             "Édition",
             available_editions,
+            index=default_index,
             format_func=lambda x: f"Edition {x}",
-            label_visibility="collapsed"
+            label_visibility="collapsed",
+            key="edition_selector_stats"
         )
+        
+        # Sauvegarder dans session_state
+        st.session_state.selected_edition = selected_edition
         
         if selected_edition:
             edition_manager = EditionDataManager(selected_edition)

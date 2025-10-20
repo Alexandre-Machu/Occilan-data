@@ -21,7 +21,7 @@ st.set_page_config(page_title="Recherche - OcciLan Stats", page_icon="🔍", lay
 def get_champion_icon_url(champion_name: str) -> str:
     """Get Data Dragon champion icon URL"""
     champion_name_mapping = {
-        "Wukong": "MonkeyKing",
+        "MonkeyKing": "Wukong",  # API retourne MonkeyKing, DataDragon attend Wukong
         "FiddleSticks": "Fiddlesticks",
         "Nunu": "Nunu",
         "RekSai": "RekSai",
@@ -122,12 +122,26 @@ with st.sidebar:
     
     with st.expander("📂 Sélection d'édition", expanded=True):
         if available_editions:
+            # Initialiser selected_edition dans session_state si pas déjà fait
+            if "selected_edition" not in st.session_state:
+                st.session_state.selected_edition = available_editions[0] if available_editions else None
+            
+            # Trouver l'index de l'édition sélectionnée
+            default_index = 0
+            if st.session_state.selected_edition in available_editions:
+                default_index = available_editions.index(st.session_state.selected_edition)
+            
             selected_edition = st.selectbox(
                 "Choisir une édition",
                 options=available_editions,
+                index=default_index,
                 format_func=lambda x: f"Edition {x}",
-                label_visibility="collapsed"
+                label_visibility="collapsed",
+                key="edition_selector_search"
             )
+            
+            # Sauvegarder dans session_state
+            st.session_state.selected_edition = selected_edition
             
             if selected_edition:
                 edition_manager = EditionDataManager(selected_edition)

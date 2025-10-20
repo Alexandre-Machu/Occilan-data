@@ -20,7 +20,7 @@ def get_champion_icon_url(champion_name: str, size: int = 48) -> str:
     """Get Data Dragon champion icon URL"""
     # Champion name corrections for Data Dragon API
     champion_name_mapping = {
-        "Wukong": "MonkeyKing",
+        "MonkeyKing": "Wukong",  # API retourne MonkeyKing, DataDragon attend Wukong
         "FiddleSticks": "Fiddlesticks",
         "Nunu": "Nunu",
         "RekSai": "RekSai",
@@ -39,8 +39,7 @@ def get_champion_icon_url(champion_name: str, size: int = 48) -> str:
         "TahmKench": "TahmKench",
         "TwistedFate": "TwistedFate",
         "AurelionSol": "AurelionSol",
-        "DrMundo": "DrMundo",
-        "MonkeyKing": "MonkeyKing"
+        "DrMundo": "DrMundo"
     }
     
     # Use the mapping if champion name exists in it, otherwise use as-is
@@ -197,12 +196,26 @@ with st.sidebar:
         st.info("💡 Créez une édition dans la page Admin")
         selected_edition = None
     else:
+        # Initialiser selected_edition dans session_state si pas déjà fait
+        if "selected_edition" not in st.session_state:
+            st.session_state.selected_edition = available_editions[0] if available_editions else None
+        
+        # Trouver l'index de l'édition sélectionnée
+        default_index = 0
+        if st.session_state.selected_edition in available_editions:
+            default_index = available_editions.index(st.session_state.selected_edition)
+        
         selected_edition = st.selectbox(
             "Édition",
             available_editions,
+            index=default_index,
             format_func=lambda x: f"Edition {x}",
-            label_visibility="collapsed"
+            label_visibility="collapsed",
+            key="edition_selector_teams"
         )
+        
+        # Sauvegarder dans session_state
+        st.session_state.selected_edition = selected_edition
         
         if selected_edition:
             edition_manager = EditionDataManager(selected_edition)
@@ -436,18 +449,7 @@ for idx, player in enumerate(team_players):
     player_short_name = player.get('gameName', 'Unknown')
     col_idx = idx % 5
     with cols[col_idx]:
-        if st.button(f"👤 {player_short_name}", key=f"view_profile_team_{player_short_name}", use_container_width=True):
+        if st.button(f"👤 {player_short_name}", key=f"view_profile_team_1_{selected_team}_{idx}", use_container_width=True):
             st.session_state["search_player"] = player_short_name
             st.switch_page("pages/5_Recherche.py")
 
-# Boutons cliquables pour voir les profils des joueurs de l'équipe
-st.markdown("---")
-st.markdown("#### 👁️ Voir le profil des joueurs")
-cols = st.columns(5)
-for idx, player in enumerate(team_players):
-    player_short_name = player.get('gameName', 'Unknown')
-    col_idx = idx % 5
-    with cols[col_idx]:
-        if st.button(f"👤 {player_short_name}", key=f"view_profile_team_{player_short_name}", use_container_width=True):
-            st.session_state["search_player"] = player_short_name
-            st.switch_page("pages/5_Recherche.py")

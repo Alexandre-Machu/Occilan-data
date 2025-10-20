@@ -75,12 +75,26 @@ def main():
             st.info("💡 Créez une édition dans la page Admin")
             selected_edition = None
         else:
+            # Initialiser selected_edition dans session_state si pas déjà fait
+            if "selected_edition" not in st.session_state:
+                st.session_state.selected_edition = editions[0] if editions else None
+            
+            # Trouver l'index de l'édition sélectionnée
+            default_index = 0
+            if st.session_state.selected_edition in editions:
+                default_index = editions.index(st.session_state.selected_edition)
+            
             selected_edition = st.selectbox(
                 "Édition",
                 editions,
+                index=default_index,
                 format_func=lambda x: f"Edition {x}",
-                label_visibility="collapsed"
+                label_visibility="collapsed",
+                key="edition_selector"
             )
+            
+            # Sauvegarder dans session_state
+            st.session_state.selected_edition = selected_edition
             
             if selected_edition:
                 edition_manager = EditionDataManager(selected_edition)
@@ -136,6 +150,7 @@ def main():
             """)
     else:
         # Edition selected - show summary
+        selected_edition = st.session_state.get("selected_edition")
         edition_manager = EditionDataManager(selected_edition)
         config = edition_manager.load_config()
         summary = edition_manager.get_summary()
