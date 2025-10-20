@@ -115,25 +115,28 @@ st.markdown("""
 
 multi_manager = MultiEditionManager()
 available_editions = multi_manager.list_editions()
-selected_edition = None
 
 with st.sidebar:
     st.title("🎮 OcciLan Stats")
     
     with st.expander("📂 Sélection d'édition", expanded=True):
-        if available_editions:
+        if not available_editions:
+            st.info("💡 Aucune édition disponible")
+            selected_edition = None
+        else:
             # Initialiser selected_edition dans session_state si pas déjà fait
             if "selected_edition" not in st.session_state:
-                st.session_state.selected_edition = available_editions[0] if available_editions else None
+                st.session_state.selected_edition = available_editions[0]
             
             # Trouver l'index de l'édition sélectionnée
             default_index = 0
             if st.session_state.selected_edition in available_editions:
                 default_index = available_editions.index(st.session_state.selected_edition)
             
+            # Sélecteur visible pour tous les utilisateurs
             selected_edition = st.selectbox(
-                "Choisir une édition",
-                options=available_editions,
+                "Édition",
+                available_editions,
                 index=default_index,
                 format_func=lambda x: f"Edition {x}",
                 label_visibility="collapsed",

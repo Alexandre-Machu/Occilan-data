@@ -219,13 +219,14 @@ with st.sidebar:
     else:
         # Initialiser selected_edition dans session_state si pas déjà fait
         if "selected_edition" not in st.session_state:
-            st.session_state.selected_edition = available_editions[0] if available_editions else None
+            st.session_state.selected_edition = available_editions[0]
         
         # Trouver l'index de l'édition sélectionnée
         default_index = 0
         if st.session_state.selected_edition in available_editions:
             default_index = available_editions.index(st.session_state.selected_edition)
         
+        # Sélecteur visible pour tous les utilisateurs
         selected_edition = st.selectbox(
             "Édition",
             available_editions,

@@ -34,26 +34,49 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ============================================================================
-# SIDEBAR - Navigation cohérente (AVANT l'authentification)
+# Check authentication FIRST
+# ============================================================================
+
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+# ============================================================================
+# SIDEBAR - Navigation cohérente (avec vérification auth)
 # ============================================================================
 
 with st.sidebar:
     st.markdown("### 📂 Sélection d'édition")
     
     multi_manager_sidebar = MultiEditionManager()
-    available_editions_sidebar = multi_manager_sidebar.list_editions(include_private=True)
+    # Vérifier si l'utilisateur est admin avant de lister les éditions privées
+    is_admin = st.session_state.get("authenticated", False)
+    available_editions_sidebar = multi_manager_sidebar.list_editions(include_private=is_admin)
     
     if not available_editions_sidebar:
         st.info("💡 Créez votre première édition ci-dessous")
         selected_edition_sidebar = None
     else:
+        # Initialiser selected_edition dans session_state si pas déjà fait
+        if "selected_edition" not in st.session_state:
+            st.session_state.selected_edition = available_editions_sidebar[0]
+        
+        # Trouver l'index de l'édition sélectionnée
+        default_index = 0
+        if st.session_state.selected_edition in available_editions_sidebar:
+            default_index = available_editions_sidebar.index(st.session_state.selected_edition)
+        
+        # Sélecteur visible
         selected_edition_sidebar = st.selectbox(
             "Édition",
             available_editions_sidebar,
+            index=default_index,
             format_func=lambda x: f"Edition {x}",
             label_visibility="collapsed",
             key="sidebar_edition_selector"
         )
+        
+        # Sauvegarder dans session_state
+        st.session_state.selected_edition = selected_edition_sidebar
         
         if selected_edition_sidebar:
             edition_manager_sidebar = EditionDataManager(selected_edition_sidebar)
@@ -77,11 +100,8 @@ with st.sidebar:
     st.caption("🎮 OcciLan Stats v2.0")
 
 # ============================================================================
-# Check authentication (APRÈS la sidebar)
+# Authentication page
 # ============================================================================
-
-if "authenticated" not in st.session_state:
-    st.session_state.authenticated = False
 
 if not st.session_state.authenticated:
     st.title("🔒 Administration")
@@ -185,13 +205,17 @@ if not editions:
     st.warning("⚠️ Aucune édition trouvée. Créez-en une d'abord.")
     st.stop()
 
-selected_edition = st.selectbox(
-    "📂 Sélectionner l'édition",
-    editions,
-    format_func=lambda x: f"Edition {x}"
-)
+# Use global selection if available (set by sidebar)
+selected_edition = None
+if "selected_edition" in st.session_state and st.session_state.selected_edition in editions:
+    selected_edition = st.session_state.selected_edition
+elif "sidebar_edition_selector" in st.session_state and st.session_state.sidebar_edition_selector in editions:
+    selected_edition = st.session_state.sidebar_edition_selector
+else:
+    # Fallback to first available edition
+    selected_edition = editions[0] if editions else None
 
-edition_manager = EditionDataManager(selected_edition)
+edition_manager = EditionDataManager(selected_edition) if selected_edition else None
 
 # Afficher les infos de l'édition actuelle
 config = edition_manager.load_config()

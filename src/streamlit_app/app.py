@@ -84,13 +84,14 @@ def main():
             if st.session_state.selected_edition in editions:
                 default_index = editions.index(st.session_state.selected_edition)
             
+            # Sélecteur visible pour tous les utilisateurs
             selected_edition = st.selectbox(
                 "Édition",
                 editions,
                 index=default_index,
                 format_func=lambda x: f"Edition {x}",
                 label_visibility="collapsed",
-                key="edition_selector"
+                key="edition_selector_home"
             )
             
             # Sauvegarder dans session_state
