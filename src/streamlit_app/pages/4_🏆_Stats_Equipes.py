@@ -66,8 +66,8 @@ def get_champion_icon_url(champion_name: str, size: int = 48) -> str:
     # Use the mapping if champion name exists in it, otherwise use as-is
     corrected_name = champion_name_mapping.get(champion_name, champion_name)
     
-    # Latest version - updated to 14.24.1 to include Ambessa
-    return f"https://ddragon.leagueoflegends.com/cdn/14.24.1/img/champion/{corrected_name}.png"
+    # Latest version - updated to 15.20.1 to include Yunara
+    return f"https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/{corrected_name}.png"
 
 # Custom CSS
 st.markdown("""
@@ -507,7 +507,11 @@ if match_details_path.exists():
         team_won = False
         
         for participant in participants:
-            player_name = participant.get("riotIdGameName", "")
+            # Build full player name (GameName#TagLine)
+            game_name = participant.get("riotIdGameName", "")
+            tag_line = participant.get("riotIdTagline", "")
+            player_name = f"{game_name}#{tag_line}" if game_name and tag_line else game_name
+            
             if player_to_team.get(player_name) == selected_team:
                 team_participated = True
                 team_side = participant.get("teamId")
@@ -557,7 +561,10 @@ if match_details_path.exists():
             # Déterminer le nom de l'équipe adverse
             enemy_team_name = "Équipe Adverse"
             for participant in enemy_participants:
-                enemy_player = participant.get("riotIdGameName", "")
+                game_name = participant.get("riotIdGameName", "")
+                tag_line = participant.get("riotIdTagline", "")
+                enemy_player = f"{game_name}#{tag_line}" if game_name and tag_line else game_name
+                
                 if enemy_player in player_to_team:
                     enemy_team_name = player_to_team[enemy_player]
                     break

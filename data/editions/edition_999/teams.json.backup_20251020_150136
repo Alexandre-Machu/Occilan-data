@@ -1,13 +1,14 @@
 {
   "SU Esport": {
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=%2CLamnich%23210%2CSU+Craksou%23RANK1%2Cazula%23213%2CPandorica%23KKURA%2CShalfy%23EUW",
     "players": [
       {
-        "role": "JGL",
+        "role": "TOP",
         "gameName": "Lamnich",
         "tagLine": "210"
       },
       {
-        "role": "TOP",
+        "role": "JGL",
         "gameName": "SU Craksou",
         "tagLine": "RANK1"
       },
@@ -26,7 +27,6 @@
         "gameName": "Shalfy",
         "tagLine": "EUW"
       }
-    ],
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=%2CLamnich%23210%2CSU+Craksou%23RANK1%2Cazula%23213%2CPandorica%23KKURA%2CShalfy%23EUW"
+    ]
   }
 }

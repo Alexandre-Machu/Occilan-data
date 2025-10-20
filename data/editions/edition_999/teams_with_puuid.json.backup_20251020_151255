@@ -9,13 +9,7 @@
         "role": "JGL",
         "puuid": "NYiKQ7B6HDzoJ_UB6vRcay0j7JbfJ73035WTIpaqo6bW9RSNKnssTMWxlyGADjT-98UZrvl3EUdsUQ",
         "summonerLevel": 682,
-        "profileIconId": 1626,
-        "tier": "DIAMOND",
-        "rank": "I",
-        "leaguePoints": 57,
-        "wins": 307,
-        "losses": 313,
-        "winrate": 49.52
+        "profileIconId": 1626
       },
       {
         "gameName": "SU Craksou",
@@ -23,13 +17,7 @@
         "role": "TOP",
         "puuid": "hFRWOSNereqPhbsxCT0SzM64zd_JuBEm9YrWeJkC2M-JYBNpxVLzdqlGMMBRhdU_tIZe61E9YYCQJg",
         "summonerLevel": 589,
-        "profileIconId": 6362,
-        "tier": "EMERALD",
-        "rank": "I",
-        "leaguePoints": 53,
-        "wins": 230,
-        "losses": 221,
-        "winrate": 51.0
+        "profileIconId": 6362
       },
       {
         "gameName": "azula",
@@ -37,13 +25,7 @@
         "role": "MID",
         "puuid": "PqlJ0L3CMPi5dRYDjP07UjZarVhrELUEwKwD9umubVUmKvUwoQFxNMJHa09ZiE7zhFidUYJGaflkDw",
         "summonerLevel": 251,
-        "profileIconId": 6380,
-        "tier": "EMERALD",
-        "rank": "III",
-        "leaguePoints": 36,
-        "wins": 76,
-        "losses": 92,
-        "winrate": 45.24
+        "profileIconId": 6380
       },
       {
         "gameName": "Pandorica",
@@ -51,13 +33,7 @@
         "role": "ADC",
         "puuid": "hgt-MZdKX6sk5mmB1Idu19iqxHCbiP7WRsN5Ai4RkJdQ3sMgLe8lG1oo_EtSMyNsqJMqjr-bSMkLjw",
         "summonerLevel": 979,
-        "profileIconId": 5999,
-        "tier": "DIAMOND",
-        "rank": "IV",
-        "leaguePoints": 67,
-        "wins": 118,
-        "losses": 114,
-        "winrate": 50.86
+        "profileIconId": 5999
       },
       {
         "gameName": "Shalfy",
@@ -65,13 +41,7 @@
         "role": "SUP",
         "puuid": "Cb301Mo35NFem1dfN3wT08MP_hquDgRGhn9VHftRsUjikw9pFRcm-ASSvw_h0UNw1ctleWORxLVg9A",
         "summonerLevel": 694,
-        "profileIconId": 576,
-        "tier": "DIAMOND",
-        "rank": "IV",
-        "leaguePoints": 96,
-        "wins": 123,
-        "losses": 101,
-        "winrate": 54.91
+        "profileIconId": 576
       }
     ]
   }

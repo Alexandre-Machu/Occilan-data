@@ -1,9 +1,0 @@
-.env
-*.pyc
-__pycache__/
-data/cache/
-# Ignore processed outputs by default, but allow Excel-derived stats JSON needed at runtime
-data/processed/*
-!data/processed/excel_stats_edition*.json
-# local-only files and secrets
-.env.backup

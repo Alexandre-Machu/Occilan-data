@@ -1,0 +1,22 @@
+{
+  "SU Esport": {
+    "name": "SU Esport",
+    "opgg_link": "https://www.op.gg/multisearch/euw?summoners=Lamnich%23210",
+    "players": [
+      {
+        "gameName": "Lamnich",
+        "tagLine": "210",
+        "role": "FILL",
+        "puuid": "NYiKQ7B6HDzoJ_UB6vRcOVxDmATZdLqOzW1OkH-4hOy4tKdwvUqj10u8-l12MN3d5K0KpqOh3Oqc0w",
+        "summonerLevel": 100,
+        "profileIconId": 29,
+        "tier": "UNRANKED",
+        "rank": "IV",
+        "leaguePoints": 0,
+        "wins": 0,
+        "losses": 0,
+        "winrate": 0.0
+      }
+    ]
+  }
+}

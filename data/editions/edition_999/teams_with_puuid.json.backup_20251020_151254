@@ -6,21 +6,21 @@
       {
         "gameName": "Lamnich",
         "tagLine": "210",
-        "role": "JGL",
+        "role": "TOP",
         "puuid": "NYiKQ7B6HDzoJ_UB6vRcay0j7JbfJ73035WTIpaqo6bW9RSNKnssTMWxlyGADjT-98UZrvl3EUdsUQ",
         "summonerLevel": 682,
         "profileIconId": 1626,
         "tier": "DIAMOND",
         "rank": "I",
-        "leaguePoints": 57,
-        "wins": 307,
-        "losses": 313,
-        "winrate": 49.52
+        "leaguePoints": 76,
+        "wins": 306,
+        "losses": 311,
+        "winrate": 49.59
       },
       {
         "gameName": "SU Craksou",
         "tagLine": "RANK1",
-        "role": "TOP",
+        "role": "JGL",
         "puuid": "hFRWOSNereqPhbsxCT0SzM64zd_JuBEm9YrWeJkC2M-JYBNpxVLzdqlGMMBRhdU_tIZe61E9YYCQJg",
         "summonerLevel": 589,
         "profileIconId": 6362,
@@ -67,11 +67,11 @@
         "summonerLevel": 694,
         "profileIconId": 576,
         "tier": "DIAMOND",
-        "rank": "IV",
-        "leaguePoints": 96,
-        "wins": 123,
-        "losses": 101,
-        "winrate": 54.91
+        "rank": "III",
+        "leaguePoints": 19,
+        "wins": 122,
+        "losses": 99,
+        "winrate": 55.2
       }
     ]
   }

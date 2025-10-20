@@ -899,6 +899,58 @@ with tab3:
         
         st.markdown("---")
         
+        # Delete data section
+        st.markdown("**🗑️ Gestion des données:**")
+        col_delete1, col_delete2 = st.columns([3, 1])
+        
+        with col_delete1:
+            st.warning("⚠️ Supprime les données de matchs (tournament_matches.json, match_details.json, general_stats.json)")
+        
+        with col_delete2:
+            if st.button("🗑️ Supprimer", type="secondary", help="Supprime toutes les données de matchs de cette édition", use_container_width=True):
+                # Confirmation dialog using session state
+                if "confirm_delete" not in st.session_state:
+                    st.session_state.confirm_delete = True
+                    st.rerun()
+        
+        # Confirmation dialog
+        if st.session_state.get("confirm_delete", False):
+            st.error("⚠️ **ATTENTION** : Cette action est irréversible !")
+            col_confirm, col_cancel = st.columns(2)
+            
+            with col_confirm:
+                if st.button("✅ Confirmer la suppression", type="primary", use_container_width=True):
+                    try:
+                        # Delete files
+                        edition_path = Path(f"data/editions/edition_{selected_edition}")
+                        files_to_delete = [
+                            "tournament_matches.json",
+                            "match_details.json", 
+                            "general_stats.json",
+                            "team_stats.json"
+                        ]
+                        
+                        deleted_count = 0
+                        for filename in files_to_delete:
+                            file_path = edition_path / filename
+                            if file_path.exists():
+                                file_path.unlink()
+                                deleted_count += 1
+                        
+                        st.session_state.confirm_delete = False
+                        st.success(f"✅ {deleted_count} fichier(s) supprimé(s)")
+                        st.rerun()
+                        
+                    except Exception as e:
+                        st.error(f"❌ Erreur lors de la suppression: {str(e)}")
+            
+            with col_cancel:
+                if st.button("❌ Annuler", use_container_width=True):
+                    st.session_state.confirm_delete = False
+                    st.rerun()
+        
+        st.markdown("---")
+        
         # API Key check
         api_key = os.getenv("RIOT_API_KEY")
         if not api_key:
@@ -910,7 +962,7 @@ with tab3:
             col_fetch, col_full = st.columns(2)
             
             with col_fetch:
-                if st.button("🎮 Fetch Matchs Tournoi", help="Récupère uniquement les matchs de tournoi (type='tourney')", use_container_width=True):
+                if st.button("🎮 Fetch Matchs Tournoi", help="Récupère les matchs de tournoi et calcule les stats", use_container_width=True):
                     # Initialize processor
                     processor = EditionProcessor(
                         edition_id=selected_edition,
@@ -933,33 +985,64 @@ with tab3:
                         
                         try:
                             with st.spinner("🎮 Récupération des matchs de tournoi..."):
-                                # Run step 4: fetch match IDs avec type="tourney"
+                                # Step 4: Fetch match IDs avec type="tourney" ou queue custom
+                                status_text.text("📋 Récupération des IDs de matchs...")
+                                progress_bar.progress(20)
+                                
                                 tournament_matches = processor.step4_fetch_match_ids(
-                                    use_tourney_filter=True  # 🎯 Filtre tournois !
+                                    use_tourney_filter=True  # 🎯 Filtre tournois ou queue custom !
                                 )
                                 
-                                progress_bar.empty()
-                                status_text.empty()
-                                
-                                if tournament_matches:
-                                    st.success(f"✅ {len(tournament_matches)} équipes traitées!")
-                                    
-                                    # Afficher le résumé
-                                    total_matches = sum(len(matches) for matches in tournament_matches.values())
-                                    
-                                    col1, col2 = st.columns(2)
-                                    with col1:
-                                        st.metric("Équipes", len(tournament_matches))
-                                    with col2:
-                                        st.metric("Matchs trouvés", total_matches)
-                                    
-                                    # Afficher la liste des matchs par équipe
-                                    with st.expander("📋 Matchs par équipe"):
-                                        for team_name, match_ids in tournament_matches.items():
-                                            st.markdown(f"**{team_name}**: {len(match_ids)} matchs")
-                                            st.caption(", ".join(match_ids[:5]) + ("..." if len(match_ids) > 5 else ""))
-                                else:
+                                if not tournament_matches:
+                                    progress_bar.empty()
+                                    status_text.empty()
                                     st.warning("⚠️ Aucun match trouvé")
+                                else:
+                                    total_matches = sum(len(matches) for matches in tournament_matches.values())
+                                    st.info(f"✅ {total_matches} matchs trouvés pour {len(tournament_matches)} équipes")
+                                    
+                                    # Step 5: Fetch match details
+                                    status_text.text("📝 Récupération des détails de matchs...")
+                                    progress_bar.progress(50)
+                                    
+                                    match_details = processor.step5_fetch_match_details(use_cache=True)
+                                    
+                                    if match_details:
+                                        matches_fetched = len(match_details)
+                                        st.info(f"✅ {matches_fetched} matchs détaillés récupérés")
+                                        
+                                        # Step 6: Calculate stats
+                                        status_text.text("📊 Calcul des statistiques...")
+                                        progress_bar.progress(80)
+                                        
+                                        stats_result = processor.step6_calculate_stats()
+                                        
+                                        progress_bar.progress(100)
+                                        progress_bar.empty()
+                                        status_text.empty()
+                                        
+                                        if stats_result:
+                                            champions_count = len(stats_result)
+                                            st.success(f"✅ Pipeline terminé ! {champions_count} champions analysés")
+                                            
+                                            # Afficher le résumé
+                                            col1, col2, col3 = st.columns(3)
+                                            with col1:
+                                                st.metric("Équipes", len(tournament_matches))
+                                            with col2:
+                                                st.metric("Matchs", matches_fetched)
+                                            with col3:
+                                                st.metric("Champions", champions_count)
+                                            
+                                            # Afficher la liste des matchs par équipe
+                                            with st.expander("📋 Matchs par équipe"):
+                                                for team_name, match_ids in tournament_matches.items():
+                                                    st.markdown(f"**{team_name}**: {len(match_ids)} matchs")
+                                                    st.caption(", ".join(match_ids[:5]) + ("..." if len(match_ids) > 5 else ""))
+                                        else:
+                                            st.warning("⚠️ Erreur lors du calcul des stats")
+                                    else:
+                                        st.warning("⚠️ Erreur lors de la récupération des détails")
                         
                         except Exception as e:
                             progress_bar.empty()

@@ -44,7 +44,7 @@ def get_champion_icon_url(champion_name: str) -> str:
         "MonkeyKing": "MonkeyKing"
     }
     corrected_name = champion_name_mapping.get(champion_name, champion_name)
-    return f"https://ddragon.leagueoflegends.com/cdn/14.24.1/img/champion/{corrected_name}.png"
+    return f"https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/{corrected_name}.png"
 
 # Custom CSS
 st.markdown("""

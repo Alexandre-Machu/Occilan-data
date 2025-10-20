@@ -1,10 +1,12 @@
 {
   "edition_number": 999,
-  "edition_name": "Test Workflow",
+  "edition_name": "Test SU Esport - ARURF",
   "year": 2025,
-  "start_date": "2025-10-01",
-  "end_date": "2025-10-31",
-  "created_at": "2025-10-17T11:49:09.382299",
-  "status": "pending",
-  "is_private": true
+  "start_date": "2025-10-19",
+  "end_date": "2025-10-20",
+  "created_at": "2025-10-20T14:30:00",
+  "status": "active",
+  "is_private": true,
+  "game_mode": "ARURF",
+  "queue_id": 3130
 }

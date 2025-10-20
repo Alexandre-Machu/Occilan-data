@@ -32,7 +32,7 @@ def get_champion_icon_url(champion_name: str) -> str:
     }
     # Utiliser le mapping si disponible, sinon garder le nom original
     display_name = champion_mapping.get(champion_name, champion_name)
-    return f"https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/{display_name}.png"
+    return f"https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/{display_name}.png"
 
 # Custom CSS pour masquer la navigation par défaut
 st.markdown("""
@@ -113,7 +113,7 @@ def format_duration(seconds):
 
 def get_champion_icon_url(champion_name):
     """Retourne l'URL de l'icône du champion"""
-    return f"https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/{champion_name}.png"
+    return f"https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/{champion_name}.png"
 
 def get_team_name_from_players(participants, player_to_team):
     """Trouve le nom de l'équipe à partir des joueurs"""

@@ -445,7 +445,7 @@ class RiotAPIClient:
         
         for i, match_id in enumerate(match_ids, 1):
             if progress_callback:
-                progress_callback(i, total, match_id)
+                progress_callback(match_id, i, total)
             
             details = self.get_match_details(match_id, use_cache)
             if details:

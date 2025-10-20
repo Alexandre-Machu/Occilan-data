@@ -59,6 +59,7 @@ class StatsCalculator:
             "average_assists": 0,
             "average_kda": 0,
             "average_cs_per_min": 0,
+            "average_cs_per_minute": 0,  # Alias for compatibility
             "average_vision_score": 0,
             "average_gold_per_min": 0,
             "average_damage_per_min": 0,
@@ -115,7 +116,14 @@ class StatsCalculator:
         """Process a single match and update statistics"""
         
         info = match_data.get("info", {})
-        duration = info.get("gameDuration", 0)
+        duration_raw = info.get("gameDuration", 0)
+        
+        # Convertir duration en int (peut être string ou int selon l'API)
+        try:
+            duration = int(duration_raw) if duration_raw else 0
+        except (ValueError, TypeError):
+            logger.warning(f"Match {match_id}: invalid duration '{duration_raw}', skipping")
+            return
         
         if duration == 0:
             logger.warning(f"Match {match_id}: duration is 0, skipping")
@@ -127,6 +135,9 @@ class StatsCalculator:
         if not participants:
             logger.warning(f"Match {match_id}: no participants found")
             return
+        
+        # Track which teams already processed this match (to avoid counting it multiple times)
+        teams_processed_in_match = set()
         
         # Get team names from first participant of each team
         team_100_name = None
@@ -222,13 +233,17 @@ class StatsCalculator:
             player_stats["champion_stats"][champion_name]["deaths"] += deaths
             player_stats["champion_stats"][champion_name]["assists"] += assists
             
-            # Update team stats
-            team_stats["games_played"] += 1
-            team_stats["wins"] += 1 if win else 0
-            team_stats["losses"] += 0 if win else 1
+            # Update team stats (only count match once per team)
+            if team_name not in teams_processed_in_match:
+                teams_processed_in_match.add(team_name)
+                team_stats["games_played"] += 1
+                team_stats["wins"] += 1 if win else 0
+                team_stats["losses"] += 0 if win else 1
+                team_stats["total_game_duration"] += duration
+            
+            # Always update kills/deaths (sum across all players)
             team_stats["total_kills"] += kills
             team_stats["total_deaths"] += deaths
-            team_stats["total_game_duration"] += duration
             
             # Update global champion stats
             champ_stats = self.stats["champion_stats"]
@@ -305,7 +320,9 @@ class StatsCalculator:
                 player_stats["unique_champions_played"] = len(player_stats["champions_played"])
                 
                 if minutes_played > 0:
-                    player_stats["average_cs_per_min"] = round(player_stats["total_cs"] / minutes_played, 2)
+                    cs_per_min = round(player_stats["total_cs"] / minutes_played, 2)
+                    player_stats["average_cs_per_min"] = cs_per_min
+                    player_stats["average_cs_per_minute"] = cs_per_min  # Alias for compatibility
                     player_stats["average_gold_per_min"] = round(player_stats["total_gold_earned"] / minutes_played, 0)
                     player_stats["average_damage_per_min"] = round(player_stats["total_damage_dealt"] / minutes_played, 0)
                 

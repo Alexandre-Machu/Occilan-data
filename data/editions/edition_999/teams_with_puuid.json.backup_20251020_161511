@@ -12,10 +12,10 @@
         "profileIconId": 1626,
         "tier": "DIAMOND",
         "rank": "I",
-        "leaguePoints": 57,
-        "wins": 307,
-        "losses": 313,
-        "winrate": 49.52
+        "leaguePoints": 76,
+        "wins": 306,
+        "losses": 311,
+        "winrate": 49.59
       },
       {
         "gameName": "SU Craksou",
@@ -67,11 +67,11 @@
         "summonerLevel": 694,
         "profileIconId": 576,
         "tier": "DIAMOND",
-        "rank": "IV",
-        "leaguePoints": 96,
+        "rank": "III",
+        "leaguePoints": 38,
         "wins": 123,
-        "losses": 101,
-        "winrate": 54.91
+        "losses": 99,
+        "winrate": 55.41
       }
     ]
   }

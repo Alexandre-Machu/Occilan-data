@@ -319,7 +319,21 @@ class EditionProcessor:
                 continue
             
             try:
-                if use_tourney_filter:
+                # Vérifier si l'édition a un queue_id spécifique (ex: 3130 pour ARURF)
+                config = self.data_manager.load_config()
+                custom_queue_id = config.get("queue_id") if config else None
+                
+                if custom_queue_id:
+                    # Mode spécial avec queue ID custom (ex: ARURF 3130)
+                    match_ids = self.riot_client.get_match_ids_by_puuid(
+                        puuid=puuid,
+                        start_time=start_timestamp,
+                        end_time=end_timestamp,
+                        queue_id=custom_queue_id,  # 🎯 Queue spécifique (ARURF, etc.)
+                        count=50
+                    )
+                    logger.info(f"Using custom queue {custom_queue_id} for {team_name}")
+                elif use_tourney_filter:
                     # Méthode optimale: type="tourney"
                     match_ids = self.riot_client.get_match_ids_by_puuid(
                         puuid=puuid,
@@ -440,7 +454,34 @@ class EditionProcessor:
         try:
             stats = self.stats_calculator.calculate_all_stats(match_details, teams_with_puuid)
             
+            # Save general_stats.json (contains everything)
             self.data_manager.save_general_stats(stats)
+            
+            # Generate team_stats.json in the format expected by Stats Équipes page
+            # Structure: { "TeamName": { "team_stats": {...}, "players": {...} } }
+            if "team_stats" in stats and "player_stats" in stats:
+                import json
+                
+                team_stats_formatted = {}
+                
+                for team_name, team_data in stats["team_stats"].items():
+                    # Initialize team structure
+                    team_stats_formatted[team_name] = {
+                        "team_stats": team_data,
+                        "players": {}
+                    }
+                    
+                    # Add players belonging to this team
+                    for player_name, player_data in stats["player_stats"].items():
+                        if player_data.get("team") == team_name:
+                            team_stats_formatted[team_name]["players"][player_name] = player_data
+                
+                # Save to team_stats.json
+                team_stats_path = self.data_manager.edition_path / "team_stats.json"
+                with open(team_stats_path, 'w', encoding='utf-8') as f:
+                    json.dump(team_stats_formatted, f, ensure_ascii=False, indent=2)
+                
+                logger.info(f"Saved team_stats.json with {len(team_stats_formatted)} teams")
             
             self._update_progress(
                 f"Stats calculated: {stats['metadata']['total_players']} players, "

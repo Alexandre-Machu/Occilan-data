@@ -67,8 +67,8 @@ def get_champion_icon_url(champion_name: str, size: int = 48) -> str:
     # Use the mapping if champion name exists in it, otherwise use as-is
     corrected_name = champion_name_mapping.get(champion_name, champion_name)
     
-    # Latest version - updated to 14.24.1 to include Ambessa (released patch 14.23)
-    return f"https://ddragon.leagueoflegends.com/cdn/14.24.1/img/champion/{corrected_name}.png"
+    # Latest version - updated to 15.20.1 to include Yunara
+    return f"https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/{corrected_name}.png"
 
 # Custom CSS
 st.markdown("""
@@ -318,7 +318,7 @@ sort_mapping = {
     "Kills/G": "average_kills",
     "Deaths/G": "average_deaths",
     "Assists/G": "average_assists",
-    "CS/min": "average_cs_per_minute",
+    "CS/min": "average_cs_per_min",
     "Vision/G": "average_vision_score",
     "Champions joués": "unique_champions_played"
 }
@@ -434,7 +434,7 @@ for idx, (_, player) in enumerate(filtered_df.iterrows(), 1):
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_kills', 0):.1f}</td>
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_deaths', 0):.1f}</td>
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_assists', 0):.1f}</td>
-            <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_cs_per_minute', 0):.1f}</td>
+            <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_cs_per_min', 0):.1f}</td>
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_vision_score', 0):.1f}</td>
             <td style="padding: 16px 14px;">{champions_html}</td>
         </tr>
@@ -478,7 +478,7 @@ with col2:
     st.metric("Kills/G Moyen", f"{avg_kills:.1f}")
 
 with col3:
-    avg_cs = filtered_df["average_cs_per_minute"].mean()
+    avg_cs = filtered_df["average_cs_per_min"].mean()
     st.metric("CS/min Moyen", f"{avg_cs:.1f}")
 
 with col4:

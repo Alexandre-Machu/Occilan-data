@@ -184,7 +184,7 @@ def normalize_champion_key(champion_name):
     return key_mapping.get(champion_name, champion_name)
 
 def get_champion_icon(champion_name):
-    version = "14.23.1"
+    version = "15.20.1"  # Updated to include Yunara and latest champions
     # Mapping des noms de champions pour Data Dragon
     champion_mapping = {
         "MonkeyKing": "MonkeyKing",  # Wukong en interne
