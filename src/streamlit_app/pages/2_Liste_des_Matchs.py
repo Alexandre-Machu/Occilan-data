@@ -22,6 +22,22 @@ st.set_page_config(
 )
 
 # Helper function for champion icons
+def get_role_icon_url(role: str, size: int = 24) -> str:
+    """Get Data Dragon role icon URL"""
+    role_norm = role.upper()
+    if role_norm in ["TOP"]:
+        key = "position-top.svg"
+    elif role_norm in ["JGL", "JUNGLE"]:
+        key = "position-jungle.svg"
+    elif role_norm in ["MID", "MIDDLE"]:
+        key = "position-middle.svg"
+    elif role_norm in ["ADC", "BOTTOM"]:
+        key = "position-bottom.svg"
+    elif role_norm in ["SUP", "SUPP", "UTILITY"]:
+        key = "position-utility.svg"
+    else:
+        key = "position-top.svg"
+    return f"https://raw.communitydragon.org/pbe/plugins/rcp-fe-lol-static-assets/global/default/svg/{key}"
 def get_champion_icon_url(champion_name: str) -> str:
     """Get Data Dragon champion icon URL"""
     # Mapping pour les champions avec des noms spéciaux
@@ -201,20 +217,21 @@ def display_match_card(match_id, match_data, player_to_team):
                 deaths = p.get("deaths", 0)
                 assists = p.get("assists", 0)
                 cs = p.get("totalMinionsKilled", 0) + p.get("neutralMinionsKilled", 0)
-                
+                role = p.get("teamPosition", "UNKNOWN")
                 kda = f"{kills}/{deaths}/{assists}"
                 icon_url = get_champion_icon_url(champion)
-                
+                role_icon_url = get_role_icon_url(role)
                 # Créer une ligne avec la carte du joueur et le bouton à droite
                 col_card, col_button = st.columns([5, 1])
-                
                 with col_card:
-                    # Player row with champion icon
+                    # Player row with champion icon et icône du rôle
                     player_html = f'''
                     <div style="display: flex; align-items: center; gap: 12px; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 6px;">
                         <img src="{icon_url}" style="width: 40px; height: 40px; border-radius: 6px; border: 2px solid rgba(100,150,255,0.3);" title="{champion}">
                         <div style="flex: 1;">
-                            <div style="font-weight: 700; color: #e6eef6; font-size: 14px;">{player_name}</div>
+                            <div style="font-weight: 700; color: #e6eef6; font-size: 14px;">
+                                <img src="{role_icon_url}" style="width:18px;vertical-align:middle;margin-right:4px;" title="{role}">{player_name}
+                            </div>
                             <div style="color: #9fb0c6; font-size: 12px;">{champion}</div>
                         </div>
                         <div style="text-align: right;">
@@ -258,20 +275,19 @@ def display_match_card(match_id, match_data, player_to_team):
                 deaths = p.get("deaths", 0)
                 assists = p.get("assists", 0)
                 cs = p.get("totalMinionsKilled", 0) + p.get("neutralMinionsKilled", 0)
-                
+                role = p.get("teamPosition", "UNKNOWN")
                 kda = f"{kills}/{deaths}/{assists}"
                 icon_url = get_champion_icon_url(champion)
-                
-                # Créer une ligne avec la carte du joueur et le bouton à droite
+                role_icon_url = get_role_icon_url(role)
                 col_card, col_button = st.columns([5, 1])
-                
                 with col_card:
-                    # Player row with champion icon
                     player_html = f'''
                     <div style="display: flex; align-items: center; gap: 12px; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 6px;">
                         <img src="{icon_url}" style="width: 40px; height: 40px; border-radius: 6px; border: 2px solid rgba(255,100,100,0.3);" title="{champion}">
                         <div style="flex: 1;">
-                            <div style="font-weight: 700; color: #e6eef6; font-size: 14px;">{player_name}</div>
+                            <div style="font-weight: 700; color: #e6eef6; font-size: 14px;">
+                                <img src="{role_icon_url}" style="width:18px;vertical-align:middle;margin-right:4px;" title="{role}">{player_name}
+                            </div>
                             <div style="color: #9fb0c6; font-size: 12px;">{champion}</div>
                         </div>
                         <div style="text-align: right;">
@@ -359,17 +375,14 @@ st.markdown("---")
 
 # Filtres
 st.subheader("🔍 Filtres")
-col1, col2, col3 = st.columns(3)
+
+col1, col2 = st.columns(2)
 
 with col1:
     # Filtre par durée minimale
     min_duration = st.slider("Durée minimale (minutes)", 0, 60, 0)
 
 with col2:
-    # Filtre par nombre de kills minimum
-    min_kills = st.slider("Kills minimum", 0, 100, 0)
-
-with col3:
     # Tri
     sort_by = st.selectbox(
         "Trier par",
@@ -381,10 +394,7 @@ filtered_matches = {}
 for match_id, match_data in match_details.items():
     info = match_data.get("info", {})
     duration = info.get("gameDuration", 0)
-    participants = info.get("participants", [])
-    total_kills = sum(p.get("kills", 0) for p in participants)
-    
-    if duration >= (min_duration * 60) and total_kills >= min_kills:
+    if duration >= (min_duration * 60):
         filtered_matches[match_id] = match_data
 
 # Trier les matchs

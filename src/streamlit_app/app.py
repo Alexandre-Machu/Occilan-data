@@ -228,47 +228,49 @@ def main():
                     cols = st.columns(5)
                     for idx, player in enumerate(sorted_players):
                         with cols[idx]:
-                            role = player.get('role', 'N/A')
+                            # Correction du mapping pour les rôles standards
+                            role_raw = player.get('role', 'N/A').upper()
+                            role_map = {
+                                "TOP": "TOP", "JGL": "JGL", "JUNGLE": "JGL", "MID": "MID", "ADC": "ADC", "SUP": "SUP", "SUPP": "SUP"
+                            }
+                            role_std = role_map.get(role_raw, "UNKNOWN")
+                            def get_role_icon_url(role: str, size: int = 24) -> str:
+                                role_norm = role.upper()
+                                if role_norm in ["TOP"]:
+                                    key = "position-top.svg"
+                                elif role_norm in ["JGL", "JUNGLE"]:
+                                    key = "position-jungle.svg"
+                                elif role_norm in ["MID", "MIDDLE"]:
+                                    key = "position-middle.svg"
+                                elif role_norm in ["ADC", "BOTTOM"]:
+                                    key = "position-bottom.svg"
+                                elif role_norm in ["SUP", "SUPP", "UTILITY"]:
+                                    key = "position-utility.svg"
+                                else:
+                                    key = "position-top.svg"
+                                return f"https://raw.communitydragon.org/pbe/plugins/rcp-fe-lol-static-assets/global/default/svg/{key}"
+                            role_icon_url = get_role_icon_url(role_std)
                             game_name = player.get('gameName', 'Unknown')
                             tag_line = player.get('tagLine', '0000')
                             tier = player.get('tier', 'UNRANKED')
                             rank = player.get('rank', '')
                             lp = player.get('leaguePoints', 0)
-                            
-                            # Couleurs par tier
                             tier_colors = {
-                                "CHALLENGER": "#FCA5A5",    # Rose pastel
-                                "GRANDMASTER": "#FCA5A5",   # Rose pastel
-                                "MASTER": "#C4B5FD",        # Violet pastel
-                                "DIAMOND": "#93C5FD",       # Bleu pastel
-                                "EMERALD": "#86EFAC",       # Vert pastel
-                                "PLATINUM": "#67E8F9",      # Cyan pastel
-                                "GOLD": "#FCD34D",          # Jaune pastel
-                                "SILVER": "#D1D5DB",        # Gris pastel
-                                "BRONZE": "#FDBA74",        # Orange pastel
-                                "IRON": "#A8A29E",          # Gris foncé
-                                "UNRANKED": "#4B5563"       # Gris très foncé
+                                "CHALLENGER": "#FCA5A5", "GRANDMASTER": "#FCA5A5", "MASTER": "#C4B5FD", "DIAMOND": "#93C5FD", "EMERALD": "#86EFAC", "PLATINUM": "#67E8F9", "GOLD": "#FCD34D", "SILVER": "#D1D5DB", "BRONZE": "#FDBA74", "IRON": "#A8A29E", "UNRANKED": "#4B5563"
                             }
-                            
                             color = tier_colors.get(tier, "#4B5563")
-                            
-                            # Créer le lien OP.GG du joueur
                             player_opgg = f"https://www.op.gg/summoners/euw/{game_name}-{tag_line}"
-                            
-                            st.markdown(f"**{role}**")
+                            st.markdown(f'<img src="{role_icon_url}" style="width:18px;vertical-align:middle;margin-right:4px;" title="{role_std}"> <strong>{role_std}</strong>', unsafe_allow_html=True)
                             st.markdown(
                                 f'<a href="{player_opgg}" target="_blank" style="color: #93C5FD; text-decoration: none;">'
                                 f'{game_name}#{tag_line}</a>',
                                 unsafe_allow_html=True
                             )
-                            
-                            # Afficher l'élo avec couleur
                             if tier != "UNRANKED":
                                 if tier in ["MASTER", "GRANDMASTER", "CHALLENGER"]:
                                     elo_text = f"{tier} ({lp} LP)"
                                 else:
                                     elo_text = f"{tier} {rank}"
-                                
                                 st.markdown(
                                     f'<div style="background-color: {color}; color: #1F2937; '
                                     f'padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; '

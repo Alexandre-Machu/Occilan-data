@@ -21,7 +21,8 @@ st.set_page_config(page_title="Recherche - OcciLan Stats", page_icon="🔍", lay
 def get_champion_icon_url(champion_name: str) -> str:
     """Get Data Dragon champion icon URL"""
     champion_name_mapping = {
-        "MonkeyKing": "Wukong",  # API retourne MonkeyKing, DataDragon attend Wukong
+        "Wukong": "MonkeyKing",  # DataDragon attend MonkeyKing
+        "MonkeyKing": "MonkeyKing",
         "FiddleSticks": "Fiddlesticks",
         "Nunu": "Nunu",
         "RekSai": "RekSai",
@@ -35,13 +36,13 @@ def get_champion_icon_url(champion_name: str) -> str:
         "LeBlanc": "Leblanc",
         "JarvanIV": "JarvanIV",
         "XinZhao": "XinZhao",
+        "Xin Zhao": "XinZhao",
         "MasterYi": "MasterYi",
         "MissFortune": "MissFortune",
         "TahmKench": "TahmKench",
         "TwistedFate": "TwistedFate",
         "AurelionSol": "AurelionSol",
-        "DrMundo": "DrMundo",
-        "MonkeyKing": "MonkeyKing"
+        "DrMundo": "DrMundo"
     }
     corrected_name = champion_name_mapping.get(champion_name, champion_name)
     return f"https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/{corrected_name}.png"
@@ -209,7 +210,18 @@ all_teams = list(team_stats_data.keys())
 
 for team_name, team_data in team_stats_data.items():
     players_dict = team_data.get("players", {})
+    # Charger le mapping des rôles depuis teams.json
+    try:
+        with open(str(edition_manager.edition_path / "teams.json"), "r", encoding="utf-8") as tf:
+            teams_json = json.load(tf)
+    except Exception:
+        teams_json = {}
+    team_players = teams_json.get(team_name, {}).get("players", [])
+    player_roles = {p["gameName"]: p["role"] for p in team_players if "gameName" in p and "role" in p}
     for player_name, pstats in players_dict.items():
+        # Ajoute le rôle issu de teams.json si dispo
+        role = player_roles.get(player_name, pstats.get("role", ""))
+        pstats["role"] = role
         all_players.append({
             "name": player_name,
             "team": team_name,
@@ -252,9 +264,25 @@ if search_type == "👤 Joueur":
         if player_data:
             pstats = player_data["stats"]
             team_name = player_data["team"]
-            
+            role = pstats.get("role", "")
+            def get_role_icon_url(role: str, size: int = 24) -> str:
+                role_norm = role.upper()
+                if role_norm in ["TOP"]:
+                    key = "position-top.svg"
+                elif role_norm in ["JGL", "JUNGLE"]:
+                    key = "position-jungle.svg"
+                elif role_norm in ["MID", "MIDDLE"]:
+                    key = "position-middle.svg"
+                elif role_norm in ["ADC", "BOTTOM"]:
+                    key = "position-bottom.svg"
+                elif role_norm in ["SUP", "SUPP", "UTILITY"]:
+                    key = "position-utility.svg"
+                else:
+                    key = "position-top.svg"
+                return f"https://raw.communitydragon.org/pbe/plugins/rcp-fe-lol-static-assets/global/default/svg/{key}"
+            role_icon_url = get_role_icon_url(role)
             st.markdown("---")
-            st.markdown(f"## 👤 Statistiques de {selected_player_name}")
+            st.markdown(f"## <img src='{role_icon_url}' style='width:22px;vertical-align:middle;margin-right:6px;' title='{role}'> Statistiques de {selected_player_name}", unsafe_allow_html=True)
             st.caption(f"**Équipe:** {team_name}")
             
             # Main stats KPIs
@@ -312,12 +340,15 @@ if search_type == "👤 Joueur":
                 st.markdown("#### Pool de champions")
                 
                 # Display all champions in rows of 10
+                # Correction des noms pour l'affichage
+                display_name_map = {"XinZhao": "Xin Zhao", "MonkeyKing": "Wukong"}
                 champs_html = '<div style="margin: 20px 0;">'
                 for i, champ in enumerate(champions):
                     if i > 0 and i % 10 == 0:
                         champs_html += '<br/>'
                     icon_url = get_champion_icon_url(champ)
-                    champs_html += f'<img src="{icon_url}" class="champion-icon" title="{champ}" alt="{champ}">'
+                    display_name = display_name_map.get(champ, champ)
+                    champs_html += f'<img src="{icon_url}" style="width:48px;height:48px;border-radius:6px;margin:4px;vertical-align:middle;" title="{display_name}" alt="{display_name}">'  # icône plus grande
                 champs_html += '</div>'
                 
                 st.markdown(champs_html, unsafe_allow_html=True)

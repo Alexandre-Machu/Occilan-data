@@ -17,6 +17,22 @@ from src.core.data_manager import EditionDataManager, MultiEditionManager
 st.set_page_config(page_title="Stats Joueurs - OcciLan Stats", page_icon="👤", layout="wide")
 
 # Helper function for champion icons
+def get_role_icon_url(role: str, size: int = 24) -> str:
+    """Get Data Dragon role icon URL"""
+    role_norm = role.upper()
+    if role_norm in ["TOP"]:
+        key = "position-top.svg"
+    elif role_norm in ["JGL", "JUNGLE"]:
+        key = "position-jungle.svg"
+    elif role_norm in ["MID", "MIDDLE"]:
+        key = "position-middle.svg"
+    elif role_norm in ["ADC", "BOTTOM"]:
+        key = "position-bottom.svg"
+    elif role_norm in ["SUP", "SUPP", "UTILITY"]:
+        key = "position-utility.svg"
+    else:
+        key = "position-top.svg"
+    return f"https://raw.communitydragon.org/pbe/plugins/rcp-fe-lol-static-assets/global/default/svg/{key}"
 def get_champion_icon_url(champion_name: str, size: int = 48) -> str:
     """Get Data Dragon champion icon URL"""
     # Champion name corrections for Data Dragon API
@@ -396,7 +412,6 @@ for idx, (_, player) in enumerate(filtered_df.iterrows(), 1):
     rank_class = "rank-other"
     if idx <= 3:
         rank_class = f"rank-{idx}"
-    
     # Get KDA color
     kda = player.get('average_kda', 0)
     if kda >= 5:
@@ -407,35 +422,67 @@ for idx, (_, player) in enumerate(filtered_df.iterrows(), 1):
         kda_color = "#facc15"
     else:
         kda_color = "#ef4444"
-    
     # Background color
     bg_color = "#0f1113" if idx % 2 == 0 else "#0b0d10"
-    
     # Champions icons - Display ALL champions in rows of 5
     champions = player.get('champions_played', [])
     champions_html = ''
     if champions:
-        # Create rows of 5 champions each
         for i, champ in enumerate(champions):
-            # Add line break after every 5 champions (except the first row)
             if i > 0 and i % 5 == 0:
                 champions_html += '<br/>'
-            
             icon_url = get_champion_icon_url(champ)
             champions_html += f'<img src="{icon_url}" class="champion-icon" title="{champ}" alt="{champ}" style="width: 32px; height: 32px; border-radius: 4px; margin: 2px; border: 1px solid rgba(255,255,255,0.1);">'
-    
+    # Correction du rôle : si le rôle n'est pas présent, on tente de le déduire par les champions joués
+    role = player.get('role', None)
+    if not role:
+        # Mapping champion → rôle (simplifié, à compléter selon pool)
+        champ_to_role = {
+            # Top
+            "Camille": "TOP", "KSante": "TOP", "Gragas": "TOP", "Fiora": "TOP", "Yone": "TOP", "Malphite": "TOP", "Shen": "TOP", "DrMundo": "TOP", "Ornn": "TOP", "Sett": "TOP", "Garen": "TOP", "Aatrox": "TOP", "Pantheon": "TOP", "Mordekaiser": "TOP", "Trundle": "TOP", "Galio": "TOP", "Maokai": "TOP", "Aurora": "TOP", "Olaf": "TOP", "Gwen": "TOP",
+            # Jungle
+            "Volibear": "JGL", "Maokai": "JGL", "Viego": "JGL", "Sejuani": "JGL", "Elise": "JGL", "Gragas": "JGL", "Shyvana": "JGL", "Vi": "JGL", "Diana": "JGL", "Skarner": "JGL", "Evelynn": "JGL", "Viego": "JGL", "XinZhao": "JGL", "JarvanIV": "JGL", "Amumu": "JGL", "Vi": "JGL", "KhaZix": "JGL", "RekSai": "JGL", "Nunu": "JGL", "Shyvana": "JGL",
+            # Mid
+            "Syndra": "MID", "Lissandra": "MID", "Ahri": "MID", "Cassiopeia": "MID", "Velkoz": "MID", "Ekko": "MID", "Veigar": "MID", "Zed": "MID", "Taliyah": "MID", "Yasuo": "MID", "Orianna": "MID", "Viktor": "MID", "Vex": "MID", "Leblanc": "MID", "Annie": "MID", "TwistedFate": "MID", "AurelionSol": "MID",
+            # ADC
+            "Ashe": "ADC", "Jinx": "ADC", "Varus": "ADC", "Aphelios": "ADC", "Kaisa": "ADC", "Zeri": "ADC", "Caitlyn": "ADC", "Kalista": "ADC", "Lucian": "ADC", "Xayah": "ADC", "Jhin": "ADC", "Sivir": "ADC", "Ezreal": "ADC", "Tristana": "ADC", "KogMaw": "ADC", "MissFortune": "ADC",
+            # Support
+            "Blitzcrank": "SUP", "Rakan": "SUP", "Thresh": "SUP", "TahmKench": "SUP", "Nautilus": "SUP", "Braum": "SUP", "Senna": "SUP", "Karma": "SUP", "Renata": "SUP", "Seraphine": "SUP", "Nami": "SUP", "Leona": "SUP", "Alistar": "SUP", "Poppy": "SUP", "Zilean": "SUP", "Nasus": "SUP", "Amumu": "SUP"
+        }
+        # On prend le rôle majoritaire parmi les champions joués
+        played = player.get('champions_played', [])
+        role_counts = {}
+        for champ in played:
+            r = champ_to_role.get(champ)
+            if r:
+                role_counts[r] = role_counts.get(r, 0) + 1
+        if role_counts:
+            role = max(role_counts, key=role_counts.get)
+        else:
+            role = 'UNKNOWN'
+    elif isinstance(role, dict):
+        role = max(role, key=role.get)
+    elif isinstance(role, list):
+        role = role[0] if role else 'UNKNOWN'
+    role_icon_url = get_role_icon_url(role)
+    # Correction du calcul CS/min si besoin
+    total_cs = player.get('total_cs', 0)
+    total_minutes = player.get('total_minutes_played', 1)
+    cs_per_min = total_cs / total_minutes if total_minutes > 0 else 0
     table_html += f'''
         <tr style="background: {bg_color}; border-top: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;" onmouseover="this.style.background='#1a1d24'" onmouseout="this.style.background='{bg_color}'">
             <td style="padding: 16px 14px; color: #e6eef6;"><span class="rank-badge {rank_class}">#{idx}</span></td>
             <td style="padding: 16px 14px; color: #e6eef6;">
-                <strong>{player['name']}</strong><br/>
+                <strong>{player['name']}</strong>
+                <img src="{role_icon_url}" style="width:20px;vertical-align:middle;margin-left:8px;" title="{role}">
+                <br/>
                 <span style="color: #9fb0c6; font-size: 11px;">{player['team']}</span>
             </td>
             <td style="padding: 16px 14px; color: {kda_color}; font-weight: 700;">{player.get('average_kda', 0):.2f}</td>
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_kills', 0):.1f}</td>
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_deaths', 0):.1f}</td>
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_assists', 0):.1f}</td>
-            <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_cs_per_min', 0):.1f}</td>
+            <td style="padding: 16px 14px; color: #e6eef6;">{cs_per_min:.1f}</td>
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_vision_score', 0):.1f}</td>
             <td style="padding: 16px 14px;">{champions_html}</td>
         </tr>

@@ -16,6 +16,22 @@ from src.core.data_manager import EditionDataManager, MultiEditionManager
 st.set_page_config(page_title="Stats Équipes - OcciLan Stats", page_icon="🏆", layout="wide")
 
 # Helper function for champion icons
+def get_role_icon_url(role: str, size: int = 24) -> str:
+    """Get Data Dragon role icon URL"""
+    role_norm = role.upper()
+    if role_norm in ["TOP"]:
+        key = "position-top.svg"
+    elif role_norm in ["JGL", "JUNGLE"]:
+        key = "position-jungle.svg"
+    elif role_norm in ["MID", "MIDDLE"]:
+        key = "position-middle.svg"
+    elif role_norm in ["ADC", "BOTTOM"]:
+        key = "position-bottom.svg"
+    elif role_norm in ["SUP", "SUPP", "UTILITY"]:
+        key = "position-utility.svg"
+    else:
+        key = "position-top.svg"
+    return f"https://raw.communitydragon.org/pbe/plugins/rcp-fe-lol-static-assets/global/default/svg/{key}"
 def get_champion_icon_url(champion_name: str, size: int = 48) -> str:
     """Get Data Dragon champion icon URL"""
     # Champion name corrections for Data Dragon API
@@ -405,7 +421,7 @@ def get_kda_class(kda):
 # Build HTML table
 table_html = '<table class="player-table">'
 table_html += '<thead><tr>'
-headers = ["Position", "Joueur", "KDA", "Kills/G", "Deaths/G", "Assists/G", "CS/min", "Vision/G", "Champions"]
+headers = ["Joueur", "KDA", "Kills/G", "Deaths/G", "Assists/G", "CS/min", "Vision/G", "Champions"]
 for h in headers:
     table_html += f'<th>{h}</th>'
 table_html += '</tr></thead><tbody>'
@@ -422,9 +438,15 @@ for player in team_players:
     if not pstats:
         continue
     
-    # Role badge
-    badge_info = role_badges.get(role, {"label": role, "class": "role-badge"})
-    role_html = f'<span class="role-badge {badge_info["class"]}">{badge_info["label"]}</span>'
+    # Correction du mapping pour les rôles standards
+    role_raw = role.upper()
+    role_map = {
+        "TOP": "TOP", "JGL": "JGL", "JUNGLE": "JGL", "MID": "MID", "ADC": "ADC", "SUP": "SUP", "SUPP": "SUP"
+    }
+    role_std = role_map.get(role_raw, "UNKNOWN")
+    badge_info = role_badges.get(role_std, {"label": role_std, "class": "role-badge"})
+    role_icon_url = get_role_icon_url(role_std)
+    role_html = f'<img src="{role_icon_url}" style="width:18px;vertical-align:middle;margin-right:4px;" title="{role_std}">'  # Icône uniquement
     
     # Stats (adapted to team_stats.json format)
     kda = pstats.get("average_kda", 0)
@@ -449,8 +471,8 @@ for player in team_players:
             champions_html += f'<img src="{icon_url}" class="champion-icon" title="{champ}" alt="{champ}">'
     
     table_html += '<tr>'
-    table_html += f'<td>{role_html}</td>'
-    table_html += f'<td><strong>{player.get("gameName", "Unknown")}</strong><br/><span style="color:#9fb0c6;font-size:11px">#{player.get("tagLine", "???")}</span></td>'
+    # Fusion : icône du rôle + pseudo + tag
+    table_html += f'<td>{role_html}<strong>{player.get("gameName", "Unknown")}</strong><br/><span style="color:#9fb0c6;font-size:11px">#{player.get("tagLine", "???")}</span></td>'
     table_html += f'<td><span class="{kda_class}">{kda:.2f}</span></td>'
     table_html += f'<td>{kills_per_game:.1f}</td>'
     table_html += f'<td>{deaths_per_game:.1f}</td>'

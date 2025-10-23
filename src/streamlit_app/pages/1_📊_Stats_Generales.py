@@ -132,6 +132,20 @@ ELO_SCORES = {
 }
 
 # Mapping des divisions
+def get_role_icon_url(role: str, size: int = 24) -> str:
+    """Get Data Dragon role icon URL"""
+    role_map = {
+        "TOP": "top",
+        "JGL": "jungle",
+        "JUNGLE": "jungle",
+        "MID": "middle",
+        "ADC": "bottom",
+        "SUP": "utility",
+        "SUPP": "utility",
+        "UNKNOWN": "unknown"
+    }
+    key = role_map.get(role.upper(), "unknown")
+    return f"https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-select/global/default/{key}_icon.png"
 DIVISION_MULTIPLIERS = {
     "I": 0.75,
     "II": 0.5,
