@@ -474,7 +474,7 @@ for idx, player in enumerate(team_players):
     with cols[col_idx]:
         if st.button(f"👤 {player_short_name}", key=f"view_profile_team_1_{selected_team}_{idx}", use_container_width=True):
             st.session_state["search_player"] = player_short_name
-            st.switch_page("pages/5_Recherche.py")
+            st.switch_page("pages/6_🔍_Recherche.py")
 
 # ============================================================================
 # MATCH HISTORY
@@ -490,12 +490,20 @@ if match_details_path.exists():
     with open(match_details_path, "r", encoding="utf-8") as f:
         match_details_data = json.load(f)
     
-    # Créer un mapping joueur->équipe depuis team_stats
+    # Créer un mapping joueur->équipe depuis teams_with_puuid
     player_to_team = {}
-    for team_name, team_info in team_stats_data.items():
-        players = team_info.get("players", {})
-        for player_name in players.keys():
-            player_to_team[player_name] = team_name
+    teams_with_puuid_path = data_dir / "teams_with_puuid.json"
+    if teams_with_puuid_path.exists():
+        with open(teams_with_puuid_path, "r", encoding="utf-8") as f:
+            teams_with_puuid_data = json.load(f)
+        
+        for team_name, team_info in teams_with_puuid_data.items():
+            players = team_info.get("players", [])
+            for player in players:
+                game_name = player.get("gameName", "")
+                tag_line = player.get("tagLine", "")
+                player_name = f"{game_name}#{tag_line}" if game_name and tag_line else game_name
+                player_to_team[player_name] = team_name
     
     # Filtrer les matchs où cette équipe a joué
     team_matches = []

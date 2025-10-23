@@ -459,7 +459,7 @@ for idx, (_, player) in enumerate(filtered_df.iterrows()):
     with cols[col_idx]:
         if st.button(f"👤 {player['name']}", key=f"view_profile_{idx}_{player['name']}", use_container_width=True):
             st.session_state["search_player"] = player['name']
-            st.switch_page("pages/5_Recherche.py")
+            st.switch_page("pages/6_🔍_Recherche.py")
 
 # ============================================================================
 # STATISTICS SUMMARY

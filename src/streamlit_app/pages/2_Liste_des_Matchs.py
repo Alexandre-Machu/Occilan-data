@@ -166,8 +166,16 @@ def display_match_card(match_id, match_data, player_to_team):
     team_100_name = get_team_name_from_players(team_100, player_to_team)
     team_200_name = get_team_name_from_players(team_200, player_to_team)
     
+    # Déterminer le gagnant pour l'affichage
+    if team_100_win:
+        match_title = f"🎮 {team_100_name} 🏆 vs {team_200_name}"
+    elif team_200_win:
+        match_title = f"🎮 {team_100_name} vs {team_200_name} 🏆"
+    else:
+        match_title = f"🎮 {team_100_name} vs {team_200_name}"
+    
     # Afficher le match
-    with st.expander(f"🎮 Match {match_id[-10:]} - {date_str} ({duration_str})", expanded=False):
+    with st.expander(f"{match_title} - {date_str} ({duration_str})", expanded=False):
         col1, col_vs, col2 = st.columns([5, 1, 5])
         
         with col1:
@@ -221,7 +229,7 @@ def display_match_card(match_id, match_data, player_to_team):
                     # Bouton à droite de la carte
                     if st.button(f"👤 Profil", key=f"profile_{match_id}_100_{player_name}", help=f"Voir les stats de {player_name}"):
                         st.session_state["search_player"] = player_name
-                        st.switch_page("pages/5_Recherche.py")
+                        st.switch_page("pages/6_🔍_Recherche.py")
         
         with col_vs:
             st.markdown("### VS")
@@ -278,7 +286,7 @@ def display_match_card(match_id, match_data, player_to_team):
                     # Bouton à droite de la carte
                     if st.button(f"👤 Profil", key=f"profile_{match_id}_200_{player_name}", help=f"Voir les stats de {player_name}"):
                         st.session_state["search_player"] = player_name
-                        st.switch_page("pages/5_Recherche.py")
+                        st.switch_page("pages/6_🔍_Recherche.py")
 
 
 # Titre de la page

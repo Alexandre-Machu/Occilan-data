@@ -989,7 +989,7 @@
   },
   "On aurait du y penser": {
     "name": "On aurait du y penser",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=不朽的惡魔女王香農%23回到基础%2CSpectror%23BLOP%2CVirtuoz%23111%2Cfemboyaeri%23GALA%2CBanSkyzoOrParano%23SHACO",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=不朽的惡魔女王香農%23回到基础%2CSpectror%23BLOP%2CVirtuoz%23111%2Cfemboyaeri%23GALA%2CAdriFirst%23EUW",
     "players": [
       {
         "gameName": "Spectror",
@@ -1004,20 +1004,6 @@
         "wins": 239,
         "losses": 244,
         "winrate": 49.48
-      },
-      {
-        "gameName": "BanSkyzoOrParano",
-        "tagLine": "SHACO",
-        "role": "JGL",
-        "puuid": "HSeKvDWrmTUezcvhPLh8klDK85JxWtvq6Rf5VrlfYpks9XUzqn-24tj0Q-lkMU9KN6D_2GRlmAhz5g",
-        "summonerLevel": 391,
-        "profileIconId": 5649,
-        "tier": "DIAMOND",
-        "rank": "IV",
-        "leaguePoints": 74,
-        "wins": 135,
-        "losses": 115,
-        "winrate": 54.0
       },
       {
         "gameName": "femboyaeri",

@@ -404,7 +404,7 @@
   },
   "On aurait du y penser": {
     "name": "On aurait du y penser",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=不朽的惡魔女王香農%23回到基础%2CSpectror%23BLOP%2CVirtuoz%23111%2Cfemboyaeri%23GALA%2CAdriFirst%23EUW",
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=不朽的惡魔女王香農%23回到基础%2CSpectror%23BLOP%2CVirtuoz%23111%2Cfemboyaeri%23GALA%2CBanSkyzoOrParano%23SHACO",
     "players": [
       {
         "role": "TOP",
@@ -413,8 +413,8 @@
       },
       {
         "role": "JGL",
-        "gameName": "AdriFirst",
-        "tagLine": "EUW"
+        "gameName": "BanSkyzoOrParano",
+        "tagLine": "SHACO"
       },
       {
         "role": "MID",
