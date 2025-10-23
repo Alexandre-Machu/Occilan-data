@@ -202,13 +202,15 @@ def main():
                     # Afficher le lien Multi OP.GG
                     if opgg_link:
                         st.markdown(
-                            f'<a href="{opgg_link}" target="_blank" style="text-decoration: none;">'
-                            f'<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); '
+                            f'<div style="margin-bottom: 15px;">'
+                            f'<a href="{opgg_link}" target="_blank" style="'
+                            f'display: block; text-decoration: none; '
+                            f'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); '
                             f'color: white; padding: 10px 20px; border-radius: 8px; text-align: center; '
-                            f'font-size: 0.95rem; font-weight: bold; margin-bottom: 15px; '
-                            f'cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); '
+                            f'font-size: 0.95rem; font-weight: bold; '
+                            f'box-shadow: 0 2px 4px rgba(0,0,0,0.2); '
                             f'transition: transform 0.2s;">'
-                            f'🔗 Multi OP.GG</div></a>',
+                            f'🔗 Multi OP.GG</a></div>',
                             unsafe_allow_html=True
                         )
                     

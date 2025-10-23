@@ -982,11 +982,102 @@ with tab3:
         else:
             st.success("✅ Clé API Riot détectée")
             
+            # Boutons individuels pour chaque étape
+            st.subheader("🔧 Pipeline par étapes")
+            
+            col1, col2, col3 = st.columns(3)
+            
+            with col1:
+                if st.button("1️⃣ Fetch PUUID", help="Récupère les PUUIDs des joueurs", use_container_width=True):
+                    processor = EditionProcessor(selected_edition, api_key)
+                    
+                    with st.spinner("Récupération des PUUIDs..."):
+                        teams_with_puuid = processor.step2_fetch_puuids()
+                        
+                        if teams_with_puuid:
+                            player_count = sum(len(team.get('players', [])) for team in teams_with_puuid.values())
+                            st.success(f"✅ {len(teams_with_puuid)} équipes, {player_count} joueurs")
+                        else:
+                            st.error("❌ Échec de la récupération des PUUIDs")
+            
+            with col2:
+                if st.button("2️⃣ Fetch Ranks", help="Récupère les rangs des joueurs", use_container_width=True):
+                    processor = EditionProcessor(selected_edition, api_key)
+                    
+                    teams_with_puuid = edition_manager.load_teams_with_puuid()
+                    if not teams_with_puuid:
+                        st.error("❌ Exécutez d'abord l'étape 1 (Fetch PUUID)")
+                    else:
+                        with st.spinner("Récupération des rangs..."):
+                            teams_with_ranks = processor.step3_fetch_ranks()
+                            
+                            if teams_with_ranks:
+                                st.success(f"✅ Rangs mis à jour pour {len(teams_with_ranks)} équipes")
+                            else:
+                                st.error("❌ Échec de la récupération des rangs")
+            
+            with col3:
+                if st.button("3️⃣ Fetch Match IDs", help="Récupère les IDs des matchs", use_container_width=True):
+                    processor = EditionProcessor(selected_edition, api_key)
+                    
+                    teams_with_puuid = edition_manager.load_teams_with_puuid()
+                    if not teams_with_puuid:
+                        st.error("❌ Exécutez d'abord l'étape 1 (Fetch PUUID)")
+                    else:
+                        with st.spinner("Récupération des match IDs..."):
+                            tournament_matches = processor.step4_fetch_match_ids()
+                            
+                            if tournament_matches:
+                                total_matches = sum(len(matches) for matches in tournament_matches.values())
+                                st.success(f"✅ {total_matches} matchs trouvés pour {len(tournament_matches)} équipes")
+                            else:
+                                st.error("❌ Aucun match trouvé")
+            
+            col4, col5, col6 = st.columns(3)
+            
+            with col4:
+                if st.button("4️⃣ Fetch Match Details", help="Récupère les détails des matchs", use_container_width=True):
+                    processor = EditionProcessor(selected_edition, api_key)
+                    
+                    tournament_matches = edition_manager.load_tournament_matches()
+                    if not tournament_matches:
+                        st.error("❌ Exécutez d'abord l'étape 3 (Fetch Match IDs)")
+                    else:
+                        with st.spinner("Récupération des détails..."):
+                            match_details = processor.step5_fetch_match_details(use_cache=True)
+                            
+                            if match_details:
+                                st.success(f"✅ {len(match_details)} matchs détaillés récupérés")
+                            else:
+                                st.error("❌ Échec de la récupération des détails")
+            
+            with col5:
+                if st.button("5️⃣ Calculate Stats", help="Calcule les statistiques", use_container_width=True):
+                    processor = EditionProcessor(selected_edition, api_key)
+                    
+                    match_details = edition_manager.load_match_details()
+                    if not match_details:
+                        st.error("❌ Exécutez d'abord l'étape 4 (Fetch Match Details)")
+                    else:
+                        with st.spinner("Calcul des statistiques..."):
+                            stats = processor.step6_calculate_stats()
+                            
+                            if stats:
+                                st.success(f"✅ Stats calculées: {stats['metadata']['total_players']} joueurs, {stats['metadata']['total_matches_processed']} matchs")
+                            else:
+                                st.error("❌ Échec du calcul des stats")
+            
+            with col6:
+                st.write("")  # Espace vide pour alignement
+            
+            st.markdown("---")
+            st.subheader("🚀 Pipelines complets")
+            
             # Boutons séparés pour traitement modulaire
             col_fetch, col_full = st.columns(2)
             
             with col_fetch:
-                if st.button("🎮 Fetch Matchs Tournoi", help="Récupère les matchs de tournoi et calcule les stats", use_container_width=True):
+                if st.button("🎮 Fetch Matchs Tournoi", help="Récupère les matchs de tournoi et calcule les stats (étapes 3-5)", use_container_width=True):
                     # Initialize processor
                     processor = EditionProcessor(
                         edition_id=selected_edition,
