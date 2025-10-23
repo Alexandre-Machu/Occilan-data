@@ -637,20 +637,30 @@ if match_details_path.exists():
                         kda = f"{kills}/{deaths}/{assists}"
                         icon_url = get_champion_icon_url(champion)
                         
-                        player_html = f'''
-                        <div style="display: flex; align-items: center; gap: 10px; padding: 6px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 4px;">
-                            <img src="{icon_url}" style="width: 36px; height: 36px; border-radius: 6px; border: 2px solid rgba(100,150,255,0.3);" title="{champion}">
-                            <div style="flex: 1;">
-                                <div style="font-weight: 600; color: #e6eef6; font-size: 13px;">{player_name}</div>
-                                <div style="color: #9fb0c6; font-size: 11px;">{champion}</div>
+                        # Créer une ligne avec la carte du joueur et le bouton à droite
+                        col_card, col_button = st.columns([5, 1])
+                        
+                        with col_card:
+                            player_html = f'''
+                            <div style="display: flex; align-items: center; gap: 12px; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 6px;">
+                                <img src="{icon_url}" style="width: 40px; height: 40px; border-radius: 6px; border: 2px solid rgba(100,150,255,0.3);" title="{champion}">
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 700; color: #e6eef6; font-size: 14px;">{player_name}</div>
+                                    <div style="color: #9fb0c6; font-size: 12px;">{champion}</div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="color: #e6eef6; font-weight: 600;">{kda}</div>
+                                    <div style="color: #9fb0c6; font-size: 11px;">{cs} CS</div>
+                                </div>
                             </div>
-                            <div style="text-align: right;">
-                                <div style="color: #e6eef6; font-weight: 600; font-size: 12px;">{kda}</div>
-                                <div style="color: #9fb0c6; font-size: 10px;">{cs} CS</div>
-                            </div>
-                        </div>
-                        '''
-                        st.markdown(player_html, unsafe_allow_html=True)
+                            '''
+                            st.markdown(player_html, unsafe_allow_html=True)
+                        
+                        with col_button:
+                            # Bouton à droite de la carte
+                            if st.button(f"👤 Profil", key=f"profile_{match['match_id']}_team_{idx}_{player_name}", help=f"Voir les stats de {player_name}"):
+                                st.session_state["search_player"] = player_name
+                                st.switch_page("pages/6_🔍_Recherche.py")
                 
                 with col_enemy:
                     st.markdown(f"**🎮 {enemy_team_name}**")
@@ -665,20 +675,30 @@ if match_details_path.exists():
                         kda = f"{kills}/{deaths}/{assists}"
                         icon_url = get_champion_icon_url(champion)
                         
-                        player_html = f'''
-                        <div style="display: flex; align-items: center; gap: 10px; padding: 6px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 4px;">
-                            <img src="{icon_url}" style="width: 36px; height: 36px; border-radius: 6px; border: 2px solid rgba(255,100,100,0.3);" title="{champion}">
-                            <div style="flex: 1;">
-                                <div style="font-weight: 600; color: #e6eef6; font-size: 13px;">{player_name}</div>
-                                <div style="color: #9fb0c6; font-size: 11px;">{champion}</div>
+                        # Créer une ligne avec la carte du joueur et le bouton à droite
+                        col_card2, col_button2 = st.columns([5, 1])
+                        
+                        with col_card2:
+                            player_html = f'''
+                            <div style="display: flex; align-items: center; gap: 12px; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 6px;">
+                                <img src="{icon_url}" style="width: 40px; height: 40px; border-radius: 6px; border: 2px solid rgba(255,100,100,0.3);" title="{champion}">
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 700; color: #e6eef6; font-size: 14px;">{player_name}</div>
+                                    <div style="color: #9fb0c6; font-size: 12px;">{champion}</div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="color: #e6eef6; font-weight: 600;">{kda}</div>
+                                    <div style="color: #9fb0c6; font-size: 11px;">{cs} CS</div>
+                                </div>
                             </div>
-                            <div style="text-align: right;">
-                                <div style="color: #e6eef6; font-weight: 600; font-size: 12px;">{kda}</div>
-                                <div style="color: #9fb0c6; font-size: 10px;">{cs} CS</div>
-                            </div>
-                        </div>
-                        '''
-                        st.markdown(player_html, unsafe_allow_html=True)
+                            '''
+                            st.markdown(player_html, unsafe_allow_html=True)
+                        
+                        with col_button2:
+                            # Bouton à droite de la carte
+                            if st.button(f"👤 Profil", key=f"profile_{match['match_id']}_enemy_{idx}_{player_name}", help=f"Voir les stats de {player_name}"):
+                                st.session_state["search_player"] = player_name
+                                st.switch_page("pages/6_🔍_Recherche.py")
     else:
         st.warning("⚠️ Aucun match trouvé pour cette équipe")
 else:
