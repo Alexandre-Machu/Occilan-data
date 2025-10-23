@@ -570,6 +570,52 @@ else:
     st.info("ℹ️ Aucune équipe avec joueurs classés")
 
 # ============================================================================
+# CLASSEMENT DES JOUEURS PAR ELO
+# ============================================================================
+
+st.header("🎖️ Classement des joueurs par ELO")
+
+if not df_players.empty:
+    # Filtrer les joueurs classés
+    ranked_players = df_players[df_players["tier"] != "UNRANKED"].copy()
+    
+    if not ranked_players.empty:
+        # Trier par score décroissant
+        ranked_players = ranked_players.sort_values("score", ascending=False).reset_index(drop=True)
+        
+        # Créer le DataFrame d'affichage
+        player_ranking_data = []
+        for idx, player in ranked_players.iterrows():
+            # Format du rang avec LP pour Master+
+            if player["tier"] in ["MASTER", "GRANDMASTER", "CHALLENGER"]:
+                rank_display = f"{player['tier']} ({player['lp']} LP)"
+            else:
+                rank_display = f"{player['tier']} {player['rank']}"
+            
+            player_ranking_data.append({
+                "Rang": idx + 1,
+                "Joueur": f"{player['gameName']}#{player['tagLine']}",
+                "Rôle": player["role"],
+                "Équipe": player["team"],
+                "ELO": rank_display,
+                "Score": round(player["score"], 2)
+            })
+        
+        df_player_ranking = pd.DataFrame(player_ranking_data)
+        
+        # Afficher le tableau
+        st.dataframe(
+            df_player_ranking,
+            use_container_width=True,
+            hide_index=True
+        )
+        
+    else:
+        st.info("ℹ️ Aucun joueur classé trouvé")
+else:
+    st.info("ℹ️ Aucun joueur trouvé")
+
+# ============================================================================
 # DÉTAILS PAR ÉQUIPE
 # ============================================================================
 
