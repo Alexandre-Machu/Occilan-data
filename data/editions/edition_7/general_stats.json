@@ -1,1 +1,5646 @@
-{}
+{
+  "longest_game": {
+    "match_id": "EUW1_7580097452",
+    "duration": 2795,
+    "teams": "Burger sans gluten vs Lion's Guard",
+    "formatted": "46:35"
+  },
+  "shortest_game": {
+    "match_id": "EUW1_7580096638",
+    "duration": 34,
+    "teams": "Pantizini vi Zombini vs KCDQ",
+    "formatted": "0:34"
+  },
+  "most_kills_game": {
+    "match_id": "EUW1_7580096305",
+    "kills": 80,
+    "teams": "On aurait du y penser vs Chill Guys"
+  },
+  "least_kills_game": {
+    "match_id": "EUW1_7580096638",
+    "kills": 0,
+    "teams": "Pantizini vi Zombini vs KCDQ"
+  },
+  "highest_vision_game": {
+    "match_id": "EUW1_7580097452",
+    "score": 171,
+    "player": "LG Aziαs#OGNAM",
+    "team": "Lion's Guard",
+    "champion": "Rakan"
+  },
+  "highest_cs_per_min_game": {
+    "match_id": "EUW1_7579696785",
+    "cs_per_min": 11.0,
+    "player": "Thibee#00000",
+    "team": "La Ruche",
+    "champion": "Yunara"
+  },
+  "champion_stats": {
+    "picks": {
+      "Sion": 14,
+      "Trundle": 5,
+      "Orianna": 15,
+      "Ashe": 4,
+      "Lulu": 5,
+      "Garen": 2,
+      "Poppy": 6,
+      "Katarina": 1,
+      "Kaisa": 10,
+      "Braum": 16,
+      "Yorick": 1,
+      "Yunara": 11,
+      "Taliyah": 3,
+      "Milio": 6,
+      "Zac": 2,
+      "Olaf": 4,
+      "Skarner": 2,
+      "Ahri": 3,
+      "Jinx": 4,
+      "Maokai": 3,
+      "Hwei": 6,
+      "Bard": 3,
+      "Wukong": 11,
+      "Sejuani": 3,
+      "Velkoz": 6,
+      "Corki": 1,
+      "Thresh": 1,
+      "RekSai": 2,
+      "Syndra": 8,
+      "Varus": 6,
+      "Rakan": 11,
+      "DrMundo": 3,
+      "Neeko": 5,
+      "Aatrox": 6,
+      "Qiyana": 1,
+      "Zilean": 1,
+      "XinZhao": 13,
+      "Ambessa": 5,
+      "JarvanIV": 10,
+      "Aurora": 4,
+      "Aphelios": 4,
+      "Pantheon": 2,
+      "Kassadin": 1,
+      "Smolder": 7,
+      "Gwen": 4,
+      "Viktor": 2,
+      "Karma": 4,
+      "Samira": 2,
+      "Pyke": 1,
+      "Malphite": 4,
+      "Jhin": 4,
+      "Nami": 3,
+      "Ornn": 4,
+      "Vi": 6,
+      "Zyra": 1,
+      "Tristana": 2,
+      "KSante": 8,
+      "Volibear": 2,
+      "KogMaw": 2,
+      "Renekton": 2,
+      "Cassiopeia": 2,
+      "Alistar": 3,
+      "Irelia": 1,
+      "Rell": 6,
+      "Jax": 6,
+      "Gragas": 5,
+      "Belveth": 1,
+      "Ezreal": 3,
+      "Darius": 1,
+      "Mel": 3,
+      "Xayah": 5,
+      "Caitlyn": 3,
+      "Mordekaiser": 3,
+      "Nocturne": 4,
+      "Lillia": 1,
+      "Ryze": 1,
+      "Rumble": 1,
+      "Nautilus": 4,
+      "Urgot": 1,
+      "Sylas": 4,
+      "Kayn": 2,
+      "Sivir": 5,
+      "Elise": 2,
+      "Taric": 2,
+      "LeeSin": 2,
+      "Zeri": 1,
+      "Diana": 1,
+      "Lissandra": 1,
+      "MissFortune": 3,
+      "Morgana": 1,
+      "Kindred": 2,
+      "Azir": 1,
+      "Viego": 2,
+      "Chogath": 1,
+      "Blitzcrank": 1,
+      "Ekko": 1,
+      "Sett": 1,
+      "Janna": 1,
+      "Leblanc": 1,
+      "Renata": 3,
+      "Lucian": 2,
+      "Akali": 1,
+      "Galio": 3,
+      "Leona": 1,
+      "Fizz": 1,
+      "Vladimir": 1,
+      "Xerath": 1,
+      "Annie": 1,
+      "Veigar": 2,
+      "Singed": 1,
+      "Vayne": 1,
+      "Lux": 1,
+      "Camille": 1,
+      "Senna": 1,
+      "Yone": 1,
+      "Kennen": 1
+    },
+    "bans": {},
+    "wins": {
+      "Sion": 9,
+      "Trundle": 2,
+      "Orianna": 10,
+      "Ashe": 3,
+      "Lulu": 4,
+      "Garen": 0,
+      "Poppy": 4,
+      "Katarina": 0,
+      "Kaisa": 2,
+      "Braum": 10,
+      "Yorick": 0,
+      "Yunara": 6,
+      "Taliyah": 1,
+      "Milio": 1,
+      "Zac": 0,
+      "Olaf": 3,
+      "Skarner": 1,
+      "Ahri": 2,
+      "Jinx": 4,
+      "Maokai": 3,
+      "Hwei": 2,
+      "Bard": 3,
+      "Wukong": 5,
+      "Sejuani": 2,
+      "Velkoz": 5,
+      "Corki": 0,
+      "Thresh": 0,
+      "RekSai": 0,
+      "Syndra": 5,
+      "Varus": 3,
+      "Rakan": 3,
+      "DrMundo": 2,
+      "Neeko": 3,
+      "Aatrox": 5,
+      "Qiyana": 1,
+      "Zilean": 1,
+      "XinZhao": 5,
+      "Ambessa": 1,
+      "JarvanIV": 4,
+      "Aurora": 1,
+      "Aphelios": 3,
+      "Pantheon": 0,
+      "Kassadin": 0,
+      "Smolder": 3,
+      "Gwen": 3,
+      "Viktor": 1,
+      "Karma": 2,
+      "Samira": 2,
+      "Pyke": 1,
+      "Malphite": 0,
+      "Jhin": 1,
+      "Nami": 2,
+      "Ornn": 1,
+      "Vi": 2,
+      "Zyra": 1,
+      "Tristana": 1,
+      "KSante": 4,
+      "Volibear": 2,
+      "KogMaw": 1,
+      "Renekton": 0,
+      "Cassiopeia": 1,
+      "Alistar": 1,
+      "Irelia": 0,
+      "Rell": 2,
+      "Jax": 1,
+      "Gragas": 2,
+      "Belveth": 1,
+      "Ezreal": 2,
+      "Darius": 0,
+      "Mel": 2,
+      "Xayah": 2,
+      "Caitlyn": 2,
+      "Mordekaiser": 2,
+      "Nocturne": 3,
+      "Lillia": 1,
+      "Ryze": 0,
+      "Rumble": 0,
+      "Nautilus": 1,
+      "Urgot": 0,
+      "Sylas": 3,
+      "Kayn": 2,
+      "Sivir": 2,
+      "Elise": 2,
+      "Taric": 0,
+      "LeeSin": 1,
+      "Zeri": 1,
+      "Diana": 0,
+      "Lissandra": 0,
+      "MissFortune": 0,
+      "Morgana": 0,
+      "Kindred": 0,
+      "Azir": 0,
+      "Viego": 2,
+      "Chogath": 1,
+      "Blitzcrank": 1,
+      "Ekko": 0,
+      "Sett": 0,
+      "Janna": 0,
+      "Leblanc": 1,
+      "Renata": 1,
+      "Lucian": 2,
+      "Akali": 0,
+      "Galio": 1,
+      "Leona": 1,
+      "Fizz": 0,
+      "Vladimir": 0,
+      "Xerath": 0,
+      "Annie": 1,
+      "Veigar": 1,
+      "Singed": 0,
+      "Vayne": 0,
+      "Lux": 0,
+      "Camille": 1,
+      "Senna": 0,
+      "Yone": 1,
+      "Kennen": 1
+    },
+    "winrates": {
+      "Sion": 64.29,
+      "Trundle": 40.0,
+      "Orianna": 66.67,
+      "Ashe": 75.0,
+      "Lulu": 80.0,
+      "Garen": 0.0,
+      "Poppy": 66.67,
+      "Katarina": 0.0,
+      "Kaisa": 20.0,
+      "Braum": 62.5,
+      "Yorick": 0.0,
+      "Yunara": 54.55,
+      "Taliyah": 33.33,
+      "Milio": 16.67,
+      "Zac": 0.0,
+      "Olaf": 75.0,
+      "Skarner": 50.0,
+      "Ahri": 66.67,
+      "Jinx": 100.0,
+      "Maokai": 100.0,
+      "Hwei": 33.33,
+      "Bard": 100.0,
+      "Wukong": 45.45,
+      "Sejuani": 66.67,
+      "Velkoz": 83.33,
+      "Corki": 0.0,
+      "Thresh": 0.0,
+      "RekSai": 0.0,
+      "Syndra": 62.5,
+      "Varus": 50.0,
+      "Rakan": 27.27,
+      "DrMundo": 66.67,
+      "Neeko": 60.0,
+      "Aatrox": 83.33,
+      "Qiyana": 100.0,
+      "Zilean": 100.0,
+      "XinZhao": 38.46,
+      "Ambessa": 20.0,
+      "JarvanIV": 40.0,
+      "Aurora": 25.0,
+      "Aphelios": 75.0,
+      "Pantheon": 0.0,
+      "Kassadin": 0.0,
+      "Smolder": 42.86,
+      "Gwen": 75.0,
+      "Viktor": 50.0,
+      "Karma": 50.0,
+      "Samira": 100.0,
+      "Pyke": 100.0,
+      "Malphite": 0.0,
+      "Jhin": 25.0,
+      "Nami": 66.67,
+      "Ornn": 25.0,
+      "Vi": 33.33,
+      "Zyra": 100.0,
+      "Tristana": 50.0,
+      "KSante": 50.0,
+      "Volibear": 100.0,
+      "KogMaw": 50.0,
+      "Renekton": 0.0,
+      "Cassiopeia": 50.0,
+      "Alistar": 33.33,
+      "Irelia": 0.0,
+      "Rell": 33.33,
+      "Jax": 16.67,
+      "Gragas": 40.0,
+      "Belveth": 100.0,
+      "Ezreal": 66.67,
+      "Darius": 0.0,
+      "Mel": 66.67,
+      "Xayah": 40.0,
+      "Caitlyn": 66.67,
+      "Mordekaiser": 66.67,
+      "Nocturne": 75.0,
+      "Lillia": 100.0,
+      "Ryze": 0.0,
+      "Rumble": 0.0,
+      "Nautilus": 25.0,
+      "Urgot": 0.0,
+      "Sylas": 75.0,
+      "Kayn": 100.0,
+      "Sivir": 40.0,
+      "Elise": 100.0,
+      "Taric": 0.0,
+      "LeeSin": 50.0,
+      "Zeri": 100.0,
+      "Diana": 0.0,
+      "Lissandra": 0.0,
+      "MissFortune": 0.0,
+      "Morgana": 0.0,
+      "Kindred": 0.0,
+      "Azir": 0.0,
+      "Viego": 100.0,
+      "Chogath": 100.0,
+      "Blitzcrank": 100.0,
+      "Ekko": 0.0,
+      "Sett": 0.0,
+      "Janna": 0.0,
+      "Leblanc": 100.0,
+      "Renata": 33.33,
+      "Lucian": 100.0,
+      "Akali": 0.0,
+      "Galio": 33.33,
+      "Leona": 100.0,
+      "Fizz": 0.0,
+      "Vladimir": 0.0,
+      "Xerath": 0.0,
+      "Annie": 100.0,
+      "Veigar": 50.0,
+      "Singed": 0.0,
+      "Vayne": 0.0,
+      "Lux": 0.0,
+      "Camille": 100.0,
+      "Senna": 0.0,
+      "Yone": 100.0,
+      "Kennen": 100.0
+    }
+  },
+  "player_stats": {
+    "Colfeo#LRC": {
+      "player_name": "Colfeo#LRC",
+      "team": "La Ruche",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 14,
+      "total_deaths": 14,
+      "total_assists": 26,
+      "total_cs": 1107,
+      "total_vision_score": 101,
+      "total_gold_earned": 57239,
+      "total_damage_dealt": 70557,
+      "total_damage_taken": 119475,
+      "total_game_duration": 8555,
+      "champions_played": [
+        "Sion",
+        "KSante",
+        "Camille"
+      ],
+      "champion_stats": {
+        "Sion": {
+          "games": 3,
+          "wins": 2,
+          "kills": 5,
+          "deaths": 4,
+          "assists": 17
+        },
+        "KSante": {
+          "games": 1,
+          "wins": 0,
+          "kills": 7,
+          "deaths": 8,
+          "assists": 6
+        },
+        "Camille": {
+          "games": 1,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 2,
+          "assists": 3
+        }
+      },
+      "average_kills": 2.8,
+      "average_deaths": 2.8,
+      "average_assists": 5.2,
+      "average_kda": 2.86,
+      "average_cs_per_min": 7.76,
+      "average_cs_per_minute": 7.76,
+      "average_vision_score": 20.2,
+      "average_gold_per_min": 401.0,
+      "average_damage_per_min": 495.0,
+      "winrate": 60.0,
+      "unique_champions_played": 3
+    },
+    "Unknown Player": {
+      "player_name": "Unknown Player",
+      "team": "Unknown Team",
+      "games_played": 30,
+      "wins": 15,
+      "losses": 15,
+      "total_kills": 128,
+      "total_deaths": 123,
+      "total_assists": 241,
+      "total_cs": 4790,
+      "total_vision_score": 715,
+      "total_gold_earned": 300063,
+      "total_damage_dealt": 483157,
+      "total_damage_taken": 704141,
+      "total_game_duration": 47186,
+      "champions_played": [
+        "Trundle",
+        "Neeko",
+        "Syndra",
+        "XinZhao",
+        "Ambessa",
+        "Karma",
+        "Orianna",
+        "JarvanIV",
+        "Kaisa",
+        "Sylas",
+        "Viktor",
+        "KSante",
+        "Nocturne",
+        "Sivir",
+        "Lucian",
+        "Smolder",
+        "Sion",
+        "Yunara",
+        "Poppy",
+        "Braum",
+        "Wukong",
+        "Galio",
+        "Xayah"
+      ],
+      "champion_stats": {
+        "Trundle": {
+          "games": 2,
+          "wins": 1,
+          "kills": 6,
+          "deaths": 7,
+          "assists": 18
+        },
+        "Neeko": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 6,
+          "assists": 2
+        },
+        "Syndra": {
+          "games": 3,
+          "wins": 3,
+          "kills": 27,
+          "deaths": 7,
+          "assists": 31
+        },
+        "XinZhao": {
+          "games": 4,
+          "wins": 2,
+          "kills": 23,
+          "deaths": 16,
+          "assists": 36
+        },
+        "Ambessa": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 4,
+          "assists": 0
+        },
+        "Karma": {
+          "games": 1,
+          "wins": 1,
+          "kills": 0,
+          "deaths": 4,
+          "assists": 11
+        },
+        "Orianna": {
+          "games": 1,
+          "wins": 1,
+          "kills": 1,
+          "deaths": 2,
+          "assists": 13
+        },
+        "JarvanIV": {
+          "games": 2,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 8,
+          "assists": 2
+        },
+        "Kaisa": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 5,
+          "assists": 1
+        },
+        "Sylas": {
+          "games": 1,
+          "wins": 1,
+          "kills": 4,
+          "deaths": 2,
+          "assists": 6
+        },
+        "Viktor": {
+          "games": 1,
+          "wins": 0,
+          "kills": 4,
+          "deaths": 6,
+          "assists": 8
+        },
+        "KSante": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 7,
+          "assists": 6
+        },
+        "Nocturne": {
+          "games": 1,
+          "wins": 0,
+          "kills": 5,
+          "deaths": 9,
+          "assists": 4
+        },
+        "Sivir": {
+          "games": 1,
+          "wins": 0,
+          "kills": 6,
+          "deaths": 5,
+          "assists": 10
+        },
+        "Lucian": {
+          "games": 1,
+          "wins": 1,
+          "kills": 5,
+          "deaths": 6,
+          "assists": 7
+        },
+        "Smolder": {
+          "games": 1,
+          "wins": 1,
+          "kills": 13,
+          "deaths": 7,
+          "assists": 13
+        },
+        "Sion": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 6,
+          "assists": 1
+        },
+        "Yunara": {
+          "games": 1,
+          "wins": 0,
+          "kills": 6,
+          "deaths": 6,
+          "assists": 5
+        },
+        "Poppy": {
+          "games": 1,
+          "wins": 1,
+          "kills": 1,
+          "deaths": 1,
+          "assists": 13
+        },
+        "Braum": {
+          "games": 1,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 2,
+          "assists": 26
+        },
+        "Wukong": {
+          "games": 1,
+          "wins": 1,
+          "kills": 9,
+          "deaths": 0,
+          "assists": 12
+        },
+        "Galio": {
+          "games": 1,
+          "wins": 0,
+          "kills": 5,
+          "deaths": 4,
+          "assists": 2
+        },
+        "Xayah": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 3,
+          "assists": 14
+        }
+      },
+      "average_kills": 4.27,
+      "average_deaths": 4.1,
+      "average_assists": 8.03,
+      "average_kda": 3.0,
+      "average_cs_per_min": 6.09,
+      "average_cs_per_minute": 6.09,
+      "average_vision_score": 23.83,
+      "average_gold_per_min": 382.0,
+      "average_damage_per_min": 614.0,
+      "winrate": 50.0,
+      "unique_champions_played": 23
+    },
+    "Ergo Proxy#347": {
+      "player_name": "Ergo Proxy#347",
+      "team": "La Ruche",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 33,
+      "total_deaths": 14,
+      "total_assists": 42,
+      "total_cs": 1066,
+      "total_vision_score": 151,
+      "total_gold_earned": 62521,
+      "total_damage_dealt": 122182,
+      "total_damage_taken": 75093,
+      "total_game_duration": 8555,
+      "champions_played": [
+        "Orianna",
+        "Syndra",
+        "Aurora"
+      ],
+      "champion_stats": {
+        "Orianna": {
+          "games": 3,
+          "wins": 2,
+          "kills": 23,
+          "deaths": 9,
+          "assists": 31
+        },
+        "Syndra": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 1,
+          "assists": 7
+        },
+        "Aurora": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 4,
+          "assists": 4
+        }
+      },
+      "average_kills": 6.6,
+      "average_deaths": 2.8,
+      "average_assists": 8.4,
+      "average_kda": 5.36,
+      "average_cs_per_min": 7.48,
+      "average_cs_per_minute": 7.48,
+      "average_vision_score": 30.2,
+      "average_gold_per_min": 438.0,
+      "average_damage_per_min": 857.0,
+      "winrate": 60.0,
+      "unique_champions_played": 3
+    },
+    "Thibee#00000": {
+      "player_name": "Thibee#00000",
+      "team": "La Ruche",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 40,
+      "total_deaths": 16,
+      "total_assists": 43,
+      "total_cs": 1311,
+      "total_vision_score": 158,
+      "total_gold_earned": 71668,
+      "total_damage_dealt": 164532,
+      "total_damage_taken": 89232,
+      "total_game_duration": 8555,
+      "champions_played": [
+        "Ashe",
+        "Yunara",
+        "Sivir",
+        "Ezreal"
+      ],
+      "champion_stats": {
+        "Ashe": {
+          "games": 1,
+          "wins": 1,
+          "kills": 11,
+          "deaths": 3,
+          "assists": 9
+        },
+        "Yunara": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 1,
+          "assists": 8
+        },
+        "Sivir": {
+          "games": 1,
+          "wins": 0,
+          "kills": 7,
+          "deaths": 4,
+          "assists": 6
+        },
+        "Ezreal": {
+          "games": 2,
+          "wins": 1,
+          "kills": 15,
+          "deaths": 8,
+          "assists": 20
+        }
+      },
+      "average_kills": 8.0,
+      "average_deaths": 3.2,
+      "average_assists": 8.6,
+      "average_kda": 5.19,
+      "average_cs_per_min": 9.19,
+      "average_cs_per_minute": 9.19,
+      "average_vision_score": 31.6,
+      "average_gold_per_min": 503.0,
+      "average_damage_per_min": 1154.0,
+      "winrate": 60.0,
+      "unique_champions_played": 4
+    },
+    "Killycurly#420": {
+      "player_name": "Killycurly#420",
+      "team": "La Ruche",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 6,
+      "total_deaths": 25,
+      "total_assists": 87,
+      "total_cs": 148,
+      "total_vision_score": 349,
+      "total_gold_earned": 40805,
+      "total_damage_dealt": 46943,
+      "total_damage_taken": 92265,
+      "total_game_duration": 8555,
+      "champions_played": [
+        "Lulu",
+        "Nautilus",
+        "Rell",
+        "Bard"
+      ],
+      "champion_stats": {
+        "Lulu": {
+          "games": 2,
+          "wins": 2,
+          "kills": 2,
+          "deaths": 4,
+          "assists": 36
+        },
+        "Nautilus": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 9,
+          "assists": 11
+        },
+        "Rell": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 7,
+          "assists": 25
+        },
+        "Bard": {
+          "games": 1,
+          "wins": 1,
+          "kills": 3,
+          "deaths": 5,
+          "assists": 15
+        }
+      },
+      "average_kills": 1.2,
+      "average_deaths": 5.0,
+      "average_assists": 17.4,
+      "average_kda": 3.72,
+      "average_cs_per_min": 1.04,
+      "average_cs_per_minute": 1.04,
+      "average_vision_score": 69.8,
+      "average_gold_per_min": 286.0,
+      "average_damage_per_min": 329.0,
+      "winrate": 60.0,
+      "unique_champions_played": 4
+    },
+    "LG TwoT#7533": {
+      "player_name": "LG TwoT#7533",
+      "team": "Lion's Guard",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 27,
+      "total_deaths": 17,
+      "total_assists": 36,
+      "total_cs": 1179,
+      "total_vision_score": 109,
+      "total_gold_earned": 64821,
+      "total_damage_dealt": 148519,
+      "total_damage_taken": 180074,
+      "total_game_duration": 9561,
+      "champions_played": [
+        "Garen",
+        "Sion",
+        "Gragas",
+        "Gwen"
+      ],
+      "champion_stats": {
+        "Garen": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 4,
+          "assists": 2
+        },
+        "Sion": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 2,
+          "assists": 5
+        },
+        "Gragas": {
+          "games": 2,
+          "wins": 2,
+          "kills": 7,
+          "deaths": 3,
+          "assists": 22
+        },
+        "Gwen": {
+          "games": 1,
+          "wins": 1,
+          "kills": 17,
+          "deaths": 8,
+          "assists": 7
+        }
+      },
+      "average_kills": 5.4,
+      "average_deaths": 3.4,
+      "average_assists": 7.2,
+      "average_kda": 3.71,
+      "average_cs_per_min": 7.4,
+      "average_cs_per_minute": 7.4,
+      "average_vision_score": 21.8,
+      "average_gold_per_min": 407.0,
+      "average_damage_per_min": 932.0,
+      "winrate": 60.0,
+      "unique_champions_played": 4
+    },
+    "LG Pazou#5517": {
+      "player_name": "LG Pazou#5517",
+      "team": "Lion's Guard",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 17,
+      "total_deaths": 24,
+      "total_assists": 50,
+      "total_cs": 922,
+      "total_vision_score": 177,
+      "total_gold_earned": 58082,
+      "total_damage_dealt": 88957,
+      "total_damage_taken": 185826,
+      "total_game_duration": 9561,
+      "champions_played": [
+        "Poppy",
+        "Pantheon",
+        "Vi",
+        "XinZhao"
+      ],
+      "champion_stats": {
+        "Poppy": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 6,
+          "assists": 3
+        },
+        "Pantheon": {
+          "games": 1,
+          "wins": 0,
+          "kills": 5,
+          "deaths": 7,
+          "assists": 7
+        },
+        "Vi": {
+          "games": 2,
+          "wins": 2,
+          "kills": 5,
+          "deaths": 1,
+          "assists": 30
+        },
+        "XinZhao": {
+          "games": 1,
+          "wins": 1,
+          "kills": 6,
+          "deaths": 10,
+          "assists": 10
+        }
+      },
+      "average_kills": 3.4,
+      "average_deaths": 4.8,
+      "average_assists": 10.0,
+      "average_kda": 2.79,
+      "average_cs_per_min": 5.79,
+      "average_cs_per_minute": 5.79,
+      "average_vision_score": 35.4,
+      "average_gold_per_min": 364.0,
+      "average_damage_per_min": 558.0,
+      "winrate": 60.0,
+      "unique_champions_played": 4
+    },
+    "Nawilooo#OOO": {
+      "player_name": "Nawilooo#OOO",
+      "team": "Lion's Guard",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 38,
+      "total_deaths": 12,
+      "total_assists": 49,
+      "total_cs": 1305,
+      "total_vision_score": 129,
+      "total_gold_earned": 71334,
+      "total_damage_dealt": 141593,
+      "total_damage_taken": 143908,
+      "total_game_duration": 9561,
+      "champions_played": [
+        "Katarina",
+        "Kassadin",
+        "KSante",
+        "Karma"
+      ],
+      "champion_stats": {
+        "Katarina": {
+          "games": 1,
+          "wins": 0,
+          "kills": 5,
+          "deaths": 3,
+          "assists": 3
+        },
+        "Kassadin": {
+          "games": 1,
+          "wins": 0,
+          "kills": 6,
+          "deaths": 3,
+          "assists": 2
+        },
+        "KSante": {
+          "games": 2,
+          "wins": 2,
+          "kills": 16,
+          "deaths": 2,
+          "assists": 22
+        },
+        "Karma": {
+          "games": 1,
+          "wins": 1,
+          "kills": 11,
+          "deaths": 4,
+          "assists": 22
+        }
+      },
+      "average_kills": 7.6,
+      "average_deaths": 2.4,
+      "average_assists": 9.8,
+      "average_kda": 7.25,
+      "average_cs_per_min": 8.19,
+      "average_cs_per_minute": 8.19,
+      "average_vision_score": 25.8,
+      "average_gold_per_min": 448.0,
+      "average_damage_per_min": 889.0,
+      "winrate": 60.0,
+      "unique_champions_played": 4
+    },
+    "LG  Isowix#0409": {
+      "player_name": "LG  Isowix#0409",
+      "team": "Lion's Guard",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 41,
+      "total_deaths": 17,
+      "total_assists": 38,
+      "total_cs": 1186,
+      "total_vision_score": 171,
+      "total_gold_earned": 69605,
+      "total_damage_dealt": 143916,
+      "total_damage_taken": 91759,
+      "total_game_duration": 9561,
+      "champions_played": [
+        "Kaisa",
+        "Smolder",
+        "Xayah",
+        "Ashe"
+      ],
+      "champion_stats": {
+        "Kaisa": {
+          "games": 2,
+          "wins": 1,
+          "kills": 14,
+          "deaths": 6,
+          "assists": 10
+        },
+        "Smolder": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 4,
+          "assists": 8
+        },
+        "Xayah": {
+          "games": 1,
+          "wins": 1,
+          "kills": 12,
+          "deaths": 6,
+          "assists": 12
+        },
+        "Ashe": {
+          "games": 1,
+          "wins": 1,
+          "kills": 15,
+          "deaths": 1,
+          "assists": 8
+        }
+      },
+      "average_kills": 8.2,
+      "average_deaths": 3.4,
+      "average_assists": 7.6,
+      "average_kda": 4.65,
+      "average_cs_per_min": 7.44,
+      "average_cs_per_minute": 7.44,
+      "average_vision_score": 34.2,
+      "average_gold_per_min": 437.0,
+      "average_damage_per_min": 903.0,
+      "winrate": 60.0,
+      "unique_champions_played": 4
+    },
+    "LG Aziαs#OGNAM": {
+      "player_name": "LG Aziαs#OGNAM",
+      "team": "Lion's Guard",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 5,
+      "total_deaths": 17,
+      "total_assists": 94,
+      "total_cs": 149,
+      "total_vision_score": 499,
+      "total_gold_earned": 45109,
+      "total_damage_dealt": 50460,
+      "total_damage_taken": 116262,
+      "total_game_duration": 9561,
+      "champions_played": [
+        "Braum",
+        "Rakan"
+      ],
+      "champion_stats": {
+        "Braum": {
+          "games": 3,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 12,
+          "assists": 42
+        },
+        "Rakan": {
+          "games": 2,
+          "wins": 2,
+          "kills": 3,
+          "deaths": 5,
+          "assists": 52
+        }
+      },
+      "average_kills": 1.0,
+      "average_deaths": 3.4,
+      "average_assists": 18.8,
+      "average_kda": 5.82,
+      "average_cs_per_min": 0.94,
+      "average_cs_per_minute": 0.94,
+      "average_vision_score": 99.8,
+      "average_gold_per_min": 283.0,
+      "average_damage_per_min": 317.0,
+      "winrate": 60.0,
+      "unique_champions_played": 2
+    },
+    "Spectror#BLOP": {
+      "player_name": "Spectror#BLOP",
+      "team": "On aurait du y penser",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 17,
+      "total_deaths": 24,
+      "total_assists": 35,
+      "total_cs": 736,
+      "total_vision_score": 77,
+      "total_gold_earned": 46870,
+      "total_damage_dealt": 91298,
+      "total_damage_taken": 147361,
+      "total_game_duration": 8692,
+      "champions_played": [
+        "Yorick",
+        "Ornn",
+        "Poppy",
+        "Sion",
+        "Mordekaiser"
+      ],
+      "champion_stats": {
+        "Yorick": {
+          "games": 1,
+          "wins": 0,
+          "kills": 4,
+          "deaths": 9,
+          "assists": 1
+        },
+        "Ornn": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 3,
+          "assists": 8
+        },
+        "Poppy": {
+          "games": 1,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 3,
+          "assists": 7
+        },
+        "Sion": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 3,
+          "assists": 5
+        },
+        "Mordekaiser": {
+          "games": 1,
+          "wins": 1,
+          "kills": 4,
+          "deaths": 6,
+          "assists": 14
+        }
+      },
+      "average_kills": 3.4,
+      "average_deaths": 4.8,
+      "average_assists": 7.0,
+      "average_kda": 2.17,
+      "average_cs_per_min": 5.08,
+      "average_cs_per_minute": 5.08,
+      "average_vision_score": 15.4,
+      "average_gold_per_min": 324.0,
+      "average_damage_per_min": 630.0,
+      "winrate": 60.0,
+      "unique_champions_played": 5
+    },
+    "Virtuoz#111": {
+      "player_name": "Virtuoz#111",
+      "team": "On aurait du y penser",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 47,
+      "total_deaths": 23,
+      "total_assists": 36,
+      "total_cs": 1112,
+      "total_vision_score": 93,
+      "total_gold_earned": 67017,
+      "total_damage_dealt": 156419,
+      "total_damage_taken": 115971,
+      "total_game_duration": 8692,
+      "champions_played": [
+        "Yunara",
+        "Varus"
+      ],
+      "champion_stats": {
+        "Yunara": {
+          "games": 4,
+          "wins": 2,
+          "kills": 23,
+          "deaths": 17,
+          "assists": 24
+        },
+        "Varus": {
+          "games": 1,
+          "wins": 1,
+          "kills": 24,
+          "deaths": 6,
+          "assists": 12
+        }
+      },
+      "average_kills": 9.4,
+      "average_deaths": 4.6,
+      "average_assists": 7.2,
+      "average_kda": 3.61,
+      "average_cs_per_min": 7.68,
+      "average_cs_per_minute": 7.68,
+      "average_vision_score": 18.6,
+      "average_gold_per_min": 463.0,
+      "average_damage_per_min": 1080.0,
+      "winrate": 60.0,
+      "unique_champions_played": 2
+    },
+    "femboyaeri#GALA": {
+      "player_name": "femboyaeri#GALA",
+      "team": "On aurait du y penser",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 38,
+      "total_deaths": 20,
+      "total_assists": 39,
+      "total_cs": 955,
+      "total_vision_score": 118,
+      "total_gold_earned": 60715,
+      "total_damage_dealt": 146141,
+      "total_damage_taken": 90744,
+      "total_game_duration": 8692,
+      "champions_played": [
+        "Taliyah",
+        "Syndra",
+        "Hwei",
+        "Karma",
+        "Leblanc"
+      ],
+      "champion_stats": {
+        "Taliyah": {
+          "games": 1,
+          "wins": 0,
+          "kills": 8,
+          "deaths": 5,
+          "assists": 5
+        },
+        "Syndra": {
+          "games": 1,
+          "wins": 1,
+          "kills": 3,
+          "deaths": 3,
+          "assists": 8
+        },
+        "Hwei": {
+          "games": 1,
+          "wins": 1,
+          "kills": 5,
+          "deaths": 0,
+          "assists": 9
+        },
+        "Karma": {
+          "games": 1,
+          "wins": 0,
+          "kills": 7,
+          "deaths": 3,
+          "assists": 3
+        },
+        "Leblanc": {
+          "games": 1,
+          "wins": 1,
+          "kills": 15,
+          "deaths": 9,
+          "assists": 14
+        }
+      },
+      "average_kills": 7.6,
+      "average_deaths": 4.0,
+      "average_assists": 7.8,
+      "average_kda": 3.85,
+      "average_cs_per_min": 6.59,
+      "average_cs_per_minute": 6.59,
+      "average_vision_score": 23.6,
+      "average_gold_per_min": 419.0,
+      "average_damage_per_min": 1009.0,
+      "winrate": 60.0,
+      "unique_champions_played": 5
+    },
+    "不朽的惡魔女王香農#回到基础": {
+      "player_name": "不朽的惡魔女王香農#回到基础",
+      "team": "On aurait du y penser",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 4,
+      "total_deaths": 16,
+      "total_assists": 93,
+      "total_cs": 143,
+      "total_vision_score": 354,
+      "total_gold_earned": 41429,
+      "total_damage_dealt": 39185,
+      "total_damage_taken": 83365,
+      "total_game_duration": 8692,
+      "champions_played": [
+        "Milio",
+        "Nami",
+        "Lulu"
+      ],
+      "champion_stats": {
+        "Milio": {
+          "games": 2,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 12,
+          "assists": 22
+        },
+        "Nami": {
+          "games": 2,
+          "wins": 2,
+          "kills": 2,
+          "deaths": 1,
+          "assists": 30
+        },
+        "Lulu": {
+          "games": 1,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 3,
+          "assists": 41
+        }
+      },
+      "average_kills": 0.8,
+      "average_deaths": 3.2,
+      "average_assists": 18.6,
+      "average_kda": 6.06,
+      "average_cs_per_min": 0.99,
+      "average_cs_per_minute": 0.99,
+      "average_vision_score": 70.8,
+      "average_gold_per_min": 286.0,
+      "average_damage_per_min": 270.0,
+      "winrate": 60.0,
+      "unique_champions_played": 3
+    },
+    "BanSkyzoOrParano#SHACO": {
+      "player_name": "BanSkyzoOrParano#SHACO",
+      "team": "On aurait du y penser",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 21,
+      "total_deaths": 22,
+      "total_assists": 46,
+      "total_cs": 864,
+      "total_vision_score": 116,
+      "total_gold_earned": 54295,
+      "total_damage_dealt": 56242,
+      "total_damage_taken": 178463,
+      "total_game_duration": 8692,
+      "champions_played": [
+        "Zac",
+        "Nocturne",
+        "JarvanIV",
+        "Wukong"
+      ],
+      "champion_stats": {
+        "Zac": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 7,
+          "assists": 6
+        },
+        "Nocturne": {
+          "games": 2,
+          "wins": 2,
+          "kills": 15,
+          "deaths": 7,
+          "assists": 25
+        },
+        "JarvanIV": {
+          "games": 1,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 3,
+          "assists": 13
+        },
+        "Wukong": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 5,
+          "assists": 2
+        }
+      },
+      "average_kills": 4.2,
+      "average_deaths": 4.4,
+      "average_assists": 9.2,
+      "average_kda": 3.05,
+      "average_cs_per_min": 5.96,
+      "average_cs_per_minute": 5.96,
+      "average_vision_score": 23.2,
+      "average_gold_per_min": 375.0,
+      "average_damage_per_min": 388.0,
+      "winrate": 60.0,
+      "unique_champions_played": 4
+    },
+    "Crips95v2#EUW": {
+      "player_name": "Crips95v2#EUW",
+      "team": "EC Emerald",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 40,
+      "total_deaths": 13,
+      "total_assists": 29,
+      "total_cs": 1063,
+      "total_vision_score": 89,
+      "total_gold_earned": 65984,
+      "total_damage_dealt": 124425,
+      "total_damage_taken": 147392,
+      "total_game_duration": 8675,
+      "champions_played": [
+        "Olaf",
+        "Darius",
+        "Jax",
+        "Garen"
+      ],
+      "champion_stats": {
+        "Olaf": {
+          "games": 2,
+          "wins": 2,
+          "kills": 24,
+          "deaths": 4,
+          "assists": 17
+        },
+        "Darius": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 4,
+          "assists": 7
+        },
+        "Jax": {
+          "games": 1,
+          "wins": 1,
+          "kills": 12,
+          "deaths": 2,
+          "assists": 4
+        },
+        "Garen": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 3,
+          "assists": 1
+        }
+      },
+      "average_kills": 8.0,
+      "average_deaths": 2.6,
+      "average_assists": 5.8,
+      "average_kda": 5.31,
+      "average_cs_per_min": 7.35,
+      "average_cs_per_minute": 7.35,
+      "average_vision_score": 17.8,
+      "average_gold_per_min": 456.0,
+      "average_damage_per_min": 861.0,
+      "winrate": 60.0,
+      "unique_champions_played": 4
+    },
+    "PFR SahDony#666": {
+      "player_name": "PFR SahDony#666",
+      "team": "EC Emerald",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 9,
+      "total_deaths": 21,
+      "total_assists": 52,
+      "total_cs": 788,
+      "total_vision_score": 144,
+      "total_gold_earned": 47873,
+      "total_damage_dealt": 53993,
+      "total_damage_taken": 188005,
+      "total_game_duration": 8675,
+      "champions_played": [
+        "Skarner",
+        "XinZhao",
+        "Wukong"
+      ],
+      "champion_stats": {
+        "Skarner": {
+          "games": 2,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 7,
+          "assists": 30
+        },
+        "XinZhao": {
+          "games": 2,
+          "wins": 1,
+          "kills": 4,
+          "deaths": 11,
+          "assists": 12
+        },
+        "Wukong": {
+          "games": 1,
+          "wins": 1,
+          "kills": 3,
+          "deaths": 3,
+          "assists": 10
+        }
+      },
+      "average_kills": 1.8,
+      "average_deaths": 4.2,
+      "average_assists": 10.4,
+      "average_kda": 2.9,
+      "average_cs_per_min": 5.45,
+      "average_cs_per_minute": 5.45,
+      "average_vision_score": 28.8,
+      "average_gold_per_min": 331.0,
+      "average_damage_per_min": 373.0,
+      "winrate": 60.0,
+      "unique_champions_played": 3
+    },
+    "Kouign Amann#001": {
+      "player_name": "Kouign Amann#001",
+      "team": "EC Emerald",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 29,
+      "total_deaths": 14,
+      "total_assists": 22,
+      "total_cs": 1029,
+      "total_vision_score": 114,
+      "total_gold_earned": 56601,
+      "total_damage_dealt": 101410,
+      "total_damage_taken": 59950,
+      "total_game_duration": 8675,
+      "champions_played": [
+        "Ahri",
+        "Mel",
+        "Lux"
+      ],
+      "champion_stats": {
+        "Ahri": {
+          "games": 1,
+          "wins": 1,
+          "kills": 4,
+          "deaths": 3,
+          "assists": 10
+        },
+        "Mel": {
+          "games": 3,
+          "wins": 2,
+          "kills": 24,
+          "deaths": 7,
+          "assists": 12
+        },
+        "Lux": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 4,
+          "assists": 0
+        }
+      },
+      "average_kills": 5.8,
+      "average_deaths": 2.8,
+      "average_assists": 4.4,
+      "average_kda": 3.64,
+      "average_cs_per_min": 7.12,
+      "average_cs_per_minute": 7.12,
+      "average_vision_score": 22.8,
+      "average_gold_per_min": 391.0,
+      "average_damage_per_min": 701.0,
+      "winrate": 60.0,
+      "unique_champions_played": 3
+    },
+    "Cygola#EUW": {
+      "player_name": "Cygola#EUW",
+      "team": "EC Emerald",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 28,
+      "total_deaths": 24,
+      "total_assists": 44,
+      "total_cs": 1116,
+      "total_vision_score": 120,
+      "total_gold_earned": 60749,
+      "total_damage_dealt": 106429,
+      "total_damage_taken": 88281,
+      "total_game_duration": 8675,
+      "champions_played": [
+        "Jinx",
+        "Xayah"
+      ],
+      "champion_stats": {
+        "Jinx": {
+          "games": 3,
+          "wins": 3,
+          "kills": 22,
+          "deaths": 14,
+          "assists": 36
+        },
+        "Xayah": {
+          "games": 2,
+          "wins": 0,
+          "kills": 6,
+          "deaths": 10,
+          "assists": 8
+        }
+      },
+      "average_kills": 5.6,
+      "average_deaths": 4.8,
+      "average_assists": 8.8,
+      "average_kda": 3.0,
+      "average_cs_per_min": 7.72,
+      "average_cs_per_minute": 7.72,
+      "average_vision_score": 24.0,
+      "average_gold_per_min": 420.0,
+      "average_damage_per_min": 736.0,
+      "winrate": 60.0,
+      "unique_champions_played": 2
+    },
+    "TwitchDartien#EUW": {
+      "player_name": "TwitchDartien#EUW",
+      "team": "EC Emerald",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 3,
+      "total_deaths": 20,
+      "total_assists": 74,
+      "total_cs": 142,
+      "total_vision_score": 314,
+      "total_gold_earned": 37916,
+      "total_damage_dealt": 38201,
+      "total_damage_taken": 99016,
+      "total_game_duration": 8675,
+      "champions_played": [
+        "Braum",
+        "Lulu",
+        "Rakan"
+      ],
+      "champion_stats": {
+        "Braum": {
+          "games": 3,
+          "wins": 3,
+          "kills": 3,
+          "deaths": 10,
+          "assists": 57
+        },
+        "Lulu": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 4,
+          "assists": 12
+        },
+        "Rakan": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 6,
+          "assists": 5
+        }
+      },
+      "average_kills": 0.6,
+      "average_deaths": 4.0,
+      "average_assists": 14.8,
+      "average_kda": 3.85,
+      "average_cs_per_min": 0.98,
+      "average_cs_per_minute": 0.98,
+      "average_vision_score": 62.8,
+      "average_gold_per_min": 262.0,
+      "average_damage_per_min": 264.0,
+      "winrate": 60.0,
+      "unique_champions_played": 3
+    },
+    "Boubouzaro#OUIN": {
+      "player_name": "Boubouzaro#OUIN",
+      "team": "chasse et pêche",
+      "games_played": 5,
+      "wins": 4,
+      "losses": 1,
+      "total_kills": 37,
+      "total_deaths": 20,
+      "total_assists": 32,
+      "total_cs": 1118,
+      "total_vision_score": 90,
+      "total_gold_earned": 68587,
+      "total_damage_dealt": 126616,
+      "total_damage_taken": 132735,
+      "total_game_duration": 9270,
+      "champions_played": [
+        "Olaf",
+        "Varus",
+        "Poppy",
+        "Jax"
+      ],
+      "champion_stats": {
+        "Olaf": {
+          "games": 1,
+          "wins": 1,
+          "kills": 3,
+          "deaths": 1,
+          "assists": 2
+        },
+        "Varus": {
+          "games": 2,
+          "wins": 2,
+          "kills": 23,
+          "deaths": 7,
+          "assists": 11
+        },
+        "Poppy": {
+          "games": 1,
+          "wins": 1,
+          "kills": 9,
+          "deaths": 4,
+          "assists": 14
+        },
+        "Jax": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 8,
+          "assists": 5
+        }
+      },
+      "average_kills": 7.4,
+      "average_deaths": 4.0,
+      "average_assists": 6.4,
+      "average_kda": 3.45,
+      "average_cs_per_min": 7.24,
+      "average_cs_per_minute": 7.24,
+      "average_vision_score": 18.0,
+      "average_gold_per_min": 444.0,
+      "average_damage_per_min": 820.0,
+      "winrate": 80.0,
+      "unique_champions_played": 4
+    },
+    "Cøchon énervé#CVRAI": {
+      "player_name": "Cøchon énervé#CVRAI",
+      "team": "chasse et pêche",
+      "games_played": 5,
+      "wins": 4,
+      "losses": 1,
+      "total_kills": 18,
+      "total_deaths": 22,
+      "total_assists": 79,
+      "total_cs": 932,
+      "total_vision_score": 171,
+      "total_gold_earned": 57538,
+      "total_damage_dealt": 107495,
+      "total_damage_taken": 168485,
+      "total_game_duration": 9270,
+      "champions_played": [
+        "Maokai",
+        "Zyra",
+        "Vi"
+      ],
+      "champion_stats": {
+        "Maokai": {
+          "games": 3,
+          "wins": 3,
+          "kills": 8,
+          "deaths": 8,
+          "assists": 51
+        },
+        "Zyra": {
+          "games": 1,
+          "wins": 1,
+          "kills": 8,
+          "deaths": 8,
+          "assists": 17
+        },
+        "Vi": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 6,
+          "assists": 11
+        }
+      },
+      "average_kills": 3.6,
+      "average_deaths": 4.4,
+      "average_assists": 15.8,
+      "average_kda": 4.41,
+      "average_cs_per_min": 6.03,
+      "average_cs_per_minute": 6.03,
+      "average_vision_score": 34.2,
+      "average_gold_per_min": 372.0,
+      "average_damage_per_min": 696.0,
+      "winrate": 80.0,
+      "unique_champions_played": 3
+    },
+    "kimcannacaliste#kcwin": {
+      "player_name": "kimcannacaliste#kcwin",
+      "team": "chasse et pêche",
+      "games_played": 5,
+      "wins": 4,
+      "losses": 1,
+      "total_kills": 19,
+      "total_deaths": 16,
+      "total_assists": 66,
+      "total_cs": 1067,
+      "total_vision_score": 136,
+      "total_gold_earned": 57531,
+      "total_damage_dealt": 114070,
+      "total_damage_taken": 117678,
+      "total_game_duration": 9270,
+      "champions_played": [
+        "Hwei",
+        "Orianna",
+        "Galio"
+      ],
+      "champion_stats": {
+        "Hwei": {
+          "games": 1,
+          "wins": 1,
+          "kills": 1,
+          "deaths": 2,
+          "assists": 11
+        },
+        "Orianna": {
+          "games": 3,
+          "wins": 2,
+          "kills": 14,
+          "deaths": 11,
+          "assists": 40
+        },
+        "Galio": {
+          "games": 1,
+          "wins": 1,
+          "kills": 4,
+          "deaths": 3,
+          "assists": 15
+        }
+      },
+      "average_kills": 3.8,
+      "average_deaths": 3.2,
+      "average_assists": 13.2,
+      "average_kda": 5.31,
+      "average_cs_per_min": 6.91,
+      "average_cs_per_minute": 6.91,
+      "average_vision_score": 27.2,
+      "average_gold_per_min": 372.0,
+      "average_damage_per_min": 738.0,
+      "winrate": 80.0,
+      "unique_champions_played": 3
+    },
+    "SeyZo#EUW": {
+      "player_name": "SeyZo#EUW",
+      "team": "chasse et pêche",
+      "games_played": 5,
+      "wins": 4,
+      "losses": 1,
+      "total_kills": 53,
+      "total_deaths": 16,
+      "total_assists": 40,
+      "total_cs": 1234,
+      "total_vision_score": 85,
+      "total_gold_earned": 77394,
+      "total_damage_dealt": 175620,
+      "total_damage_taken": 89648,
+      "total_game_duration": 9270,
+      "champions_played": [
+        "Yunara",
+        "Kaisa",
+        "Tristana",
+        "Jinx"
+      ],
+      "champion_stats": {
+        "Yunara": {
+          "games": 1,
+          "wins": 1,
+          "kills": 15,
+          "deaths": 1,
+          "assists": 7
+        },
+        "Kaisa": {
+          "games": 2,
+          "wins": 1,
+          "kills": 22,
+          "deaths": 6,
+          "assists": 15
+        },
+        "Tristana": {
+          "games": 1,
+          "wins": 1,
+          "kills": 10,
+          "deaths": 6,
+          "assists": 5
+        },
+        "Jinx": {
+          "games": 1,
+          "wins": 1,
+          "kills": 6,
+          "deaths": 3,
+          "assists": 13
+        }
+      },
+      "average_kills": 10.6,
+      "average_deaths": 3.2,
+      "average_assists": 8.0,
+      "average_kda": 5.81,
+      "average_cs_per_min": 7.99,
+      "average_cs_per_minute": 7.99,
+      "average_vision_score": 17.0,
+      "average_gold_per_min": 501.0,
+      "average_damage_per_min": 1137.0,
+      "winrate": 80.0,
+      "unique_champions_played": 4
+    },
+    "Sumwo#EUW": {
+      "player_name": "Sumwo#EUW",
+      "team": "chasse et pêche",
+      "games_played": 5,
+      "wins": 4,
+      "losses": 1,
+      "total_kills": 5,
+      "total_deaths": 22,
+      "total_assists": 94,
+      "total_cs": 122,
+      "total_vision_score": 377,
+      "total_gold_earned": 42686,
+      "total_damage_dealt": 55043,
+      "total_damage_taken": 126712,
+      "total_game_duration": 9270,
+      "champions_played": [
+        "Bard",
+        "Rakan",
+        "Braum",
+        "Nautilus"
+      ],
+      "champion_stats": {
+        "Bard": {
+          "games": 2,
+          "wins": 2,
+          "kills": 4,
+          "deaths": 4,
+          "assists": 32
+        },
+        "Rakan": {
+          "games": 1,
+          "wins": 1,
+          "kills": 1,
+          "deaths": 4,
+          "assists": 20
+        },
+        "Braum": {
+          "games": 1,
+          "wins": 1,
+          "kills": 0,
+          "deaths": 3,
+          "assists": 23
+        },
+        "Nautilus": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 11,
+          "assists": 19
+        }
+      },
+      "average_kills": 1.0,
+      "average_deaths": 4.4,
+      "average_assists": 18.8,
+      "average_kda": 4.5,
+      "average_cs_per_min": 0.79,
+      "average_cs_per_minute": 0.79,
+      "average_vision_score": 75.4,
+      "average_gold_per_min": 276.0,
+      "average_damage_per_min": 356.0,
+      "winrate": 80.0,
+      "unique_champions_played": 4
+    },
+    "Revert Skarner#Khako": {
+      "player_name": "Revert Skarner#Khako",
+      "team": "FF 15 Policy",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 20,
+      "total_deaths": 22,
+      "total_assists": 30,
+      "total_cs": 907,
+      "total_vision_score": 119,
+      "total_gold_earned": 50833,
+      "total_damage_dealt": 93638,
+      "total_damage_taken": 122482,
+      "total_game_duration": 8307,
+      "champions_played": [
+        "Wukong",
+        "KSante",
+        "Urgot",
+        "Singed"
+      ],
+      "champion_stats": {
+        "Wukong": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 7,
+          "assists": 0
+        },
+        "KSante": {
+          "games": 2,
+          "wins": 2,
+          "kills": 10,
+          "deaths": 5,
+          "assists": 23
+        },
+        "Urgot": {
+          "games": 1,
+          "wins": 0,
+          "kills": 6,
+          "deaths": 3,
+          "assists": 4
+        },
+        "Singed": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 7,
+          "assists": 3
+        }
+      },
+      "average_kills": 4.0,
+      "average_deaths": 4.4,
+      "average_assists": 6.0,
+      "average_kda": 2.27,
+      "average_cs_per_min": 6.55,
+      "average_cs_per_minute": 6.55,
+      "average_vision_score": 23.8,
+      "average_gold_per_min": 367.0,
+      "average_damage_per_min": 676.0,
+      "winrate": 40.0,
+      "unique_champions_played": 4
+    },
+    "KC CANNA 2026#stp": {
+      "player_name": "KC CANNA 2026#stp",
+      "team": "FF 15 Policy",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 14,
+      "total_deaths": 22,
+      "total_assists": 37,
+      "total_cs": 830,
+      "total_vision_score": 131,
+      "total_gold_earned": 48070,
+      "total_damage_dealt": 58450,
+      "total_damage_taken": 172870,
+      "total_game_duration": 8307,
+      "champions_played": [
+        "Sejuani",
+        "Volibear",
+        "XinZhao",
+        "Vi"
+      ],
+      "champion_stats": {
+        "Sejuani": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 6,
+          "assists": 3
+        },
+        "Volibear": {
+          "games": 2,
+          "wins": 2,
+          "kills": 9,
+          "deaths": 5,
+          "assists": 24
+        },
+        "XinZhao": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 4,
+          "assists": 7
+        },
+        "Vi": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 7,
+          "assists": 3
+        }
+      },
+      "average_kills": 2.8,
+      "average_deaths": 4.4,
+      "average_assists": 7.4,
+      "average_kda": 2.32,
+      "average_cs_per_min": 5.99,
+      "average_cs_per_minute": 5.99,
+      "average_vision_score": 26.2,
+      "average_gold_per_min": 347.0,
+      "average_damage_per_min": 422.0,
+      "winrate": 40.0,
+      "unique_champions_played": 4
+    },
+    "Symbi0se#HooK": {
+      "player_name": "Symbi0se#HooK",
+      "team": "FF 15 Policy",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 21,
+      "total_deaths": 11,
+      "total_assists": 38,
+      "total_cs": 1040,
+      "total_vision_score": 142,
+      "total_gold_earned": 53791,
+      "total_damage_dealt": 107976,
+      "total_damage_taken": 60772,
+      "total_game_duration": 8307,
+      "champions_played": [
+        "Velkoz",
+        "Orianna",
+        "Hwei"
+      ],
+      "champion_stats": {
+        "Velkoz": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 1,
+          "assists": 1
+        },
+        "Orianna": {
+          "games": 3,
+          "wins": 2,
+          "kills": 17,
+          "deaths": 7,
+          "assists": 34
+        },
+        "Hwei": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 3,
+          "assists": 3
+        }
+      },
+      "average_kills": 4.2,
+      "average_deaths": 2.2,
+      "average_assists": 7.6,
+      "average_kda": 5.36,
+      "average_cs_per_min": 7.51,
+      "average_cs_per_minute": 7.51,
+      "average_vision_score": 28.4,
+      "average_gold_per_min": 389.0,
+      "average_damage_per_min": 780.0,
+      "winrate": 40.0,
+      "unique_champions_played": 3
+    },
+    "kyuri#naab": {
+      "player_name": "kyuri#naab",
+      "team": "FF 15 Policy",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 28,
+      "total_deaths": 18,
+      "total_assists": 28,
+      "total_cs": 936,
+      "total_vision_score": 72,
+      "total_gold_earned": 54086,
+      "total_damage_dealt": 85279,
+      "total_damage_taken": 79666,
+      "total_game_duration": 8307,
+      "champions_played": [
+        "Corki",
+        "KogMaw",
+        "Aphelios",
+        "Vayne"
+      ],
+      "champion_stats": {
+        "Corki": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 3,
+          "assists": 3
+        },
+        "KogMaw": {
+          "games": 2,
+          "wins": 1,
+          "kills": 14,
+          "deaths": 6,
+          "assists": 15
+        },
+        "Aphelios": {
+          "games": 1,
+          "wins": 1,
+          "kills": 9,
+          "deaths": 2,
+          "assists": 7
+        },
+        "Vayne": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 7,
+          "assists": 3
+        }
+      },
+      "average_kills": 5.6,
+      "average_deaths": 3.6,
+      "average_assists": 5.6,
+      "average_kda": 3.11,
+      "average_cs_per_min": 6.76,
+      "average_cs_per_minute": 6.76,
+      "average_vision_score": 14.4,
+      "average_gold_per_min": 391.0,
+      "average_damage_per_min": 616.0,
+      "winrate": 40.0,
+      "unique_champions_played": 4
+    },
+    "blackeyes#supp": {
+      "player_name": "blackeyes#supp",
+      "team": "FF 15 Policy",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 4,
+      "total_deaths": 25,
+      "total_assists": 56,
+      "total_cs": 125,
+      "total_vision_score": 358,
+      "total_gold_earned": 34338,
+      "total_damage_dealt": 39447,
+      "total_damage_taken": 91602,
+      "total_game_duration": 8307,
+      "champions_played": [
+        "Thresh",
+        "Braum",
+        "Nautilus",
+        "Rakan"
+      ],
+      "champion_stats": {
+        "Thresh": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 8,
+          "assists": 6
+        },
+        "Braum": {
+          "games": 2,
+          "wins": 1,
+          "kills": 4,
+          "deaths": 7,
+          "assists": 26
+        },
+        "Nautilus": {
+          "games": 1,
+          "wins": 1,
+          "kills": 0,
+          "deaths": 5,
+          "assists": 16
+        },
+        "Rakan": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 5,
+          "assists": 8
+        }
+      },
+      "average_kills": 0.8,
+      "average_deaths": 5.0,
+      "average_assists": 11.2,
+      "average_kda": 2.4,
+      "average_cs_per_min": 0.9,
+      "average_cs_per_minute": 0.9,
+      "average_vision_score": 71.6,
+      "average_gold_per_min": 248.0,
+      "average_damage_per_min": 285.0,
+      "winrate": 40.0,
+      "unique_champions_played": 4
+    },
+    "NEP Zerkome#EUW03": {
+      "player_name": "NEP Zerkome#EUW03",
+      "team": "PIPI GAMING",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 37,
+      "total_deaths": 20,
+      "total_assists": 21,
+      "total_cs": 1015,
+      "total_vision_score": 77,
+      "total_gold_earned": 63370,
+      "total_damage_dealt": 149494,
+      "total_damage_taken": 185872,
+      "total_game_duration": 7901,
+      "champions_played": [
+        "RekSai",
+        "DrMundo",
+        "Gwen",
+        "Kayn",
+        "Aatrox"
+      ],
+      "champion_stats": {
+        "RekSai": {
+          "games": 1,
+          "wins": 0,
+          "kills": 4,
+          "deaths": 7,
+          "assists": 5
+        },
+        "DrMundo": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 6,
+          "assists": 2
+        },
+        "Gwen": {
+          "games": 1,
+          "wins": 1,
+          "kills": 14,
+          "deaths": 3,
+          "assists": 6
+        },
+        "Kayn": {
+          "games": 1,
+          "wins": 1,
+          "kills": 3,
+          "deaths": 3,
+          "assists": 3
+        },
+        "Aatrox": {
+          "games": 1,
+          "wins": 1,
+          "kills": 13,
+          "deaths": 1,
+          "assists": 5
+        }
+      },
+      "average_kills": 7.4,
+      "average_deaths": 4.0,
+      "average_assists": 4.2,
+      "average_kda": 2.9,
+      "average_cs_per_min": 7.71,
+      "average_cs_per_minute": 7.71,
+      "average_vision_score": 15.4,
+      "average_gold_per_min": 481.0,
+      "average_damage_per_min": 1135.0,
+      "winrate": 60.0,
+      "unique_champions_played": 5
+    },
+    "AOE Luce#3109": {
+      "player_name": "AOE Luce#3109",
+      "team": "PIPI GAMING",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 21,
+      "total_deaths": 13,
+      "total_assists": 33,
+      "total_cs": 830,
+      "total_vision_score": 112,
+      "total_gold_earned": 52012,
+      "total_damage_dealt": 62161,
+      "total_damage_taken": 170228,
+      "total_game_duration": 7901,
+      "champions_played": [
+        "Trundle",
+        "Wukong",
+        "Nocturne",
+        "XinZhao"
+      ],
+      "champion_stats": {
+        "Trundle": {
+          "games": 1,
+          "wins": 0,
+          "kills": 4,
+          "deaths": 6,
+          "assists": 5
+        },
+        "Wukong": {
+          "games": 2,
+          "wins": 1,
+          "kills": 6,
+          "deaths": 7,
+          "assists": 9
+        },
+        "Nocturne": {
+          "games": 1,
+          "wins": 1,
+          "kills": 4,
+          "deaths": 0,
+          "assists": 4
+        },
+        "XinZhao": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 0,
+          "assists": 15
+        }
+      },
+      "average_kills": 4.2,
+      "average_deaths": 2.6,
+      "average_assists": 6.6,
+      "average_kda": 4.15,
+      "average_cs_per_min": 6.3,
+      "average_cs_per_minute": 6.3,
+      "average_vision_score": 22.4,
+      "average_gold_per_min": 395.0,
+      "average_damage_per_min": 472.0,
+      "winrate": 60.0,
+      "unique_champions_played": 4
+    },
+    "tayme#euw": {
+      "player_name": "tayme#euw",
+      "team": "PIPI GAMING",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 14,
+      "total_deaths": 13,
+      "total_assists": 36,
+      "total_cs": 965,
+      "total_vision_score": 111,
+      "total_gold_earned": 49779,
+      "total_damage_dealt": 109435,
+      "total_damage_taken": 79919,
+      "total_game_duration": 7901,
+      "champions_played": [
+        "Syndra",
+        "Ahri",
+        "Viktor",
+        "Orianna",
+        "Annie"
+      ],
+      "champion_stats": {
+        "Syndra": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 4,
+          "assists": 5
+        },
+        "Ahri": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 5,
+          "assists": 5
+        },
+        "Viktor": {
+          "games": 1,
+          "wins": 1,
+          "kills": 1,
+          "deaths": 2,
+          "assists": 7
+        },
+        "Orianna": {
+          "games": 1,
+          "wins": 1,
+          "kills": 6,
+          "deaths": 0,
+          "assists": 9
+        },
+        "Annie": {
+          "games": 1,
+          "wins": 1,
+          "kills": 5,
+          "deaths": 2,
+          "assists": 10
+        }
+      },
+      "average_kills": 2.8,
+      "average_deaths": 2.6,
+      "average_assists": 7.2,
+      "average_kda": 3.85,
+      "average_cs_per_min": 7.33,
+      "average_cs_per_minute": 7.33,
+      "average_vision_score": 22.2,
+      "average_gold_per_min": 378.0,
+      "average_damage_per_min": 831.0,
+      "winrate": 60.0,
+      "unique_champions_played": 5
+    },
+    "Onikiezi#euw": {
+      "player_name": "Onikiezi#euw",
+      "team": "PIPI GAMING",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 25,
+      "total_deaths": 19,
+      "total_assists": 27,
+      "total_cs": 1146,
+      "total_vision_score": 85,
+      "total_gold_earned": 59397,
+      "total_damage_dealt": 104965,
+      "total_damage_taken": 76543,
+      "total_game_duration": 7901,
+      "champions_played": [
+        "Yunara",
+        "Varus",
+        "Aphelios"
+      ],
+      "champion_stats": {
+        "Yunara": {
+          "games": 3,
+          "wins": 2,
+          "kills": 16,
+          "deaths": 7,
+          "assists": 18
+        },
+        "Varus": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 10,
+          "assists": 3
+        },
+        "Aphelios": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 2,
+          "assists": 6
+        }
+      },
+      "average_kills": 5.0,
+      "average_deaths": 3.8,
+      "average_assists": 5.4,
+      "average_kda": 2.74,
+      "average_cs_per_min": 8.7,
+      "average_cs_per_minute": 8.7,
+      "average_vision_score": 17.0,
+      "average_gold_per_min": 451.0,
+      "average_damage_per_min": 797.0,
+      "winrate": 60.0,
+      "unique_champions_played": 3
+    },
+    "RR D1#EUW": {
+      "player_name": "RR D1#EUW",
+      "team": "PIPI GAMING",
+      "games_played": 1,
+      "wins": 0,
+      "losses": 1,
+      "total_kills": 0,
+      "total_deaths": 5,
+      "total_assists": 9,
+      "total_cs": 31,
+      "total_vision_score": 124,
+      "total_gold_earned": 8085,
+      "total_damage_dealt": 5621,
+      "total_damage_taken": 24089,
+      "total_game_duration": 2161,
+      "champions_played": [
+        "Braum"
+      ],
+      "champion_stats": {
+        "Braum": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 5,
+          "assists": 9
+        }
+      },
+      "average_kills": 0.0,
+      "average_deaths": 5.0,
+      "average_assists": 9.0,
+      "average_kda": 1.8,
+      "average_cs_per_min": 0.86,
+      "average_cs_per_minute": 0.86,
+      "average_vision_score": 124.0,
+      "average_gold_per_min": 224.0,
+      "average_damage_per_min": 156.0,
+      "winrate": 0.0,
+      "unique_champions_played": 1
+    },
+    "bouyachakaaa#mfda": {
+      "player_name": "bouyachakaaa#mfda",
+      "team": "4 goats et le 2010",
+      "games_played": 5,
+      "wins": 5,
+      "losses": 0,
+      "total_kills": 37,
+      "total_deaths": 20,
+      "total_assists": 39,
+      "total_cs": 990,
+      "total_vision_score": 71,
+      "total_gold_earned": 63696,
+      "total_damage_dealt": 130151,
+      "total_damage_taken": 150800,
+      "total_game_duration": 7176,
+      "champions_played": [
+        "Aatrox",
+        "Kayn",
+        "Sion",
+        "Yone",
+        "Kennen"
+      ],
+      "champion_stats": {
+        "Aatrox": {
+          "games": 1,
+          "wins": 1,
+          "kills": 10,
+          "deaths": 2,
+          "assists": 8
+        },
+        "Kayn": {
+          "games": 1,
+          "wins": 1,
+          "kills": 8,
+          "deaths": 3,
+          "assists": 6
+        },
+        "Sion": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 8,
+          "assists": 7
+        },
+        "Yone": {
+          "games": 1,
+          "wins": 1,
+          "kills": 1,
+          "deaths": 4,
+          "assists": 9
+        },
+        "Kennen": {
+          "games": 1,
+          "wins": 1,
+          "kills": 11,
+          "deaths": 3,
+          "assists": 9
+        }
+      },
+      "average_kills": 7.4,
+      "average_deaths": 4.0,
+      "average_assists": 7.8,
+      "average_kda": 3.8,
+      "average_cs_per_min": 8.28,
+      "average_cs_per_minute": 8.28,
+      "average_vision_score": 14.2,
+      "average_gold_per_min": 533.0,
+      "average_damage_per_min": 1088.0,
+      "winrate": 100.0,
+      "unique_champions_played": 5
+    },
+    "bodybag#7xvn": {
+      "player_name": "bodybag#7xvn",
+      "team": "4 goats et le 2010",
+      "games_played": 5,
+      "wins": 5,
+      "losses": 0,
+      "total_kills": 29,
+      "total_deaths": 17,
+      "total_assists": 55,
+      "total_cs": 830,
+      "total_vision_score": 103,
+      "total_gold_earned": 55945,
+      "total_damage_dealt": 80896,
+      "total_damage_taken": 164282,
+      "total_game_duration": 7176,
+      "champions_played": [
+        "Qiyana",
+        "Wukong",
+        "JarvanIV",
+        "Trundle",
+        "DrMundo"
+      ],
+      "champion_stats": {
+        "Qiyana": {
+          "games": 1,
+          "wins": 1,
+          "kills": 5,
+          "deaths": 2,
+          "assists": 7
+        },
+        "Wukong": {
+          "games": 1,
+          "wins": 1,
+          "kills": 4,
+          "deaths": 2,
+          "assists": 6
+        },
+        "JarvanIV": {
+          "games": 1,
+          "wins": 1,
+          "kills": 6,
+          "deaths": 6,
+          "assists": 17
+        },
+        "Trundle": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 2,
+          "assists": 15
+        },
+        "DrMundo": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 5,
+          "assists": 10
+        }
+      },
+      "average_kills": 5.8,
+      "average_deaths": 3.4,
+      "average_assists": 11.0,
+      "average_kda": 4.94,
+      "average_cs_per_min": 6.94,
+      "average_cs_per_minute": 6.94,
+      "average_vision_score": 20.6,
+      "average_gold_per_min": 468.0,
+      "average_damage_per_min": 676.0,
+      "winrate": 100.0,
+      "unique_champions_played": 5
+    },
+    "eomer#feur": {
+      "player_name": "eomer#feur",
+      "team": "4 goats et le 2010",
+      "games_played": 5,
+      "wins": 5,
+      "losses": 0,
+      "total_kills": 43,
+      "total_deaths": 16,
+      "total_assists": 53,
+      "total_cs": 878,
+      "total_vision_score": 81,
+      "total_gold_earned": 59592,
+      "total_damage_dealt": 145549,
+      "total_damage_taken": 84115,
+      "total_game_duration": 7176,
+      "champions_played": [
+        "Velkoz",
+        "Smolder"
+      ],
+      "champion_stats": {
+        "Velkoz": {
+          "games": 4,
+          "wins": 4,
+          "kills": 34,
+          "deaths": 11,
+          "assists": 42
+        },
+        "Smolder": {
+          "games": 1,
+          "wins": 1,
+          "kills": 9,
+          "deaths": 5,
+          "assists": 11
+        }
+      },
+      "average_kills": 8.6,
+      "average_deaths": 3.2,
+      "average_assists": 10.6,
+      "average_kda": 6.0,
+      "average_cs_per_min": 7.34,
+      "average_cs_per_minute": 7.34,
+      "average_vision_score": 16.2,
+      "average_gold_per_min": 498.0,
+      "average_damage_per_min": 1217.0,
+      "winrate": 100.0,
+      "unique_champions_played": 2
+    },
+    "Satto#happy": {
+      "player_name": "Satto#happy",
+      "team": "4 goats et le 2010",
+      "games_played": 5,
+      "wins": 5,
+      "losses": 0,
+      "total_kills": 21,
+      "total_deaths": 27,
+      "total_assists": 78,
+      "total_cs": 103,
+      "total_vision_score": 257,
+      "total_gold_earned": 41146,
+      "total_damage_dealt": 61510,
+      "total_damage_taken": 83067,
+      "total_game_duration": 7176,
+      "champions_played": [
+        "Zilean",
+        "Elise",
+        "Neeko",
+        "Rell"
+      ],
+      "champion_stats": {
+        "Zilean": {
+          "games": 1,
+          "wins": 1,
+          "kills": 1,
+          "deaths": 2,
+          "assists": 19
+        },
+        "Elise": {
+          "games": 1,
+          "wins": 1,
+          "kills": 9,
+          "deaths": 4,
+          "assists": 9
+        },
+        "Neeko": {
+          "games": 2,
+          "wins": 2,
+          "kills": 9,
+          "deaths": 12,
+          "assists": 29
+        },
+        "Rell": {
+          "games": 1,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 9,
+          "assists": 21
+        }
+      },
+      "average_kills": 4.2,
+      "average_deaths": 5.4,
+      "average_assists": 15.6,
+      "average_kda": 3.67,
+      "average_cs_per_min": 0.86,
+      "average_cs_per_minute": 0.86,
+      "average_vision_score": 51.4,
+      "average_gold_per_min": 344.0,
+      "average_damage_per_min": 514.0,
+      "winrate": 100.0,
+      "unique_champions_played": 4
+    },
+    "el pueblito#EUW": {
+      "player_name": "el pueblito#EUW",
+      "team": "Les toxicos",
+      "games_played": 4,
+      "wins": 0,
+      "losses": 4,
+      "total_kills": 12,
+      "total_deaths": 21,
+      "total_assists": 7,
+      "total_cs": 631,
+      "total_vision_score": 70,
+      "total_gold_earned": 36752,
+      "total_damage_dealt": 37899,
+      "total_damage_taken": 106325,
+      "total_game_duration": 6281,
+      "champions_played": [
+        "JarvanIV",
+        "Kindred",
+        "Jax"
+      ],
+      "champion_stats": {
+        "JarvanIV": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 6,
+          "assists": 2
+        },
+        "Kindred": {
+          "games": 2,
+          "wins": 0,
+          "kills": 10,
+          "deaths": 8,
+          "assists": 5
+        },
+        "Jax": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 7,
+          "assists": 0
+        }
+      },
+      "average_kills": 3.0,
+      "average_deaths": 5.25,
+      "average_assists": 1.75,
+      "average_kda": 0.9,
+      "average_cs_per_min": 6.03,
+      "average_cs_per_minute": 6.03,
+      "average_vision_score": 17.5,
+      "average_gold_per_min": 351.0,
+      "average_damage_per_min": 362.0,
+      "winrate": 0.0,
+      "unique_champions_played": 3
+    },
+    "LΞlouch#0000": {
+      "player_name": "LΞlouch#0000",
+      "team": "Les toxicos",
+      "games_played": 4,
+      "wins": 0,
+      "losses": 4,
+      "total_kills": 8,
+      "total_deaths": 19,
+      "total_assists": 10,
+      "total_cs": 684,
+      "total_vision_score": 48,
+      "total_gold_earned": 33435,
+      "total_damage_dealt": 55104,
+      "total_damage_taken": 90261,
+      "total_game_duration": 6281,
+      "champions_played": [
+        "Aurora",
+        "Zac",
+        "Azir",
+        "Vladimir"
+      ],
+      "champion_stats": {
+        "Aurora": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 6,
+          "assists": 0
+        },
+        "Zac": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 4,
+          "assists": 3
+        },
+        "Azir": {
+          "games": 1,
+          "wins": 0,
+          "kills": 4,
+          "deaths": 4,
+          "assists": 7
+        },
+        "Vladimir": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 5,
+          "assists": 0
+        }
+      },
+      "average_kills": 2.0,
+      "average_deaths": 4.75,
+      "average_assists": 2.5,
+      "average_kda": 0.95,
+      "average_cs_per_min": 6.53,
+      "average_cs_per_minute": 6.53,
+      "average_vision_score": 12.0,
+      "average_gold_per_min": 319.0,
+      "average_damage_per_min": 526.0,
+      "winrate": 0.0,
+      "unique_champions_played": 4
+    },
+    "Sigmund Freud#Aphel": {
+      "player_name": "Sigmund Freud#Aphel",
+      "team": "Les toxicos",
+      "games_played": 4,
+      "wins": 0,
+      "losses": 4,
+      "total_kills": 1,
+      "total_deaths": 19,
+      "total_assists": 4,
+      "total_cs": 796,
+      "total_vision_score": 46,
+      "total_gold_earned": 34316,
+      "total_damage_dealt": 44170,
+      "total_damage_taken": 53673,
+      "total_game_duration": 6281,
+      "champions_played": [
+        "Aphelios",
+        "Jhin",
+        "Ashe",
+        "Yunara"
+      ],
+      "champion_stats": {
+        "Aphelios": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 5,
+          "assists": 1
+        },
+        "Jhin": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 2,
+          "assists": 0
+        },
+        "Ashe": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 6,
+          "assists": 2
+        },
+        "Yunara": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 6,
+          "assists": 1
+        }
+      },
+      "average_kills": 0.25,
+      "average_deaths": 4.75,
+      "average_assists": 1.0,
+      "average_kda": 0.26,
+      "average_cs_per_min": 7.6,
+      "average_cs_per_minute": 7.6,
+      "average_vision_score": 11.5,
+      "average_gold_per_min": 328.0,
+      "average_damage_per_min": 422.0,
+      "winrate": 0.0,
+      "unique_champions_played": 4
+    },
+    "Pyke The Creator#Rell": {
+      "player_name": "Pyke The Creator#Rell",
+      "team": "Les toxicos",
+      "games_played": 4,
+      "wins": 0,
+      "losses": 4,
+      "total_kills": 2,
+      "total_deaths": 24,
+      "total_assists": 11,
+      "total_cs": 107,
+      "total_vision_score": 256,
+      "total_gold_earned": 22615,
+      "total_damage_dealt": 15920,
+      "total_damage_taken": 74955,
+      "total_game_duration": 6281,
+      "champions_played": [
+        "Rakan",
+        "Taric",
+        "Renata"
+      ],
+      "champion_stats": {
+        "Rakan": {
+          "games": 2,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 10,
+          "assists": 1
+        },
+        "Taric": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 6,
+          "assists": 9
+        },
+        "Renata": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 8,
+          "assists": 1
+        }
+      },
+      "average_kills": 0.5,
+      "average_deaths": 6.0,
+      "average_assists": 2.75,
+      "average_kda": 0.54,
+      "average_cs_per_min": 1.02,
+      "average_cs_per_minute": 1.02,
+      "average_vision_score": 64.0,
+      "average_gold_per_min": 216.0,
+      "average_damage_per_min": 152.0,
+      "winrate": 0.0,
+      "unique_champions_played": 3
+    },
+    "ASLM Shad#Mites": {
+      "player_name": "ASLM Shad#Mites",
+      "team": "Chill Guys",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 21,
+      "total_deaths": 22,
+      "total_assists": 21,
+      "total_cs": 883,
+      "total_vision_score": 81,
+      "total_gold_earned": 50071,
+      "total_damage_dealt": 106464,
+      "total_damage_taken": 132096,
+      "total_game_duration": 7625,
+      "champions_played": [
+        "Ambessa",
+        "RekSai",
+        "Sion",
+        "Malphite"
+      ],
+      "champion_stats": {
+        "Ambessa": {
+          "games": 2,
+          "wins": 1,
+          "kills": 16,
+          "deaths": 8,
+          "assists": 11
+        },
+        "RekSai": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 7,
+          "assists": 2
+        },
+        "Sion": {
+          "games": 1,
+          "wins": 1,
+          "kills": 3,
+          "deaths": 2,
+          "assists": 7
+        },
+        "Malphite": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 5,
+          "assists": 1
+        }
+      },
+      "average_kills": 4.2,
+      "average_deaths": 4.4,
+      "average_assists": 4.2,
+      "average_kda": 1.91,
+      "average_cs_per_min": 6.95,
+      "average_cs_per_minute": 6.95,
+      "average_vision_score": 16.2,
+      "average_gold_per_min": 394.0,
+      "average_damage_per_min": 838.0,
+      "winrate": 40.0,
+      "unique_champions_played": 4
+    },
+    "ODE Lupikku#EUW": {
+      "player_name": "ODE Lupikku#EUW",
+      "team": "Chill Guys",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 21,
+      "total_deaths": 27,
+      "total_assists": 42,
+      "total_cs": 636,
+      "total_vision_score": 121,
+      "total_gold_earned": 46266,
+      "total_damage_dealt": 59622,
+      "total_damage_taken": 139577,
+      "total_game_duration": 7625,
+      "champions_played": [
+        "Sejuani",
+        "XinZhao",
+        "Poppy",
+        "Vi"
+      ],
+      "champion_stats": {
+        "Sejuani": {
+          "games": 1,
+          "wins": 1,
+          "kills": 4,
+          "deaths": 1,
+          "assists": 13
+        },
+        "XinZhao": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 7,
+          "assists": 4
+        },
+        "Poppy": {
+          "games": 2,
+          "wins": 1,
+          "kills": 13,
+          "deaths": 12,
+          "assists": 22
+        },
+        "Vi": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 7,
+          "assists": 3
+        }
+      },
+      "average_kills": 4.2,
+      "average_deaths": 5.4,
+      "average_assists": 8.4,
+      "average_kda": 2.33,
+      "average_cs_per_min": 5.0,
+      "average_cs_per_minute": 5.0,
+      "average_vision_score": 24.2,
+      "average_gold_per_min": 364.0,
+      "average_damage_per_min": 469.0,
+      "winrate": 40.0,
+      "unique_champions_played": 4
+    },
+    "Cos TAKU#kirby": {
+      "player_name": "Cos TAKU#kirby",
+      "team": "Chill Guys",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 28,
+      "total_deaths": 35,
+      "total_assists": 33,
+      "total_cs": 744,
+      "total_vision_score": 79,
+      "total_gold_earned": 48894,
+      "total_damage_dealt": 107054,
+      "total_damage_taken": 93783,
+      "total_game_duration": 7625,
+      "champions_played": [
+        "Neeko",
+        "Syndra",
+        "Orianna",
+        "Aurora"
+      ],
+      "champion_stats": {
+        "Neeko": {
+          "games": 1,
+          "wins": 1,
+          "kills": 10,
+          "deaths": 1,
+          "assists": 9
+        },
+        "Syndra": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 11,
+          "assists": 3
+        },
+        "Orianna": {
+          "games": 2,
+          "wins": 1,
+          "kills": 14,
+          "deaths": 16,
+          "assists": 20
+        },
+        "Aurora": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 7,
+          "assists": 1
+        }
+      },
+      "average_kills": 5.6,
+      "average_deaths": 7.0,
+      "average_assists": 6.6,
+      "average_kda": 1.74,
+      "average_cs_per_min": 5.85,
+      "average_cs_per_minute": 5.85,
+      "average_vision_score": 15.8,
+      "average_gold_per_min": 385.0,
+      "average_damage_per_min": 842.0,
+      "winrate": 40.0,
+      "unique_champions_played": 4
+    },
+    "Skarito#2303": {
+      "player_name": "Skarito#2303",
+      "team": "Chill Guys",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 23,
+      "total_deaths": 32,
+      "total_assists": 43,
+      "total_cs": 816,
+      "total_vision_score": 64,
+      "total_gold_earned": 51860,
+      "total_damage_dealt": 105366,
+      "total_damage_taken": 90302,
+      "total_game_duration": 7625,
+      "champions_played": [
+        "Samira",
+        "Varus",
+        "Kaisa",
+        "Lucian",
+        "MissFortune"
+      ],
+      "champion_stats": {
+        "Samira": {
+          "games": 1,
+          "wins": 1,
+          "kills": 5,
+          "deaths": 2,
+          "assists": 12
+        },
+        "Varus": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 7,
+          "assists": 3
+        },
+        "Kaisa": {
+          "games": 1,
+          "wins": 0,
+          "kills": 5,
+          "deaths": 12,
+          "assists": 8
+        },
+        "Lucian": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 5,
+          "assists": 17
+        },
+        "MissFortune": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 6,
+          "assists": 3
+        }
+      },
+      "average_kills": 4.6,
+      "average_deaths": 6.4,
+      "average_assists": 8.6,
+      "average_kda": 2.06,
+      "average_cs_per_min": 6.42,
+      "average_cs_per_minute": 6.42,
+      "average_vision_score": 12.8,
+      "average_gold_per_min": 408.0,
+      "average_damage_per_min": 829.0,
+      "winrate": 40.0,
+      "unique_champions_played": 5
+    },
+    "Tanguy en Y#miaou": {
+      "player_name": "Tanguy en Y#miaou",
+      "team": "Chill Guys",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 13,
+      "total_deaths": 37,
+      "total_assists": 59,
+      "total_cs": 92,
+      "total_vision_score": 242,
+      "total_gold_earned": 37416,
+      "total_damage_dealt": 53819,
+      "total_damage_taken": 103875,
+      "total_game_duration": 7625,
+      "champions_played": [
+        "Pyke",
+        "Karma",
+        "Renata",
+        "Elise",
+        "Rakan"
+      ],
+      "champion_stats": {
+        "Pyke": {
+          "games": 1,
+          "wins": 1,
+          "kills": 5,
+          "deaths": 2,
+          "assists": 15
+        },
+        "Karma": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 8,
+          "assists": 7
+        },
+        "Renata": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 11,
+          "assists": 16
+        },
+        "Elise": {
+          "games": 1,
+          "wins": 1,
+          "kills": 5,
+          "deaths": 7,
+          "assists": 16
+        },
+        "Rakan": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 9,
+          "assists": 5
+        }
+      },
+      "average_kills": 2.6,
+      "average_deaths": 7.4,
+      "average_assists": 11.8,
+      "average_kda": 1.95,
+      "average_cs_per_min": 0.72,
+      "average_cs_per_minute": 0.72,
+      "average_vision_score": 48.4,
+      "average_gold_per_min": 294.0,
+      "average_damage_per_min": 423.0,
+      "winrate": 40.0,
+      "unique_champions_played": 5
+    },
+    "TheNight#1166": {
+      "player_name": "TheNight#1166",
+      "team": "Pantizini vi Zombini",
+      "games_played": 6,
+      "wins": 1,
+      "losses": 5,
+      "total_kills": 5,
+      "total_deaths": 29,
+      "total_assists": 27,
+      "total_cs": 703,
+      "total_vision_score": 88,
+      "total_gold_earned": 39007,
+      "total_damage_dealt": 66908,
+      "total_damage_taken": 119029,
+      "total_game_duration": 7428,
+      "champions_played": [
+        "Malphite",
+        "Gragas",
+        "Rumble",
+        "Ornn",
+        "Sion"
+      ],
+      "champion_stats": {
+        "Malphite": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 6,
+          "assists": 1
+        },
+        "Gragas": {
+          "games": 2,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 3,
+          "assists": 1
+        },
+        "Rumble": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 4,
+          "assists": 1
+        },
+        "Ornn": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 11,
+          "assists": 9
+        },
+        "Sion": {
+          "games": 1,
+          "wins": 1,
+          "kills": 3,
+          "deaths": 5,
+          "assists": 15
+        }
+      },
+      "average_kills": 0.83,
+      "average_deaths": 4.83,
+      "average_assists": 4.5,
+      "average_kda": 1.1,
+      "average_cs_per_min": 5.68,
+      "average_cs_per_minute": 5.68,
+      "average_vision_score": 14.67,
+      "average_gold_per_min": 315.0,
+      "average_damage_per_min": 540.0,
+      "winrate": 16.67,
+      "unique_champions_played": 5
+    },
+    "piénutella92i#SMIC": {
+      "player_name": "piénutella92i#SMIC",
+      "team": "Pantizini vi Zombini",
+      "games_played": 3,
+      "wins": 0,
+      "losses": 3,
+      "total_kills": 2,
+      "total_deaths": 13,
+      "total_assists": 5,
+      "total_cs": 152,
+      "total_vision_score": 64,
+      "total_gold_earned": 13450,
+      "total_damage_dealt": 10820,
+      "total_damage_taken": 49569,
+      "total_game_duration": 3048,
+      "champions_played": [
+        "Trundle",
+        "Braum"
+      ],
+      "champion_stats": {
+        "Trundle": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 7,
+          "assists": 3
+        },
+        "Braum": {
+          "games": 2,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 6,
+          "assists": 2
+        }
+      },
+      "average_kills": 0.67,
+      "average_deaths": 4.33,
+      "average_assists": 1.67,
+      "average_kda": 0.54,
+      "average_cs_per_min": 2.99,
+      "average_cs_per_minute": 2.99,
+      "average_vision_score": 21.33,
+      "average_gold_per_min": 265.0,
+      "average_damage_per_min": 213.0,
+      "winrate": 0.0,
+      "unique_champions_played": 2
+    },
+    "zzz#iroha": {
+      "player_name": "zzz#iroha",
+      "team": "Pantizini vi Zombini",
+      "games_played": 6,
+      "wins": 1,
+      "losses": 5,
+      "total_kills": 13,
+      "total_deaths": 27,
+      "total_assists": 27,
+      "total_cs": 851,
+      "total_vision_score": 64,
+      "total_gold_earned": 43972,
+      "total_damage_dealt": 74561,
+      "total_damage_taken": 92747,
+      "total_game_duration": 7428,
+      "champions_played": [
+        "Syndra",
+        "Hwei",
+        "Ryze",
+        "Galio",
+        "Ahri"
+      ],
+      "champion_stats": {
+        "Syndra": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 5,
+          "assists": 3
+        },
+        "Hwei": {
+          "games": 2,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 5,
+          "assists": 2
+        },
+        "Ryze": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 5,
+          "assists": 0
+        },
+        "Galio": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 8,
+          "assists": 11
+        },
+        "Ahri": {
+          "games": 1,
+          "wins": 1,
+          "kills": 8,
+          "deaths": 4,
+          "assists": 11
+        }
+      },
+      "average_kills": 2.17,
+      "average_deaths": 4.5,
+      "average_assists": 4.5,
+      "average_kda": 1.48,
+      "average_cs_per_min": 6.87,
+      "average_cs_per_minute": 6.87,
+      "average_vision_score": 10.67,
+      "average_gold_per_min": 355.0,
+      "average_damage_per_min": 602.0,
+      "winrate": 16.67,
+      "unique_champions_played": 5
+    },
+    "Hildisvinl#1327": {
+      "player_name": "Hildisvinl#1327",
+      "team": "Pantizini vi Zombini",
+      "games_played": 6,
+      "wins": 1,
+      "losses": 5,
+      "total_kills": 26,
+      "total_deaths": 21,
+      "total_assists": 15,
+      "total_cs": 979,
+      "total_vision_score": 74,
+      "total_gold_earned": 51404,
+      "total_damage_dealt": 117095,
+      "total_damage_taken": 86781,
+      "total_game_duration": 7428,
+      "champions_played": [
+        "Jhin",
+        "Smolder",
+        "Kaisa"
+      ],
+      "champion_stats": {
+        "Jhin": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 4,
+          "assists": 3
+        },
+        "Smolder": {
+          "games": 4,
+          "wins": 1,
+          "kills": 21,
+          "deaths": 10,
+          "assists": 12
+        },
+        "Kaisa": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 7,
+          "assists": 0
+        }
+      },
+      "average_kills": 4.33,
+      "average_deaths": 3.5,
+      "average_assists": 2.5,
+      "average_kda": 1.95,
+      "average_cs_per_min": 7.91,
+      "average_cs_per_minute": 7.91,
+      "average_vision_score": 12.33,
+      "average_gold_per_min": 415.0,
+      "average_damage_per_min": 946.0,
+      "winrate": 16.67,
+      "unique_champions_played": 3
+    },
+    "Cooags#EUW": {
+      "player_name": "Cooags#EUW",
+      "team": "Pantizini vi Zombini",
+      "games_played": 4,
+      "wins": 1,
+      "losses": 3,
+      "total_kills": 3,
+      "total_deaths": 19,
+      "total_assists": 32,
+      "total_cs": 91,
+      "total_vision_score": 205,
+      "total_gold_earned": 24815,
+      "total_damage_dealt": 17569,
+      "total_damage_taken": 53452,
+      "total_game_duration": 5780,
+      "champions_played": [
+        "Nami",
+        "Nautilus",
+        "Milio",
+        "Lulu"
+      ],
+      "champion_stats": {
+        "Nami": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 8,
+          "assists": 3
+        },
+        "Nautilus": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 5,
+          "assists": 0
+        },
+        "Milio": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 4,
+          "assists": 10
+        },
+        "Lulu": {
+          "games": 1,
+          "wins": 1,
+          "kills": 0,
+          "deaths": 2,
+          "assists": 19
+        }
+      },
+      "average_kills": 0.75,
+      "average_deaths": 4.75,
+      "average_assists": 8.0,
+      "average_kda": 1.84,
+      "average_cs_per_min": 0.94,
+      "average_cs_per_minute": 0.94,
+      "average_vision_score": 51.25,
+      "average_gold_per_min": 258.0,
+      "average_damage_per_min": 182.0,
+      "winrate": 25.0,
+      "unique_champions_played": 4
+    },
+    "AUR Rettleti#PAFF": {
+      "player_name": "AUR Rettleti#PAFF",
+      "team": "Burger sans gluten",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 14,
+      "total_deaths": 23,
+      "total_assists": 64,
+      "total_cs": 911,
+      "total_vision_score": 93,
+      "total_gold_earned": 57202,
+      "total_damage_dealt": 92377,
+      "total_damage_taken": 228603,
+      "total_game_duration": 9282,
+      "champions_played": [
+        "Ornn",
+        "Sion"
+      ],
+      "champion_stats": {
+        "Ornn": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 8,
+          "assists": 9
+        },
+        "Sion": {
+          "games": 4,
+          "wins": 3,
+          "kills": 13,
+          "deaths": 15,
+          "assists": 55
+        }
+      },
+      "average_kills": 2.8,
+      "average_deaths": 4.6,
+      "average_assists": 12.8,
+      "average_kda": 3.39,
+      "average_cs_per_min": 5.89,
+      "average_cs_per_minute": 5.89,
+      "average_vision_score": 18.6,
+      "average_gold_per_min": 370.0,
+      "average_damage_per_min": 597.0,
+      "winrate": 60.0,
+      "unique_champions_played": 2
+    },
+    "AUR Purin#PUFF": {
+      "player_name": "AUR Purin#PUFF",
+      "team": "Burger sans gluten",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 35,
+      "total_deaths": 27,
+      "total_assists": 48,
+      "total_cs": 995,
+      "total_vision_score": 114,
+      "total_gold_earned": 64129,
+      "total_damage_dealt": 106629,
+      "total_damage_taken": 185684,
+      "total_game_duration": 9282,
+      "champions_played": [
+        "Vi",
+        "Lillia",
+        "Aurora",
+        "Ekko",
+        "Sylas"
+      ],
+      "champion_stats": {
+        "Vi": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 7,
+          "assists": 14
+        },
+        "Lillia": {
+          "games": 1,
+          "wins": 1,
+          "kills": 5,
+          "deaths": 0,
+          "assists": 3
+        },
+        "Aurora": {
+          "games": 1,
+          "wins": 1,
+          "kills": 9,
+          "deaths": 4,
+          "assists": 12
+        },
+        "Ekko": {
+          "games": 1,
+          "wins": 0,
+          "kills": 12,
+          "deaths": 13,
+          "assists": 9
+        },
+        "Sylas": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 3,
+          "assists": 10
+        }
+      },
+      "average_kills": 7.0,
+      "average_deaths": 5.4,
+      "average_assists": 9.6,
+      "average_kda": 3.07,
+      "average_cs_per_min": 6.43,
+      "average_cs_per_minute": 6.43,
+      "average_vision_score": 22.8,
+      "average_gold_per_min": 415.0,
+      "average_damage_per_min": 689.0,
+      "winrate": 60.0,
+      "unique_champions_played": 5
+    },
+    "AUR Azz#PUFF": {
+      "player_name": "AUR Azz#PUFF",
+      "team": "Burger sans gluten",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 44,
+      "total_deaths": 17,
+      "total_assists": 60,
+      "total_cs": 983,
+      "total_vision_score": 145,
+      "total_gold_earned": 68777,
+      "total_damage_dealt": 154879,
+      "total_damage_taken": 157039,
+      "total_game_duration": 9282,
+      "champions_played": [
+        "Taliyah",
+        "LeeSin",
+        "Sett",
+        "Veigar"
+      ],
+      "champion_stats": {
+        "Taliyah": {
+          "games": 2,
+          "wins": 1,
+          "kills": 19,
+          "deaths": 7,
+          "assists": 23
+        },
+        "LeeSin": {
+          "games": 1,
+          "wins": 1,
+          "kills": 6,
+          "deaths": 3,
+          "assists": 12
+        },
+        "Sett": {
+          "games": 1,
+          "wins": 0,
+          "kills": 9,
+          "deaths": 7,
+          "assists": 13
+        },
+        "Veigar": {
+          "games": 1,
+          "wins": 1,
+          "kills": 10,
+          "deaths": 0,
+          "assists": 12
+        }
+      },
+      "average_kills": 8.8,
+      "average_deaths": 3.4,
+      "average_assists": 12.0,
+      "average_kda": 6.12,
+      "average_cs_per_min": 6.35,
+      "average_cs_per_minute": 6.35,
+      "average_vision_score": 29.0,
+      "average_gold_per_min": 445.0,
+      "average_damage_per_min": 1001.0,
+      "winrate": 60.0,
+      "unique_champions_played": 4
+    },
+    "AUR Baosu#PUFF": {
+      "player_name": "AUR Baosu#PUFF",
+      "team": "Burger sans gluten",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 40,
+      "total_deaths": 18,
+      "total_assists": 56,
+      "total_cs": 1202,
+      "total_vision_score": 77,
+      "total_gold_earned": 74483,
+      "total_damage_dealt": 160077,
+      "total_damage_taken": 102596,
+      "total_game_duration": 9282,
+      "champions_played": [
+        "Kaisa",
+        "Aphelios",
+        "Zeri",
+        "Tristana",
+        "Sivir"
+      ],
+      "champion_stats": {
+        "Kaisa": {
+          "games": 1,
+          "wins": 0,
+          "kills": 13,
+          "deaths": 3,
+          "assists": 8
+        },
+        "Aphelios": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 0,
+          "assists": 7
+        },
+        "Zeri": {
+          "games": 1,
+          "wins": 1,
+          "kills": 9,
+          "deaths": 5,
+          "assists": 10
+        },
+        "Tristana": {
+          "games": 1,
+          "wins": 0,
+          "kills": 7,
+          "deaths": 7,
+          "assists": 14
+        },
+        "Sivir": {
+          "games": 1,
+          "wins": 1,
+          "kills": 4,
+          "deaths": 3,
+          "assists": 17
+        }
+      },
+      "average_kills": 8.0,
+      "average_deaths": 3.6,
+      "average_assists": 11.2,
+      "average_kda": 5.33,
+      "average_cs_per_min": 7.77,
+      "average_cs_per_minute": 7.77,
+      "average_vision_score": 15.4,
+      "average_gold_per_min": 481.0,
+      "average_damage_per_min": 1035.0,
+      "winrate": 60.0,
+      "unique_champions_played": 5
+    },
+    "Guts#00I": {
+      "player_name": "Guts#00I",
+      "team": "Burger sans gluten",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 6,
+      "total_deaths": 22,
+      "total_assists": 93,
+      "total_cs": 142,
+      "total_vision_score": 496,
+      "total_gold_earned": 42760,
+      "total_damage_dealt": 51483,
+      "total_damage_taken": 115676,
+      "total_game_duration": 9282,
+      "champions_played": [
+        "Neeko",
+        "Alistar",
+        "Braum",
+        "Janna",
+        "Renata"
+      ],
+      "champion_stats": {
+        "Neeko": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 7,
+          "assists": 16
+        },
+        "Alistar": {
+          "games": 1,
+          "wins": 1,
+          "kills": 1,
+          "deaths": 2,
+          "assists": 16
+        },
+        "Braum": {
+          "games": 1,
+          "wins": 1,
+          "kills": 1,
+          "deaths": 3,
+          "assists": 19
+        },
+        "Janna": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 8,
+          "assists": 21
+        },
+        "Renata": {
+          "games": 1,
+          "wins": 1,
+          "kills": 1,
+          "deaths": 2,
+          "assists": 21
+        }
+      },
+      "average_kills": 1.2,
+      "average_deaths": 4.4,
+      "average_assists": 18.6,
+      "average_kda": 4.5,
+      "average_cs_per_min": 0.92,
+      "average_cs_per_minute": 0.92,
+      "average_vision_score": 99.2,
+      "average_gold_per_min": 276.0,
+      "average_damage_per_min": 333.0,
+      "winrate": 60.0,
+      "unique_champions_played": 5
+    },
+    "Settaismieuavant#EUW": {
+      "player_name": "Settaismieuavant#EUW",
+      "team": "4China+Vinci",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 19,
+      "total_deaths": 14,
+      "total_assists": 39,
+      "total_cs": 969,
+      "total_vision_score": 81,
+      "total_gold_earned": 54924,
+      "total_damage_dealt": 109035,
+      "total_damage_taken": 158354,
+      "total_game_duration": 8624,
+      "champions_played": [
+        "Renekton",
+        "Aatrox",
+        "KSante"
+      ],
+      "champion_stats": {
+        "Renekton": {
+          "games": 2,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 6,
+          "assists": 4
+        },
+        "Aatrox": {
+          "games": 2,
+          "wins": 2,
+          "kills": 15,
+          "deaths": 6,
+          "assists": 30
+        },
+        "KSante": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 2,
+          "assists": 5
+        }
+      },
+      "average_kills": 3.8,
+      "average_deaths": 2.8,
+      "average_assists": 7.8,
+      "average_kda": 4.14,
+      "average_cs_per_min": 6.74,
+      "average_cs_per_minute": 6.74,
+      "average_vision_score": 16.2,
+      "average_gold_per_min": 382.0,
+      "average_damage_per_min": 759.0,
+      "winrate": 40.0,
+      "unique_champions_played": 3
+    },
+    "Limuls#0000": {
+      "player_name": "Limuls#0000",
+      "team": "4China+Vinci",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 24,
+      "total_deaths": 23,
+      "total_assists": 36,
+      "total_cs": 866,
+      "total_vision_score": 110,
+      "total_gold_earned": 56580,
+      "total_damage_dealt": 65810,
+      "total_damage_taken": 171970,
+      "total_game_duration": 8624,
+      "champions_played": [
+        "JarvanIV",
+        "Sylas",
+        "LeeSin",
+        "Viego",
+        "Wukong"
+      ],
+      "champion_stats": {
+        "JarvanIV": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 3,
+          "assists": 2
+        },
+        "Sylas": {
+          "games": 1,
+          "wins": 1,
+          "kills": 9,
+          "deaths": 4,
+          "assists": 12
+        },
+        "LeeSin": {
+          "games": 1,
+          "wins": 0,
+          "kills": 4,
+          "deaths": 6,
+          "assists": 9
+        },
+        "Viego": {
+          "games": 1,
+          "wins": 1,
+          "kills": 8,
+          "deaths": 5,
+          "assists": 12
+        },
+        "Wukong": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 5,
+          "assists": 1
+        }
+      },
+      "average_kills": 4.8,
+      "average_deaths": 4.6,
+      "average_assists": 7.2,
+      "average_kda": 2.61,
+      "average_cs_per_min": 6.03,
+      "average_cs_per_minute": 6.03,
+      "average_vision_score": 22.0,
+      "average_gold_per_min": 394.0,
+      "average_damage_per_min": 458.0,
+      "winrate": 40.0,
+      "unique_champions_played": 5
+    },
+    "Noemiefeatmonkey#UwU": {
+      "player_name": "Noemiefeatmonkey#UwU",
+      "team": "4China+Vinci",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 29,
+      "total_deaths": 22,
+      "total_assists": 22,
+      "total_cs": 1009,
+      "total_vision_score": 135,
+      "total_gold_earned": 56908,
+      "total_damage_dealt": 114463,
+      "total_damage_taken": 122071,
+      "total_game_duration": 8624,
+      "champions_played": [
+        "Cassiopeia",
+        "Wukong",
+        "Akali",
+        "Sylas"
+      ],
+      "champion_stats": {
+        "Cassiopeia": {
+          "games": 2,
+          "wins": 1,
+          "kills": 11,
+          "deaths": 8,
+          "assists": 14
+        },
+        "Wukong": {
+          "games": 1,
+          "wins": 1,
+          "kills": 10,
+          "deaths": 4,
+          "assists": 5
+        },
+        "Akali": {
+          "games": 1,
+          "wins": 0,
+          "kills": 7,
+          "deaths": 5,
+          "assists": 2
+        },
+        "Sylas": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 5,
+          "assists": 1
+        }
+      },
+      "average_kills": 5.8,
+      "average_deaths": 4.4,
+      "average_assists": 4.4,
+      "average_kda": 2.32,
+      "average_cs_per_min": 7.02,
+      "average_cs_per_minute": 7.02,
+      "average_vision_score": 27.0,
+      "average_gold_per_min": 396.0,
+      "average_damage_per_min": 796.0,
+      "winrate": 40.0,
+      "unique_champions_played": 4
+    },
+    "tsuvai#520": {
+      "player_name": "tsuvai#520",
+      "team": "4China+Vinci",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 26,
+      "total_deaths": 22,
+      "total_assists": 26,
+      "total_cs": 865,
+      "total_vision_score": 61,
+      "total_gold_earned": 54045,
+      "total_damage_dealt": 63589,
+      "total_damage_taken": 83609,
+      "total_game_duration": 8624,
+      "champions_played": [
+        "Jhin",
+        "Samira",
+        "MissFortune",
+        "Kaisa"
+      ],
+      "champion_stats": {
+        "Jhin": {
+          "games": 2,
+          "wins": 1,
+          "kills": 9,
+          "deaths": 9,
+          "assists": 13
+        },
+        "Samira": {
+          "games": 1,
+          "wins": 1,
+          "kills": 10,
+          "deaths": 2,
+          "assists": 5
+        },
+        "MissFortune": {
+          "games": 1,
+          "wins": 0,
+          "kills": 6,
+          "deaths": 8,
+          "assists": 8
+        },
+        "Kaisa": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 3,
+          "assists": 0
+        }
+      },
+      "average_kills": 5.2,
+      "average_deaths": 4.4,
+      "average_assists": 5.2,
+      "average_kda": 2.36,
+      "average_cs_per_min": 6.02,
+      "average_cs_per_minute": 6.02,
+      "average_vision_score": 12.2,
+      "average_gold_per_min": 376.0,
+      "average_damage_per_min": 442.0,
+      "winrate": 40.0,
+      "unique_champions_played": 4
+    },
+    "Dragjoo#EUW": {
+      "player_name": "Dragjoo#EUW",
+      "team": "4China+Vinci",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 4,
+      "total_deaths": 29,
+      "total_assists": 58,
+      "total_cs": 127,
+      "total_vision_score": 325,
+      "total_gold_earned": 37096,
+      "total_damage_dealt": 36558,
+      "total_damage_taken": 109357,
+      "total_game_duration": 8624,
+      "champions_played": [
+        "Alistar",
+        "Rell",
+        "Pantheon",
+        "Leona"
+      ],
+      "champion_stats": {
+        "Alistar": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 6,
+          "assists": 4
+        },
+        "Rell": {
+          "games": 2,
+          "wins": 1,
+          "kills": 0,
+          "deaths": 9,
+          "assists": 24
+        },
+        "Pantheon": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 9,
+          "assists": 8
+        },
+        "Leona": {
+          "games": 1,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 5,
+          "assists": 22
+        }
+      },
+      "average_kills": 0.8,
+      "average_deaths": 5.8,
+      "average_assists": 11.6,
+      "average_kda": 2.14,
+      "average_cs_per_min": 0.88,
+      "average_cs_per_minute": 0.88,
+      "average_vision_score": 65.0,
+      "average_gold_per_min": 258.0,
+      "average_damage_per_min": 254.0,
+      "winrate": 40.0,
+      "unique_champions_played": 4
+    },
+    "HowDidWeGetHere#ABCDE": {
+      "player_name": "HowDidWeGetHere#ABCDE",
+      "team": "Censured Corp",
+      "games_played": 4,
+      "wins": 0,
+      "losses": 4,
+      "total_kills": 7,
+      "total_deaths": 24,
+      "total_assists": 19,
+      "total_cs": 897,
+      "total_vision_score": 73,
+      "total_gold_earned": 42690,
+      "total_damage_dealt": 91979,
+      "total_damage_taken": 98379,
+      "total_game_duration": 7280,
+      "champions_played": [
+        "Irelia",
+        "Lissandra",
+        "Ambessa",
+        "Hwei"
+      ],
+      "champion_stats": {
+        "Irelia": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 7,
+          "assists": 3
+        },
+        "Lissandra": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 6,
+          "assists": 9
+        },
+        "Ambessa": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 5,
+          "assists": 2
+        },
+        "Hwei": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 6,
+          "assists": 5
+        }
+      },
+      "average_kills": 1.75,
+      "average_deaths": 6.0,
+      "average_assists": 4.75,
+      "average_kda": 1.08,
+      "average_cs_per_min": 7.39,
+      "average_cs_per_minute": 7.39,
+      "average_vision_score": 18.25,
+      "average_gold_per_min": 352.0,
+      "average_damage_per_min": 758.0,
+      "winrate": 0.0,
+      "unique_champions_played": 4
+    },
+    "Starnight#00000": {
+      "player_name": "Starnight#00000",
+      "team": "Censured Corp",
+      "games_played": 4,
+      "wins": 0,
+      "losses": 4,
+      "total_kills": 13,
+      "total_deaths": 22,
+      "total_assists": 23,
+      "total_cs": 815,
+      "total_vision_score": 53,
+      "total_gold_earned": 46596,
+      "total_damage_dealt": 63256,
+      "total_damage_taken": 69101,
+      "total_game_duration": 7280,
+      "champions_played": [
+        "Varus",
+        "MissFortune",
+        "Xayah",
+        "Kaisa"
+      ],
+      "champion_stats": {
+        "Varus": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 5,
+          "assists": 2
+        },
+        "MissFortune": {
+          "games": 1,
+          "wins": 0,
+          "kills": 5,
+          "deaths": 5,
+          "assists": 8
+        },
+        "Xayah": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 7,
+          "assists": 10
+        },
+        "Kaisa": {
+          "games": 1,
+          "wins": 0,
+          "kills": 4,
+          "deaths": 5,
+          "assists": 3
+        }
+      },
+      "average_kills": 3.25,
+      "average_deaths": 5.5,
+      "average_assists": 5.75,
+      "average_kda": 1.64,
+      "average_cs_per_min": 6.72,
+      "average_cs_per_minute": 6.72,
+      "average_vision_score": 13.25,
+      "average_gold_per_min": 384.0,
+      "average_damage_per_min": 521.0,
+      "winrate": 0.0,
+      "unique_champions_played": 4
+    },
+    "make you mine#beer": {
+      "player_name": "make you mine#beer",
+      "team": "Censured Corp",
+      "games_played": 4,
+      "wins": 0,
+      "losses": 4,
+      "total_kills": 6,
+      "total_deaths": 23,
+      "total_assists": 39,
+      "total_cs": 79,
+      "total_vision_score": 219,
+      "total_gold_earned": 30918,
+      "total_damage_dealt": 32364,
+      "total_damage_taken": 75749,
+      "total_game_duration": 7280,
+      "champions_played": [
+        "Rell",
+        "Morgana",
+        "Alistar",
+        "Rakan"
+      ],
+      "champion_stats": {
+        "Rell": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 4,
+          "assists": 5
+        },
+        "Morgana": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 7,
+          "assists": 11
+        },
+        "Alistar": {
+          "games": 1,
+          "wins": 0,
+          "kills": 0,
+          "deaths": 6,
+          "assists": 18
+        },
+        "Rakan": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 6,
+          "assists": 5
+        }
+      },
+      "average_kills": 1.5,
+      "average_deaths": 5.75,
+      "average_assists": 9.75,
+      "average_kda": 1.96,
+      "average_cs_per_min": 0.65,
+      "average_cs_per_minute": 0.65,
+      "average_vision_score": 54.75,
+      "average_gold_per_min": 255.0,
+      "average_damage_per_min": 267.0,
+      "winrate": 0.0,
+      "unique_champions_played": 4
+    },
+    "Giacoco#EUW": {
+      "player_name": "Giacoco#EUW",
+      "team": "Censured Corp",
+      "games_played": 4,
+      "wins": 0,
+      "losses": 4,
+      "total_kills": 16,
+      "total_deaths": 24,
+      "total_assists": 28,
+      "total_cs": 687,
+      "total_vision_score": 93,
+      "total_gold_earned": 43637,
+      "total_damage_dealt": 62700,
+      "total_damage_taken": 148519,
+      "total_game_duration": 7280,
+      "champions_played": [
+        "XinZhao",
+        "Diana",
+        "Wukong",
+        "JarvanIV"
+      ],
+      "champion_stats": {
+        "XinZhao": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 6,
+          "assists": 3
+        },
+        "Diana": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 8,
+          "assists": 7
+        },
+        "Wukong": {
+          "games": 1,
+          "wins": 0,
+          "kills": 10,
+          "deaths": 3,
+          "assists": 9
+        },
+        "JarvanIV": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 7,
+          "assists": 9
+        }
+      },
+      "average_kills": 4.0,
+      "average_deaths": 6.0,
+      "average_assists": 7.0,
+      "average_kda": 1.83,
+      "average_cs_per_min": 5.66,
+      "average_cs_per_minute": 5.66,
+      "average_vision_score": 23.25,
+      "average_gold_per_min": 360.0,
+      "average_damage_per_min": 517.0,
+      "winrate": 0.0,
+      "unique_champions_played": 4
+    },
+    "vote yes#2kis": {
+      "player_name": "vote yes#2kis",
+      "team": "Censured Corp",
+      "games_played": 4,
+      "wins": 0,
+      "losses": 4,
+      "total_kills": 21,
+      "total_deaths": 26,
+      "total_assists": 24,
+      "total_cs": 790,
+      "total_vision_score": 70,
+      "total_gold_earned": 49835,
+      "total_damage_dealt": 101923,
+      "total_damage_taken": 123975,
+      "total_game_duration": 7280,
+      "champions_played": [
+        "Jax",
+        "Olaf",
+        "Fizz"
+      ],
+      "champion_stats": {
+        "Jax": {
+          "games": 2,
+          "wins": 0,
+          "kills": 6,
+          "deaths": 11,
+          "assists": 13
+        },
+        "Olaf": {
+          "games": 1,
+          "wins": 0,
+          "kills": 5,
+          "deaths": 10,
+          "assists": 4
+        },
+        "Fizz": {
+          "games": 1,
+          "wins": 0,
+          "kills": 10,
+          "deaths": 5,
+          "assists": 7
+        }
+      },
+      "average_kills": 5.25,
+      "average_deaths": 6.5,
+      "average_assists": 6.0,
+      "average_kda": 1.73,
+      "average_cs_per_min": 6.51,
+      "average_cs_per_minute": 6.51,
+      "average_vision_score": 17.5,
+      "average_gold_per_min": 411.0,
+      "average_damage_per_min": 840.0,
+      "winrate": 0.0,
+      "unique_champions_played": 3
+    },
+    "テクシラット#EUW2": {
+      "player_name": "テクシラット#EUW2",
+      "team": "Les misérables",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 26,
+      "total_deaths": 24,
+      "total_assists": 35,
+      "total_cs": 966,
+      "total_vision_score": 154,
+      "total_gold_earned": 57231,
+      "total_damage_dealt": 70438,
+      "total_damage_taken": 178922,
+      "total_game_duration": 8854,
+      "champions_played": [
+        "Belveth",
+        "JarvanIV",
+        "Jax",
+        "Viego",
+        "XinZhao"
+      ],
+      "champion_stats": {
+        "Belveth": {
+          "games": 1,
+          "wins": 1,
+          "kills": 10,
+          "deaths": 3,
+          "assists": 4
+        },
+        "JarvanIV": {
+          "games": 1,
+          "wins": 1,
+          "kills": 0,
+          "deaths": 6,
+          "assists": 17
+        },
+        "Jax": {
+          "games": 1,
+          "wins": 0,
+          "kills": 5,
+          "deaths": 7,
+          "assists": 5
+        },
+        "Viego": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 1,
+          "assists": 5
+        },
+        "XinZhao": {
+          "games": 1,
+          "wins": 0,
+          "kills": 4,
+          "deaths": 7,
+          "assists": 4
+        }
+      },
+      "average_kills": 5.2,
+      "average_deaths": 4.8,
+      "average_assists": 7.0,
+      "average_kda": 2.54,
+      "average_cs_per_min": 6.55,
+      "average_cs_per_minute": 6.55,
+      "average_vision_score": 30.8,
+      "average_gold_per_min": 388.0,
+      "average_damage_per_min": 477.0,
+      "winrate": 60.0,
+      "unique_champions_played": 5
+    },
+    "Jorga#SFC": {
+      "player_name": "Jorga#SFC",
+      "team": "Les misérables",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 12,
+      "total_deaths": 17,
+      "total_assists": 37,
+      "total_cs": 813,
+      "total_vision_score": 77,
+      "total_gold_earned": 47354,
+      "total_damage_dealt": 57242,
+      "total_damage_taken": 131736,
+      "total_game_duration": 8854,
+      "champions_played": [
+        "Sion",
+        "Sejuani",
+        "Taric",
+        "Chogath",
+        "Ornn"
+      ],
+      "champion_stats": {
+        "Sion": {
+          "games": 1,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 1,
+          "assists": 8
+        },
+        "Sejuani": {
+          "games": 1,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 4,
+          "assists": 10
+        },
+        "Taric": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 5,
+          "assists": 7
+        },
+        "Chogath": {
+          "games": 1,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 3,
+          "assists": 8
+        },
+        "Ornn": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 4,
+          "assists": 4
+        }
+      },
+      "average_kills": 2.4,
+      "average_deaths": 3.4,
+      "average_assists": 7.4,
+      "average_kda": 2.88,
+      "average_cs_per_min": 5.51,
+      "average_cs_per_minute": 5.51,
+      "average_vision_score": 15.4,
+      "average_gold_per_min": 321.0,
+      "average_damage_per_min": 388.0,
+      "winrate": 60.0,
+      "unique_champions_played": 5
+    },
+    "Victor#Oui": {
+      "player_name": "Victor#Oui",
+      "team": "Les misérables",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 21,
+      "total_deaths": 18,
+      "total_assists": 46,
+      "total_cs": 1160,
+      "total_vision_score": 137,
+      "total_gold_earned": 59877,
+      "total_damage_dealt": 148412,
+      "total_damage_taken": 83219,
+      "total_game_duration": 8854,
+      "champions_played": [
+        "Ezreal",
+        "Caitlyn",
+        "Sivir",
+        "Ashe",
+        "Veigar"
+      ],
+      "champion_stats": {
+        "Ezreal": {
+          "games": 1,
+          "wins": 1,
+          "kills": 4,
+          "deaths": 4,
+          "assists": 8
+        },
+        "Caitlyn": {
+          "games": 1,
+          "wins": 1,
+          "kills": 10,
+          "deaths": 1,
+          "assists": 10
+        },
+        "Sivir": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 4,
+          "assists": 11
+        },
+        "Ashe": {
+          "games": 1,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 2,
+          "assists": 10
+        },
+        "Veigar": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 7,
+          "assists": 7
+        }
+      },
+      "average_kills": 4.2,
+      "average_deaths": 3.6,
+      "average_assists": 9.2,
+      "average_kda": 3.72,
+      "average_cs_per_min": 7.86,
+      "average_cs_per_minute": 7.86,
+      "average_vision_score": 27.4,
+      "average_gold_per_min": 406.0,
+      "average_damage_per_min": 1006.0,
+      "winrate": 60.0,
+      "unique_champions_played": 5
+    },
+    "Hugo#OTEUR": {
+      "player_name": "Hugo#OTEUR",
+      "team": "Les misérables",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 11,
+      "total_deaths": 17,
+      "total_assists": 63,
+      "total_cs": 151,
+      "total_vision_score": 380,
+      "total_gold_earned": 42635,
+      "total_damage_dealt": 72557,
+      "total_damage_taken": 97919,
+      "total_game_duration": 8854,
+      "champions_played": [
+        "Braum",
+        "Velkoz",
+        "Rell",
+        "Blitzcrank",
+        "Senna"
+      ],
+      "champion_stats": {
+        "Braum": {
+          "games": 1,
+          "wins": 1,
+          "kills": 0,
+          "deaths": 3,
+          "assists": 14
+        },
+        "Velkoz": {
+          "games": 1,
+          "wins": 1,
+          "kills": 5,
+          "deaths": 3,
+          "assists": 11
+        },
+        "Rell": {
+          "games": 1,
+          "wins": 0,
+          "kills": 4,
+          "deaths": 3,
+          "assists": 12
+        },
+        "Blitzcrank": {
+          "games": 1,
+          "wins": 1,
+          "kills": 1,
+          "deaths": 2,
+          "assists": 17
+        },
+        "Senna": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 6,
+          "assists": 9
+        }
+      },
+      "average_kills": 2.2,
+      "average_deaths": 3.4,
+      "average_assists": 12.6,
+      "average_kda": 4.35,
+      "average_cs_per_min": 1.02,
+      "average_cs_per_minute": 1.02,
+      "average_vision_score": 76.0,
+      "average_gold_per_min": 289.0,
+      "average_damage_per_min": 492.0,
+      "winrate": 60.0,
+      "unique_champions_played": 5
+    },
+    "Radiohead Lover#JFIP": {
+      "player_name": "Radiohead Lover#JFIP",
+      "team": "KCDQ",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 21,
+      "total_deaths": 21,
+      "total_assists": 16,
+      "total_cs": 832,
+      "total_vision_score": 73,
+      "total_gold_earned": 49340,
+      "total_damage_dealt": 90792,
+      "total_damage_taken": 154850,
+      "total_game_duration": 7073,
+      "champions_played": [
+        "Aatrox",
+        "Ambessa",
+        "KSante",
+        "DrMundo"
+      ],
+      "champion_stats": {
+        "Aatrox": {
+          "games": 2,
+          "wins": 1,
+          "kills": 5,
+          "deaths": 2,
+          "assists": 7
+        },
+        "Ambessa": {
+          "games": 1,
+          "wins": 0,
+          "kills": 6,
+          "deaths": 6,
+          "assists": 1
+        },
+        "KSante": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 11,
+          "assists": 3
+        },
+        "DrMundo": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 2,
+          "assists": 5
+        }
+      },
+      "average_kills": 4.2,
+      "average_deaths": 4.2,
+      "average_assists": 3.2,
+      "average_kda": 1.76,
+      "average_cs_per_min": 7.06,
+      "average_cs_per_minute": 7.06,
+      "average_vision_score": 14.6,
+      "average_gold_per_min": 419.0,
+      "average_damage_per_min": 770.0,
+      "winrate": 40.0,
+      "unique_champions_played": 4
+    },
+    "C0uille Gauche#poil": {
+      "player_name": "C0uille Gauche#poil",
+      "team": "KCDQ",
+      "games_played": 6,
+      "wins": 2,
+      "losses": 4,
+      "total_kills": 35,
+      "total_deaths": 21,
+      "total_assists": 55,
+      "total_cs": 968,
+      "total_vision_score": 195,
+      "total_gold_earned": 64872,
+      "total_damage_dealt": 135114,
+      "total_damage_taken": 178832,
+      "total_game_duration": 8729,
+      "champions_played": [
+        "Gwen",
+        "Wukong",
+        "XinZhao",
+        "JarvanIV"
+      ],
+      "champion_stats": {
+        "Gwen": {
+          "games": 2,
+          "wins": 1,
+          "kills": 9,
+          "deaths": 0,
+          "assists": 11
+        },
+        "Wukong": {
+          "games": 1,
+          "wins": 0,
+          "kills": 3,
+          "deaths": 4,
+          "assists": 8
+        },
+        "XinZhao": {
+          "games": 1,
+          "wins": 0,
+          "kills": 9,
+          "deaths": 7,
+          "assists": 9
+        },
+        "JarvanIV": {
+          "games": 2,
+          "wins": 1,
+          "kills": 14,
+          "deaths": 10,
+          "assists": 27
+        }
+      },
+      "average_kills": 5.83,
+      "average_deaths": 3.5,
+      "average_assists": 9.17,
+      "average_kda": 4.29,
+      "average_cs_per_min": 6.65,
+      "average_cs_per_minute": 6.65,
+      "average_vision_score": 32.5,
+      "average_gold_per_min": 446.0,
+      "average_damage_per_min": 929.0,
+      "winrate": 33.33,
+      "unique_champions_played": 4
+    },
+    "KCDQ braquemar#666": {
+      "player_name": "KCDQ braquemar#666",
+      "team": "KCDQ",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 16,
+      "total_deaths": 20,
+      "total_assists": 20,
+      "total_cs": 778,
+      "total_vision_score": 84,
+      "total_gold_earned": 41303,
+      "total_damage_dealt": 68784,
+      "total_damage_taken": 60238,
+      "total_game_duration": 6662,
+      "champions_played": [
+        "Caitlyn",
+        "Orianna",
+        "Xerath"
+      ],
+      "champion_stats": {
+        "Caitlyn": {
+          "games": 2,
+          "wins": 1,
+          "kills": 5,
+          "deaths": 1,
+          "assists": 3
+        },
+        "Orianna": {
+          "games": 2,
+          "wins": 1,
+          "kills": 9,
+          "deaths": 14,
+          "assists": 10
+        },
+        "Xerath": {
+          "games": 1,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 5,
+          "assists": 7
+        }
+      },
+      "average_kills": 3.2,
+      "average_deaths": 4.0,
+      "average_assists": 4.0,
+      "average_kda": 1.8,
+      "average_cs_per_min": 7.01,
+      "average_cs_per_minute": 7.01,
+      "average_vision_score": 16.8,
+      "average_gold_per_min": 372.0,
+      "average_damage_per_min": 619.0,
+      "winrate": 40.0,
+      "unique_champions_played": 3
+    },
+    "KCDQ Braquemart#666": {
+      "player_name": "KCDQ Braquemart#666",
+      "team": "KCDQ",
+      "games_played": 4,
+      "wins": 1,
+      "losses": 3,
+      "total_kills": 7,
+      "total_deaths": 12,
+      "total_assists": 15,
+      "total_cs": 518,
+      "total_vision_score": 50,
+      "total_gold_earned": 29327,
+      "total_damage_dealt": 48598,
+      "total_damage_taken": 71704,
+      "total_game_duration": 5371,
+      "champions_played": [
+        "Mordekaiser",
+        "Malphite"
+      ],
+      "champion_stats": {
+        "Mordekaiser": {
+          "games": 2,
+          "wins": 1,
+          "kills": 5,
+          "deaths": 0,
+          "assists": 4
+        },
+        "Malphite": {
+          "games": 2,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 12,
+          "assists": 11
+        }
+      },
+      "average_kills": 1.75,
+      "average_deaths": 3.0,
+      "average_assists": 3.75,
+      "average_kda": 1.83,
+      "average_cs_per_min": 5.79,
+      "average_cs_per_minute": 5.79,
+      "average_vision_score": 12.5,
+      "average_gold_per_min": 328.0,
+      "average_damage_per_min": 543.0,
+      "winrate": 25.0,
+      "unique_champions_played": 2
+    },
+    "nenegeek31#EUW": {
+      "player_name": "nenegeek31#EUW",
+      "team": "KCDQ",
+      "games_played": 6,
+      "wins": 2,
+      "losses": 4,
+      "total_kills": 7,
+      "total_deaths": 25,
+      "total_assists": 63,
+      "total_cs": 110,
+      "total_vision_score": 291,
+      "total_gold_earned": 37329,
+      "total_damage_dealt": 43089,
+      "total_damage_taken": 93432,
+      "total_game_duration": 8729,
+      "champions_played": [
+        "Milio",
+        "Rakan",
+        "Braum"
+      ],
+      "champion_stats": {
+        "Milio": {
+          "games": 3,
+          "wins": 1,
+          "kills": 3,
+          "deaths": 10,
+          "assists": 34
+        },
+        "Rakan": {
+          "games": 2,
+          "wins": 0,
+          "kills": 2,
+          "deaths": 10,
+          "assists": 14
+        },
+        "Braum": {
+          "games": 1,
+          "wins": 1,
+          "kills": 2,
+          "deaths": 5,
+          "assists": 15
+        }
+      },
+      "average_kills": 1.17,
+      "average_deaths": 4.17,
+      "average_assists": 10.5,
+      "average_kda": 2.8,
+      "average_cs_per_min": 0.76,
+      "average_cs_per_minute": 0.76,
+      "average_vision_score": 48.5,
+      "average_gold_per_min": 257.0,
+      "average_damage_per_min": 296.0,
+      "winrate": 33.33,
+      "unique_champions_played": 3
+    },
+    "Cra Feu 12PA 6PM#EXPLO": {
+      "player_name": "Cra Feu 12PA 6PM#EXPLO",
+      "team": "4 goats et le 2010",
+      "games_played": 1,
+      "wins": 1,
+      "losses": 0,
+      "total_kills": 7,
+      "total_deaths": 1,
+      "total_assists": 9,
+      "total_cs": 123,
+      "total_vision_score": 5,
+      "total_gold_earned": 9188,
+      "total_damage_dealt": 11850,
+      "total_damage_taken": 7945,
+      "total_game_duration": 1015,
+      "champions_played": [
+        "Sivir"
+      ],
+      "champion_stats": {
+        "Sivir": {
+          "games": 1,
+          "wins": 1,
+          "kills": 7,
+          "deaths": 1,
+          "assists": 9
+        }
+      },
+      "average_kills": 7.0,
+      "average_deaths": 1.0,
+      "average_assists": 9.0,
+      "average_kda": 16.0,
+      "average_cs_per_min": 7.27,
+      "average_cs_per_minute": 7.27,
+      "average_vision_score": 5.0,
+      "average_gold_per_min": 543.0,
+      "average_damage_per_min": 700.0,
+      "winrate": 100.0,
+      "unique_champions_played": 1
+    },
+    "Keryoxx#EUW": {
+      "player_name": "Keryoxx#EUW",
+      "team": "Les toxicos",
+      "games_played": 1,
+      "wins": 0,
+      "losses": 1,
+      "total_kills": 1,
+      "total_deaths": 4,
+      "total_assists": 2,
+      "total_cs": 175,
+      "total_vision_score": 15,
+      "total_gold_earned": 7886,
+      "total_damage_dealt": 9346,
+      "total_damage_taken": 19573,
+      "total_game_duration": 1514,
+      "champions_played": [
+        "Gragas"
+      ],
+      "champion_stats": {
+        "Gragas": {
+          "games": 1,
+          "wins": 0,
+          "kills": 1,
+          "deaths": 4,
+          "assists": 2
+        }
+      },
+      "average_kills": 1.0,
+      "average_deaths": 4.0,
+      "average_assists": 2.0,
+      "average_kda": 0.75,
+      "average_cs_per_min": 6.94,
+      "average_cs_per_minute": 6.94,
+      "average_vision_score": 15.0,
+      "average_gold_per_min": 313.0,
+      "average_damage_per_min": 370.0,
+      "winrate": 0.0,
+      "unique_champions_played": 1
+    }
+  },
+  "team_stats": {
+    "La Ruche": {
+      "team_name": "La Ruche",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 93,
+      "total_deaths": 69,
+      "total_game_duration": 8555,
+      "winrate": 60.0,
+      "average_game_duration": 1711.0,
+      "average_game_duration_formatted": "28:31"
+    },
+    "Unknown Team": {
+      "team_name": "Unknown Team",
+      "games_played": 26,
+      "wins": 12,
+      "losses": 14,
+      "total_kills": 128,
+      "total_deaths": 123,
+      "total_game_duration": 41070,
+      "winrate": 46.15,
+      "average_game_duration": 1580.0,
+      "average_game_duration_formatted": "26:20"
+    },
+    "Lion's Guard": {
+      "team_name": "Lion's Guard",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 128,
+      "total_deaths": 87,
+      "total_game_duration": 9561,
+      "winrate": 60.0,
+      "average_game_duration": 1912.0,
+      "average_game_duration_formatted": "31:52"
+    },
+    "On aurait du y penser": {
+      "team_name": "On aurait du y penser",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 127,
+      "total_deaths": 105,
+      "total_game_duration": 8692,
+      "winrate": 60.0,
+      "average_game_duration": 1738.0,
+      "average_game_duration_formatted": "28:58"
+    },
+    "EC Emerald": {
+      "team_name": "EC Emerald",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 109,
+      "total_deaths": 92,
+      "total_game_duration": 8675,
+      "winrate": 60.0,
+      "average_game_duration": 1735.0,
+      "average_game_duration_formatted": "28:55"
+    },
+    "chasse et pêche": {
+      "team_name": "chasse et pêche",
+      "games_played": 5,
+      "wins": 4,
+      "losses": 1,
+      "total_kills": 132,
+      "total_deaths": 96,
+      "total_game_duration": 9270,
+      "winrate": 80.0,
+      "average_game_duration": 1854.0,
+      "average_game_duration_formatted": "30:54"
+    },
+    "FF 15 Policy": {
+      "team_name": "FF 15 Policy",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 87,
+      "total_deaths": 98,
+      "total_game_duration": 8307,
+      "winrate": 40.0,
+      "average_game_duration": 1661.0,
+      "average_game_duration_formatted": "27:41"
+    },
+    "PIPI GAMING": {
+      "team_name": "PIPI GAMING",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 97,
+      "total_deaths": 70,
+      "total_game_duration": 7901,
+      "winrate": 60.0,
+      "average_game_duration": 1580.0,
+      "average_game_duration_formatted": "26:20"
+    },
+    "4 goats et le 2010": {
+      "team_name": "4 goats et le 2010",
+      "games_played": 5,
+      "wins": 5,
+      "losses": 0,
+      "total_kills": 137,
+      "total_deaths": 81,
+      "total_game_duration": 7176,
+      "winrate": 100.0,
+      "average_game_duration": 1435.0,
+      "average_game_duration_formatted": "23:55"
+    },
+    "Les toxicos": {
+      "team_name": "Les toxicos",
+      "games_played": 4,
+      "wins": 0,
+      "losses": 4,
+      "total_kills": 24,
+      "total_deaths": 87,
+      "total_game_duration": 6281,
+      "winrate": 0.0,
+      "average_game_duration": 1570.0,
+      "average_game_duration_formatted": "26:10"
+    },
+    "Chill Guys": {
+      "team_name": "Chill Guys",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 106,
+      "total_deaths": 153,
+      "total_game_duration": 7625,
+      "winrate": 40.0,
+      "average_game_duration": 1525.0,
+      "average_game_duration_formatted": "25:25"
+    },
+    "Pantizini vi Zombini": {
+      "team_name": "Pantizini vi Zombini",
+      "games_played": 6,
+      "wins": 1,
+      "losses": 5,
+      "total_kills": 49,
+      "total_deaths": 109,
+      "total_game_duration": 7428,
+      "winrate": 16.67,
+      "average_game_duration": 1238.0,
+      "average_game_duration_formatted": "20:38"
+    },
+    "Burger sans gluten": {
+      "team_name": "Burger sans gluten",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 139,
+      "total_deaths": 107,
+      "total_game_duration": 9282,
+      "winrate": 60.0,
+      "average_game_duration": 1856.0,
+      "average_game_duration_formatted": "30:56"
+    },
+    "4China+Vinci": {
+      "team_name": "4China+Vinci",
+      "games_played": 5,
+      "wins": 2,
+      "losses": 3,
+      "total_kills": 102,
+      "total_deaths": 110,
+      "total_game_duration": 8624,
+      "winrate": 40.0,
+      "average_game_duration": 1725.0,
+      "average_game_duration_formatted": "28:45"
+    },
+    "Censured Corp": {
+      "team_name": "Censured Corp",
+      "games_played": 4,
+      "wins": 0,
+      "losses": 4,
+      "total_kills": 63,
+      "total_deaths": 119,
+      "total_game_duration": 7280,
+      "winrate": 0.0,
+      "average_game_duration": 1820.0,
+      "average_game_duration_formatted": "30:20"
+    },
+    "Les misérables": {
+      "team_name": "Les misérables",
+      "games_played": 5,
+      "wins": 3,
+      "losses": 2,
+      "total_kills": 70,
+      "total_deaths": 76,
+      "total_game_duration": 8854,
+      "winrate": 60.0,
+      "average_game_duration": 1771.0,
+      "average_game_duration_formatted": "29:31"
+    },
+    "KCDQ": {
+      "team_name": "KCDQ",
+      "games_played": 6,
+      "wins": 2,
+      "losses": 4,
+      "total_kills": 86,
+      "total_deaths": 99,
+      "total_game_duration": 8729,
+      "winrate": 33.33,
+      "average_game_duration": 1455.0,
+      "average_game_duration_formatted": "24:15"
+    }
+  },
+  "records": {
+    "total_kills": {
+      "stat_name": "Total Kills",
+      "player": "Unknown Player",
+      "team": "Unknown Team",
+      "value": 128
+    },
+    "total_deaths": {
+      "stat_name": "Total Deaths",
+      "player": "Unknown Player",
+      "team": "Unknown Team",
+      "value": 123
+    },
+    "total_assists": {
+      "stat_name": "Total Assists",
+      "player": "Unknown Player",
+      "team": "Unknown Team",
+      "value": 241
+    },
+    "average_kills": {
+      "stat_name": "Average Kills",
+      "player": "SeyZo#EUW",
+      "team": "chasse et pêche",
+      "value": 10.6
+    },
+    "average_deaths": {
+      "stat_name": "Average Deaths",
+      "player": "Tanguy en Y#miaou",
+      "team": "Chill Guys",
+      "value": 7.4
+    },
+    "average_assists": {
+      "stat_name": "Average Assists",
+      "player": "LG Aziαs#OGNAM",
+      "team": "Lion's Guard",
+      "value": 18.8
+    },
+    "average_kda": {
+      "stat_name": "Average KDA",
+      "player": "Cra Feu 12PA 6PM#EXPLO",
+      "team": "4 goats et le 2010",
+      "value": 16.0
+    },
+    "average_cs_per_min": {
+      "stat_name": "Average CS/min",
+      "player": "Thibee#00000",
+      "team": "La Ruche",
+      "value": 9.19
+    },
+    "average_vision_score": {
+      "stat_name": "Average Vision Score",
+      "player": "RR D1#EUW",
+      "team": "PIPI GAMING",
+      "value": 124.0
+    },
+    "average_gold_per_min": {
+      "stat_name": "Average Gold/min",
+      "player": "Cra Feu 12PA 6PM#EXPLO",
+      "team": "4 goats et le 2010",
+      "value": 543.0
+    },
+    "average_damage_per_min": {
+      "stat_name": "Average Damage/min",
+      "player": "eomer#feur",
+      "team": "4 goats et le 2010",
+      "value": 1217.0
+    },
+    "unique_champions_played": {
+      "stat_name": "Unique Champions",
+      "player": "Unknown Player",
+      "team": "Unknown Team",
+      "value": 23
+    },
+    "winrate": {
+      "stat_name": "Winrate %",
+      "player": "bouyachakaaa#mfda",
+      "team": "4 goats et le 2010",
+      "value": 100.0
+    }
+  },
+  "most_picked_champion": {
+    "champion": "Braum",
+    "picks": 16
+  },
+  "metadata": {
+    "total_matches_processed": 40,
+    "total_errors": 0,
+    "total_players": 79,
+    "total_teams": 17
+  }
+}
