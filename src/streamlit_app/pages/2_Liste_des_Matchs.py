@@ -81,7 +81,7 @@ with st.sidebar:
     else:
         # Initialiser selected_edition dans session_state si pas déjà fait
         if "selected_edition" not in st.session_state:
-            st.session_state.selected_edition = available_editions[0]
+            st.session_state.selected_edition = 7 if 7 in available_editions else available_editions[0]
         
         # Trouver l'index de l'édition sélectionnée
         default_index = 0
@@ -327,8 +327,14 @@ if team_stats_path.exists():
         # Créer le mapping joueur -> équipe
         for team_name, team_data in team_stats_data.items():
             players = team_data.get("players", {})
-            for player_name in players.keys():
-                player_to_team[player_name] = team_name
+            for player_key, player_data in players.items():
+                # Utiliser gameName et tagLine pour le mapping
+                game_name = player_data.get("gameName") or player_data.get("player_name")
+                tag_line = player_data.get("tagLine") or ""
+                if game_name and tag_line:
+                    player_to_team[f"{game_name}#{tag_line}"] = team_name
+                elif game_name:
+                    player_to_team[game_name] = team_name
 
 # Charger les match_details
 match_details_path = data_dir / "match_details.json"

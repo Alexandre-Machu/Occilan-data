@@ -210,7 +210,7 @@ with st.sidebar:
     else:
         # Initialiser selected_edition dans session_state si pas déjà fait
         if "selected_edition" not in st.session_state:
-            st.session_state.selected_edition = available_editions[0]
+            st.session_state.selected_edition = 7 if 7 in available_editions else available_editions[0]
         
         # Trouver l'index de l'édition sélectionnée
         default_index = 0
