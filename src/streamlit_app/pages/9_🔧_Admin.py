@@ -1,91 +1,50 @@
-"""
-Admin page for OcciLan Stats
-Manage teams and trigger data processing pipeline
-"""
 
+import os
 import streamlit as st
 import pandas as pd
-import os
-from pathlib import Path
-import sys
-import io
-
-# Add project root to path
-project_root = Path(__file__).parent.parent.parent.parent
-sys.path.insert(0, str(project_root))
-
 from src.core.data_manager import EditionDataManager, MultiEditionManager
-from src.parsers.opgg_parser import OPGGParser
 from src.pipeline.edition_processor import EditionProcessor
-from dotenv import load_dotenv
 
-load_dotenv()
-
-# Page config
-st.set_page_config(page_title="Admin - OcciLan Stats", page_icon="🔧", layout="wide")
-
-# Custom CSS pour masquer la navigation par défaut
 st.markdown("""
 <style>
-    [data-testid="stSidebarNav"] {
-        display: none;
-    }
+    [data-testid="stSidebarNav"] { display: none !important; }
 </style>
 """, unsafe_allow_html=True)
 
-# ============================================================================
-# Check authentication FIRST
-# ============================================================================
-
-if "authenticated" not in st.session_state:
-    st.session_state.authenticated = False
-
-# ============================================================================
-# SIDEBAR - Navigation cohérente (avec vérification auth)
-# ============================================================================
-
+# ===============================
+# SIDEBAR (toujours visible)
+# ===============================
+multi_manager = MultiEditionManager()
+editions = multi_manager.list_editions()
 with st.sidebar:
-    st.markdown("### 📂 Sélection d'édition")
-    
-    multi_manager_sidebar = MultiEditionManager()
-    # Vérifier si l'utilisateur est admin avant de lister les éditions privées
-    is_admin = st.session_state.get("authenticated", False)
-    available_editions_sidebar = multi_manager_sidebar.list_editions(include_private=is_admin)
-    
-    if not available_editions_sidebar:
-        st.info("💡 Créez votre première édition ci-dessous")
-        selected_edition_sidebar = None
-    else:
-        # Initialiser selected_edition dans session_state si pas déjà fait
-        if "selected_edition" not in st.session_state:
-            st.session_state.selected_edition = 7 if 7 in available_editions_sidebar else available_editions_sidebar[0]
-        
-        # Trouver l'index de l'édition sélectionnée
-        default_index = 0
-        if st.session_state.selected_edition in available_editions_sidebar:
-            default_index = available_editions_sidebar.index(st.session_state.selected_edition)
-        
-        # Sélecteur visible
-        selected_edition_sidebar = st.selectbox(
-            "Édition",
-            available_editions_sidebar,
-            index=default_index,
-            format_func=lambda x: f"Edition {x}",
-            label_visibility="collapsed",
-            key="sidebar_edition_selector"
-        )
-        
-        # Sauvegarder dans session_state
-        st.session_state.selected_edition = selected_edition_sidebar
-        
-        if selected_edition_sidebar:
-            edition_manager_sidebar = EditionDataManager(selected_edition_sidebar)
-            config_sidebar = edition_manager_sidebar.load_config()
-            
-            if config_sidebar:
-                st.markdown(f"**{config_sidebar.get('name', 'N/A')}**")
-                st.caption(f"📆 {config_sidebar.get('start_date', 'N/A')} → {config_sidebar.get('end_date', 'N/A')}")
-    
+    st.title("🎮 OcciLan Stats")
+    with st.expander("📂 Sélection d'édition", expanded=True):
+        if not editions:
+            st.warning("⚠️ Aucune édition disponible")
+            st.info("💡 Créez une édition dans la page Admin")
+            selected_edition = None
+        else:
+            # Initialiser selected_edition dans session_state si pas déjà fait
+            if "selected_edition" not in st.session_state:
+                st.session_state.selected_edition = editions[0]
+            default_index = 0
+            if st.session_state.selected_edition in editions:
+                default_index = editions.index(st.session_state.selected_edition)
+            selected_edition = st.selectbox(
+                "Édition",
+                editions,
+                index=default_index,
+                format_func=lambda x: f"Edition {x}",
+                label_visibility="collapsed",
+                key="edition_selector_admin"
+            )
+            st.session_state.selected_edition = selected_edition
+            if selected_edition:
+                edition_manager = EditionDataManager(selected_edition)
+                config = edition_manager.load_config()
+                if config:
+                    st.markdown(f"**{config.get('name', 'N/A')}**")
+                    st.caption(f"📆 {config.get('start_date', 'N/A')} → {config.get('end_date', 'N/A')}")
     st.markdown("---")
     st.markdown("### 🧭 Navigation")
     st.page_link("app.py", label="🏠 Accueil")
@@ -99,17 +58,21 @@ with st.sidebar:
     st.markdown("---")
     st.caption("🎮 OcciLan Stats v2.0")
 
+import os
+import streamlit as st
+import pandas as pd
+from src.core.data_manager import EditionDataManager, MultiEditionManager
+from src.pipeline.edition_processor import EditionProcessor
+
 # ============================================================================
 # Authentication page
 # ============================================================================
 
-if not st.session_state.authenticated:
+if not st.session_state.get("authenticated", False):
     st.title("🔒 Administration")
-    
     with st.form("login_form"):
         password = st.text_input("Mot de passe", type="password")
         submit = st.form_submit_button("Se connecter")
-        
         if submit:
             # Simple password check (in production, use proper auth)
             if password == os.getenv("ADMIN_PASSWORD", "admin123"):
@@ -117,10 +80,9 @@ if not st.session_state.authenticated:
                 st.rerun()
             else:
                 st.error("❌ Mot de passe incorrect")
-    
     st.stop()
 
-# Admin interface
+
 st.title("🔧 Administration")
 st.markdown("Gestion des équipes et traitement des données")
 
@@ -129,17 +91,11 @@ if st.button("🚪 Déconnexion", type="secondary"):
     st.session_state.authenticated = False
     st.rerun()
 
-# Edition selector
-multi_manager = MultiEditionManager()
-editions = multi_manager.list_editions()
-
 # Section pour créer une nouvelle édition
 with st.expander("➕ Créer une nouvelle édition", expanded=False):
     with st.form("create_edition_form"):
         st.markdown("### Nouvelle édition")
-        
         col1, col2 = st.columns(2)
-        
         with col1:
             # Calculer le prochain numéro d'édition disponible
             next_edition = 1
@@ -149,7 +105,6 @@ with st.expander("➕ Créer une nouvelle édition", expanded=False):
                     if i not in editions:
                         next_edition = i
                         break
-            
             new_edition_number = st.number_input(
                 "Numéro de l'édition",
                 min_value=1,
@@ -162,7 +117,6 @@ with st.expander("➕ Créer une nouvelle édition", expanded=False):
                 "Nom de l'édition",
                 value=f"OcciLan Stats {new_edition_number}"
             )
-        
         with col2:
             year = st.number_input(
                 "Année",
@@ -180,9 +134,7 @@ with st.expander("➕ Créer une nouvelle édition", expanded=False):
                 start_date = st.date_input("Date de début")
             with col_date2:
                 end_date = st.date_input("Date de fin")
-        
         submit_edition = st.form_submit_button("✅ Créer l'édition", type="primary")
-        
         if submit_edition:
             if new_edition_number in editions:
                 st.error(f"❌ L'édition {new_edition_number} existe déjà !")
@@ -200,6 +152,21 @@ with st.expander("➕ Créer une nouvelle édition", expanded=False):
                     st.info("🔄 Rechargez la page pour voir la nouvelle édition")
                 except Exception as e:
                     st.error(f"❌ Erreur lors de la création : {str(e)}")
+
+if not editions:
+    st.warning("⚠️ Aucune édition trouvée. Créez-en une d'abord.")
+    st.stop()
+
+# Use global selection if available (set by sidebar)
+selected_edition = None
+if "selected_edition" in st.session_state and st.session_state.selected_edition in editions:
+    selected_edition = st.session_state.selected_edition
+elif "sidebar_edition_selector" in st.session_state and st.session_state.sidebar_edition_selector in editions:
+    selected_edition = st.session_state.sidebar_edition_selector
+else:
+    # Fallback to first available edition
+    selected_edition = editions[0] if editions else None
+        
 
 if not editions:
     st.warning("⚠️ Aucune édition trouvée. Créez-en une d'abord.")
@@ -734,31 +701,6 @@ with tab2:
                                         st.error(f"❌ Erreur: {str(e)}")
                     st.markdown("---")
                     # Bouton pour modifier le nom de l'équipe
-                    if st.button(f"✏️ Modifier le nom de l'équipe", key=f"edit_teamname_{idx}"):
-                        st.session_state[f"edit_teamname_mode_{idx}"] = True
-                        st.session_state[f"edit_teamname_value_{idx}"] = team_name
-                        st.rerun()
-                    if st.session_state.get(f"edit_teamname_mode_{idx}", False):
-                        new_team_name = st.text_input("Nouveau nom d'équipe", value=st.session_state.get(f"edit_teamname_value_{idx}", team_name), key=f"teamname_input_{idx}")
-                        if st.button("💾 Enregistrer le nom", key=f"save_teamname_{idx}", type="primary"):
-                            # Renommer l'équipe dans teams_list
-                            team["name"] = new_team_name
-                            # Mettre à jour dans teams_dict
-                            teams_dict = {}
-                            for t in teams_list:
-                                t_name = t.get("name", "Unknown")
-                                teams_dict[t_name] = {
-                                    "players": t.get("players", []),
-                                    "opgg_link": t.get("opgg_link", "")
-                                }
-                            edition_manager.save_teams(teams_dict)
-                            st.success(f"✅ Nom d'équipe modifié en **{new_team_name}** !")
-                            st.session_state[f"edit_teamname_mode_{idx}"] = False
-                            st.rerun()
-                        if st.button("❌ Annuler", key=f"cancel_teamname_{idx}"):
-                            st.session_state[f"edit_teamname_mode_{idx}"] = False
-                            st.rerun()
-                    # Edit mode toggle
                     edit_mode = st.checkbox(f"✏️ Modifier les rôles et noms de joueurs", key=f"edit_{idx}")
                     if edit_mode:
                         st.markdown("**Modifier les rôles et noms des joueurs:**")
@@ -816,7 +758,7 @@ with tab2:
                         st.markdown("**Joueurs:**")
                         # Sort players by role order
                         role_order = {"TOP": 0, "JGL": 1, "MID": 2, "ADC": 3, "SUP": 4}
-                        players = team.get("players", []);
+                        players = team.get("players", [])
                         sorted_players = sorted(players, key=lambda p: role_order.get(p.get("role", "SUP"), 5))
                         players_data = []
                         for player in sorted_players:
@@ -832,7 +774,7 @@ with tab2:
                             )
                     # Delete button (always visible dans l'expander)
                     st.markdown("---")
-                    if st.button(f"🗑️ Supprimer l'équipe", key=f"delete_{idx}", type="secondary"):
+                    if st.button(f"�️ Supprimer l'équipe", key=f"delete_{idx}_{team_name}", type="secondary"):
                         # Remove from list
                         teams_list.remove(team)
                         # Convert back to dict format for saving
@@ -846,49 +788,6 @@ with tab2:
                         edition_manager.save_teams(teams_dict)
                         st.success(f"✅ Équipe **{team_name}** supprimée")
                         st.rerun()
-                                    st.write("")  # Spacing
-                                
-                                # Store new player data
-                                new_players.append({
-                                    "role": new_role,
-                                    "gameName": player.get("gameName", "Unknown"),
-                                    "tagLine": player.get("tagLine", "0000")
-                                })
-                            
-                            submit_changes = st.form_submit_button("💾 Enregistrer les modifications", type="primary")
-                            
-                            if submit_changes:
-                                # Update team data
-                                team["players"] = new_players
-                                
-                                # Convert back to dict format for saving
-                                teams_dict = {}
-                                for t in teams_list:
-                                    t_name = t.get("name", "Unknown")
-                                    teams_dict[t_name] = {
-                                        "players": t.get("players", []),
-                                        "opgg_link": t.get("opgg_link", "")
-                                    }
-                                
-                                edition_manager.save_teams(teams_dict)
-                                st.success(f"✅ Rôles mis à jour pour l'équipe **{team_name}**!")
-                                st.rerun()
-                    
-                    else:
-                        # Display mode (read-only)
-                        st.markdown("**Joueurs:**")
-                        
-                        # Sort players by role order
-                        role_order = {"TOP": 0, "JGL": 1, "MID": 2, "ADC": 3, "SUP": 4}
-                        players = team.get("players", [])
-                        sorted_players = sorted(players, key=lambda p: role_order.get(p.get("role", "SUP"), 5))
-                        
-                        players_data = []
-                        for player in sorted_players:
-                            players_data.append({
-                                "Rôle": player.get("role", "N/A"),
-                                "Pseudo": f"{player.get('gameName', 'Unknown')}#{player.get('tagLine', '0000')}"
-                            })
                         
                         if players_data:
                             st.dataframe(
