@@ -39,11 +39,11 @@
         "summonerLevel": 461,
         "profileIconId": 1453,
         "tier": "EMERALD",
-        "rank": "IV",
-        "leaguePoints": 99,
-        "wins": 37,
+        "rank": "III",
+        "leaguePoints": 18,
+        "wins": 38,
         "losses": 32,
-        "winrate": 53.62
+        "winrate": 54.29
       },
       {
         "gameName": "tsuvai",
@@ -67,11 +67,11 @@
         "summonerLevel": 258,
         "profileIconId": 5898,
         "tier": "PLATINUM",
-        "rank": "IV",
-        "leaguePoints": 80,
-        "wins": 38,
+        "rank": "III",
+        "leaguePoints": 3,
+        "wins": 39,
         "losses": 28,
-        "winrate": 57.58
+        "winrate": 58.21
       }
     ]
   },
@@ -130,10 +130,10 @@
         "profileIconId": 904,
         "tier": "GRANDMASTER",
         "rank": "I",
-        "leaguePoints": 903,
+        "leaguePoints": 883,
         "wins": 441,
-        "losses": 382,
-        "winrate": 53.58
+        "losses": 383,
+        "winrate": 53.52
       }
     ]
   },
@@ -206,10 +206,10 @@
         "profileIconId": 3863,
         "tier": "EMERALD",
         "rank": "II",
-        "leaguePoints": 34,
-        "wins": 94,
+        "leaguePoints": 54,
+        "wins": 95,
         "losses": 100,
-        "winrate": 48.45
+        "winrate": 48.72
       }
     ]
   },
@@ -268,10 +268,10 @@
         "profileIconId": 6996,
         "tier": "MASTER",
         "rank": "I",
-        "leaguePoints": 710,
+        "leaguePoints": 689,
         "wins": 415,
-        "losses": 382,
-        "winrate": 52.07
+        "losses": 383,
+        "winrate": 52.01
       },
       {
         "gameName": "Sumwo",
@@ -330,10 +330,10 @@
         "profileIconId": 6996,
         "tier": "PLATINUM",
         "rank": "II",
-        "leaguePoints": 30,
-        "wins": 238,
-        "losses": 250,
-        "winrate": 48.77
+        "leaguePoints": 28,
+        "wins": 239,
+        "losses": 251,
+        "winrate": 48.78
       },
       {
         "gameName": "Skarito",
@@ -848,10 +848,10 @@
         "profileIconId": 6759,
         "tier": "DIAMOND",
         "rank": "IV",
-        "leaguePoints": 22,
+        "leaguePoints": 0,
         "wins": 176,
-        "losses": 149,
-        "winrate": 54.15
+        "losses": 150,
+        "winrate": 53.99
       },
       {
         "gameName": "Sigmund Freud",
@@ -861,11 +861,11 @@
         "summonerLevel": 436,
         "profileIconId": 5915,
         "tier": "PLATINUM",
-        "rank": "IV",
-        "leaguePoints": 97,
-        "wins": 210,
+        "rank": "III",
+        "leaguePoints": 43,
+        "wins": 212,
         "losses": 211,
-        "winrate": 49.88
+        "winrate": 50.12
       },
       {
         "gameName": "Pyke The Creator",
@@ -876,10 +876,10 @@
         "profileIconId": 4030,
         "tier": "EMERALD",
         "rank": "III",
-        "leaguePoints": 55,
-        "wins": 411,
+        "leaguePoints": 75,
+        "wins": 412,
         "losses": 411,
-        "winrate": 50.0
+        "winrate": 50.06
       }
     ]
   },
@@ -924,10 +924,10 @@
         "profileIconId": 4413,
         "tier": "MASTER",
         "rank": "I",
-        "leaguePoints": 467,
+        "leaguePoints": 447,
         "wins": 559,
-        "losses": 542,
-        "winrate": 50.77
+        "losses": 543,
+        "winrate": 50.73
       },
       {
         "gameName": "LG TwoT",
@@ -1062,10 +1062,10 @@
         "profileIconId": 6071,
         "tier": "SILVER",
         "rank": "II",
-        "leaguePoints": 11,
-        "wins": 404,
+        "leaguePoints": 36,
+        "wins": 405,
         "losses": 393,
-        "winrate": 50.69
+        "winrate": 50.75
       },
       {
         "gameName": "TheNight",

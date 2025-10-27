@@ -773,36 +773,11 @@ with tab2:
                                 use_container_width=True,
                                 hide_index=True
                             )
-                    # Delete button (always visible dans l'expander)
-                    st.markdown("---")
-                    if st.button(f"�️ Supprimer l'équipe", key=f"delete_{idx}_{team_name}", type="secondary"):
-                        # Remove from list
-                        teams_list.remove(team)
-                        # Convert back to dict format for saving
-                        teams_dict = {}
-                        for t in teams_list:
-                            t_name = t.get("name", "Unknown")
-                            teams_dict[t_name] = {
-                                "players": t.get("players", []),
-                                "opgg_link": t.get("opgg_link", "")
-                            }
-                        edition_manager.save_teams(teams_dict)
-                        st.success(f"✅ Équipe **{team_name}** supprimée")
-                        st.rerun()
-                        
-                        if players_data:
-                            st.dataframe(
-                                pd.DataFrame(players_data),
-                                use_container_width=True,
-                                hide_index=True
-                            )
-                    
-                    # Delete button (always visible dans l'expander)
+                    # Delete button (toujours visible dans l'expander, version unique)
                     st.markdown("---")
                     if st.button(f"🗑️ Supprimer l'équipe", key=f"delete_{idx}", type="secondary"):
                         # Remove from list
                         teams_list.remove(team)
-                        
                         # Convert back to dict format for saving
                         teams_dict = {}
                         for t in teams_list:
@@ -811,7 +786,6 @@ with tab2:
                                 "players": t.get("players", []),
                                 "opgg_link": t.get("opgg_link", "")
                             }
-                        
                         edition_manager.save_teams(teams_dict)
                         st.success(f"✅ Équipe **{team_name}** supprimée")
                         st.rerun()

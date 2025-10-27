@@ -432,9 +432,19 @@ for player in team_players:
     is_adc_obli = (
         selected_team == "Donne ta jungle" and player.get("role") == "ADC"
     )
-    display_name = player.get("gameName", "Unknown")
-    display_tag = player.get("tagLine", "???")
-    all_names = [f"{player.get('gameName', 'Unknown')}#{player.get('tagLine', '???')}"]
+    # Affichage : display_name si présent, sinon gameName#tagLine
+    if player.get("display_name"):
+        display_name = player["display_name"]
+        # On essaye d'extraire le tag de display_name si possible
+        if "#" in display_name:
+            display_tag = display_name.split("#", 1)[1]
+        else:
+            display_tag = player.get("tagLine", "???")
+    else:
+        display_name = player.get('gameName', 'Unknown')
+        display_tag = player.get('tagLine', '???')
+        display_name = f"{display_name}#{display_tag}"
+    all_names = [display_name]
     if is_adc_obli and "oldAccounts" in player:
         for acc in player["oldAccounts"]:
             all_names.append(f"{acc['gameName']}#{acc['tagLine']}")
@@ -582,55 +592,15 @@ if match_details_path.exists():
     
     if team_matches:
         st.info(f"📊 {len(team_matches)} match(s) trouvé(s)")
-        
-        # Afficher chaque match
-        for idx, match in enumerate(team_matches):
-            # Calculer les stats de l'équipe pour ce match
-            team_kills = sum(p.get("kills", 0) for p in match["participants"])
-            team_deaths = sum(p.get("deaths", 0) for p in match["participants"])
-            team_assists = sum(p.get("assists", 0) for p in match["participants"])
-            team_gold = sum(p.get("goldEarned", 0) for p in match["participants"])
-            
-            # Trouver l'équipe adverse
-            enemy_side = 200 if match["side"] == 100 else 100
-            enemy_participants = [p for p in match["all_participants"] if p.get("teamId") == enemy_side]
-            enemy_kills = sum(p.get("kills", 0) for p in enemy_participants)
-            enemy_deaths = sum(p.get("deaths", 0) for p in enemy_participants)
-            enemy_assists = sum(p.get("assists", 0) for p in enemy_participants)
-            enemy_gold = sum(p.get("goldEarned", 0) for p in enemy_participants)
-            
-            # Déterminer le nom de l'équipe adverse
-            enemy_team_name = "Équipe Adverse"
-            for participant in enemy_participants:
-                game_name = participant.get("riotIdGameName", "")
-                tag_line = participant.get("riotIdTagline", "")
-                enemy_player = f"{game_name}#{tag_line}" if game_name and tag_line else game_name
-                if player_to_team.get(enemy_player) != selected_team:
-                    enemy_team_name = player_to_team.get(enemy_player, "Équipe Adverse")
-                    break
-            
-            # Affichage des infos du match
-            st.markdown(f"#### Match {idx + 1} : {enemy_team_name} ({'V' if match['won'] else 'D'})")
-            st.caption(f"🕒 {format_duration(match['duration'])} | {len(match['participants'])} joueurs")
-            
-            # Stats détaillées de l'équipe
-            cols = st.columns(len(match["participants"]))
-            for col, participant in zip(cols, match["participants"]):
-                game_name = participant.get("riotIdGameName", "")
-                tag_line = participant.get("riotIdTagline", "")
-                player_name = f"{game_name}#{tag_line}" if game_name and tag_line else game_name
-                is_me = player_name in player_to_team and player_to_team[player_name] == selected_team
-                
-                with col:
-                    # Border color based on team (blue/red) and win/loss
-                    border_color = "border-blue-500" if match["side"] == 100 else "border-red-500"
-                    result_icon = "✅" if match["won"] else "❌"
-                    st.markdown(f"<div class='p-2 rounded-lg {border_color}'>", unsafe_allow_html=True)
-                    st.markdown(f"**{player_name}** {result_icon}")
-                    st.markdown(f"K: {participant.get('kills', 0)} | D: {participant.get('deaths', 0)} | A: {participant.get('assists', 0)}")
-                    st.markdown(f"Or: {participant.get('goldEarned', 0)} | CS: {participant.get('totalMinionsKilled', 0)}")
-                    st.markdown(f"<div style='color:#9fb0c6;font-size:11px'>{participant.get('championName', 'N/A')}</div>", unsafe_allow_html=True)
-                    st.markdown("</div>", unsafe_allow_html=True)
+        from components.match_card import display_match_card
+        # Charger tournament_matches pour fallback équipe
+        tournament_matches_path = data_dir / "tournament_matches.json"
+        tournament_matches = None
+        if tournament_matches_path.exists():
+            with open(tournament_matches_path, "r", encoding="utf-8") as f:
+                tournament_matches = json.load(f)
+        for match in team_matches:
+            display_match_card(match["match_id"], match_details_data[match["match_id"]], player_to_team, tournament_matches=tournament_matches)
 else:
     st.warning("⚠️ Fichier match_details.json introuvable")
     st.info("💡 Ce fichier est nécessaire pour afficher l'historique des matchs")

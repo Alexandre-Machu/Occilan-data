@@ -497,19 +497,23 @@ for idx, (_, player) in enumerate(filtered_df.iterrows(), 1):
     role_icon_url = get_role_icon_url(role)
     # Correction : utiliser la valeur du pipeline (average_cs_per_minute ou average_cs_per_min)
     cs_per_min = player.get('average_cs_per_minute', player.get('average_cs_per_min', 0))
-    table_html += f'''
-        <tr style="background: {bg_color}; border-top: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;" onmouseover="this.style.background='#1a1d24'" onmouseout="this.style.background='{bg_color}'">
-            <td style="padding: 16px 14px; color: #e6eef6;"><span class="rank-badge {rank_class}">#{idx}</span></td>
-            <td style="padding: 16px 14px; color: #e6eef6;">
-                <strong>{player['name']}</strong>
-                <img src="{role_icon_url}" style="width:20px;vertical-align:middle;margin-left:8px;" title="{role}">
-                <br/>
-                <span style="color: #9fb0c6; font-size: 11px;">{player['team']}</span>
-            </td>
-            <td style="padding: 16px 14px; color: {kda_color}; font-weight: 700;">{player.get('average_kda', 0):.2f}</td>
-            <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_kills', 0):.1f}</td>
-            <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_deaths', 0):.1f}</td>
-            <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_assists', 0):.1f}</td>
+    for player_name, pstats in players_dict.items():
+        # Utiliser display_name si présent, sinon gameName#tagLine, sinon player_name
+        display_name = pstats.get("display_name")
+        if not display_name:
+    table_html += (
+        f'<tr style="background: {bg_color}; border-top: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;" onmouseover="this.style.background=\'#1a1d24\'" onmouseout="this.style.background=\'{bg_color}\'">'
+        f'<td style="padding: 16px 14px; color: #e6eef6;"><span class="rank-badge {rank_class}">#{idx}</span></td>'
+        f'<td style="padding: 16px 14px; color: #e6eef6;"><strong>{player["name"]}</strong> <img src="{role_icon_url}" style="width:20px;vertical-align:middle;margin-left:8px;" title="{role}"><br/><span style="color: #9fb0c6; font-size: 11px;">{player["team"]}</span></td>'
+        f'<td style="padding: 16px 14px; color: {kda_color}; font-weight: 700;">{player.get("average_kda", 0):.2f}</td>'
+        f'<td style="padding: 16px 14px; color: #e6eef6;">{player.get("average_kills", 0):.1f}</td>'
+        f'<td style="padding: 16px 14px; color: #e6eef6;">{player.get("average_deaths", 0):.1f}</td>'
+        f'<td style="padding: 16px 14px; color: #e6eef6;">{player.get("average_assists", 0):.1f}</td>'
+        f'<td style="padding: 16px 14px; color: #e6eef6;">{cs_per_min:.2f}</td>'
+        f'<td style="padding: 16px 14px; color: #e6eef6;">{player.get("average_vision_score", 0):.1f}</td>'
+        f'<td style="padding: 16px 14px;">{champions_html}</td>'
+        f'</tr>'
+    )
             <td style="padding: 16px 14px; color: #e6eef6;">{cs_per_min:.2f}</td>
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_vision_score', 0):.1f}</td>
             <td style="padding: 16px 14px;">{champions_html}</td>
