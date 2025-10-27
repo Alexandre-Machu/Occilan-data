@@ -5,6 +5,7 @@ import pandas as pd
 from src.core.data_manager import EditionDataManager, MultiEditionManager
 from src.pipeline.edition_processor import EditionProcessor
 
+st.set_page_config(page_title="Admin - OcciLan Stats", page_icon="🔧", layout="wide")
 st.markdown("""
 <style>
     [data-testid="stSidebarNav"] { display: none !important; }
