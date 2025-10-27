@@ -30,8 +30,8 @@
       }
     ]
   },
-  "4 goats et le 2010": {
-    "name": "4 goats et le 2010",
+  "Donne ta jungle": {
+    "name": "Donne ta jungle",
     "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Cra+Feu+12PA+6PM%23EXPLO%2Ceomer%23feur%2Cbodybag%237xvn%2CSatto%23happy%2Cbouyachakaaa%23mfda%2CZeio%23Zizio",
     "players": [
       {
@@ -51,8 +51,11 @@
       },
       {
         "role": "ADC",
-        "gameName": "Cra Feu 12PA 6PM",
-        "tagLine": "EXPLO"
+        "gameName": "Obli",
+        "tagLine": "1211",
+        "oldAccounts": [
+          {"gameName": "Cra Feu 12PA 6PM", "tagLine": "EXPLO"}
+        ]
       },
       {
         "role": "SUP",
@@ -290,7 +293,8 @@
       {
         "role": "JGL",
         "gameName": "Climber",
-        "tagLine": "EUW"
+        "tagLine": "EUW",
+        "displayName": "Mad"
       },
       {
         "role": "MID",

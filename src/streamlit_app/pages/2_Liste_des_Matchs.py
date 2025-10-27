@@ -132,18 +132,51 @@ def get_champion_icon_url(champion_name):
     """Retourne l'URL de l'icône du champion"""
     return f"https://ddragon.leagueoflegends.com/cdn/15.20.1/img/champion/{champion_name}.png"
 
-def get_team_name_from_players(participants, player_to_team):
-    """Trouve le nom de l'équipe à partir des joueurs"""
+def get_team_name_from_players(participants, player_to_team, tournament_matches=None, match_id=None):
+    """Trouve le nom de l'équipe à partir des joueurs, en essayant plusieurs variantes."""
     for p in participants:
-        player_name = p.get('riotIdGameName', 'Unknown')
-        if player_name in player_to_team:
-            return player_to_team[player_name]
+        # Essayer toutes les variantes possibles pour matcher le mapping
+        names_to_try = []
+        game_name = p.get('riotIdGameName', '')
+        tag_line = p.get('riotIdTagline', '')
+        if game_name and tag_line:
+            names_to_try.append(f"{game_name}#{tag_line}")
+        if game_name:
+            names_to_try.append(game_name)
+        # Essayer aussi en ignorant la casse et les espaces
+        if game_name and tag_line:
+            names_to_try.append(f"{game_name.replace(' ', '').lower()}#{tag_line.lower()}")
+        if game_name:
+            names_to_try.append(game_name.replace(' ', '').lower())
+        for name in names_to_try:
+            for key in player_to_team.keys():
+                if name == key or name == key.replace(' ', '').lower():
+                    return player_to_team[key]
+    # Fallback: essayer de retrouver l'équipe via tournament_matches.json si possible
+    if tournament_matches and match_id:
+        for team, matches in tournament_matches.items():
+            if match_id in matches:
+                return team
     return "Équipe Inconnue"
 
 def sort_players_by_role(participants):
     """Trie les joueurs par rôle: TOP, JGL, MID, ADC, SUP"""
     role_order = {"TOP": 1, "JUNGLE": 2, "MIDDLE": 3, "BOTTOM": 4, "UTILITY": 5}
     return sorted(participants, key=lambda p: role_order.get(p.get("teamPosition", "UTILITY"), 6))
+
+def get_display_name_and_aliases(team_name, player, teams_with_puuid=None):
+    # Pour l'ADC de Donne ta jungle, toujours afficher Obli, mais matcher sur tous ses comptes
+    is_adc_obli = team_name == "Donne ta jungle" and player.get("teamPosition", "").upper() in ["ADC", "BOTTOM"]
+    display_name = player.get('riotIdGameName', 'Unknown')
+    aliases = [f"{player.get('riotIdGameName', 'Unknown')}#{player.get('riotIdTagline', '???')}"]
+    if is_adc_obli and teams_with_puuid:
+        team_info = teams_with_puuid.get(team_name, {})
+        adc = next((p for p in team_info.get("players", []) if p.get("role") == "ADC"), None)
+        if adc and "oldAccounts" in adc:
+            for acc in adc["oldAccounts"]:
+                aliases.append(f"{acc['gameName']}#{acc['tagLine']}")
+            display_name = "Obli"
+    return display_name, aliases
 
 def display_match_card(match_id, match_data, player_to_team):
     """Affiche une carte de match"""
@@ -179,8 +212,8 @@ def display_match_card(match_id, match_data, player_to_team):
     team_200_win = team_200_info.get("win", False)
     
     # Noms des équipes (mapping depuis team_stats)
-    team_100_name = get_team_name_from_players(team_100, player_to_team)
-    team_200_name = get_team_name_from_players(team_200, player_to_team)
+    team_100_name = get_team_name_from_players(team_100, player_to_team, tournament_matches=globals().get('tournament_matches'), match_id=match_id)
+    team_200_name = get_team_name_from_players(team_200, player_to_team, tournament_matches=globals().get('tournament_matches'), match_id=match_id)
     
     # Déterminer le gagnant pour l'affichage
     if team_100_win:
@@ -211,7 +244,7 @@ def display_match_card(match_id, match_data, player_to_team):
             # Joueurs
             st.markdown("#### Joueurs")
             for p in team_100:  # Déjà triés par rôle
-                player_name = p.get('riotIdGameName', 'Unknown')
+                display_name, aliases = get_display_name_and_aliases(team_100_name, p, teams_with_puuid)
                 champion = p.get("championName", "Unknown")
                 kills = p.get("kills", 0)
                 deaths = p.get("deaths", 0)
@@ -230,7 +263,7 @@ def display_match_card(match_id, match_data, player_to_team):
                         <img src="{icon_url}" style="width: 40px; height: 40px; border-radius: 6px; border: 2px solid rgba(100,150,255,0.3);" title="{champion}">
                         <div style="flex: 1;">
                             <div style="font-weight: 700; color: #e6eef6; font-size: 14px;">
-                                <img src="{role_icon_url}" style="width:18px;vertical-align:middle;margin-right:4px;" title="{role}">{player_name}
+                                <img src="{role_icon_url}" style="width:18px;vertical-align:middle;margin-right:4px;" title="{role}">{display_name}
                             </div>
                             <div style="color: #9fb0c6; font-size: 12px;">{champion}</div>
                         </div>
@@ -244,8 +277,8 @@ def display_match_card(match_id, match_data, player_to_team):
                 
                 with col_button:
                     # Bouton à droite de la carte
-                    if st.button(f"👤 Profil", key=f"profile_{match_id}_100_{player_name}", help=f"Voir les stats de {player_name}"):
-                        st.session_state["search_player"] = player_name
+                    if st.button(f"👤 Profil", key=f"profile_{match_id}_100_{display_name}", help=f"Voir les stats de {display_name}"):
+                        st.session_state["search_player"] = display_name
                         st.switch_page("pages/6_🔍_Recherche.py")
         
         with col_vs:
@@ -269,7 +302,7 @@ def display_match_card(match_id, match_data, player_to_team):
             # Joueurs
             st.markdown("#### Joueurs")
             for p in team_200:  # Déjà triés par rôle
-                player_name = p.get('riotIdGameName', 'Unknown')
+                display_name, aliases = get_display_name_and_aliases(team_200_name, p, teams_with_puuid)
                 champion = p.get("championName", "Unknown")
                 kills = p.get("kills", 0)
                 deaths = p.get("deaths", 0)
@@ -286,7 +319,7 @@ def display_match_card(match_id, match_data, player_to_team):
                         <img src="{icon_url}" style="width: 40px; height: 40px; border-radius: 6px; border: 2px solid rgba(255,100,100,0.3);" title="{champion}">
                         <div style="flex: 1;">
                             <div style="font-weight: 700; color: #e6eef6; font-size: 14px;">
-                                <img src="{role_icon_url}" style="width:18px;vertical-align:middle;margin-right:4px;" title="{role}">{player_name}
+                                <img src="{role_icon_url}" style="width:18px;vertical-align:middle;margin-right:4px;" title="{role}">{display_name}
                             </div>
                             <div style="color: #9fb0c6; font-size: 12px;">{champion}</div>
                         </div>
@@ -300,8 +333,8 @@ def display_match_card(match_id, match_data, player_to_team):
                 
                 with col_button:
                     # Bouton à droite de la carte
-                    if st.button(f"👤 Profil", key=f"profile_{match_id}_200_{player_name}", help=f"Voir les stats de {player_name}"):
-                        st.session_state["search_player"] = player_name
+                    if st.button(f"👤 Profil", key=f"profile_{match_id}_200_{display_name}", help=f"Voir les stats de {display_name}"):
+                        st.session_state["search_player"] = display_name
                         st.switch_page("pages/6_🔍_Recherche.py")
 
 
@@ -316,6 +349,7 @@ if not available_editions or not selected_edition:
 # Utiliser l'édition manager
 edition_manager = EditionDataManager(selected_edition)
 data_dir = Path(__file__).parent.parent.parent.parent / "data" / "editions" / f"edition_{selected_edition}"
+
 
 # Charger les team_stats pour le mapping joueur->équipe
 team_stats_path = data_dir / "team_stats.json"
@@ -333,8 +367,20 @@ if team_stats_path.exists():
                 tag_line = player_data.get("tagLine") or ""
                 if game_name and tag_line:
                     player_to_team[f"{game_name}#{tag_line}"] = team_name
-                elif game_name:
+                    player_to_team[f"{game_name.replace(' ', '').lower()}#{tag_line.lower()}"] = team_name
+                if game_name:
                     player_to_team[game_name] = team_name
+                    player_to_team[game_name.replace(' ', '').lower()] = team_name
+
+# Charger tournament_matches pour fallback équipe
+tournament_matches_path = data_dir / "tournament_matches.json"
+tournament_matches = None
+if tournament_matches_path.exists():
+    with open(tournament_matches_path, "r", encoding="utf-8") as f:
+        tournament_matches = json.load(f)
+
+# Charger teams_with_puuid pour l'accès aux oldAccounts
+teams_with_puuid = edition_manager.load_teams_with_puuid() if 'edition_manager' in locals() else {}
 
 # Charger les match_details
 match_details_path = data_dir / "match_details.json"

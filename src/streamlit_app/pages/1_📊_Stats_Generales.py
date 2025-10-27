@@ -240,6 +240,41 @@ for team_name, team_data in teams_with_puuid.items():
             "player_count": team_player_count
         }
 
+# Fonction pour fusionner les stats de l'ADC de Donne ta jungle
+
+# Correction : additionne explicitement total_cs et total_game_duration lors de la fusion multi-comptes
+def get_obli_aliases_and_merge(players_list):
+    merged = []
+    obli_main = None
+    obli_aliases = set()
+    for p in players_list:
+        if p["team"] == "Donne ta jungle" and p.get("role", "").upper() == "ADC":
+            obli_main = p
+            obli_aliases.add(f"{p['gameName']}#{p['tagLine']}")
+            if "oldAccounts" in p:
+                for acc in p["oldAccounts"]:
+                    obli_aliases.add(f"{acc['gameName']}#{acc['tagLine']}")
+    if obli_main:
+        for p in players_list:
+            if f"{p['gameName']}#{p['tagLine']}" in obli_aliases and p is not obli_main:
+                # Additionner explicitement les champs critiques pour les moyennes
+                for k in ["total_cs", "total_game_duration", "games_played", "total_kills", "total_deaths", "total_assists", "total_vision_score", "total_gold_earned", "total_damage_dealt", "total_damage_taken"]:
+                    if k in p and k in obli_main:
+                        obli_main[k] += p[k]
+                # Fusionner les champions joués
+                if "champions_played" in p and "champions_played" in obli_main:
+                    for champ in p["champions_played"]:
+                        if champ not in obli_main["champions_played"]:
+                            obli_main["champions_played"].append(champ)
+        obli_main["gameName"] = "Obli"
+        obli_main["tagLine"] = "1211"
+        merged = [p for p in players_list if f"{p['gameName']}#{p['tagLine']}" not in obli_aliases or p is obli_main]
+    else:
+        merged = players_list
+    return merged
+
+# Remplacer la création de all_players par :
+all_players = get_obli_aliases_and_merge(all_players)
 df_players = pd.DataFrame(all_players)
 total_players = len(df_players)
 

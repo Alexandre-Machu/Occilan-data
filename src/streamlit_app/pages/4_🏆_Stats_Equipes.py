@@ -428,16 +428,27 @@ table_html += '</tr></thead><tbody>'
 
 # Get player stats
 for player in team_players:
-    player_full_name = f"{player.get('gameName', 'Unknown')}#{player.get('tagLine', '???')}"
-    player_short_name = player.get('gameName', 'Unknown')
+    # Pour l'ADC de Donne ta jungle, afficher toujours Obli, mais matcher les stats sur tous ses comptes
+    is_adc_obli = (
+        selected_team == "Donne ta jungle" and player.get("role") == "ADC"
+    )
+    display_name = player.get("gameName", "Unknown")
+    display_tag = player.get("tagLine", "???")
+    all_names = [f"{player.get('gameName', 'Unknown')}#{player.get('tagLine', '???')}"]
+    if is_adc_obli and "oldAccounts" in player:
+        for acc in player["oldAccounts"]:
+            all_names.append(f"{acc['gameName']}#{acc['tagLine']}")
+        display_name = "Obli"
+        display_tag = "1211"
     role = player.get("role", "")
-    
-    # Find player stats (try both full name and short name)
-    pstats = player_stats_dict.get(player_short_name, player_stats_dict.get(player_full_name, {}))
-    
+    # Chercher les stats sur tous les comptes possibles
+    pstats = None
+    for name in [display_name] + all_names:
+        pstats = player_stats_dict.get(name, player_stats_dict.get(name.lower(), {}))
+        if pstats:
+            break
     if not pstats:
         continue
-    
     # Correction du mapping pour les rôles standards
     role_raw = role.upper()
     role_map = {
@@ -447,16 +458,14 @@ for player in team_players:
     badge_info = role_badges.get(role_std, {"label": role_std, "class": "role-badge"})
     role_icon_url = get_role_icon_url(role_std)
     role_html = f'<img src="{role_icon_url}" style="width:18px;vertical-align:middle;margin-right:4px;" title="{role_std}">'  # Icône uniquement
-    
     # Stats (adapted to team_stats.json format)
     kda = pstats.get("average_kda", 0)
     kda_class = get_kda_class(kda)
     kills_per_game = pstats.get("average_kills", 0)
     deaths_per_game = pstats.get("average_deaths", 0)
     assists_per_game = pstats.get("average_assists", 0)
-    cs_per_min = pstats.get("average_cs_per_minute", 0)  # Note: different field name
+    cs_per_min = pstats.get("average_cs_per_minute", pstats.get("average_cs_per_min", 0))
     vision_per_game = pstats.get("average_vision_score", 0)
-    
     # Get champions - Display ALL champions in rows of 5
     champions = pstats.get("champions_played", [])
     champions_html = ''
@@ -466,18 +475,16 @@ for player in team_players:
             # Add line break after every 5 champions (except the first row)
             if i > 0 and i % 5 == 0:
                 champions_html += '<br/>'
-            
             icon_url = get_champion_icon_url(champ)
             champions_html += f'<img src="{icon_url}" class="champion-icon" title="{champ}" alt="{champ}">'
-    
     table_html += '<tr>'
-    # Fusion : icône du rôle + pseudo + tag
-    table_html += f'<td>{role_html}<strong>{player.get("gameName", "Unknown")}</strong><br/><span style="color:#9fb0c6;font-size:11px">#{player.get("tagLine", "???")}</span></td>'
+    # Affichage : toujours Obli pour l'ADC de Donne ta jungle
+    table_html += f'<td>{role_html}<strong>{display_name}</strong><br/><span style="color:#9fb0c6;font-size:11px">#{display_tag}</span></td>'
     table_html += f'<td><span class="{kda_class}">{kda:.2f}</span></td>'
     table_html += f'<td>{kills_per_game:.1f}</td>'
     table_html += f'<td>{deaths_per_game:.1f}</td>'
     table_html += f'<td>{assists_per_game:.1f}</td>'
-    table_html += f'<td>{cs_per_min:.1f}</td>'
+    table_html += f'<td>{cs_per_min:.2f}</td>'
     table_html += f'<td>{vision_per_game:.1f}</td>'
     table_html += f'<td>{champions_html}</td>'
     table_html += '</tr>'
@@ -491,11 +498,14 @@ st.markdown("---")
 st.markdown("#### 👁️ Voir le profil des joueurs")
 cols = st.columns(5)
 for idx, player in enumerate(team_players):
-    player_short_name = player.get('gameName', 'Unknown')
+    is_adc_obli = (
+        selected_team == "Donne ta jungle" and player.get("role") == "ADC"
+    )
+    display_name = "Obli" if is_adc_obli else player.get('gameName', 'Unknown')
     col_idx = idx % 5
     with cols[col_idx]:
-        if st.button(f"👤 {player_short_name}", key=f"view_profile_team_1_{selected_team}_{idx}", use_container_width=True):
-            st.session_state["search_player"] = player_short_name
+        if st.button(f"👤 {display_name}", key=f"view_profile_team_1_{selected_team}_{idx}", use_container_width=True):
+            st.session_state["search_player"] = display_name
             st.switch_page("pages/6_🔍_Recherche.py")
 
 # ============================================================================
@@ -594,4 +604,33 @@ if match_details_path.exists():
             for participant in enemy_participants:
                 game_name = participant.get("riotIdGameName", "")
                 tag_line = participant.get("riotIdTagline", "")
-                enemy_player = f"{game_name}#
+                enemy_player = f"{game_name}#{tag_line}" if game_name and tag_line else game_name
+                if player_to_team.get(enemy_player) != selected_team:
+                    enemy_team_name = player_to_team.get(enemy_player, "Équipe Adverse")
+                    break
+            
+            # Affichage des infos du match
+            st.markdown(f"#### Match {idx + 1} : {enemy_team_name} ({'V' if match['won'] else 'D'})")
+            st.caption(f"🕒 {format_duration(match['duration'])} | {len(match['participants'])} joueurs")
+            
+            # Stats détaillées de l'équipe
+            cols = st.columns(len(match["participants"]))
+            for col, participant in zip(cols, match["participants"]):
+                game_name = participant.get("riotIdGameName", "")
+                tag_line = participant.get("riotIdTagline", "")
+                player_name = f"{game_name}#{tag_line}" if game_name and tag_line else game_name
+                is_me = player_name in player_to_team and player_to_team[player_name] == selected_team
+                
+                with col:
+                    # Border color based on team (blue/red) and win/loss
+                    border_color = "border-blue-500" if match["side"] == 100 else "border-red-500"
+                    result_icon = "✅" if match["won"] else "❌"
+                    st.markdown(f"<div class='p-2 rounded-lg {border_color}'>", unsafe_allow_html=True)
+                    st.markdown(f"**{player_name}** {result_icon}")
+                    st.markdown(f"K: {participant.get('kills', 0)} | D: {participant.get('deaths', 0)} | A: {participant.get('assists', 0)}")
+                    st.markdown(f"Or: {participant.get('goldEarned', 0)} | CS: {participant.get('totalMinionsKilled', 0)}")
+                    st.markdown(f"<div style='color:#9fb0c6;font-size:11px'>{participant.get('championName', 'N/A')}</div>", unsafe_allow_html=True)
+                    st.markdown("</div>", unsafe_allow_html=True)
+else:
+    st.warning("⚠️ Fichier match_details.json introuvable")
+    st.info("💡 Ce fichier est nécessaire pour afficher l'historique des matchs")

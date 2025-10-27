@@ -229,6 +229,36 @@ for team_name, team_data in team_stats_data.items():
             "stats": pstats
         })
 
+def get_obli_aliases_and_merge(players_list):
+    # Fusionne les stats de l'ADC de Donne ta jungle sur tous ses comptes
+    merged = []
+    obli_main = None
+    obli_aliases = set()
+    for p in players_list:
+        if p["team"] == "Donne ta jungle" and p["stats"].get("role", "").upper() == "ADC":
+            obli_main = p
+            obli_aliases.add(p["name"])
+            if "oldAccounts" in p["stats"]:
+                for acc in p["stats"]["oldAccounts"]:
+                    obli_aliases.add(f"{acc['gameName']}#{acc['tagLine']}")
+    if obli_main:
+        # Fusionner les stats de tous les alias dans obli_main
+        for p in players_list:
+            if p["name"] in obli_aliases and p is not obli_main:
+                # Additionner les champs numériques
+                for k, v in p["stats"].items():
+                    if isinstance(v, (int, float)) and k in obli_main["stats"]:
+                        obli_main["stats"][k] += v
+        # Mettre à jour le nom affiché
+        obli_main["name"] = "Obli"
+        merged = [p for p in players_list if p["name"] not in obli_aliases or p is obli_main]
+    else:
+        merged = players_list
+    return merged
+
+# Remplacer la création de all_players par :
+all_players = get_obli_aliases_and_merge(all_players)
+
 # Search type selector
 search_type = st.radio(
     "Type de recherche",
@@ -313,7 +343,7 @@ if search_type == "👤 Joueur":
                 """, unsafe_allow_html=True)
             
             with col3:
-                cs_per_min = pstats.get("average_cs_per_minute", 0)
+                cs_per_min = pstats.get("average_cs_per_minute", pstats.get("average_cs_per_min", 0))
                 st.markdown(f"""
                 <div class="stat-card">
                     <div class="stat-label">CS/MIN</div>

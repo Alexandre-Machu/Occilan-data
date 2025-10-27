@@ -286,6 +286,36 @@ for team_name, team_data in team_stats_data.items():
         }
         all_players.append(player_entry)
 
+# Fonction pour fusionner les stats de l'ADC de Donne ta jungle
+def get_obli_aliases_and_merge(players_list):
+    # Fusionne les stats de l'ADC de Donne ta jungle sur tous ses comptes
+    merged = []
+    obli_main = None
+    obli_aliases = set()
+    for p in players_list:
+        if p["team"] == "Donne ta jungle" and p.get("role", "").upper() == "ADC":
+            obli_main = p
+            obli_aliases.add(p["name"])
+            if "oldAccounts" in p:
+                for acc in p["oldAccounts"]:
+                    obli_aliases.add(f"{acc['gameName']}#{acc['tagLine']}")
+    if obli_main:
+        # Fusionner les stats de tous les alias dans obli_main
+        for p in players_list:
+            if p["name"] in obli_aliases and p is not obli_main:
+                # Additionner les champs numériques
+                for k, v in p.items():
+                    if isinstance(v, (int, float)) and k in obli_main:
+                        obli_main[k] += v
+        # Mettre à jour le nom affiché
+        obli_main["name"] = "Obli"
+        merged = [p for p in players_list if p["name"] not in obli_aliases or p is obli_main]
+    else:
+        merged = players_list
+    return merged
+
+all_players = get_obli_aliases_and_merge(all_players)
+
 if not all_players:
     st.warning("⚠️ Aucune statistique de joueur disponible")
     st.stop()
@@ -465,10 +495,8 @@ for idx, (_, player) in enumerate(filtered_df.iterrows(), 1):
     elif isinstance(role, list):
         role = role[0] if role else 'UNKNOWN'
     role_icon_url = get_role_icon_url(role)
-    # Correction du calcul CS/min si besoin
-    total_cs = player.get('total_cs', 0)
-    total_minutes = player.get('total_minutes_played', 1)
-    cs_per_min = total_cs / total_minutes if total_minutes > 0 else 0
+    # Correction : utiliser la valeur du pipeline (average_cs_per_minute ou average_cs_per_min)
+    cs_per_min = player.get('average_cs_per_minute', player.get('average_cs_per_min', 0))
     table_html += f'''
         <tr style="background: {bg_color}; border-top: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;" onmouseover="this.style.background='#1a1d24'" onmouseout="this.style.background='{bg_color}'">
             <td style="padding: 16px 14px; color: #e6eef6;"><span class="rank-badge {rank_class}">#{idx}</span></td>
@@ -482,7 +510,7 @@ for idx, (_, player) in enumerate(filtered_df.iterrows(), 1):
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_kills', 0):.1f}</td>
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_deaths', 0):.1f}</td>
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_assists', 0):.1f}</td>
-            <td style="padding: 16px 14px; color: #e6eef6;">{cs_per_min:.1f}</td>
+            <td style="padding: 16px 14px; color: #e6eef6;">{cs_per_min:.2f}</td>
             <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_vision_score', 0):.1f}</td>
             <td style="padding: 16px 14px;">{champions_html}</td>
         </tr>
