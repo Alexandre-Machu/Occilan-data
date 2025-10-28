@@ -349,20 +349,20 @@ def format_duration(seconds):
     return f"{minutes}:{secs:02d}"
 
 # Main KPIs (adapté au format team_stats.json)
-games_played = team_data.get("total_games", 0)
+games_played = team_data.get("games_played", team_data.get("total_games", 0))
 wins = team_data.get("wins", 0)
 losses = team_data.get("losses", 0)
 winrate = team_data.get("winrate", 0)
-avg_duration = team_data.get("average_game_duration", 0) * 60  # Convert minutes to seconds
+avg_duration = team_data.get("average_game_duration", 0)  # déjà en secondes
 
 # Main KPIs row
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    st.metric("🎮 Matchs joués", games_played or "—")
+    st.metric("🎮 Matchs joués", games_played if games_played else "—")
 with col2:
-    st.metric("🏆 Victoires", wins or "—")
+    st.metric("🏆 Victoires", wins if wins else "—")
 with col3:
-    st.metric("❌ Défaites", losses or "—")
+    st.metric("❌ Défaites", losses if losses else "—")
 with col4:
     st.metric("🔥 Winrate", f"{winrate:.1f}%" if winrate else "—")
 
@@ -376,9 +376,9 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.metric("⏱️ Durée moyenne", format_duration(avg_duration))
 with col2:
-    st.metric("⚔️ Total kills", total_kills or "—")
+    st.metric("⚔️ Total kills", total_kills if total_kills else "—")
 with col3:
-    st.metric("💀 Total deaths", total_deaths or "—")
+    st.metric("💀 Total deaths", total_deaths if total_deaths else "—")
 
 # ============================================================================
 # PLAYER STATS TABLE
