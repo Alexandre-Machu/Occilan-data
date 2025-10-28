@@ -1,7 +1,6 @@
 {
   "4China+Vinci": {
     "name": "4China+Vinci",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Noemiefeatmonkey%23UwU%2CSettaismieuavant%23EUW%2CDragjoo%23EUW%2CLimuls%230000%2Ctsuvai%23520%2C",
     "players": [
       {
         "role": "TOP",
@@ -28,11 +27,11 @@
         "gameName": "Dragjoo",
         "tagLine": "EUW"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Noemiefeatmonkey%23UwU%2CSettaismieuavant%23EUW%2CDragjoo%23EUW%2CLimuls%230000%2Ctsuvai%23520%2C"
   },
   "Donne ta jungle": {
     "name": "Donne ta jungle",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Cra+Feu+12PA+6PM%23EXPLO%2Ceomer%23feur%2Cbodybag%237xvn%2CSatto%23happy%2Cbouyachakaaa%23mfda%2CZeio%23Zizio",
     "players": [
       {
         "role": "TOP",
@@ -46,27 +45,24 @@
       },
       {
         "role": "MID",
-        "gameName": "eomer",
-        "tagLine": "feur"
+        "gameName": "Lechemesboules",
+        "tagLine": "eomer"
       },
       {
         "role": "ADC",
         "gameName": "Obli",
-        "tagLine": "1211",
-        "oldAccounts": [
-          {"gameName": "Cra Feu 12PA 6PM", "tagLine": "EXPLO"}
-        ]
+        "tagLine": "1211"
       },
       {
         "role": "SUP",
         "gameName": "Satto",
         "tagLine": "happy"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Cra+Feu+12PA+6PM%23EXPLO%2Ceomer%23feur%2Cbodybag%237xvn%2CSatto%23happy%2Cbouyachakaaa%23mfda%2CZeio%23Zizio"
   },
   "Burger sans gluten": {
     "name": "Burger sans gluten",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=AUR+Rettleti%23PAFF%2CGuts%2300I%2CAUR+Azz%23PUFF%2CAUR+Baosu%23PUFF%2CAUR+Purin%23PUFF",
     "players": [
       {
         "role": "TOP",
@@ -93,11 +89,11 @@
         "gameName": "Guts",
         "tagLine": "00I"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=AUR+Rettleti%23PAFF%2CGuts%2300I%2CAUR+Azz%23PUFF%2CAUR+Baosu%23PUFF%2CAUR+Purin%23PUFF"
   },
   "chasse et pêche": {
     "name": "chasse et pêche",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Boubouzaro%23OUIN%2Ckimcannacaliste%23kcwin%2CSeyZo%23EUW%2CSumwo%23EUW%2CCøchon+énervé%23CVRAI",
     "players": [
       {
         "role": "TOP",
@@ -124,11 +120,11 @@
         "gameName": "Sumwo",
         "tagLine": "EUW"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Boubouzaro%23OUIN%2Ckimcannacaliste%23kcwin%2CSeyZo%23EUW%2CSumwo%23EUW%2CCøchon+énervé%23CVRAI"
   },
   "Chill Guys": {
     "name": "Chill Guys",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=ODE+Lupikku%23EUW%2CCos+TAKU%23kirby%2CSkarito%232303%2CTanguy+en+Y%23miaou%2CASLM+Shad%23Mites%2C",
     "players": [
       {
         "role": "TOP",
@@ -155,11 +151,11 @@
         "gameName": "Tanguy en Y",
         "tagLine": "miaou"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=ODE+Lupikku%23EUW%2CCos+TAKU%23kirby%2CSkarito%232303%2CTanguy+en+Y%23miaou%2CASLM+Shad%23Mites%2C"
   },
   "EC Emerald": {
     "name": "EC Emerald",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=TwitchDartien%23EUW%2CCygola%23EUW%2CKouign+Amann%23001%2CPFR+SahDony%23666%2CCrips95v2%23EUW",
     "players": [
       {
         "role": "TOP",
@@ -186,11 +182,11 @@
         "gameName": "TwitchDartien",
         "tagLine": "EUW"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=TwitchDartien%23EUW%2CCygola%23EUW%2CKouign+Amann%23001%2CPFR+SahDony%23666%2CCrips95v2%23EUW"
   },
   "FF 15 Policy": {
     "name": "FF 15 Policy",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Symbi0se%23HooK%2CShun%23Skys%2Ckyuri%23naab%2Cblackeyes%23supp%2CRevert+Skarner%23Khako",
     "players": [
       {
         "role": "TOP",
@@ -217,11 +213,11 @@
         "gameName": "Symbi0se",
         "tagLine": "HooK"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Symbi0se%23HooK%2CShun%23Skys%2Ckyuri%23naab%2Cblackeyes%23supp%2CRevert+Skarner%23Khako"
   },
   "Censured Corp": {
     "name": "Censured Corp",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=make+you+mine%23beer%2CStarnight%2300000%2CGiacoco%23EUW%2Cvote+yes%232kis%2CHowDidWeGetHere%23ABCDE",
     "players": [
       {
         "role": "TOP",
@@ -248,11 +244,11 @@
         "gameName": "make you mine",
         "tagLine": "beer"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=make+you+mine%23beer%2CStarnight%2300000%2CGiacoco%23EUW%2Cvote+yes%232kis%2CHowDidWeGetHere%23ABCDE"
   },
   "KCDQ": {
     "name": "KCDQ",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=KCDQ+Braquemart%23666%2CKCDQ+braquemar%23666%2CRadio+Head+Lover%23JFIP%2CC0uilleGauche%23POIL%2CC0uilleDroite%23POIL%2Cnenegeek31%23EUW%2C",
     "players": [
       {
         "role": "TOP",
@@ -279,11 +275,11 @@
         "gameName": "nenegeek31",
         "tagLine": "EUW"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=KCDQ+Braquemart%23666%2CKCDQ+braquemar%23666%2CRadio+Head+Lover%23JFIP%2CC0uilleGauche%23POIL%2CC0uilleDroite%23POIL%2Cnenegeek31%23EUW%2C"
   },
   "La Ruche": {
     "name": "La Ruche",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Colfeo%23LRC%2CClimber%23EUW%2CThibee%2300000%2CKillycurly%23420%2CErgo+Proxy%23347",
     "players": [
       {
         "role": "TOP",
@@ -292,9 +288,8 @@
       },
       {
         "role": "JGL",
-        "gameName": "Climber",
-        "tagLine": "EUW",
-        "displayName": "Mad"
+        "gameName": "mad",
+        "tagLine": "DWG8"
       },
       {
         "role": "MID",
@@ -311,11 +306,11 @@
         "gameName": "Killycurly",
         "tagLine": "420"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Colfeo%23LRC%2CClimber%23EUW%2CThibee%2300000%2CKillycurly%23420%2CErgo+Proxy%23347"
   },
   "Les misérables": {
     "name": "Les misérables",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Victor%23Oui%2CPoTaTo+Seed%23EUW%2CJorga%23SFC%2C%E3%83%86%E3%82%AF%E3%82%B7%E3%83%A9%E3%83%83%E3%83%88%23EUW2%2CTwTv+Ciliano%23FTW%2CHugo%23OTEUR",
     "players": [
       {
         "role": "TOP",
@@ -342,11 +337,11 @@
         "gameName": "Hugo",
         "tagLine": "OTEUR"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Victor%23Oui%2CPoTaTo+Seed%23EUW%2CJorga%23SFC%2C%E3%83%86%E3%82%AF%E3%82%B7%E3%83%A9%E3%83%83%E3%83%88%23EUW2%2CTwTv+Ciliano%23FTW%2CHugo%23OTEUR"
   },
   "Les toxicos": {
     "name": "Les toxicos",
-    "opgg_link": "https://op.gg/no/lol/multisearch/euw?summoners=LΞlouch%230000%2CYUKINO%23DEUS%2CPyke+The+Creator%23Rell%2CSigmund+Freud%23Aphel%2Cel+pueblito%2CKeryoxx%2C",
     "players": [
       {
         "role": "TOP",
@@ -373,11 +368,11 @@
         "gameName": "Pyke The Creator",
         "tagLine": "Rell"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/no/lol/multisearch/euw?summoners=LΞlouch%230000%2CYUKINO%23DEUS%2CPyke+The+Creator%23Rell%2CSigmund+Freud%23Aphel%2Cel+pueblito%2CKeryoxx%2C"
   },
   "Lion's Guard": {
     "name": "Lion's Guard",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=LG+Aziαs%23OGNAM%2CLG++Isowix%230409%2CLG+TwoT%237533%2CLG+Pazou%235517%2Cnawilooo%23ooo",
     "players": [
       {
         "role": "TOP",
@@ -404,11 +399,11 @@
         "gameName": "LG Aziαs",
         "tagLine": "OGNAM"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=LG+Aziαs%23OGNAM%2CLG++Isowix%230409%2CLG+TwoT%237533%2CLG+Pazou%235517%2Cnawilooo%23ooo"
   },
   "On aurait du y penser": {
     "name": "On aurait du y penser",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=不朽的惡魔女王香農%23回到基础%2CSpectror%23BLOP%2CVirtuoz%23111%2Cfemboyaeri%23GALA%2CBanSkyzoOrParano%23SHACO",
     "players": [
       {
         "role": "TOP",
@@ -435,11 +430,11 @@
         "gameName": "不朽的惡魔女王香農",
         "tagLine": "回到基础"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=不朽的惡魔女王香農%23回到基础%2CSpectror%23BLOP%2CVirtuoz%23111%2Cfemboyaeri%23GALA%2CBanSkyzoOrParano%23SHACO"
   },
   "Pantizini vi Zombini": {
     "name": "Pantizini vi Zombini",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Cooags%23EUW%2Czzz%23iroha%2CHildisvinl%231327%2CTheNight%231166%2Cliliamx230%23EUW%2Cpiénutella92i%23SMIC",
     "players": [
       {
         "role": "TOP",
@@ -466,11 +461,11 @@
         "gameName": "zzz",
         "tagLine": "iroha"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=Cooags%23EUW%2Czzz%23iroha%2CHildisvinl%231327%2CTheNight%231166%2Cliliamx230%23EUW%2Cpiénutella92i%23SMIC"
   },
   "PIPI GAMING": {
     "name": "PIPI GAMING",
-    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=tayme%23euw%2COnikiezi%23euw%2CRR+D1%23EUW%2CNEP+Zerkome%23EUW03%2CAOE+Luce%233109%2Ctchongy%23fine%2C",
     "players": [
       {
         "role": "TOP",
@@ -497,6 +492,7 @@
         "gameName": "RR D1",
         "tagLine": "EUW"
       }
-    ]
+    ],
+    "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=tayme%23euw%2COnikiezi%23euw%2CRR+D1%23EUW%2CNEP+Zerkome%23EUW03%2CAOE+Luce%233109%2Ctchongy%23fine%2C"
   }
 }

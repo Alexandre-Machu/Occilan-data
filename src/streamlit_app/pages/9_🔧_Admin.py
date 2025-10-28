@@ -704,9 +704,13 @@ with tab2:
                     # Bouton pour modifier le nom de l'équipe
                     edit_mode = st.checkbox(f"✏️ Modifier les rôles et noms de joueurs", key=f"edit_{idx}")
                     if edit_mode:
-                        st.markdown("**Modifier les rôles et noms des joueurs:**")
-                        # Form for editing roles and player names
+                        st.markdown("**Modifier le nom de l'équipe et les joueurs:**")
                         with st.form(key=f"form_edit_{idx}"):
+                            new_team_name = st.text_input(
+                                "Nom de l'équipe",
+                                value=team.get("name", "Équipe sans nom"),
+                                key=f"edit_teamname_{idx}"
+                            )
                             new_players = []
                             for player_idx, player in enumerate(team.get("players", [])):
                                 col1, col2, col3 = st.columns([2, 2, 1])
@@ -733,7 +737,6 @@ with tab2:
                                     )
                                 with col3:
                                     st.write("")  # Spacing
-                                # Store new player data
                                 new_players.append({
                                     "role": new_role,
                                     "gameName": new_game_name,
@@ -741,18 +744,23 @@ with tab2:
                                 })
                             submit_changes = st.form_submit_button("💾 Enregistrer les modifications", type="primary")
                             if submit_changes:
-                                # Update team data
+                                # Update team data and name
                                 team["players"] = new_players
-                                # Convert back to dict format for saving
+                                team["name"] = new_team_name
+                                # Convert back to dict format for saving, handle rename
                                 teams_dict = {}
                                 for t in teams_list:
                                     t_name = t.get("name", "Unknown")
+                                    # Si c'est l'équipe modifiée, utilise le nouveau nom
+                                    if t is team:
+                                        t_name = new_team_name
                                     teams_dict[t_name] = {
+                                        "name": t_name,
                                         "players": t.get("players", []),
                                         "opgg_link": t.get("opgg_link", "")
                                     }
                                 edition_manager.save_teams(teams_dict)
-                                st.success(f"✅ Modifications enregistrées pour l'équipe **{team.get('name', 'Équipe')}**!")
+                                st.success(f"✅ Modifications enregistrées pour l'équipe **{new_team_name}**!")
                                 st.rerun()
                     else:
                         # Display mode (read-only)
