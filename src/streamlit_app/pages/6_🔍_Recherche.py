@@ -1,3 +1,11 @@
+import unicodedata
+def normalize_name(name):
+    if not name:
+        return ""
+    name = name.lower().replace(" ", "")
+    name = unicodedata.normalize('NFKD', name)
+    name = ''.join([c for c in name if not unicodedata.combining(c)])
+    return name
 """
 Page: Recherche de Joueur/Équipe
 Permet de rechercher un joueur ou une équipe et afficher ses statistiques détaillées
@@ -197,7 +205,6 @@ match_details = {}
 if match_details_path.exists():
     with open(match_details_path, "r", encoding="utf-8") as f:
         match_details = json.load(f)
-
 # Create player -> team mapping
 player_to_team = {}
 for team_name, team_data in team_stats_data.items():
@@ -291,8 +298,36 @@ if search_type == "👤 Joueur":
     if selected_player_name:
         # Find player data
         player_data = next((p for p in all_players if p["name"] == selected_player_name), None)
-        
+        # Préparer tous les alias possibles pour le joueur sélectionné
+        player_aliases = set()
         if player_data:
+            # Ajoute le nom principal
+            main_alias = normalize_name(player_data["name"])
+            player_aliases.add(main_alias)
+            # Si le nom contient un #, ajoute aussi la version sans tagLine
+            if '#' in player_data["name"]:
+                player_aliases.add(normalize_name(player_data["name"].split('#')[0]))
+            # Ajoute displayName si présent
+            display_name = player_data["stats"].get("displayName")
+            if display_name:
+                player_aliases.add(normalize_name(display_name))
+                if '#' in display_name:
+                    player_aliases.add(normalize_name(display_name.split('#')[0]))
+            # Ajoute gameName#tagLine si présent
+            game_name = player_data["stats"].get("gameName")
+            tag_line = player_data["stats"].get("tagLine")
+            if game_name and tag_line:
+                player_aliases.add(normalize_name(f"{game_name}#{tag_line}"))
+                player_aliases.add(normalize_name(game_name))
+            # Ajoute oldAccounts si présent
+            for acc in player_data["stats"].get("oldAccounts", []):
+                acc_name = acc.get("gameName")
+                acc_tag = acc.get("tagLine")
+                if acc_name and acc_tag:
+                    player_aliases.add(normalize_name(f"{acc_name}#{acc_tag}"))
+                    player_aliases.add(normalize_name(acc_name))
+                if acc_name:
+                    player_aliases.add(normalize_name(acc_name))
             pstats = player_data["stats"]
             team_name = player_data["team"]
             role = pstats.get("role", "")
@@ -387,33 +422,55 @@ if search_type == "👤 Joueur":
                 
                 # Champion statistics from match details
                 if match_details:
-                    # Collect champion stats
+                    # DEBUG : Affiche tous les identifiants trouvés dans les participants des matchs (dans le bloc principal du joueur)
+                    debug_names = set()
+                    for match_id, match_data in match_details.items():
+                        participants = match_data.get("info", {}).get("participants", [])
+                        for participant in participants:
+                            for key in ["riotIdGameName", "summonerName", "gameName"]:
+                                val = participant.get(key)
+                                if val:
+                                    debug_names.add(normalize_name(val))
+                            gname = participant.get("gameName")
+                            tline = participant.get("tagLine")
+                            if gname and tline:
+                                debug_names.add(normalize_name(f"{gname}#{tline}"))
+                    # Collect champion stats avec matching enrichi
                     champion_stats = {}
                     for match_id, match_data in match_details.items():
                         participants = match_data.get("info", {}).get("participants", [])
                         for participant in participants:
-                            player_name = participant.get("riotIdGameName") or participant.get("summonerName", "")
-                            if player_name == selected_player_name:
+                            names_to_check = set()
+                            for key in ["riotIdGameName", "summonerName", "gameName"]:
+                                val = participant.get(key)
+                                if val:
+                                    names_to_check.add(normalize_name(val))
+                            gname = participant.get("gameName")
+                            tline = participant.get("tagLine")
+                            if gname and tline:
+                                names_to_check.add(normalize_name(f"{gname}#{tline}"))
+                            riot_name = participant.get("riotIdGameName")
+                            riot_tag = participant.get("riotIdTagline")
+                            if riot_name and riot_tag:
+                                names_to_check.add(normalize_name(f"{riot_name}#{riot_tag}"))
+                            # Compare avec tous les alias du joueur sélectionné
+                            if any(n in player_aliases for n in names_to_check):
                                 champ = participant.get("championName", "Unknown")
                                 if champ not in champion_stats:
                                     champion_stats[champ] = {"wins": 0, "losses": 0, "games": 0, "kills": 0, "deaths": 0, "assists": 0, "kda_values": []}
-                                
                                 champion_stats[champ]["games"] += 1
                                 if participant.get("win"):
                                     champion_stats[champ]["wins"] += 1
                                 else:
                                     champion_stats[champ]["losses"] += 1
-                                
                                 champion_stats[champ]["kills"] += participant.get("kills", 0)
                                 champion_stats[champ]["deaths"] += participant.get("deaths", 0)
                                 champion_stats[champ]["assists"] += participant.get("assists", 0)
-                                
                                 kills = participant.get("kills", 0)
                                 deaths = participant.get("deaths", 0)
                                 assists = participant.get("assists", 0)
                                 kda = ((kills + assists) / deaths) if deaths > 0 else kills + assists
                                 champion_stats[champ]["kda_values"].append(kda)
-                                
                                 # Calculate KP: (player kills + assists) / team total kills
                                 team_id = participant.get("teamId")
                                 team_kills = sum(p.get("kills", 0) for p in participants if p.get("teamId") == team_id)
@@ -421,7 +478,6 @@ if search_type == "👤 Joueur":
                                 if "kp_values" not in champion_stats[champ]:
                                     champion_stats[champ]["kp_values"] = []
                                 champion_stats[champ]["kp_values"].append(kp)
-                                
                                 break
                     
                     if champion_stats:
@@ -484,18 +540,34 @@ if search_type == "👤 Joueur":
                             
                             # Color classes for WR
                             if champ["winrate"] >= 60:
-                                wr_color = "#66bb6a"
+                                wr_color = "#66bb6a"  # vert
                             elif champ["winrate"] >= 40:
-                                wr_color = "#ffa726"
+                                wr_color = "#ffa726"  # orange
                             else:
-                                wr_color = "#ef5350"
-                            
+                                wr_color = "#ef5350"  # rouge
+
+                            # Color classes for KDA
+                            if champ["kda"] >= 5:
+                                kda_color = "#66bb6a"  # vert
+                            elif champ["kda"] >= 3:
+                                kda_color = "#ffa726"  # orange
+                            else:
+                                kda_color = "#ef5350"  # rouge
+
+                            # Color classes for KP
+                            if champ["kp"] >= 50:
+                                kp_color = "#66bb6a"  # vert
+                            elif champ["kp"] >= 30:
+                                kp_color = "#ffa726"  # orange
+                            else:
+                                kp_color = "#ef5350"  # rouge
+
                             df_data.append({
                                 "CHAMPION": f'<img src="{icon_url}" width="30" height="30" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;"> {champ["champion"]}',
                                 "GAMES": champ["games"],
                                 "WR": f'<span style="color: {wr_color}; font-weight: 600;">{champ["winrate"]:.1f}%</span>',
-                                "KDA": f'<span style="color: #ffc107; font-weight: 600;">{champ["kda"]:.2f}</span>',
-                                "KP": f'<span style="color: #ff9800; font-weight: 600;">{champ["kp"]:.1f}%</span>'
+                                "KDA": f'<span style="color: {kda_color}; font-weight: 600;">{champ["kda"]:.2f}</span>',
+                                "KP": f'<span style="color: {kp_color}; font-weight: 600;">{champ["kp"]:.1f}%</span>'
                             })
                         
                         df_champ = pd.DataFrame(df_data)
@@ -557,16 +629,30 @@ if search_type == "👤 Joueur":
                 st.markdown("---")
                 st.markdown("### 📋 Historique des parties")
                 
-                # Filter matches for this player
+                # Filter matches for this player (robuste sur tous les alias)
                 player_matches = []
                 for match_id, match_data in match_details.items():
-                    # Get participants from info section
                     participants = match_data.get("info", {}).get("participants", [])
-                    
                     for participant in participants:
-                        player_name = participant.get("riotIdGameName") or participant.get("summonerName", "")
-                        if player_name == selected_player_name:
-                            # Found the player in this match
+                        # Récupère tous les identifiants possibles du participant
+                        names_to_check = set()
+                        for key in ["riotIdGameName", "summonerName", "gameName"]:
+                            val = participant.get(key)
+                            if val:
+                                names_to_check.add(normalize_name(val))
+                        # Ajoute gameName#tagLine si possible
+                        gname = participant.get("gameName")
+                        tline = participant.get("tagLine")
+                        if gname and tline:
+                            names_to_check.add(normalize_name(f"{gname}#{tline}"))
+                        # Ajoute riotIdGameName#riotIdTagline si possible (édition 7)
+                        riot_name = participant.get("riotIdGameName")
+                        riot_tag = participant.get("riotIdTagline")
+                        if riot_name and riot_tag:
+                            names_to_check.add(normalize_name(f"{riot_name}#{riot_tag}"))
+                        # Compare avec tous les alias du joueur sélectionné
+                        # On normalise aussi le nom sélectionné pour garantir le matching
+                        if any(n in player_aliases for n in names_to_check):
                             player_matches.append({
                                 "match_id": match_id,
                                 "match_data": match_data,
@@ -651,18 +737,40 @@ if search_type == "👤 Joueur":
                             vision_per_min = round(match["vision"] / duration_min, 1) if duration_min > 0 else 0
                             
                             # Color classes
-                            kp_color = "#66bb6a" if match["kp"] >= 60 else "#ffa726" if match["kp"] >= 40 else "#ef5350"
-                            cs_color = "#42a5f5" if match["cs_per_min"] >= 7 else "#90caf9"
+                            # Win/Loss
+                            wl_color = "#66bb6a" if match["win"] else "#ef5350"
+                            wl_text = f'<span style="color: {wl_color}; font-weight: 600;">{"Win" if match["win"] else "Lose"}</span>'
+                            # KDA
+                            if match["kda"] >= 5:
+                                kda_color = "#66bb6a"
+                            elif match["kda"] >= 3:
+                                kda_color = "#ffa726"
+                            else:
+                                kda_color = "#ef5350"
+                            # KP
+                            if match["kp"] >= 50:
+                                kp_color = "#66bb6a"
+                            elif match["kp"] >= 30:
+                                kp_color = "#ffa726"
+                            else:
+                                kp_color = "#ef5350"
+                            # CS/min
+                            if match["cs_per_min"] >= 7:
+                                cs_color = "#66bb6a"
+                            elif match["cs_per_min"] >= 5:
+                                cs_color = "#42a5f5"
+                            else:
+                                cs_color = "#888"
                             gold_color = "#ffc107"
-                            
+
                             df_matches.append({
                                 "DATE": match["date"],
                                 "CHAMPION": f'<img src="{icon_url}" width="30" height="30" style="border-radius: 50%; vertical-align: middle; margin-right: 8px;"> {match["champion"]}',
-                                "W/L": "✅ Win" if match["win"] else "❌ Lose",
+                                "W/L": wl_text,
                                 "VS": match["opponent"],
                                 "GAME": 1,
                                 "DURÉE": f"{duration_min}:{duration_sec:02d}",
-                                "KDA": f'{match["kills"]}/{match["deaths"]}/{match["assists"]} <span style="color: #ffc107; font-weight: 600;">[{match["kda"]:.2f}]</span>',
+                                "KDA": f'{match["kills"]}/{match["deaths"]}/{match["assists"]} <span style="color: {kda_color}; font-weight: 600;">[{match["kda"]:.2f}]</span>',
                                 "KP": f'<span style="color: {kp_color}; font-weight: 600;">{match["kp"]:.1f}%</span>',
                                 "CS/MIN": f'<span style="color: {cs_color}; font-weight: 600;">{match["cs_per_min"]:.1f}</span>',
                                 "VISION": f'{match["vision"]} <span style="color: #888; font-size: 11px;">({vision_per_min}/{duration_min})</span> <span style="color: #4caf50; font-size: 11px;">100%</span>',

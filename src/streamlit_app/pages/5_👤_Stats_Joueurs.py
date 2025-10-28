@@ -329,7 +329,7 @@ df = pd.DataFrame(all_players)
 
 st.markdown("---")
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     sort_by = st.selectbox(
@@ -346,6 +346,13 @@ with col2:
     )
 
 with col3:
+    filter_role = st.selectbox(
+        "🎯 Filtrer par rôle",
+        ["Tous"] + ["TOP", "JGL", "MID", "ADC", "SUP"],
+        key="role_filter"
+    )
+
+with col4:
     min_games = st.number_input(
         "🎮 Matchs minimum",
         min_value=0,
@@ -358,6 +365,8 @@ with col3:
 filtered_df = df.copy()
 if filter_team != "Toutes les équipes":
     filtered_df = filtered_df[filtered_df["team"] == filter_team]
+if filter_role != "Tous":
+    filtered_df = filtered_df[filtered_df["role"].str.upper() == filter_role]
 
 # Sort mapping
 sort_mapping = {
@@ -456,14 +465,10 @@ for idx, (_, player) in enumerate(filtered_df.iterrows(), 1):
     bg_color = "#0f1113" if idx % 2 == 0 else "#0b0d10"
     # Champions icons - Always display 5 per row using a grid
     champions = player.get('champions_played', [])
-    champions_html = '<div style="display: grid; grid-template-columns: repeat(5, 40px); gap: 4px;">'
+    champions_html = '<div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-start;">'
     for champ in champions:
         icon_url = get_champion_icon_url(champ)
-        champions_html += f'<img src="{icon_url}" class="champion-icon" title="{champ}" alt="{champ}" style="width: 32px; height: 32px; border-radius: 4px; margin: 2px; border: 1px solid rgba(255,255,255,0.1);">'
-    # Compléter avec des cases vides si moins de 5 par ligne
-    missing = (5 - (len(champions) % 5)) % 5
-    for _ in range(missing):
-        champions_html += '<span style="width:32px;height:32px;display:inline-block;"></span>'
+        champions_html += f'<img src="{icon_url}" class="champion-icon" title="{champ}" alt="{champ}" style="width: 40px; height: 40px; border-radius: 6px; margin: 2px; border: 1px solid rgba(255,255,255,0.1);">'
     champions_html += '</div>'
     # Correction du rôle : si le rôle n'est pas présent, on tente de le déduire par les champions joués
     role = player.get('role', None)
@@ -551,7 +556,12 @@ with col2:
     st.metric("Kills/G Moyen", f"{avg_kills:.1f}")
 
 with col3:
-    avg_cs = filtered_df["average_cs_per_min"].mean()
+    if "average_cs_per_min" in filtered_df.columns:
+        avg_cs = filtered_df["average_cs_per_min"].mean()
+    elif "average_cs_per_minute" in filtered_df.columns:
+        avg_cs = filtered_df["average_cs_per_minute"].mean()
+    else:
+        avg_cs = 0
     st.metric("CS/min Moyen", f"{avg_cs:.1f}")
 
 with col4:
