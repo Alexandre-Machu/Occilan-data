@@ -26,24 +26,24 @@
         "profileIconId": 6206,
         "tier": "PLATINUM",
         "rank": "IV",
-        "leaguePoints": 32,
-        "wins": 56,
-        "losses": 69,
-        "winrate": 44.8
+        "leaguePoints": 28,
+        "wins": 58,
+        "losses": 71,
+        "winrate": 44.96
       },
       {
         "gameName": "Noemiefeatmonkey",
         "tagLine": "UwU",
         "role": "MID",
         "puuid": "UGW_ztlvfZc8fSThXkYhD7Xw3324Hq46_GcjsrYJyVtjWKlRDteg_9RCGiy3cgW4ZM1ZzEwTOLVm9A",
-        "summonerLevel": 461,
+        "summonerLevel": 462,
         "profileIconId": 1453,
         "tier": "EMERALD",
-        "rank": "III",
-        "leaguePoints": 18,
+        "rank": "IV",
+        "leaguePoints": 76,
         "wins": 38,
-        "losses": 32,
-        "winrate": 54.29
+        "losses": 34,
+        "winrate": 52.78
       },
       {
         "gameName": "tsuvai",
@@ -64,14 +64,14 @@
         "tagLine": "EUW",
         "role": "SUP",
         "puuid": "BdVyEKsSWo3fGZZ_HC9CP-a0URt-HKPp5c96eJNaYu7QuNms_nI3G212mwS3RyoJfpWjQVhWLZarMA",
-        "summonerLevel": 258,
+        "summonerLevel": 259,
         "profileIconId": 5898,
         "tier": "PLATINUM",
-        "rank": "III",
-        "leaguePoints": 3,
+        "rank": "IV",
+        "leaguePoints": 49,
         "wins": 39,
-        "losses": 28,
-        "winrate": 58.21
+        "losses": 30,
+        "winrate": 56.52
       }
     ]
   },
@@ -112,7 +112,7 @@
         "tagLine": "1211",
         "role": "ADC",
         "puuid": "YwJtGuekfWyRhivaqkK9iojfLddpLxtDivt3YHkG3s5SQyAt8k30FTald9chR00ld1_DqtsRzLrXTA",
-        "summonerLevel": 997,
+        "summonerLevel": 998,
         "profileIconId": 8,
         "tier": "MASTER",
         "rank": "I",
@@ -126,14 +126,14 @@
         "tagLine": "happy",
         "role": "SUP",
         "puuid": "aJFTf0yvt7ErFV6vx84Xsjfc94F_ZIvCXrPU6JFungk_tHDOBL8bC0a-sAxjmgDTISVFJ0u1wVcVkA",
-        "summonerLevel": 256,
+        "summonerLevel": 257,
         "profileIconId": 904,
         "tier": "GRANDMASTER",
         "rank": "I",
-        "leaguePoints": 883,
-        "wins": 441,
-        "losses": 383,
-        "winrate": 53.52
+        "leaguePoints": 823,
+        "wins": 442,
+        "losses": 387,
+        "winrate": 53.32
       }
     ]
   },
@@ -206,10 +206,10 @@
         "profileIconId": 3863,
         "tier": "EMERALD",
         "rank": "II",
-        "leaguePoints": 54,
-        "wins": 95,
+        "leaguePoints": 74,
+        "wins": 96,
         "losses": 100,
-        "winrate": 48.72
+        "winrate": 48.98
       }
     ]
   },
@@ -240,9 +240,9 @@
         "profileIconId": 4844,
         "tier": "MASTER",
         "rank": "I",
-        "leaguePoints": 0,
-        "wins": 311,
-        "losses": 322,
+        "leaguePoints": 22,
+        "wins": 312,
+        "losses": 323,
         "winrate": 49.13
       },
       {
@@ -254,24 +254,24 @@
         "profileIconId": 6996,
         "tier": "MASTER",
         "rank": "I",
-        "leaguePoints": 97,
-        "wins": 283,
+        "leaguePoints": 137,
+        "wins": 285,
         "losses": 226,
-        "winrate": 55.6
+        "winrate": 55.77
       },
       {
         "gameName": "SeyZo",
         "tagLine": "EUW",
         "role": "ADC",
         "puuid": "k7WOs_KcaprKJVvojTw-JfdYx9agEiCuPJno5Fa7-UZ7R26um7FW7Ozbiqr-OZN7UEzSMtwM2wW2DA",
-        "summonerLevel": 1012,
+        "summonerLevel": 1013,
         "profileIconId": 6996,
         "tier": "MASTER",
         "rank": "I",
-        "leaguePoints": 689,
-        "wins": 415,
-        "losses": 383,
-        "winrate": 52.01
+        "leaguePoints": 660,
+        "wins": 419,
+        "losses": 388,
+        "winrate": 51.92
       },
       {
         "gameName": "Sumwo",
@@ -298,14 +298,14 @@
         "tagLine": "Mites",
         "role": "TOP",
         "puuid": "7ADahAPgMFdec-XXUoFzeUKjqycxJqD_FaRVKCKxoYmYLDKE_4fR-jWorDKMM402VYBk_ky5n-h4Gw",
-        "summonerLevel": 625,
+        "summonerLevel": 626,
         "profileIconId": 984,
         "tier": "DIAMOND",
         "rank": "I",
-        "leaguePoints": 46,
+        "leaguePoints": 6,
         "wins": 131,
-        "losses": 124,
-        "winrate": 51.37
+        "losses": 126,
+        "winrate": 50.97
       },
       {
         "gameName": "ODE Lupikku",
@@ -330,10 +330,10 @@
         "profileIconId": 6996,
         "tier": "PLATINUM",
         "rank": "II",
-        "leaguePoints": 28,
-        "wins": 239,
+        "leaguePoints": 52,
+        "wins": 240,
         "losses": 251,
-        "winrate": 48.78
+        "winrate": 48.88
       },
       {
         "gameName": "Skarito",
@@ -344,9 +344,9 @@
         "profileIconId": 3507,
         "tier": "DIAMOND",
         "rank": "IV",
-        "leaguePoints": 14,
-        "wins": 131,
-        "losses": 130,
+        "leaguePoints": 18,
+        "wins": 132,
+        "losses": 131,
         "winrate": 50.19
       },
       {
@@ -391,11 +391,11 @@
         "summonerLevel": 518,
         "profileIconId": 3868,
         "tier": "PLATINUM",
-        "rank": "II",
-        "leaguePoints": 93,
-        "wins": 212,
+        "rank": "I",
+        "leaguePoints": 17,
+        "wins": 213,
         "losses": 217,
-        "winrate": 49.42
+        "winrate": 49.53
       },
       {
         "gameName": "Kouign Amann",
@@ -419,11 +419,11 @@
         "summonerLevel": 356,
         "profileIconId": 6793,
         "tier": "EMERALD",
-        "rank": "IV",
-        "leaguePoints": 80,
-        "wins": 387,
-        "losses": 367,
-        "winrate": 51.33
+        "rank": "III",
+        "leaguePoints": 57,
+        "wins": 392,
+        "losses": 368,
+        "winrate": 51.58
       },
       {
         "gameName": "TwitchDartien",
@@ -464,7 +464,7 @@
         "tagLine": "Khako",
         "role": "JGL",
         "puuid": "VODvth5J4XqkRDRkCOmCKlobPA1DxEsWY0KgiN18n1HrcHiChGDH9bP2LHvSvAYdL5Ef7NiByoASVQ",
-        "summonerLevel": 901,
+        "summonerLevel": 902,
         "profileIconId": 6981,
         "tier": "EMERALD",
         "rank": "III",
@@ -506,14 +506,14 @@
         "tagLine": "HooK",
         "role": "SUP",
         "puuid": "NIqpDLSrH_6GseXrCHQgq5Gx8WDy0NwabqZxQfmmksB_YhnmNMfu3bkKvimlFJx9onBHFaUwmdh15g",
-        "summonerLevel": 788,
+        "summonerLevel": 789,
         "profileIconId": 6383,
         "tier": "EMERALD",
-        "rank": "I",
-        "leaguePoints": 61,
+        "rank": "II",
+        "leaguePoints": 95,
         "wins": 235,
-        "losses": 223,
-        "winrate": 51.31
+        "losses": 226,
+        "winrate": 50.98
       }
     ]
   },
@@ -521,6 +521,20 @@
     "name": "Censured Corp",
     "opgg_link": "https://op.gg/fr/lol/multisearch/euw?summoners=make+you+mine%23beer%2CStarnight%2300000%2CGiacoco%23EUW%2Cvote+yes%232kis%2CHowDidWeGetHere%23ABCDE",
     "players": [
+      {
+        "gameName": "zo0bb",
+        "tagLine": "Louk0",
+        "role": "TOP",
+        "puuid": "_n7KJLyjopjoBtWSnBshTE_lnzequZNu9tduBA0AYhbUS22L81uCkrCHnLvq9HyBE-gpA4ZO8ydJHQ",
+        "summonerLevel": 399,
+        "profileIconId": 3539,
+        "tier": "EMERALD",
+        "rank": "IV",
+        "leaguePoints": 28,
+        "wins": 276,
+        "losses": 268,
+        "winrate": 50.74
+      },
       {
         "gameName": "Giacoco",
         "tagLine": "EUW",
@@ -540,7 +554,7 @@
         "tagLine": "ABCDE",
         "role": "MID",
         "puuid": "Gb7R5VtTk_k_4l6MTlts9vvkK_8ARxouTVewNSP5IYDhbHwch5yLV6A8HB0psaK92Mi1SghDvydbeQ",
-        "summonerLevel": 258,
+        "summonerLevel": 259,
         "profileIconId": 6921,
         "tier": "PLATINUM",
         "rank": "II",
@@ -568,7 +582,7 @@
         "tagLine": "beer",
         "role": "SUP",
         "puuid": "7nqbJbsPv-F5_L4byAefYP-mEzo_mfupEjNuuczdh72M9W11murDWrFmHb-c1QgEWarocbNps0QBOg",
-        "summonerLevel": 210,
+        "summonerLevel": 211,
         "profileIconId": 7015,
         "tier": "GOLD",
         "rank": "IV",
@@ -602,14 +616,14 @@
         "tagLine": "666",
         "role": "JGL",
         "puuid": "De7_ai7yWe_7uiBCkLjDP68uei0VZICCx9zCasbOAawgUjooal_CjvsGAiZeCeyNWED2oUVOKGNGfg",
-        "summonerLevel": 324,
+        "summonerLevel": 325,
         "profileIconId": 3543,
         "tier": "GOLD",
         "rank": "IV",
-        "leaguePoints": 40,
-        "wins": 128,
-        "losses": 125,
-        "winrate": 50.59
+        "leaguePoints": 77,
+        "wins": 133,
+        "losses": 128,
+        "winrate": 50.96
       },
       {
         "gameName": "Radiohead Lover",
@@ -647,11 +661,11 @@
         "summonerLevel": 304,
         "profileIconId": 6518,
         "tier": "PLATINUM",
-        "rank": "IV",
-        "leaguePoints": 97,
-        "wins": 288,
-        "losses": 259,
-        "winrate": 52.65
+        "rank": "III",
+        "leaguePoints": 19,
+        "wins": 290,
+        "losses": 260,
+        "winrate": 52.73
       }
     ]
   },
@@ -692,14 +706,14 @@
         "tagLine": "347",
         "role": "MID",
         "puuid": "iuCsWgjxeYjIghBZRxiTC1delIDf8AIaKkcTqaAJxmRer1mjEZ8ARKJk1oNmPPsViHgBa6S-JeUBLA",
-        "summonerLevel": 380,
+        "summonerLevel": 381,
         "profileIconId": 22,
         "tier": "MASTER",
         "rank": "I",
-        "leaguePoints": 78,
-        "wins": 423,
-        "losses": 407,
-        "winrate": 50.96
+        "leaguePoints": 163,
+        "wins": 427,
+        "losses": 408,
+        "winrate": 51.14
       },
       {
         "gameName": "Thibee",
@@ -758,10 +772,10 @@
         "profileIconId": 5285,
         "tier": "MASTER",
         "rank": "I",
-        "leaguePoints": 119,
-        "wins": 471,
-        "losses": 478,
-        "winrate": 49.63
+        "leaguePoints": 99,
+        "wins": 472,
+        "losses": 480,
+        "winrate": 49.58
       },
       {
         "gameName": "TwTv Ciliano",
@@ -830,7 +844,7 @@
         "tagLine": "EUW",
         "role": "JGL",
         "puuid": "QwTzJKSBc5qlOCIrANjLFm0XhLPUZkt2clPsyUR2DtkfmK5HE5jheE2XVy-BHQ95PzNQfNF2mlf4Vw",
-        "summonerLevel": 722,
+        "summonerLevel": 723,
         "profileIconId": 1295,
         "tier": "EMERALD",
         "rank": "IV",
@@ -858,28 +872,28 @@
         "tagLine": "Aphel",
         "role": "ADC",
         "puuid": "SchUNA_YkApOVvoHB-zQLJXfv80izQxdtyHp647pgNAYdytz426CodGFY8JJT5MazwO6hj6PdpW7xQ",
-        "summonerLevel": 436,
-        "profileIconId": 5915,
+        "summonerLevel": 437,
+        "profileIconId": 6931,
         "tier": "PLATINUM",
-        "rank": "III",
-        "leaguePoints": 43,
-        "wins": 212,
-        "losses": 211,
-        "winrate": 50.12
+        "rank": "II",
+        "leaguePoints": 53,
+        "wins": 218,
+        "losses": 212,
+        "winrate": 50.7
       },
       {
         "gameName": "Pyke The Creator",
         "tagLine": "Rell",
         "role": "SUP",
         "puuid": "LlQj8sJ4CpqiKDqKSjfTUEPOBPnh-BHa08DIRt_XqxqyvBmoj0iAzmzJGeST30i8fYVAo87o3S7srQ",
-        "summonerLevel": 770,
+        "summonerLevel": 771,
         "profileIconId": 4030,
         "tier": "EMERALD",
         "rank": "III",
-        "leaguePoints": 75,
-        "wins": 412,
-        "losses": 411,
-        "winrate": 50.06
+        "leaguePoints": 1,
+        "wins": 417,
+        "losses": 420,
+        "winrate": 49.82
       }
     ]
   },
@@ -892,14 +906,14 @@
         "tagLine": "5517",
         "role": "TOP",
         "puuid": "0n4P_uoP5-nbGGsaay9sWM9r5C9OIwYckNYb8e0yIIz3EcwfWFlM-VHjLq2dcn9MuaXeBvTkFIdANw",
-        "summonerLevel": 752,
+        "summonerLevel": 754,
         "profileIconId": 6096,
         "tier": "PLATINUM",
-        "rank": "III",
-        "leaguePoints": 9,
-        "wins": 345,
-        "losses": 354,
-        "winrate": 49.36
+        "rank": "II",
+        "leaguePoints": 76,
+        "wins": 354,
+        "losses": 356,
+        "winrate": 49.86
       },
       {
         "gameName": "LG  Isowix",
@@ -920,14 +934,14 @@
         "tagLine": "OOO",
         "role": "MID",
         "puuid": "srikSB8lhwO4L-uzrgKw1UkSnYF0dHZdJiT_sY9eVr-OkQfsEEgN021e5xh5Lp8mFIMOydTJK84TEA",
-        "summonerLevel": 941,
+        "summonerLevel": 942,
         "profileIconId": 4413,
         "tier": "MASTER",
         "rank": "I",
-        "leaguePoints": 447,
-        "wins": 559,
-        "losses": 543,
-        "winrate": 50.73
+        "leaguePoints": 519,
+        "wins": 566,
+        "losses": 547,
+        "winrate": 50.85
       },
       {
         "gameName": "LG TwoT",
@@ -952,10 +966,10 @@
         "profileIconId": 6055,
         "tier": "MASTER",
         "rank": "I",
-        "leaguePoints": 21,
-        "wins": 118,
+        "leaguePoints": 43,
+        "wins": 119,
         "losses": 106,
-        "winrate": 52.68
+        "winrate": 52.89
       }
     ]
   },
@@ -968,42 +982,42 @@
         "tagLine": "BLOP",
         "role": "TOP",
         "puuid": "2vDE0WXmTp1I-mJSDlGIPHfwoI7RN249WKPgihhyc1_nMYTQq9ZNbBaet7celNV_GApclgeb5AL19Q",
-        "summonerLevel": 732,
+        "summonerLevel": 733,
         "profileIconId": 4891,
         "tier": "EMERALD",
-        "rank": "IV",
-        "leaguePoints": 63,
-        "wins": 239,
+        "rank": "III",
+        "leaguePoints": 1,
+        "wins": 241,
         "losses": 244,
-        "winrate": 49.48
+        "winrate": 49.69
       },
       {
         "gameName": "BanSkyzoOrParano",
         "tagLine": "SHACO",
         "role": "JGL",
         "puuid": "HSeKvDWrmTUezcvhPLh8klDK85JxWtvq6Rf5VrlfYpks9XUzqn-24tj0Q-lkMU9KN6D_2GRlmAhz5g",
-        "summonerLevel": 391,
+        "summonerLevel": 392,
         "profileIconId": 5649,
         "tier": "DIAMOND",
         "rank": "III",
-        "leaguePoints": 9,
-        "wins": 137,
+        "leaguePoints": 89,
+        "wins": 141,
         "losses": 115,
-        "winrate": 54.37
+        "winrate": 55.08
       },
       {
         "gameName": "femboyaeri",
         "tagLine": "GALA",
         "role": "MID",
         "puuid": "ZlfVCLga8mbybYV5TOEZ47e3j845Qw9pCmNqn6Dar1OejbqxH3Mh4Jx83V8UlW_E8W3Q-MVY_cNQXg",
-        "summonerLevel": 408,
+        "summonerLevel": 409,
         "profileIconId": 5279,
-        "tier": "EMERALD",
-        "rank": "I",
-        "leaguePoints": 71,
-        "wins": 531,
-        "losses": 510,
-        "winrate": 51.01
+        "tier": "DIAMOND",
+        "rank": "IV",
+        "leaguePoints": 5,
+        "wins": 535,
+        "losses": 512,
+        "winrate": 51.1
       },
       {
         "gameName": "Virtuoz",
@@ -1028,10 +1042,10 @@
         "profileIconId": 6709,
         "tier": "MASTER",
         "rank": "I",
-        "leaguePoints": 150,
-        "wins": 239,
-        "losses": 226,
-        "winrate": 51.4
+        "leaguePoints": 104,
+        "wins": 241,
+        "losses": 230,
+        "winrate": 51.17
       }
     ]
   },
@@ -1046,12 +1060,12 @@
         "puuid": "ba3lIZcdkykhpVDalbkB2KeM6GH3Pjqi-BiVYSjsJNPyZfNm1oljyEnw8ZJvnZpXJNVhtOaxuW6-Lg",
         "summonerLevel": 433,
         "profileIconId": 4418,
-        "tier": "EMERALD",
-        "rank": "IV",
-        "leaguePoints": 0,
+        "tier": "PLATINUM",
+        "rank": "I",
+        "leaguePoints": 75,
         "wins": 126,
-        "losses": 108,
-        "winrate": 53.85
+        "losses": 109,
+        "winrate": 53.62
       },
       {
         "gameName": "piénutella92i",
@@ -1062,24 +1076,24 @@
         "profileIconId": 6071,
         "tier": "SILVER",
         "rank": "II",
-        "leaguePoints": 36,
+        "leaguePoints": 10,
         "wins": 405,
-        "losses": 393,
-        "winrate": 50.75
+        "losses": 394,
+        "winrate": 50.69
       },
       {
         "gameName": "TheNight",
         "tagLine": "1166",
         "role": "MID",
         "puuid": "HBw3AI8ucJy53rh1Vh1frjlH-QZcgpoU_1Z5diAJKDPunxOdL2CgWukrWOQ1QSDWYJc1QAAyp_1NcA",
-        "summonerLevel": 368,
+        "summonerLevel": 369,
         "profileIconId": 6996,
         "tier": "GOLD",
-        "rank": "II",
-        "leaguePoints": 27,
-        "wins": 106,
-        "losses": 104,
-        "winrate": 50.48
+        "rank": "III",
+        "leaguePoints": 70,
+        "wins": 108,
+        "losses": 108,
+        "winrate": 50.0
       },
       {
         "gameName": "Hildisvinl",
@@ -1090,10 +1104,10 @@
         "profileIconId": 6296,
         "tier": "DIAMOND",
         "rank": "III",
-        "leaguePoints": 34,
-        "wins": 116,
+        "leaguePoints": 54,
+        "wins": 117,
         "losses": 68,
-        "winrate": 63.04
+        "winrate": 63.24
       },
       {
         "gameName": "zzz",
@@ -1104,10 +1118,10 @@
         "profileIconId": 6996,
         "tier": "GOLD",
         "rank": "IV",
-        "leaguePoints": 70,
-        "wins": 149,
+        "leaguePoints": 93,
+        "wins": 150,
         "losses": 139,
-        "winrate": 51.74
+        "winrate": 51.9
       }
     ]
   },
@@ -1124,9 +1138,9 @@
         "profileIconId": 6670,
         "tier": "MASTER",
         "rank": "I",
-        "leaguePoints": 284,
-        "wins": 594,
-        "losses": 570,
+        "leaguePoints": 296,
+        "wins": 595,
+        "losses": 571,
         "winrate": 51.03
       },
       {
@@ -1134,7 +1148,7 @@
         "tagLine": "3109",
         "role": "JGL",
         "puuid": "l-6TaWcnTTCfTxPOpLjyO10SIy8X1RXCa4qcs6eLfBon5wY6NKSV99PAEJDb2NI-FDIIeyRfSd8IBA",
-        "summonerLevel": 521,
+        "summonerLevel": 522,
         "profileIconId": 3156,
         "tier": "DIAMOND",
         "rank": "IV",
@@ -1148,14 +1162,14 @@
         "tagLine": "euw",
         "role": "MID",
         "puuid": "7IHSVbsEfWNSgrJgk5UZzxQMzsREfxdRnUdgKIgW7a8hqyMVdfzz8oTVa6rScWSSPBJlakSRV1HJag",
-        "summonerLevel": 702,
+        "summonerLevel": 703,
         "profileIconId": 6981,
         "tier": "MASTER",
         "rank": "I",
-        "leaguePoints": 189,
-        "wins": 147,
+        "leaguePoints": 208,
+        "wins": 148,
         "losses": 130,
-        "winrate": 53.07
+        "winrate": 53.24
       },
       {
         "gameName": "Onikiezi",
