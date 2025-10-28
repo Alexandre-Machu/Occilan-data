@@ -77,7 +77,7 @@ def main():
         else:
             # Initialiser selected_edition dans session_state si pas déjà fait
             if "selected_edition" not in st.session_state:
-                st.session_state.selected_edition = editions[0] if editions else None
+                st.session_state.selected_edition = 7 if 7 in editions else (editions[0] if editions else None)
             
             # Trouver l'index de l'édition sélectionnée
             default_index = 0

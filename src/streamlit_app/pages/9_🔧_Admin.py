@@ -25,9 +25,12 @@ with st.sidebar:
             st.info("💡 Créez une édition dans la page Admin")
             selected_edition = None
         else:
-            # Initialiser selected_edition dans session_state si pas déjà fait
+            # Initialiser selected_edition à 7 si elle existe, sinon à la première
             if "selected_edition" not in st.session_state:
-                st.session_state.selected_edition = editions[0]
+                if 7 in editions:
+                    st.session_state.selected_edition = 7
+                else:
+                    st.session_state.selected_edition = editions[0]
             default_index = 0
             if st.session_state.selected_edition in editions:
                 default_index = editions.index(st.session_state.selected_edition)

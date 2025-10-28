@@ -41,7 +41,7 @@ with st.sidebar:
         selected_edition = None
     else:
         if "selected_edition" not in st.session_state:
-            st.session_state.selected_edition = 7 if 7 in available_editions else available_editions[0]
+            st.session_state.selected_edition = 7 if 7 in available_editions else (available_editions[0] if available_editions else None)
         default_index = 0
         if st.session_state.selected_edition in available_editions:
             default_index = available_editions.index(st.session_state.selected_edition)
