@@ -454,15 +454,17 @@ for idx, (_, player) in enumerate(filtered_df.iterrows(), 1):
         kda_color = "#ef4444"
     # Background color
     bg_color = "#0f1113" if idx % 2 == 0 else "#0b0d10"
-    # Champions icons - Display ALL champions in rows of 5
+    # Champions icons - Always display 5 per row using a grid
     champions = player.get('champions_played', [])
-    champions_html = ''
-    if champions:
-        for i, champ in enumerate(champions):
-            if i > 0 and i % 5 == 0:
-                champions_html += '<br/>'
-            icon_url = get_champion_icon_url(champ)
-            champions_html += f'<img src="{icon_url}" class="champion-icon" title="{champ}" alt="{champ}" style="width: 32px; height: 32px; border-radius: 4px; margin: 2px; border: 1px solid rgba(255,255,255,0.1);">'
+    champions_html = '<div style="display: grid; grid-template-columns: repeat(5, 40px); gap: 4px;">'
+    for champ in champions:
+        icon_url = get_champion_icon_url(champ)
+        champions_html += f'<img src="{icon_url}" class="champion-icon" title="{champ}" alt="{champ}" style="width: 32px; height: 32px; border-radius: 4px; margin: 2px; border: 1px solid rgba(255,255,255,0.1);">'
+    # Compléter avec des cases vides si moins de 5 par ligne
+    missing = (5 - (len(champions) % 5)) % 5
+    for _ in range(missing):
+        champions_html += '<span style="width:32px;height:32px;display:inline-block;"></span>'
+    champions_html += '</div>'
     # Correction du rôle : si le rôle n'est pas présent, on tente de le déduire par les champions joués
     role = player.get('role', None)
     if not role:
@@ -497,10 +499,6 @@ for idx, (_, player) in enumerate(filtered_df.iterrows(), 1):
     role_icon_url = get_role_icon_url(role)
     # Correction : utiliser la valeur du pipeline (average_cs_per_minute ou average_cs_per_min)
     cs_per_min = player.get('average_cs_per_minute', player.get('average_cs_per_min', 0))
-    for player_name, pstats in players_dict.items():
-        # Utiliser display_name si présent, sinon gameName#tagLine, sinon player_name
-        display_name = pstats.get("display_name")
-        if not display_name:
     table_html += (
         f'<tr style="background: {bg_color}; border-top: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;" onmouseover="this.style.background=\'#1a1d24\'" onmouseout="this.style.background=\'{bg_color}\'">'
         f'<td style="padding: 16px 14px; color: #e6eef6;"><span class="rank-badge {rank_class}">#{idx}</span></td>'
@@ -514,11 +512,6 @@ for idx, (_, player) in enumerate(filtered_df.iterrows(), 1):
         f'<td style="padding: 16px 14px;">{champions_html}</td>'
         f'</tr>'
     )
-            <td style="padding: 16px 14px; color: #e6eef6;">{cs_per_min:.2f}</td>
-            <td style="padding: 16px 14px; color: #e6eef6;">{player.get('average_vision_score', 0):.1f}</td>
-            <td style="padding: 16px 14px;">{champions_html}</td>
-        </tr>
-    '''
 
 table_html += '''
     </tbody>
